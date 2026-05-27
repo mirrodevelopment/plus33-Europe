@@ -1,0 +1,693 @@
+<!--
+  FILE: home.html
+  PAGE: Homepage
+  ══════════════════════════════════════════════════
+  PURPOSE:
+  Cinematic luxury homepage for the PLUS33 / +33 Paris coffee brand.
+
+  SECTIONS:
+  1. Hero Section      — Fullscreen cinematic brand statement
+  2. Brand Intro       — Editorial philosophy and feature grid
+
+  ARCHITECTURE NOTES:
+  - Dynamically mounted by /js/router.js into the #app shell root.
+  - Initialized, controlled by /pages/home/home.js.
+  - Navbar and Footer fragments are injected by the layout engine.
+  - Does NOT include <html>, <head>, <body>, navbar, or footer.
+
+  DEVELOPED BY : MIRRO
+  CODED BY     : SIVASURYA
+  ══════════════════════════════════════════════════
+-->
+
+<div class="home-page" id="home-page">
+
+  <!-- ═════════ FILM GRAIN & AMBIENT OVERLAYS ═════════ -->
+  <div class="home-grain" aria-hidden="true"></div>
+  <div class="home-vignette" aria-hidden="true"></div>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 1 — HERO
+  ═══════════════════════════════════════════════════════ -->
+  <section class="home-hero" id="home-hero" aria-label="Hero — PLUS33 Luxury Coffee House">
+
+    <!-- Background Video -->
+    <div class="home-hero__bg" aria-hidden="true">
+      <video
+        class="home-hero__bg-img"
+        autoplay
+        loop
+        muted
+        playsinline
+        preload="auto"
+        poster="/assets/img/hero/coffee-experience-banner.png"
+      >
+        <source src="/assets/video/home-hero-bg.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <!-- Floating Atmosphere Orbs -->
+    <div class="home-hero__orb home-hero__orb--1" aria-hidden="true"></div>
+    <div class="home-hero__orb home-hero__orb--2" aria-hidden="true"></div>
+
+    <!-- Hero Content -->
+    <div class="home-hero__content container">
+
+      <!-- Small Label -->
+      <div class="home-hero__label hero-reveal hero-reveal--1">
+        <span class="home-hero__label-line" aria-hidden="true"></span>
+        <span class="home-hero__label-text">Parisian Specialty Coffee House</span>
+        <span class="home-hero__label-line home-hero__label-line--right" aria-hidden="true"></span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="home-hero__headline hero-reveal hero-reveal--2">
+        Every cup is<br>
+        a call to<br>
+        <em class="home-hero__headline-em">Paris.</em>
+      </h1>
+
+
+      <!-- CTA Buttons -->
+      <div class="home-hero__actions hero-reveal hero-reveal--4">
+        <a href="/store" class="home-btn home-btn--glass" id="hero-cta-explore">
+          <span>Explore Store</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="/journal" class="home-btn home-btn--ghost" id="hero-cta-shop">
+          <span>Discover Our Story</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Floating Micro Tags -->
+      <div class="home-hero__tags hero-reveal hero-reveal--5" aria-label="Brand pillars">
+        <span class="home-hero__tag">European Café Rituals</span>
+        <span class="home-hero__tag-dot" aria-hidden="true">·</span>
+        <span class="home-hero__tag">Crafted for Slow Living</span>
+        <span class="home-hero__tag-dot" aria-hidden="true">·</span>
+        <span class="home-hero__tag">Specialty Coffee Atelier</span>
+      </div>
+    </div>
+
+    <!-- Cinematic Scroll Indicator -->
+    <a href="#home-craft" class="home-hero__scroll hero-reveal hero-reveal--5" aria-label="Scroll down to manifesto">
+      <div class="home-hero__scroll-track">
+        <div class="home-hero__scroll-thumb"></div>
+      </div>
+      <span class="home-hero__scroll-label">Scroll</span>
+    </a>
+
+    <!-- Steam Particles -->
+    <div class="home-hero__steam" aria-hidden="true">
+      <div class="steam-particle steam-particle--1"></div>
+      <div class="steam-particle steam-particle--2"></div>
+      <div class="steam-particle steam-particle--3"></div>
+    </div>
+
+  </section>
+  <!-- /home-hero -->
+
+  <!-- ════════ BRAND MANIFESTO ════════ -->
+  <section class="home-craft" id="home-craft" aria-label="Brand Manifesto — PLUS33">
+    <div class="container home-craft__container text-center">
+
+      <!-- EU Watermark Stars -->
+      <div class="home-craft__eu-stars" aria-hidden="true">
+        <svg viewBox="0 0 100 100">
+          <g transform="translate(50, 50)">
+            <g transform="rotate(0) translate(0, -35) rotate(0)"><polygon points="0,-3 1,-1 3,-1 1.5,0.5 2,2.5 0,1.2 -2,2.5 -1.5,0.5 -3,-1 -1,-1" fill="currentColor"/></g>
+            <g transform="rotate(30) translate(0, -35) rotate(-30)"><polygon points="0,-3 1,-1 3,-1 1.5,0.5 2,2.5 0,1.2 -2,2.5 -1.5,0.5 -3,-1 -1,-1" fill="currentColor"/></g>
+            <g transform="rotate(60) translate(0, -35) rotate(-60)"><polygon points="0,-3 1,-1 3,-1 1.5,0.5 2,2.5 0,1.2 -2,2.5 -1.5,0.5 -3,-1 -1,-1" fill="currentColor"/></g>
+            <g transform="rotate(90) translate(0, -35) rotate(-90)"><polygon points="0,-3 1,-1 3,-1 1.5,0.5 2,2.5 0,1.2 -2,2.5 -1.5,0.5 -3,-1 -1,-1" fill="currentColor"/></g>
+            <g transform="rotate(120) translate(0, -35) rotate(-120)"><polygon points="0,-3 1,-1 3,-1 1.5,0.5 2,2.5 0,1.2 -2,2.5 -1.5,0.5 -3,-1 -1,-1" fill="currentColor"/></g>
+            <g transform="rotate(150) translate(0, -35) rotate(-150)"><polygon points="0,-3 1,-1 3,-1 1.5,0.5 2,2.5 0,1.2 -2,2.5 -1.5,0.5 -3,-1 -1,-1" fill="currentColor"/></g>
+            <g transform="rotate(180) translate(0, -35) rotate(-180)"><polygon points="0,-3 1,-1 3,-1 1.5,0.5 2,2.5 0,1.2 -2,2.5 -1.5,0.5 -3,-1 -1,-1" fill="currentColor"/></g>
+            <g transform="rotate(210) translate(0, -35) rotate(-210)"><polygon points="0,-3 1,-1 3,-1 1.5,0.5 2,2.5 0,1.2 -2,2.5 -1.5,0.5 -3,-1 -1,-1" fill="currentColor"/></g>
+            <g transform="rotate(240) translate(0, -35) rotate(-240)"><polygon points="0,-3 1,-1 3,-1 1.5,0.5 2,2.5 0,1.2 -2,2.5 -1.5,0.5 -3,-1 -1,-1" fill="currentColor"/></g>
+            <g transform="rotate(270) translate(0, -35) rotate(-270)"><polygon points="0,-3 1,-1 3,-1 1.5,0.5 2,2.5 0,1.2 -2,2.5 -1.5,0.5 -3,-1 -1,-1" fill="currentColor"/></g>
+            <g transform="rotate(300) translate(0, -35) rotate(-300)"><polygon points="0,-3 1,-1 3,-1 1.5,0.5 2,2.5 0,1.2 -2,2.5 -1.5,0.5 -3,-1 -1,-1" fill="currentColor"/></g>
+            <g transform="rotate(330) translate(0, -35) rotate(-330)"><polygon points="0,-3 1,-1 3,-1 1.5,0.5 2,2.5 0,1.2 -2,2.5 -1.5,0.5 -3,-1 -1,-1" fill="currentColor"/></g>
+          </g>
+        </svg>
+      </div>
+      
+      <!-- Small Label -->
+      <div class="home-craft__label home-reveal">
+        <span class="home-craft__label-line" aria-hidden="true"></span>
+        <span class="home-craft__label-text">The Craft</span>
+        <span class="home-craft__label-line" aria-hidden="true"></span>
+      </div>
+
+      <!-- Large Headline -->
+      <h2 class="home-craft__headline home-reveal" style="--reveal-delay: 0.1s;">
+        Coffee is not what<br>
+        we sell. It is what<br>
+        <em class="home-craft__headline-em">we believe in.</em>
+      </h2>
+
+      <!-- Centered Paragraph -->
+      <p class="t-body home-craft__body home-reveal" style="--reveal-delay: 0.2s;">
+        At +33, we have never treated coffee as a commodity. Every cup that leaves our counter has been thought about — at its origin, in its preparation, in the hands that made it. This is not efficiency. This is devotion.
+      </p>
+
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 2 — BRAND INTRO
+  ═══════════════════════════════════════════════════════ -->
+  <section class="home-intro" id="home-intro" aria-label="Brand Philosophy — PLUS33">
+
+    <!-- Section inner -->
+    <div class="container home-intro__container">
+
+      <!-- ── Column Left: Editorial Imagery ── -->
+      <div class="home-intro__visuals" aria-hidden="true">
+
+        <!-- Primary large image -->
+        <div class="home-intro__img-primary home-reveal">
+          <img
+            src="/assets/img/hero/modern-coffee-ritual.png"
+            alt="PLUS33 Coffee Experience - Modern European Ritual"
+            loading="lazy"
+            class="home-intro__img-el"
+          />
+          <div class="home-intro__img-overlay"></div>
+        </div>
+
+        <!-- Floating accent image -->
+        <div class="home-intro__img-accent home-reveal" style="--reveal-delay: 0.15s;">
+          <img
+            src="/assets/img/products/hot-classics.png"
+            alt="PLUS33 Hot Classics coffee cup"
+            loading="lazy"
+            class="home-intro__img-el"
+          />
+        </div>
+
+        <!-- Floating label card -->
+        <div class="home-intro__float-card home-reveal" style="--reveal-delay: 0.3s;">
+          <span class="home-intro__float-card-num">+33</span>
+          <span class="home-intro__float-card-text">Paris, 7ème Arrondissement</span>
+        </div>
+
+      </div>
+
+      <!-- ── Column Right: Editorial Copy ── -->
+      <div class="home-intro__copy">
+
+        <!-- Section label -->
+        <div class="home-intro__label home-reveal">
+          <span class="home-intro__label-line" aria-hidden="true"></span>
+          <span class="home-intro__label-text">The Philosophy</span>
+        </div>
+
+        <!-- Headline -->
+        <h2 class="home-intro__headline home-reveal" style="--reveal-delay: 0.1s;">
+          More Than Coffee.<br>
+          <em class="home-intro__headline-em">A Modern European Ritual.</em>
+        </h2>
+
+        <!-- Body copy -->
+        <div class="home-intro__body home-reveal" style="--reveal-delay: 0.2s;">
+          <p>
+            PLUS33 was created from the timeless rhythm of European café culture — where coffee is
+            never rushed, atmosphere matters, and every detail is intentional.
+          </p>
+          <p>
+            Inspired by the elegance of Paris, the social energy of Milan, and the calm minimalism of
+            Scandinavian coffee houses, PLUS33 transforms everyday coffee into a cinematic lifestyle experience.
+          </p>
+          <p>
+            From handcrafted espresso to slow conversations beneath ambient lighting, every space is
+            designed to feel intimate, refined, and deeply immersive.
+          </p>
+          <p class="home-intro__body-closing">
+            This is not simply a café.<br>
+            It is a destination shaped through design, craftsmanship, and culture.
+          </p>
+        </div>
+
+        <!-- CTA -->
+        <a href="/find-us" class="home-btn home-btn--copper home-reveal" style="--reveal-delay: 0.3s;" id="intro-cta">
+          <span>Discover Our Ateliers</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- ── Feature Grid ── -->
+    <div class="home-intro__grid container" role="list" aria-label="PLUS33 brand pillars">
+
+      <!-- Card 1: ORIGIN -->
+      <article class="home-feat-card home-reveal" role="listitem" style="--reveal-delay: 0s;">
+        <div class="home-feat-card__img-wrap">
+          <img
+            src="/assets/img/hero/premium-coffee-quality.png"
+            alt="PLUS33 Coffee Quality - Premium beans at origin"
+            loading="lazy"
+            class="home-feat-card__img"
+          />
+          <div class="home-feat-card__img-overlay" aria-hidden="true"></div>
+          <span class="home-feat-card__badge-top">SINGLE ORIGIN</span>
+        </div>
+        <div class="home-feat-card__body">
+          <span class="home-feat-card__num" aria-hidden="true">01 / ORIGIN</span>
+          <h3 class="home-feat-card__title">The Quality</h3>
+          <p class="home-feat-card__text">
+            The world produces extraordinary coffee. Very little of it reaches the standard we require. We work only with farms that share our conviction — that exceptional coffee is grown, not manufactured.
+          </p>
+          <p class="home-feat-card__subtext">
+            The altitude matters. The soil matters. The season, the rainfall, the moment of harvest. A cup that is honest. A cup that rewards your attention.
+          </p>
+          
+          <div class="home-feat-card__metrics">
+            <div class="home-feat-card__metric">
+              <span class="home-feat-card__metric-val">12+</span>
+              <span class="home-feat-card__metric-lbl">Origin Countries</span>
+            </div>
+            <div class="home-feat-card__metric">
+              <span class="home-feat-card__metric-val">100%</span>
+              <span class="home-feat-card__metric-lbl">Hand-Selected</span>
+            </div>
+          </div>
+          
+          <div class="home-feat-card__footer-tag">
+            <span class="home-feat-card__tag-icon">🐴</span>
+            <span class="home-feat-card__tag-text">Coffee beans sorting at origin</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2: PROCESS -->
+      <article class="home-feat-card home-reveal" role="listitem" style="--reveal-delay: 0.1s;">
+        <div class="home-feat-card__img-wrap">
+          <img
+            src="/assets/img/hero/coffee-roastery-banner.png"
+            alt="PLUS33 Coffee Roastery - Profiled small batch roasting drum"
+            loading="lazy"
+            class="home-feat-card__img"
+          />
+          <div class="home-feat-card__img-overlay" aria-hidden="true"></div>
+          <span class="home-feat-card__badge-top">SMALL BATCH</span>
+        </div>
+        <div class="home-feat-card__body">
+          <span class="home-feat-card__num" aria-hidden="true">02 / PROCESS</span>
+          <h3 class="home-feat-card__title">The Roastery</h3>
+          <p class="home-feat-card__text">
+            Between the raw bean and the finished cup lives a single, irreversible moment. The roast. We approach this moment the way a watchmaker approaches a mechanism — with precision, patience, and awareness.
+          </p>
+          <p class="home-feat-card__subtext">
+            Every batch is small. Every batch is profiled individually. A +33 roast stands in the light and earns its place.
+          </p>
+          
+          <div class="home-feat-card__metrics">
+            <div class="home-feat-card__metric">
+              <span class="home-feat-card__metric-val">72°</span>
+              <span class="home-feat-card__metric-lbl">Exact Temp</span>
+            </div>
+            <div class="home-feat-card__metric">
+              <span class="home-feat-card__metric-val">18min</span>
+              <span class="home-feat-card__metric-lbl">Avg Roast Profile</span>
+            </div>
+          </div>
+          
+          <div class="home-feat-card__footer-tag">
+            <span class="home-feat-card__tag-icon">🔥</span>
+            <span class="home-feat-card__tag-text">Coffee beans roasting drum</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3: PREPARATION -->
+      <article class="home-feat-card home-reveal" role="listitem" style="--reveal-delay: 0.2s;">
+        <div class="home-feat-card__img-wrap">
+          <img
+            src="/assets/img/hero/handbrew-coffee.png"
+            alt="PLUS33 Hand Brew - Barista preparing a hand dripped brew coffee"
+            loading="lazy"
+            class="home-feat-card__img"
+          />
+          <div class="home-feat-card__img-overlay" aria-hidden="true"></div>
+          <span class="home-feat-card__badge-top">HANDCRAFTED</span>
+        </div>
+        <div class="home-feat-card__body">
+          <span class="home-feat-card__num" aria-hidden="true">03 / PREPARATION</span>
+          <h3 class="home-feat-card__title">The Hand Brew</h3>
+          <p class="home-feat-card__text">
+            Each cup at +33 is an act of preparation, not production. Our baristas are trained not as operators but as craftspeople. The angle of the pour. The temperature of the water — not approximate, exact.
+          </p>
+          <p class="home-feat-card__subtext">
+            Speed is the enemy of flavour. A hand brew at +33 takes the time it needs. The cup is the final edit. We make sure it is right before it leaves our hands.
+          </p>
+          
+          <div class="home-feat-card__metrics">
+            <div class="home-feat-card__metric">
+              <span class="home-feat-card__metric-val">4 min</span>
+              <span class="home-feat-card__metric-lbl">Min Pour Time</span>
+            </div>
+            <div class="home-feat-card__metric">
+              <span class="home-feat-card__metric-val">93°C</span>
+              <span class="home-feat-card__metric-lbl">Water Precision</span>
+            </div>
+          </div>
+          
+          <div class="home-feat-card__footer-tag">
+            <span class="home-feat-card__tag-icon">☕</span>
+            <span class="home-feat-card__tag-text">Barista preparing a hand dripped brew coffee</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 4: THE CUP -->
+      <article class="home-feat-card home-reveal" role="listitem" style="--reveal-delay: 0.3s;">
+        <div class="home-feat-card__img-wrap">
+          <img
+            src="/assets/img/hero/coffee-experience-banner.png"
+            alt="PLUS33 Premium Coffee Experience - Fresh luxury coffee served in premium ceramics"
+            loading="lazy"
+            class="home-feat-card__img"
+          />
+          <div class="home-feat-card__img-overlay" aria-hidden="true"></div>
+          <span class="home-feat-card__badge-top">THE CUP</span>
+        </div>
+        <div class="home-feat-card__body">
+          <span class="home-feat-card__num" aria-hidden="true">04 / THE CUP</span>
+          <h3 class="home-feat-card__title">What Reaches You</h3>
+          <p class="home-feat-card__text">
+            The cup you hold at +33 has been thought about more than most things you will encounter today. A farm selected. A harvest timed to the peak of the cherry. A roast profiled to reveal — not obscure.
+          </p>
+          <p class="home-feat-card__subtext">
+            Heavy ceramic. The weight of it in your hand is not accidental. Everything here is intentional. This is not coffee for convenience. This is coffee for people who notice the difference.
+          </p>
+          
+          <div class="home-feat-card__menu-cta-wrap">
+            <a href="/store" class="home-feat-card__menu-cta">
+              <span>Discover Our Menu</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+          
+          <div class="home-feat-card__footer-tag">
+            <span class="home-feat-card__tag-icon">✨</span>
+            <span class="home-feat-card__tag-text">Fresh luxury coffee served in premium ceramics</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    <!-- /home-intro__grid -->
+
+  </section>
+  <!-- /home-intro -->
+
+  <!-- ════════ EXPERIENCE SPECIAL ════════ -->
+  <section class="home-experience" id="home-experience" aria-label="Special Experience — PLUS33">
+    <div class="container home-experience__container">
+      <!-- Left: Image -->
+      <div class="home-experience__visual home-reveal">
+        <img src="/assets/img/hero/copper-drip-stand.png" alt="PLUS33 Copper Drip Stand" class="home-experience__img" />
+        <div class="home-experience__img-fade"></div>
+      </div>
+      <!-- Right: Copy -->
+      <div class="home-experience__copy">
+        <div class="home-experience__label home-reveal">
+          <span class="home-experience__label-line" aria-hidden="true"></span>
+          <span class="home-experience__label-text">The Experience</span>
+        </div>
+        <h2 class="home-experience__headline home-reveal" style="--reveal-delay: 0.1s;">
+          Every cup is<br>
+          <em class="home-experience__headline-em">a call to Paris.</em>
+        </h2>
+        <div class="home-experience__body home-reveal" style="--reveal-delay: 0.2s;">
+          <p>
+            From the volcanic highlands of Colombia to the heart of Downtown Dubai — each bean is selected by hand, roasted in small batches, and served as an act of devotion to craft.
+          </p>
+          <p class="home-experience__body-ritual">
+            This is not fast coffee. This is a ritual.
+          </p>
+        </div>
+        <a href="/store" class="home-btn home-btn--glass home-reveal" style="--reveal-delay: 0.3s;" id="experience-cta">
+          <span>Discover the Process</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═════════════════════════════════════════════════════
+       SECTION 2 — BRAND INTRO
+  ═════════════════════════════════════════════════════ -->
+  <section class="home-intro" id="home-intro" aria-label="Brand Philosophy — PLUS33">
+
+    <!-- Section inner -->
+    <div class="container home-intro__container">
+
+      <!-- ── Column Left: Editorial Imagery ── -->
+      <div class="home-intro__visuals" aria-hidden="true">
+
+        <!-- Primary large image -->
+        <div class="home-intro__img-primary home-reveal">
+          <img
+            src="/assets/img/hero/modern-coffee-ritual.png"
+            alt="PLUS33 Coffee Experience - Modern European Ritual"
+            loading="lazy"
+            class="home-intro__img-el"
+          />
+          <div class="home-intro__img-overlay"></div>
+        </div>
+
+        <!-- Floating accent image -->
+        <div class="home-intro__img-accent home-reveal" style="--reveal-delay: 0.15s;">
+          <img
+            src="/assets/img/hero/handbrew-coffee.png"
+            alt="PLUS33 Hot Classics coffee cup"
+            loading="lazy"
+            class="home-intro__img-el"
+          />
+        </div>
+
+        <!-- Floating label card -->
+        <div class="home-intro__float-card home-reveal" style="--reveal-delay: 0.3s;">
+          <span class="home-intro__float-card-num">+33</span>
+          <span class="home-intro__float-card-text">Paris, 7ème Arrondissement</span>
+        </div>
+
+      </div>
+
+      <!-- ── Column Right: Editorial Copy ── -->
+      <div class="home-intro__copy">
+
+        <!-- Section label -->
+        <div class="home-intro__label home-reveal">
+          <span class="home-intro__label-line" aria-hidden="true"></span>
+          <span class="home-intro__label-text">The Philosophy</span>
+        </div>
+
+        <!-- Headline -->
+        <h2 class="home-intro__headline home-reveal" style="--reveal-delay: 0.1s;">
+          More Than Coffee.<br>
+          <em class="home-intro__headline-em">A Modern European Ritual.</em>
+        </h2>
+
+        <!-- Body copy -->
+        <div class="home-intro__body home-reveal" style="--reveal-delay: 0.2s;">
+          <p>
+            PLUS33 was created from the timeless rhythm of European café culture — where coffee is
+            never rushed, atmosphere matters, and every detail is intentional.
+          </p>
+          <p>
+            Inspired by the elegance of Paris, the social energy of Milan, and the calm minimalism of
+            Scandinavian coffee houses, PLUS33 transforms everyday coffee into a cinematic lifestyle experience.
+          </p>
+          <p>
+            From handcrafted espresso to slow conversations beneath ambient lighting, every space is
+            designed to feel intimate, refined, and deeply immersive.
+          </p>
+          <p class="home-intro__body-closing">
+            This is not simply a café.<br>
+            It is a destination shaped through design, craftsmanship, and culture.
+          </p>
+        </div>
+
+        <!-- CTA -->
+        <a href="/find-us" class="home-btn home-btn--copper home-reveal" style="--reveal-delay: 0.3s;" id="intro-cta">
+          <span>Discover Our Ateliers</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- ── Feature Grid ── -->
+    <div class="home-intro__grid container" role="list" aria-label="PLUS33 brand pillars">
+
+      <!-- Card 1: ORIGIN -->
+      <article class="home-feat-card home-reveal" role="listitem" style="--reveal-delay: 0s;">
+        <div class="home-feat-card__img-wrap">
+          <img
+            src="/assets/img/hero/premium-coffee-quality.png"
+            alt="PLUS33 Coffee Quality - Premium beans at origin"
+            loading="lazy"
+            class="home-feat-card__img"
+          />
+          <div class="home-feat-card__img-overlay" aria-hidden="true"></div>
+          <span class="home-feat-card__badge-top">SINGLE ORIGIN</span>
+        </div>
+        <div class="home-feat-card__body">
+          <span class="home-feat-card__num" aria-hidden="true">01 / ORIGIN</span>
+          <h3 class="home-feat-card__title">The Quality</h3>
+          <p class="home-feat-card__text">
+            The world produces extraordinary coffee. Very little of it reaches the standard we require. We work only with farms that share our conviction — that exceptional coffee is grown, not manufactured.
+          </p>
+          <p class="home-feat-card__subtext">
+            The altitude matters. The soil matters. The season, the rainfall, the moment of harvest. A cup that is honest. A cup that rewards your attention.
+          </p>
+          
+          <div class="home-feat-card__metrics">
+            <div class="home-feat-card__metric">
+              <span class="home-feat-card__metric-val">12+</span>
+              <span class="home-feat-card__metric-lbl">Origin Countries</span>
+            </div>
+            <div class="home-feat-card__metric">
+              <span class="home-feat-card__metric-val">100%</span>
+              <span class="home-feat-card__metric-lbl">Hand-Selected</span>
+            </div>
+          </div>
+          
+          <div class="home-feat-card__footer-tag">
+            <span class="home-feat-card__tag-icon">🐴</span>
+            <span class="home-feat-card__tag-text">Coffee beans sorting at origin</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2: PROCESS -->
+      <article class="home-feat-card home-reveal" role="listitem" style="--reveal-delay: 0.1s;">
+        <div class="home-feat-card__img-wrap">
+          <img
+            src="/assets/img/hero/coffee-roastery-banner.png"
+            alt="PLUS33 Coffee Roastery - Profiled small batch roasting drum"
+            loading="lazy"
+            class="home-feat-card__img"
+          />
+          <div class="home-feat-card__img-overlay" aria-hidden="true"></div>
+          <span class="home-feat-card__badge-top">SMALL BATCH</span>
+        </div>
+        <div class="home-feat-card__body">
+          <span class="home-feat-card__num" aria-hidden="true">02 / PROCESS</span>
+          <h3 class="home-feat-card__title">The Roastery</h3>
+          <p class="home-feat-card__text">
+            Between the raw bean and the finished cup lives a single, irreversible moment. The roast. We approach this moment the way a watchmaker approaches a mechanism — with precision, patience, and awareness.
+          </p>
+          <p class="home-feat-card__subtext">
+            Every batch is small. Every batch is profiled individually. A +33 roast stands in the light and earns its place.
+          </p>
+          
+          <div class="home-feat-card__metrics">
+            <div class="home-feat-card__metric">
+              <span class="home-feat-card__metric-val">72°</span>
+              <span class="home-feat-card__metric-lbl">Exact Temp</span>
+            </div>
+            <div class="home-feat-card__metric">
+              <span class="home-feat-card__metric-val">18min</span>
+              <span class="home-feat-card__metric-lbl">Avg Roast Profile</span>
+            </div>
+          </div>
+          
+          <div class="home-feat-card__footer-tag">
+            <span class="home-feat-card__tag-icon">🔥</span>
+            <span class="home-feat-card__tag-text">Coffee beans roasting drum</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3: PREPARATION -->
+      <article class="home-feat-card home-reveal" role="listitem" style="--reveal-delay: 0.2s;">
+        <div class="home-feat-card__img-wrap">
+          <img
+            src="/assets/img/hero/handbrew-coffee.png"
+            alt="PLUS33 Hand Brew - Barista preparing a hand dripped brew coffee"
+            loading="lazy"
+            class="home-feat-card__img"
+          />
+          <div class="home-feat-card__img-overlay" aria-hidden="true"></div>
+          <span class="home-feat-card__badge-top">HANDCRAFTED</span>
+        </div>
+        <div class="home-feat-card__body">
+          <span class="home-feat-card__num" aria-hidden="true">03 / PREPARATION</span>
+          <h3 class="home-feat-card__title">The Hand Brew</h3>
+          <p class="home-feat-card__text">
+            Each cup at +33 is an act of preparation, not production. Our baristas are trained not as operators but as craftspeople. The angle of the pour. The temperature of the water — not approximate, exact.
+          </p>
+          <p class="home-feat-card__subtext">
+            Speed is the enemy of flavour. A hand brew at +33 takes the time it needs. The cup is the final edit. We make sure it is right before it leaves our hands.
+          </p>
+          
+          <div class="home-feat-card__metrics">
+            <div class="home-feat-card__metric">
+              <span class="home-feat-card__metric-val">4 min</span>
+              <span class="home-feat-card__metric-lbl">Min Pour Time</span>
+            </div>
+            <div class="home-feat-card__metric">
+              <span class="home-feat-card__metric-val">93°C</span>
+              <span class="home-feat-card__metric-lbl">Water Precision</span>
+            </div>
+          </div>
+          
+          <div class="home-feat-card__footer-tag">
+            <span class="home-feat-card__tag-icon">☕</span>
+            <span class="home-feat-card__tag-text">Barista preparing a hand dripped brew coffee</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 4: THE CUP -->
+      <article class="home-feat-card home-reveal" role="listitem" style="--reveal-delay: 0.3s;">
+        <div class="home-feat-card__img-wrap">
+          <img
+            src="/assets/img/hero/coffee-experience-banner.png"
+            alt="PLUS33 Premium Coffee Experience - Fresh luxury coffee served in premium ceramics"
+            loading="lazy"
+            class="home-feat-card__img"
+          />
+          <div class="home-feat-card__img-overlay" aria-hidden="true"></div>
+          <span class="home-feat-card__badge-top">THE CUP</span>
+        </div>
+        <div class="home-feat-card__body">
+          <span class="home-feat-card__num" aria-hidden="true">04 / THE CUP</span>
+          <h3 class="home-feat-card__title">What Reaches You</h3>
+          <p class="home-feat-card__text">
+            The cup you hold at +33 has been thought about more than most things you will encounter today. A farm selected. A harvest timed to the peak of the cherry. A roast profiled to reveal — not obscure.
+          </p>
+          <p class="home-feat-card__subtext">
+            Heavy ceramic. The weight of it in your hand is not accidental. Everything here is intentional. This is not coffee for convenience. This is coffee for people who notice the difference.
+          </p>
+          
+          <div class="home-feat-card__menu-cta-wrap">
+            <a href="/store" class="home-feat-card__menu-cta">
+              <span>Discover Our Menu</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+          
+          <div class="home-feat-card__footer-tag">
+            <span class="home-feat-card__tag-icon">✨</span>
+            <span class="home-feat-card__tag-text">Fresh luxury coffee served in premium ceramics</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    <!-- /home-intro__grid -->
+
+  </section>
+  <!-- /home-intro -->
+
+</div>
+<!-- /home-page -->

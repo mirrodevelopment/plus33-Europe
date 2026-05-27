@@ -1,0 +1,1091 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/*
+  FILE: chatbot.css
+  ══════════════════════════════════════════════════
+  PURPOSE:
+  Complete self-contained styles for the Paris Pony
+  floating coffee assistant widget.
+
+  ARCHITECTURE:
+  - Uses existing brand CSS variables from global.css
+  - Mobile-first, fully responsive
+  - Self-namespaced with `pp-` prefix (Paris Pony)
+  - z-index: trigger 1200, window 1100 (above drawer 1000)
+  - Includes reduced-motion support
+
+  SECTIONS:
+  1. Keyframe Animations
+  2. Trigger Floating Button
+  3. Chat Window Container
+  4. Header
+  5. Welcome Block
+  6. Quick Actions
+  7. Messages Area
+  8. Message Bubbles
+  9. Typing Indicator
+  10. Input Area
+  11. Scrollbar Override
+  12. Responsive (mobile)
+  13. Reduced Motion Overrides
+
+  DEVELOPED BY : MIRRO
+  CODED BY     : SIVASURYA
+  ══════════════════════════════════════════════════
+*/
+
+/* ═════════════════════════════════════════════════
+   1. KEYFRAME ANIMATIONS
+════════════════════════════════════════════════ */
+
+/* Idle floating animation on trigger button */
+@keyframes pp-float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-7px); }
+}
+
+/* Pulse ring on first page load */
+@keyframes pp-pulse {
+  0%   { transform: scale(1);    opacity: 0.75; }
+  80%  { transform: scale(1.9);  opacity: 0; }
+  100% { transform: scale(1.9);  opacity: 0; }
+}
+
+/* Window slide-up entrance */
+@keyframes pp-slideUp {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+/* Window slide-down exit */
+@keyframes pp-slideDown {
+  from { opacity: 1; transform: translateY(0)    scale(1); }
+  to   { opacity: 0; transform: translateY(24px) scale(0.97); }
+}
+
+/* Individual message bubble entrance */
+@keyframes pp-msgIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* 3-dot typing bounce */
+@keyframes pp-bounce {
+  0%, 80%, 100% { transform: translateY(0); }
+  40%           { transform: translateY(-6px); }
+}
+
+/* Quick action buttons shimmer entrance */
+@keyframes pp-fadeSlide {
+  from { opacity: 0; transform: translateX(-6px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+
+/* ═════════════════════════════════════════════════
+   2. TRIGGER FLOATING BUTTON
+════════════════════════════════════════════════ */
+
+#pp-chatbot {
+  --font-display: 'Montserrat', sans-serif;
+  --font-serif: 'Montserrat', sans-serif;
+  --font-sans: 'Montserrat', sans-serif;
+  --font-ui: 'Montserrat', sans-serif;
+
+  font-family: 'Montserrat', sans-serif;
+
+  /* Positioning anchor */
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 1200;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+}
+
+/* The circular trigger button */
+#pp-trigger {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  /* Copper → Gold gradient matching brand */
+  background: linear-gradient(135deg, var(--copper, #B87333) 0%, var(--gold, #C8A46B) 100%);
+  box-shadow:
+    0 8px 32px rgba(184, 115, 51, 0.42),
+    0 2px 8px rgba(184, 115, 51, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+
+  /* Floating idle animation */
+  animation: pp-float 3s ease-in-out infinite;
+
+  /* Smooth transitions */
+  transition:
+    transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.22s ease;
+}
+
+/* Coffee cup icon */
+#pp-trigger .pp-icon {
+  font-size: 26px;
+  line-height: 1;
+  display: block;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Hover effects */
+#pp-trigger:hover {
+  transform: scale(1.10) translateY(-3px);
+  box-shadow:
+    0 14px 44px rgba(184, 115, 51, 0.52),
+    0 4px 12px rgba(184, 115, 51, 0.30);
+}
+
+#pp-trigger:hover .pp-icon {
+  transform: rotate(-8deg) scale(1.08);
+}
+
+#pp-trigger:focus-visible {
+  outline: 2px solid var(--gold, #C8A46B);
+  outline-offset: 4px;
+}
+
+#pp-trigger:active {
+  transform: scale(0.96);
+}
+
+/* Pulse ring — visible until first open */
+.pp-pulse-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid rgba(184, 115, 51, 0.55);
+  animation: pp-pulse 2.2s ease-out infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Remove pulse once chatbot has been opened */
+#pp-chatbot.pp-opened .pp-pulse-ring {
+  display: none;
+}
+
+
+/* ═════════════════════════════════════════════════
+   3. CHAT WINDOW CONTAINER
+════════════════════════════════════════════════ */
+
+#pp-window {
+  position: absolute;
+  bottom: calc(100% + 16px); /* sits directly above the trigger button */
+  right: 0;
+  z-index: 1100;
+
+  width: 360px;
+  height: 520px;
+
+  border-radius: 24px; /* Slightly rounder for elegant card look like reference */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  /* Compound True Liquid Glass Background */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.04) 100%),
+              radial-gradient(circle at 10% 20%, rgba(184, 115, 51, 0.10) 0%, transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(200, 164, 107, 0.10) 0%, transparent 40%);
+  backdrop-filter: blur(48px) saturate(220%) brightness(1.03);
+  -webkit-backdrop-filter: blur(48px) saturate(220%) brightness(1.03);
+
+  /* Precise Double 3D Specular Border & Shadow System */
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  box-shadow:
+    0 35px 100px rgba(7, 20, 43, 0.26),
+    0 12px 40px rgba(7, 20, 43, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75),        /* top sharp highlight */
+    inset 0 15px 30px rgba(255, 255, 255, 0.15),    /* surface gloss */
+    inset 0 -1px 0 rgba(0, 0, 0, 0.18),             /* bottom dark refraction */
+    inset 1px 0 0 rgba(255, 255, 255, 0.35),        /* left rim highlight */
+    inset -1px 0 0 rgba(0, 0, 0, 0.08);             /* right rim refraction */
+
+  /* Default: hidden */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(24px) scale(0.97);
+  transform-origin: bottom right;
+  transition:
+    opacity 0.36s cubic-bezier(0.19, 1, 0.22, 1),
+    transform 0.36s cubic-bezier(0.19, 1, 0.22, 1),
+    visibility 0s linear 0.36s;
+}
+
+/* ── Liquid Glass morphing background blobs ── */
+#pp-window::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 95%;
+  height: 95%;
+  background: radial-gradient(circle, rgba(184, 115, 51, 0.45) 0%, rgba(184, 115, 51, 0) 70%);
+  filter: blur(45px);
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
+  animation: pp-liquid-blob-1 14s ease-in-out infinite alternate;
+}
+
+#pp-window::after {
+  content: '';
+  position: absolute;
+  bottom: -15%;
+  right: -15%;
+  width: 105%;
+  height: 105%;
+  background: radial-gradient(circle, rgba(200, 164, 107, 0.38) 0%, rgba(200, 164, 107, 0) 70%);
+  filter: blur(55px);
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
+  animation: pp-liquid-blob-2 18s ease-in-out infinite alternate;
+}
+
+@keyframes pp-liquid-blob-1 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(40px, 60px) scale(1.2);
+  }
+  100% {
+    transform: translate(-30px, 30px) scale(0.85);
+  }
+}
+
+@keyframes pp-liquid-blob-2 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-60px, -30px) scale(0.8);
+  }
+  100% {
+    transform: translate(30px, -50px) scale(1.15);
+  }
+}
+
+/* Open state */
+#pp-window.pp-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+  transition:
+    opacity 0.36s cubic-bezier(0.19, 1, 0.22, 1),
+    transform 0.36s cubic-bezier(0.34, 1.56, 0.64, 1),
+    visibility 0s linear 0s;
+}
+
+
+/* ═════════════════════════════════════════════════
+   4. HEADER
+════════════════════════════════════════════════ */
+
+.pp-header {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+
+  /* Translucent Copper gradient header */
+  background: linear-gradient(135deg, rgba(184, 115, 51, 0.55) 0%, rgba(160, 98, 42, 0.45) 60%, rgba(200, 164, 107, 0.35) 100%);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 4px 12px rgba(7, 20, 43, 0.04);
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
+
+/* Subtle texture overlay on header */
+.pp-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* Header avatar / logo circle */
+.pp-header-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1.5px solid rgba(255, 255, 255, 0.30);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Header text group */
+.pp-header-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.pp-header-name {
+  font-family: var(--font-display, 'Cormorant Garamond', serif);
+  font-size: 1.18rem;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 3px rgba(7, 20, 43, 0.35);
+}
+
+.pp-header-sub {
+  font-family: var(--font-ui, 'Manrope', sans-serif);
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 4px;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-shadow: 0 1px 2px rgba(7, 20, 43, 0.30);
+}
+
+/* Online indicator dot */
+.pp-online-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #5EDB97;
+  box-shadow: 0 0 6px rgba(94, 219, 151, 0.70);
+  display: inline-block;
+  flex-shrink: 0;
+  animation: pp-online-blink 3s ease-in-out infinite;
+}
+
+@keyframes pp-online-blink {
+  0%, 90%, 100% { opacity: 1; }
+  45%            { opacity: 0.55; }
+}
+
+/* Close button */
+.pp-close-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.90);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.18s ease, transform 0.18s ease;
+  font-size: 16px;
+  line-height: 1;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.pp-close-btn:hover {
+  background: rgba(255, 255, 255, 0.24);
+  transform: rotate(90deg) scale(1.08);
+}
+
+.pp-close-btn:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.6);
+  outline-offset: 2px;
+}
+
+.pp-close-btn svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
+
+/* ═════════════════════════════════════════════════
+   5. WELCOME BLOCK
+════════════════════════════════════════════════ */
+
+.pp-welcome {
+  flex-shrink: 0;
+  padding: 16px 18px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.pp-welcome-bubble {
+  background: rgba(7, 20, 43, 0.90);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px 14px 14px 4px;
+  padding: 14px 16px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 4px 16px rgba(7, 20, 43, 0.18);
+}
+
+.pp-welcome-text {
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 0.84rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.90);
+}
+
+.pp-welcome-text strong {
+  font-family: var(--font-display, 'Cormorant Garamond', serif);
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--gold, #C8A46B);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.pp-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(184,115,51,0.20), transparent);
+  margin: 14px 18px 0;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+
+
+/* ═════════════════════════════════════════════════
+   6. QUICK ACTIONS
+════════════════════════════════════════════════ */
+
+.pp-quick-actions {
+  flex-shrink: 0;
+  padding: 12px 18px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  position: relative;
+  z-index: 2;
+}
+
+.pp-quick-btn {
+  font-family: var(--font-ui, 'Manrope', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #07142B; /* deep navy for clear readability */
+  border: 1px solid rgba(255, 255, 255, 0.60);
+  border-radius: 999px;
+  padding: 7px 14px;
+  background: rgba(255, 255, 255, 0.82); /* frosted white glass backing */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(7, 20, 43, 0.06);
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+  white-space: nowrap;
+  user-select: none;
+  /* Staggered entrance */
+  opacity: 0;
+  animation: pp-fadeSlide 0.35s ease forwards;
+}
+
+.pp-quick-btn:nth-child(1) { animation-delay: 0.05s; }
+.pp-quick-btn:nth-child(2) { animation-delay: 0.10s; }
+.pp-quick-btn:nth-child(3) { animation-delay: 0.15s; }
+.pp-quick-btn:nth-child(4) { animation-delay: 0.20s; }
+
+.pp-quick-btn:hover {
+  background: var(--copper, #B87333);
+  border-color: var(--copper, #B87333);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(184, 115, 51, 0.20);
+}
+
+.pp-quick-btn:active {
+  transform: scale(0.96) translateY(0);
+}
+
+.pp-quick-btn:focus-visible {
+  outline: 2px solid var(--copper, #B87333);
+  outline-offset: 2px;
+}
+
+/* Disabled state during debounce window */
+.pp-quick-btn:disabled,
+.pp-quick-btn.pp-disabled {
+  opacity: 0.45;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+
+/* ═════════════════════════════════════════════════
+   7. MESSAGES AREA
+════════════════════════════════════════════════ */
+
+.pp-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain; /* Prevent parent page scroll bleed on mobile */
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  z-index: 2;
+}
+
+/* Message row wrapper */
+.pp-msg-row {
+  display: flex;
+  flex-direction: column;
+  animation: pp-msgIn 0.30s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+/* Bot rows align left */
+.pp-msg-row.pp-bot {
+  align-items: flex-start;
+}
+
+/* User rows align right */
+.pp-msg-row.pp-user {
+  align-items: flex-end;
+}
+
+
+/* ═════════════════════════════════════════════════
+   8. MESSAGE BUBBLES
+════════════════════════════════════════════════ */
+
+/* Shared bubble base */
+.pp-bubble {
+  max-width: 82%;
+  padding: 11px 15px;
+  border-radius: 16px;
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 0.84rem;
+  font-weight: 300;
+  line-height: 1.7;
+  word-break: break-word;
+}
+
+/* Bot bubble — semi-opaque frosted white ivory for clear readability */
+.pp-bot .pp-bubble {
+  background: rgba(7, 20, 43, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #FDFBF7; /* highly visible warm white/ivory */
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 0.84rem;
+  font-weight: 300;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  border-bottom-left-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 4px 16px rgba(7, 20, 43, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* User bubble — solid copper gradient with crisp white text */
+.pp-user .pp-bubble {
+  background: linear-gradient(135deg, #B87333 0%, #8E4E1A 100%);
+  color: #ffffff;
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 0.84rem;
+  font-weight: 300;
+  line-height: 1.7;
+  border-bottom-right-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 4px 15px rgba(184, 115, 51, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.20);
+  text-shadow: 0 1px 2px rgba(7, 20, 43, 0.25);
+}
+
+/* Timestamp below each bubble */
+.pp-timestamp {
+  font-family: var(--font-ui, 'Manrope', sans-serif);
+  font-size: 0.60rem;
+  color: rgba(7, 20, 43, 0.45);
+  margin-top: 4px;
+  padding: 0 4px;
+  letter-spacing: 0.04em;
+}
+
+.pp-user .pp-timestamp {
+  text-align: right;
+}
+
+
+/* ═════════════════════════════════════════════════
+   9. TYPING INDICATOR
+════════════════════════════════════════════════ */
+
+.pp-typing-row {
+  display: flex;
+  align-items: flex-start;
+}
+
+.pp-typing-bubble {
+  background: rgba(7, 20, 43, 0.90);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  border-bottom-left-radius: 4px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 4px 16px rgba(7, 20, 43, 0.18);
+}
+
+.pp-typing-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #E6C594; /* warm gold to match the navy theme */
+  opacity: 0.85;
+  animation: pp-bounce 1.3s ease-in-out infinite;
+}
+
+.pp-typing-dot:nth-child(1) { animation-delay: 0s; }
+.pp-typing-dot:nth-child(2) { animation-delay: 0.18s; }
+.pp-typing-dot:nth-child(3) { animation-delay: 0.36s; }
+
+
+/* ═════════════════════════════════════════════════
+   10. INPUT AREA
+════════════════════════════════════════════════ */
+
+.pp-input-area {
+  flex-shrink: 0;
+  padding: 12px 14px 14px;
+  background: rgba(255, 255, 255, 0.15);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 -4px 16px rgba(7, 20, 43, 0.03);
+  position: relative;
+  z-index: 2;
+}
+
+#pp-input {
+  flex: 1;
+  border: 1.5px solid rgba(184, 115, 51, 0.25);
+  border-radius: 999px;
+  padding: 9px 16px;
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 0.845rem;
+  font-weight: 300;
+  color: var(--text-main, #07142B);
+  background: rgba(255, 255, 255, 0.88);
+  outline: none;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+  min-width: 0;
+}
+
+#pp-input::placeholder {
+  color: rgba(7, 20, 43, 0.45);
+  font-weight: 300;
+}
+
+#pp-input:focus {
+  border-color: var(--copper, #B87333);
+  box-shadow: 0 0 0 3px rgba(184, 115, 51, 0.15);
+}
+
+#pp-send-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--copper, #B87333) 0%, var(--gold, #C8A46B) 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s ease;
+  box-shadow: 0 4px 14px rgba(184, 115, 51, 0.30);
+}
+
+#pp-send-btn:hover {
+  transform: scale(1.10);
+  box-shadow: 0 6px 20px rgba(184, 115, 51, 0.42);
+}
+
+#pp-send-btn:active {
+  transform: scale(0.94);
+}
+
+#pp-send-btn:focus-visible {
+  outline: 2px solid var(--gold, #C8A46B);
+  outline-offset: 2px;
+}
+
+#pp-send-btn svg {
+  width: 15px;
+  height: 15px;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  /* Nudge arrow icon optically right */
+  transform: translateX(1px);
+}
+
+/* Powered by line */
+.pp-powered {
+  text-align: center;
+  font-family: var(--font-ui, 'Manrope', sans-serif);
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  color: rgba(7, 20, 43, 0.48);
+  text-transform: uppercase;
+  padding: 4px 0 2px;
+  flex-shrink: 0;
+}
+
+
+/* ═════════════════════════════════════════════════
+   11. SCROLLBAR OVERRIDE (messages area)
+════════════════════════════════════════════════ */
+
+.pp-messages::-webkit-scrollbar {
+  width: 3px;
+}
+
+.pp-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.pp-messages::-webkit-scrollbar-thumb {
+  background: rgba(184, 115, 51, 0.25);
+  border-radius: 2px;
+}
+
+.pp-messages::-webkit-scrollbar-thumb:hover {
+  background: rgba(184, 115, 51, 0.45);
+}
+
+
+/* ═════════════════════════════════════════════════
+   12. RESPONSIVE — MOBILE
+════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+
+  /* Reposition chatbot widget */
+  #pp-chatbot {
+    bottom: 20px;
+    right: 14px;
+  }
+
+  /* Smaller trigger button on mobile */
+  #pp-trigger {
+    width: 54px;
+    height: 54px;
+  }
+
+  #pp-trigger .pp-icon {
+    font-size: 22px;
+  }
+
+  /* Full-width mobile window */
+  #pp-window {
+    /* Anchored to fixed position instead of relative-to-trigger on mobile */
+    position: fixed;
+    bottom: 84px;
+    right: 12px;
+    left: auto;
+    width: 75vw;
+    height: 60vh;
+    max-height: 560px;
+    border-radius: 24px;
+  }
+
+  /* Tighter padding on mobile */
+  .pp-header {
+    padding: 14px 16px;
+  }
+
+  .pp-welcome {
+    padding: 14px 16px 0;
+  }
+
+  .pp-quick-actions {
+    padding: 10px 16px 0;
+  }
+
+  .pp-messages {
+    padding: 12px 16px;
+  }
+
+  .pp-input-area {
+    padding: 10px 12px 12px;
+  }
+
+  /* Wider quick action buttons for thumb reach */
+  .pp-quick-btn {
+    font-size: 0.74rem;
+    padding: 7px 14px;
+  }
+}
+
+@media (max-width: 380px) {
+  /* Very small phones */
+  #pp-window {
+    right: 8px;
+    left: auto;
+    width: 75vw;
+    height: 60vh;
+  }
+
+  .pp-bubble {
+    max-width: 88%;
+  }
+}
+
+
+/* ═════════════════════════════════════════════════
+   13. REDUCED MOTION SUPPORT (Accessibility)
+════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  /* Kill all animations */
+  #pp-trigger {
+    animation: none;
+  }
+
+  .pp-pulse-ring {
+    animation: none;
+    opacity: 0;
+  }
+
+  #pp-window {
+    transition: opacity 0.15s ease, visibility 0s linear;
+    transform: none !important;
+  }
+
+  #pp-window.pp-open {
+    transform: none !important;
+  }
+
+  .pp-msg-row {
+    animation: none;
+    opacity: 1;
+  }
+
+  .pp-quick-btn {
+    animation: none;
+    opacity: 1;
+  }
+
+  .pp-typing-dot {
+    animation: none;
+    opacity: 0.65;
+  }
+
+  .pp-online-dot {
+    animation: none;
+  }
+}
+
+/* Gold/Copper premium button link inside bot chat bubbles */
+.pp-btn-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, var(--copper, #B87333) 0%, var(--gold, #C8A46B) 100%);
+  color: #fff !important;
+  text-decoration: none;
+  font-family: var(--font-ui, 'Manrope', sans-serif);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(184, 115, 51, 0.25);
+  transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s ease;
+}
+
+.pp-btn-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(184, 115, 51, 0.35);
+  color: #fff !important;
+}
+
+.pp-btn-link:active {
+  transform: translateY(0);
+}
+
+/* Mobile responsive adjustments for premium button link */
+@media (max-width: 768px) {
+  .pp-btn-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 44px;
+    box-sizing: border-box;
+    font-size: 0.76rem;
+    padding: 12px 20px;
+  }
+}
+
+/* Custom visual highlights inside chat bubbles */
+.pp-bubble strong {
+  font-family: var(--font-display, 'Cormorant Garamond', serif);
+  font-weight: 500;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+}
+
+/* Elegant warm gold highlight inside bot deep navy bubbles */
+.pp-bot .pp-bubble strong {
+  color: var(--gold, #C8A46B);
+}
+
+/* Elegant light gold/cream highlight inside user copper bubbles */
+.pp-user .pp-bubble strong {
+  color: #FFF0D6;
+}
+
+/* Hide welcome block, divider, and quick actions once messages start to maximize conversation space */
+#pp-window.pp-has-messages .pp-welcome,
+#pp-window.pp-has-messages .pp-divider,
+#pp-window.pp-has-messages .pp-quick-actions {
+  display: none !important;
+}
+
+/* Predefined Questions Menu Button */
+#pp-menu-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(184, 115, 51, 0.25);
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.80);
+  color: var(--copper, #B87333);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+}
+
+#pp-menu-btn:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: var(--copper, #B87333);
+}
+
+#pp-menu-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  fill: none;
+}
+
+/* Predefined Questions Menu Popup */
+.pp-menu-popup {
+  position: absolute;
+  bottom: 64px;
+  left: 14px;
+  right: 14px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.60);
+  border-radius: 14px;
+  box-shadow:
+    0 -8px 30px rgba(7, 20, 43, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.40);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 1050;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
+}
+
+.pp-menu-popup.pp-show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0s;
+}
+
+.pp-menu-item {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--text-main, #07142B);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.pp-menu-item:hover {
+  background: rgba(184, 115, 51, 0.08);
+  color: var(--copper, #B87333);
+}
+
+
+
+
+

@@ -1,0 +1,319 @@
+<!--
+  FILE: find-us.html
+  ══════════════════════════════════════════════════
+  PURPOSE:
+  Luxury Destination Discovery Experience and interactive Leaflet.js store locator.
+
+  RESPONSIBILITIES:
+  - Hosts the full-bleed boutique entry loading veil.
+  - Implements the travel cinema hero showcasing silent motion street backdrops.
+  - Displays the search and metadata filtering controls (Open Late, Terrace Lounge, etc.).
+  - Houses the split-screen discovery interface (left-hand travel journal flow and right-hand Leaflet map).
+  - Renders panoramic city showcase rows and flagship architectural showcases.
+  - Hosts floating statistics panels and the editorial FAQ accordion.
+
+  ARCHITECTURE NOTES:
+  - Dynamically resolved and mounted by /js/router.js into the #app shell root.
+  - Initialized, controlled, and cleaned up by /js/find-us.js.
+  - Utilizes GSAP ScrollTrigger to orchestrate entry animations and image scaling.
+
+  DEVELOPED BY : MIRRO
+  CODED BY     : SIVASURYA
+  ══════════════════════════════════════════════════
+-->
+
+<!-- ═════════ LUXURY CINEMA LOADER ═════════ -->
+<div id="locations-loader" class="locations-loader">
+  <div class="loader-content">
+    <span class="loader-logo">+33</span>
+    <span class="loader-text">D E S T I N A T I O N S</span>
+    <div class="loader-pulse"></div>
+  </div>
+</div>
+
+<div class="locations-page">
+  <!-- Ambient grain and light overlays -->
+  <div class="ambient-grain"></div>
+  <div class="ambient-vignette"></div>
+
+  <!-- ═════════ TRAVEL CINEMA HERO ═════════ -->
+  <section class="locations-hero">
+    <div class="hero-bg-overlay"></div>
+    <div class="hero-bg-media">
+      <!-- Moody cinematic background image representing global expansion cafe culture -->
+      <img src="/global/assets/img/global-expansion-map.png" alt="Global Expansion Café Atmosphere" class="hero-bg-img" />
+    </div>
+    
+    <div class="container hero-content-wrapper">
+      <div class="hero-headers">
+        <span class="t-label reveal reveal-1">THE COLLECTION +33</span>
+        <h1 class="display-lg text-cream reveal reveal-2">Find Your Nearest<br/><em class="italic text-gold">Destination</em></h1>
+        <p class="t-body reveal reveal-3">
+          Discover refined café experiences inspired by European hospitality and crafted for modern premium living.
+        </p>
+      </div>
+
+      <!-- Quick Geolocation & Search -->
+      <div class="hero-search-bar reveal reveal-4">
+        <div class="search-input-wrap">
+          <input type="text" id="hero-search-input" placeholder="Search by city, area, or zip code..." aria-label="Search destination locations" autocomplete="off" />
+          <label for="hero-search-input">Where would you like to arrive?</label>
+          <div id="search-suggestions-overlay" class="search-suggestions-overlay"></div>
+        </div>
+        <button id="hero-geo-btn" class="btn btn-geo" aria-label="Use current location to calculate distances">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><circle cx="12" cy="12" r="3"/></svg>
+          <span>Use Current Location</span>
+        </button>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="hero-quick-cities reveal reveal-5">
+        <span class="quick-label">PROMINENT ATELIERS:</span>
+        <div class="quick-links-group">
+          <button class="city-quick-link" data-city="Paris">Paris</button>
+          <button class="city-quick-link" data-city="London">London</button>
+          <button class="city-quick-link" data-city="Tokyo">Tokyo</button>
+          <button class="city-quick-link" data-city="Dubai">Dubai</button>
+          <button class="city-quick-link" data-city="Singapore">Singapore</button>
+          <button class="city-quick-link" data-city="New York City">New York City</button>
+          <button class="city-quick-link" data-city="Copenhagen">Copenhagen</button>
+          <button class="city-quick-link" data-city="Athens">Athens</button>
+          <button class="city-quick-link btn-worldwide-trigger" id="btn-worldwide-trigger" style="color: var(--gold); border-bottom: 1px dashed var(--gold); font-weight: 500;">Explore Worldwide</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Scroll cue -->
+    <div class="scroll-cue reveal reveal-5">
+      <div class="scroll-line"></div>
+      <span class="t-label">Scroll to Explore</span>
+    </div>
+  </section>
+
+
+  <!-- ═════════ SPLIT SCREEN DISCOVERY LAYOUT ═════════ -->
+  <section class="split-explorer-section">
+    <div class="split-explorer-container">
+      
+      <!-- Left: Leaflet Map Window Panel -->
+      <div class="explorer-map-side">
+        <div id="locations-map-container" class="map-sticky-box">
+          <div id="find-us-map" class="leaflet-map-element"></div>
+          
+          <!-- Premium Map Zoom & Theme controls -->
+          <div class="map-premium-controls">
+            <div class="map-zoom-panel">
+              <button id="map-zoom-in" class="map-zoom-btn" aria-label="Zoom In">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
+              <button id="map-zoom-out" class="map-zoom-btn" aria-label="Zoom Out">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Map controls overlay (Google Maps & Reset) -->
+          <div class="map-controls-overlay">
+            <a id="google-maps-btn" href="https://www.google.com/maps/search/?api=1&query=48.8584,2.3262" target="_blank" rel="noopener" class="map-google-link" aria-label="Open selected destination in Google Maps">
+              <span>Open in Google Maps</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+            </a>
+            <button id="map-reset-btn" class="map-reset-btn" aria-label="Reset map view and search filters to default">
+              <span>Reset View</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                <path d="M3 3v5h5"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Editorial Travel Journal Listings -->
+      <div class="explorer-journal-side" id="journal-listings-container">
+        <!-- Listings will be injected dynamically via JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═════════ PANORAMIC CITY SHOWCASE ═════════ -->
+  <section class="panoramic-city-showcase">
+    <div class="container">
+      <div class="section-header text-center reveal">
+        <span class="t-label">European Terroirs</span>
+        <h2 class="display-md text-navy" style="margin-top: 16px;">Explore By <em class="italic text-gold">Cities</em></h2>
+      </div>
+
+      <!-- Paris Panorama -->
+      <div class="panoramic-row reveal">
+        <div class="panoramic-visual">
+          <img src="/global/assets/img/paris-cafe-interior.png" alt="Parisian Café Interior" class="panoramic-img" />
+          <div class="panoramic-overlay"></div>
+        </div>
+        <div class="panoramic-text">
+          <span class="t-label">FRANCE</span>
+          <h3 class="display-sm text-navy">Maison Paris</h3>
+          <p class="t-body">
+            Our historical home. Nested in the 7ème, Paris Maison represents the core of Left Bank intellectual café traditions. Warm marble surfaces, dark brass trim, and our signature slow-dripped roasts.
+          </p>
+          <span class="cities-count">2 Refined Ateliers</span>
+        </div>
+      </div>
+
+      <!-- Milan Panorama -->
+      <div class="panoramic-row panoramic-row--reversed reveal">
+        <div class="panoramic-visual">
+          <img src="/global/assets/img/milan-lounge-interior.png" alt="Milanese Lounge Interior" class="panoramic-img" />
+          <div class="panoramic-overlay"></div>
+        </div>
+        <div class="panoramic-text">
+          <span class="t-label">ITALY</span>
+          <h3 class="display-sm text-navy">Milano Atelier</h3>
+          <p class="t-body">
+            Crafted for style and speed. Milano blends modern Milanese design structures with rich walnut counters and signature citrus cold brew rituals.
+          </p>
+          <span class="cities-count">2 Premium Locations</span>
+        </div>
+      </div>
+
+      <!-- Vienna Panorama -->
+      <div class="panoramic-row reveal">
+        <div class="panoramic-visual">
+          <img src="/global/assets/img/vienna-coffee-house.png" alt="Viennese Coffee House" class="panoramic-img" />
+          <div class="panoramic-overlay"></div>
+        </div>
+        <div class="panoramic-text">
+          <span class="t-label">AUSTRIA</span>
+          <h3 class="display-sm text-navy">Vienna Reserve</h3>
+          <p class="t-body">
+            A quiet sanctuary. Reimagining Imperial Viennese coffee houses with rich leather alcoves and bespoke hazelnut espresso pairings.
+          </p>
+          <span class="cities-count">1 Imperial Reserve</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════ SIGNATURE FLAGSHIPS GALLERY ═════════ -->
+  <section class="flagship-showcase-section" style="background: var(--navy);">
+    <div class="container">
+      <div class="section-header text-center reveal">
+        <span class="t-label" style="color: var(--copper-light);">ARCHITECTURAL LUXURY</span>
+        <h2 class="display-md text-cream" style="margin-top: 16px;">Flagship <em class="italic text-gold">Showcases</em></h2>
+      </div>
+
+      <div class="flagships-magazine-layout">
+        <div class="flagship-magazine-block reveal">
+          <div class="magazine-visual-wrap">
+            <img src="/global/assets/img/boutique-tablescape.png" alt="Boutique Tablescape" class="magazine-img" />
+          </div>
+          <div class="magazine-details">
+            <span class="t-label" style="color: var(--gold);">THE DESIGN CONCEPT</span>
+            <h3 class="t-h3 text-cream">Quiet Luxury Interiors</h3>
+            <p class="t-body" style="color: rgba(245, 241, 234, 0.7);">
+              Bespoke lighting layouts, acoustic walnut panels, and hand-polished copper pillars ensure that every destination is a sanctuary of comfort and silence.
+            </p>
+          </div>
+        </div>
+
+        <div class="flagship-magazine-block magazine-block--offset reveal">
+          <div class="magazine-visual-wrap">
+            <img src="/global/assets/img/outdoor-terrace-cafe.png" alt="Outdoor Terrace Café" class="magazine-img" />
+          </div>
+          <div class="magazine-details">
+            <span class="t-label" style="color: var(--gold);">TERRACE & COURTYARD</span>
+            <h3 class="t-h3 text-cream">Scenic Outdoor Salons</h3>
+            <p class="t-body" style="color: rgba(245, 241, 234, 0.7);">
+              Our open courtyards and terraces combine street greenery with elegant leather seating, creating the ultimate space to enjoy long late-summer evenings.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════ FLOATING STATS ═════════ -->
+  <section class="floating-stats-section">
+    <div class="container">
+      <div class="stats-row">
+        <div class="stat-element reveal">
+          <span class="stat-num text-navy">50+</span>
+          <div class="stat-divider"></div>
+          <span class="stat-text">Luxury Destinations Across Europe</span>
+        </div>
+        <div class="stat-element reveal">
+          <span class="stat-num text-navy">1M+</span>
+          <div class="stat-divider"></div>
+          <span class="stat-text">Premium Coffee Experiences Served</span>
+        </div>
+        <div class="stat-element reveal">
+          <span class="stat-num text-navy">4.8</span>
+          <div class="stat-divider"></div>
+          <span class="stat-text">Average Hospitality Rating</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════ EDITORIAL FAQ ACCORDION ═════════ -->
+  <section class="editorial-faq-section" style="background: var(--marble);">
+    <div class="container">
+      <div class="faq-container-box">
+        <div class="faq-left-header reveal">
+          <span class="t-label">FAQ</span>
+          <h2 class="display-sm text-navy" style="margin-top: 16px;">Destination<br/><em class="italic text-gold">Inquiries</em></h2>
+          <p class="t-body" style="margin-top: 24px;">
+            Frequently asked questions about reservations, event hosting, and premium services across our destinations.
+          </p>
+        </div>
+
+        <div class="faq-right-accordion reveal">
+          <div class="faq-editorial-item">
+            <button class="faq-editorial-question" aria-expanded="false" aria-controls="faq-ans-1">
+              <span>Do your Ateliers accept private bookings?</span>
+              <span class="faq-editorial-icon">+</span>
+            </button>
+            <div id="faq-ans-1" class="faq-editorial-answer">
+              <p>Yes. Our Signature reserve spaces and private lounges can be reserved for private dinners, tastings, or corporate retreats. Contact the specific salon manager via WhatsApp or email for bookings.</p>
+            </div>
+          </div>
+
+          <div class="faq-editorial-item">
+            <button class="faq-editorial-question" aria-expanded="false" aria-controls="faq-ans-2">
+              <span>Are all beverages available at every destination?</span>
+              <span class="faq-editorial-icon">+</span>
+            </button>
+            <div id="faq-ans-2" class="faq-editorial-answer">
+              <p>While our core espresso menu is shared globally, signature specialty pairings (e.g. Imperial Melange in Vienna, Citrus Cold Brew in Milan) are curated specifically to match local terroir and traditions.</p>
+            </div>
+          </div>
+
+          <div class="faq-editorial-item">
+            <button class="faq-editorial-question" aria-expanded="false" aria-controls="faq-ans-3">
+              <span>Do your venues accommodate remote workspace needs?</span>
+              <span class="faq-editorial-icon">+</span>
+            </button>
+            <div id="faq-ans-3" class="faq-editorial-answer">
+              <p>Our designated Quiet Workspaces feature high-speed internet and power access. However, to maintain the lounge atmosphere, we request that guests utilize headphones and keep voice calls to a minimum.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════ LUXURY CTA BANNER ═════════ -->
+  <section class="locations-cta-banner">
+    <div class="cta-overlay-bg"></div>
+    <div class="container cta-content-box text-center reveal">
+      <span class="t-label" style="color: var(--gold);">THE PRESTIGE EXPERIENCE</span>
+      <h2 class="display-lg text-cream" style="margin-top: 16px;">Bring +33 Home</h2>
+      <p class="t-body" style="color: #ccc; max-width: 540px; margin: 24px auto 40px;">
+        Order our roasted coffee beans, artisanal equipment, and custom objects of ritual from the Flagship Store.
+      </p>
+      <a href="/store" class="btn btn-copper">Explore the Store Collection</a>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,388 @@
+<!--
+  FILE: franchise.html
+  ══════════════════════════════════════════════════
+  PURPOSE:
+  Franchise partnership model, application workflow, and investment overview.
+
+  RESPONSIBILITIES:
+  - Presents key expansion opportunities and partner statistics.
+  - Outlines the step-by-step application pipeline.
+  - Hosts the interactive world map pins showing potential market expansions.
+  - Renders franchisee testimonials and FAQs.
+  - Houses the secure candidate application form.
+
+  ARCHITECTURE NOTES:
+  - Dynamically mounted by /js/router.js inside the main application viewport.
+  - Linked to /js/franchise.js for entry animations, counter tickers, and accordion switches.
+
+  ACCESSIBILITY:
+  - Implements aria-expanded on FAQ triggers to support screen reader layout states.
+  - Application form inputs are connected explicitly via label-for tags to prevent input misinterpretations.
+  - Form validation errors are dynamically handled without introducing keyboard traps.
+
+  DEVELOPED BY : MIRRO
+  CODED BY     : SIVASURYA
+  ══════════════════════════════════════════════════
+-->
+<div class="franchise-page">
+  <!-- ═════════ HERO SECTION ═════════ -->
+  <section class="franchise-hero">
+    <div class="franchise-hero__bg">
+      <img src="/global/assets/img/luxury-business-space.png" alt="Luxury Business Space" class="franchise-hero__img" />
+      <div class="franchise-hero__overlay"></div>
+    </div>
+    <div class="container franchise-hero__content">
+      <h1 class="display-lg text-cream reveal reveal-1">Own a Franchise.<br/><em class="italic" style="color: var(--copper);">Build Your Future.</em></h1>
+      <p class="t-body reveal reveal-2" style="max-width: 500px; color: #f0f0f0; margin: 24px 0 40px;">
+        Join our growing international network and launch a profitable premium business in your city.
+      </p>
+      <div class="franchise-hero__actions reveal reveal-3">
+        <a href="#apply" class="btn btn-copper">Apply for Franchise</a>
+        <a href="/global/assets/docs/plus33-franchise-brochure.pdf" download="plus33-franchise-brochure.pdf" class="btn btn-ghost-light">Download Brochure</a>
+      </div>
+    </div>
+    
+    <!-- ═════════ FLOATING STATS ═════════ -->
+    <div class="franchise-stats reveal reveal-4">
+      <div class="franchise-stats__item">
+        <div class="stats-val-group">
+          <span class="franchise-stats__val" data-target="15">0</span>
+        </div>
+        <span class="t-label">Global Cities</span>
+      </div>
+      <div class="franchise-stats__divider"></div>
+      <div class="franchise-stats__item">
+        <div class="stats-val-group">
+          <span class="franchise-stats__val" data-target="40">0</span><span class="franchise-stats__val">+</span>
+        </div>
+        <span class="t-label">Locations</span>
+      </div>
+      <div class="franchise-stats__divider"></div>
+      <div class="franchise-stats__item">
+        <div class="stats-val-group">
+          <span class="franchise-stats__val" data-target="300">0</span><span class="franchise-stats__val">%</span>
+        </div>
+        <span class="t-label">Avg 3Y Growth</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════ HOW IT WORKS STEPS ═════════ -->
+  <section class="franchise-steps section" style="background: var(--cream);">
+    <div class="container">
+      <div class="section-header text-center reveal reveal-1">
+        <span class="t-label">The Process</span>
+        <h2 class="display-md text-navy" style="margin-top: 16px;">How Our Franchise<br/><em class="italic" style="color: var(--copper);">Model Works</em></h2>
+      </div>
+
+      <div class="steps-grid">
+        <!-- Step 1 -->
+        <div class="step-card reveal reveal-2">
+          <div class="step-card__icon">01</div>
+          <h3 class="t-h3 text-navy">Apply Online</h3>
+          <p class="t-body">Submit your initial inquiry with details about your background and capital.</p>
+        </div>
+        <!-- Step 2 -->
+        <div class="step-card reveal reveal-2" style="animation-delay: 0.1s;">
+          <div class="step-card__icon">02</div>
+          <h3 class="t-h3 text-navy">Business Review</h3>
+          <p class="t-body">Our team reviews your application and schedules a preliminary video consultation.</p>
+        </div>
+        <!-- Step 3 -->
+        <div class="step-card reveal reveal-2" style="animation-delay: 0.2s;">
+          <div class="step-card__icon">03</div>
+          <h3 class="t-h3 text-navy">Market Approval</h3>
+          <p class="t-body">We analyze your proposed territory to ensure optimal market positioning and demand.</p>
+        </div>
+        <!-- Step 4 -->
+        <div class="step-card reveal reveal-3">
+          <div class="step-card__icon">04</div>
+          <h3 class="t-h3 text-navy">Training & Setup</h3>
+          <p class="t-body">Comprehensive training in Paris and hands-on support for your boutique's build-out.</p>
+        </div>
+        <!-- Step 5 -->
+        <div class="step-card reveal reveal-3" style="animation-delay: 0.1s;">
+          <div class="step-card__icon">05</div>
+          <h3 class="t-h3 text-navy">Launch Support</h3>
+          <p class="t-body">Our executive team arrives on-site to guarantee a flawless grand opening.</p>
+        </div>
+        <!-- Step 6 -->
+        <div class="step-card reveal reveal-3" style="animation-delay: 0.2s;">
+          <div class="step-card__icon">06</div>
+          <h3 class="t-h3 text-navy">Growth Partnership</h3>
+          <p class="t-body">Ongoing operational, marketing, and technological support to scale your business.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════ BRAND ADVANTAGES ═════════ -->
+  <section class="franchise-benefits section" style="background: var(--marble);">
+    <div class="container">
+      <div class="benefit-row">
+        <div class="benefit-content reveal reveal-1">
+          <span class="t-label">The Advantage</span>
+          <h2 class="display-md text-navy" style="margin-top: 16px;">A Proven<br/><em class="italic" style="color: var(--copper);">Business Model</em></h2>
+          <p class="t-body" style="margin-top: 24px;">
+            Benefit from our established supply chains, signature roasts, and high-margin product mix. Our international branding instantly commands prestige and trust.
+          </p>
+          <ul class="benefit-list">
+            <li><span class="copper-dot"></span> International brand recognition</li>
+            <li><span class="copper-dot"></span> Premium marketing support</li>
+            <li><span class="copper-dot"></span> Cutting-edge technology platform</li>
+            <li><span class="copper-dot"></span> Long-term operational guidance</li>
+          </ul>
+        </div>
+        <div class="benefit-visual reveal reveal-2">
+          <img src="/global/assets/img/global-expansion-map.png" alt="Global Expansion" class="benefit-img" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════ INVESTMENT DASHBOARD ═════════ -->
+  <section class="franchise-investment section" style="background: var(--navy);">
+    <div class="container">
+      <div class="section-header text-center reveal reveal-1">
+        <span class="t-label" style="color: var(--copper);">Financials</span>
+        <h2 class="display-md text-cream" style="margin-top: 16px;">Investment & <em class="italic" style="color: var(--copper);">Returns</em></h2>
+      </div>
+
+      <div class="inv-dashboard reveal reveal-2">
+        <div class="inv-card">
+          <span class="t-label" style="opacity: 0.7;">Estimated Setup</span>
+          <h3 class="display-sm text-copper" style="margin: 12px 0;">€250k - €450k</h3>
+          <p class="t-body">Includes franchise fee, boutique build-out, equipment, and initial inventory.</p>
+        </div>
+        <div class="inv-card">
+          <span class="t-label" style="opacity: 0.7;">Time to Launch</span>
+          <h3 class="display-sm text-copper" style="margin: 12px 0;">4 - 6 Months</h3>
+          <p class="t-body">From signing the agreement to your grand opening day.</p>
+        </div>
+        <div class="inv-card">
+          <span class="t-label" style="opacity: 0.7;">Target ROI</span>
+          <h3 class="display-sm text-copper" style="margin: 12px 0;">18 - 24 Months</h3>
+          <p class="t-body">Based on historical performance of our international boutique locations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════ PARTNERSHIP BROCHURE ═════════ -->
+  <section class="franchise-brochure section" style="background: var(--cream);">
+    <div class="container">
+      <div class="benefit-row" style="align-items: center;">
+        <div class="benefit-content reveal reveal-1">
+          <span class="t-label">Documentation</span>
+          <h2 class="display-md text-navy" style="margin-top: 16px;">Partnership<br/><em class="italic" style="color: var(--copper);">Brochure</em></h2>
+          <p class="t-body" style="margin-top: 24px;">
+            Explore the detailed franchise prospectus containing our financial projections, territory availability maps, boutique design specifications, and long-term brand support policies.
+          </p>
+          <p class="t-body" style="margin-top: 16px; margin-bottom: 32px;">
+            Click on the brochure cover to download the complete guide instantly.
+          </p>
+          <a href="/global/assets/docs/plus33-franchise-brochure.pdf" download="plus33-franchise-brochure.pdf" class="btn btn-copper">Download PDF Guide</a>
+        </div>
+        <div class="benefit-visual reveal reveal-2" style="max-width: 440px; margin: 0 auto;">
+          <a href="/global/assets/docs/plus33-franchise-brochure.pdf" download="plus33-franchise-brochure.pdf" class="brochure-download-link" aria-label="Download Franchise Brochure PDF">
+            <div class="brochure-card">
+              <img src="/global/assets/img/franchise-brochure.png" alt="Plus33 Franchise Brochure Cover" class="brochure-card__img" />
+              <div class="brochure-card__overlay">
+                <span class="brochure-card__btn">Download Brochure</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════ GLOBAL EXPANSION MAP ═════════ -->
+  <section class="franchise-map section" style="background: #030811;">
+    <div class="container">
+      <div class="map-header reveal reveal-1">
+        <h2 class="display-md text-cream">Global<br/><em class="italic" style="color: var(--copper);">Expansion</em></h2>
+        <p class="t-body" style="color: #888; max-width: 400px; margin-top: 16px;">
+          Currently seeking visionary partners to expand our luxury presence in major European cultural centers.
+        </p>
+      </div>
+      <div class="map-visual reveal reveal-2" style="position: relative; height: 500px; border-radius: 24px; overflow: hidden; box-shadow: var(--shadow-dark); border: 10px solid #B87333;">
+        <!-- Leaflet Map Container -->
+        <div id="franchise-map" class="leaflet-map-element" style="width: 100%; height: 100%;"></div>
+        
+        <!-- Map Reset Overlay Button -->
+        <div class="map-controls-overlay">
+          <div></div> <!-- Spacer to push the reset button to the right -->
+          <button id="franchise-map-reset-btn" class="map-reset-btn" aria-label="Reset map view to default">
+            <span>Reset View</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+              <path d="M3 3v5h5"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════ SUCCESS STORIES ═════════ -->
+  <section class="franchise-success section" style="background: var(--cream);">
+    <div class="container">
+      <div class="section-header text-center reveal reveal-1">
+        <span class="t-label">Testimonials</span>
+        <h2 class="display-md text-navy" style="margin-top: 16px;">Success <em class="italic" style="color: var(--copper);">Stories</em></h2>
+      </div>
+      
+      <div class="success-carousel reveal reveal-2">
+        <div class="success-card">
+          <div class="success-quote">
+            "The operational support from Paris is unparalleled. We hit our year-one revenue target in just seven months."
+          </div>
+          <div class="success-author">
+            <img src="/global/assets/img/franchise-owner-1.png" alt="Owner" />
+            <div>
+              <span class="name">Julian Hughes</span>
+              <span class="location">London Franchisee</span>
+            </div>
+          </div>
+        </div>
+        <div class="success-card">
+          <div class="success-quote">
+            "Bringing +33 to Dubai was the best business decision I've made. The premium brand identity attracts exactly the right clientele."
+          </div>
+          <div class="success-author">
+            <img src="/global/assets/img/franchise-owner-2.png" alt="Owner" />
+            <div>
+              <span class="name">Sarah Al-Fayed</span>
+              <span class="location">Dubai Franchisee</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════ FAQ ACCORDION & REQUIREMENTS ═════════ -->
+  <section class="franchise-info section" style="background: var(--marble);">
+    <div class="container">
+      <div class="info-grid">
+        
+        <!-- Requirements -->
+        <div class="req-column reveal reveal-1">
+          <span class="t-label">Qualifications</span>
+          <h2 class="display-sm text-navy" style="margin: 16px 0 32px;">Who Can <em class="italic" style="color: var(--copper);">Apply?</em></h2>
+          <ul class="req-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6L9 17l-5-5"/></svg>
+              <span>Strong business leadership and management skills</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6L9 17l-5-5"/></svg>
+              <span>Minimum liquid capital of €100,000</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6L9 17l-5-5"/></svg>
+              <span>Deep understanding of the local premium market</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6L9 17l-5-5"/></svg>
+              <span>Commitment to maintaining our luxury brand standards</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- FAQ -->
+        <div class="faq-column reveal reveal-2">
+          <span class="t-label">Answers</span>
+          <h2 class="display-sm text-navy" style="margin: 16px 0 32px;">Frequently Asked <em class="italic" style="color: var(--copper);">Questions</em></h2>
+          
+          <div class="faq-accordion">
+            <div class="faq-item">
+              <button class="faq-question">How long does approval take?<span class="faq-icon">+</span></button>
+              <div class="faq-answer"><p>The initial review takes 1-2 weeks. Full approval and agreement signing typically takes 30-45 days.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">Do you provide training?<span class="faq-icon">+</span></button>
+              <div class="faq-answer"><p>Yes, we provide 4 weeks of comprehensive training in Paris, covering operations, barista skills, and management.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">Is prior F&B experience needed?<span class="faq-icon">+</span></button>
+              <div class="faq-answer"><p>While beneficial, it is not strictly required if you have strong business acumen and hire an experienced general manager.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">Can I own multiple franchises?<span class="faq-icon">+</span></button>
+              <div class="faq-answer"><p>Yes, we offer area development agreements for qualified partners looking to open multiple locations in a specific territory.</p></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════ APPLICATION FORM ═════════ -->
+  <section id="apply" class="franchise-apply section" style="background: var(--navy);">
+    <div class="container">
+      <div class="apply-container reveal reveal-1">
+        <div class="apply-header text-center">
+          <span class="t-label text-copper">Take the First Step</span>
+          <h2 class="display-md text-cream" style="margin-top: 16px;">Apply for <em class="italic" style="color: var(--copper);">Franchise</em></h2>
+        </div>
+        
+        <form class="premium-form" id="franchise-form">
+          <div class="form-row">
+            <div class="input-group">
+              <input type="text" id="f-name" required />
+              <label for="f-name">Full Name</label>
+            </div>
+            <div class="input-group">
+              <input type="email" id="f-email" required />
+              <label for="f-email">Email Address</label>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input-group">
+              <input type="text" id="f-phone" required />
+              <label for="f-phone">Phone Number</label>
+            </div>
+            <div class="input-group">
+              <input type="text" id="f-city" required />
+              <label for="f-city">Target City & Country</label>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input-group">
+              <select id="f-capital" required>
+                <option value="" disabled selected></option>
+                <option value="100-250">€100k - €250k</option>
+                <option value="250-500">€250k - €500k</option>
+                <option value="500+">€500k+</option>
+              </select>
+              <label for="f-capital" class="select-label">Available Liquid Capital</label>
+            </div>
+          </div>
+          <div class="input-group">
+            <textarea id="f-msg" rows="4" required></textarea>
+            <label for="f-msg">Tell us about your background...</label>
+          </div>
+          <button type="submit" class="btn btn-copper w-100">Submit Application</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════ FINAL CTA ═════════ -->
+  <section class="final-cta section">
+    <div class="final-cta__bg"></div>
+    <div class="container text-center reveal reveal-1">
+      <h2 class="display-lg text-cream">Start Building Your<br/><em class="italic" style="color: var(--copper);">Franchise Empire.</em></h2>
+      <p class="t-body" style="color: #ccc; margin: 24px auto 40px; max-width: 500px;">
+        Partner with us and become part of a fast-growing premium brand.
+      </p>
+      <div class="final-cta__actions">
+        <a href="#apply" class="btn btn-copper">Apply Now</a>
+        <a href="mailto:franchise@plus33.fr" class="btn btn-ghost-light">Schedule Consultation</a>
+      </div>
+    </div>
+  </section>
+</div>

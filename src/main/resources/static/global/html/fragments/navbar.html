@@ -1,0 +1,72 @@
+<!--
+  FILE: navbar.html
+  FRAGMENT REFERENCE: Navbar
+  ══════════════════════════════════════════════════
+  PURPOSE:
+  This file is a REFERENCE COPY of the navbar HTML 
+  that lives inline inside index.html.
+
+  RESPONSIBILITIES:
+  - Serves as a reference copy of the interactive navbar and mobile side drawer menu.
+  - Hardcoded inside index.html to prevent layout shifts and network fetch delays.
+
+  ARCHITECTURE NOTES:
+  - DO NOT fetch or load this fragment dynamically at runtime.
+  - All modifications to navbar structure/classes must be synchronized in /index.html.
+
+  DEVELOPED BY : MIRRO
+  CODED BY     : SIVASURYA
+  ══════════════════════════════════════════════════
+-->
+
+<nav id="plus33-nav" class="plus33-nav">
+    <div class="plus33-nav__inner container">
+        <!-- Left: Mobile Hamburger OR Desktop Logo -->
+        <div class="plus33-nav__left">
+            <button id="menu-toggle" class="plus33-nav__toggle mobile-only">
+                <div class="plus33-nav__toggle-lines">
+                    <span></span>
+                    <span></span>
+                </div>
+                <span class="plus33-nav__toggle-text">Menu</span>
+            </button>
+            <a href="/" class="plus33-nav__logo desktop-only plus33-nav__logo--desktop">
+                <img src="/global/assets/img/plus33-logo.png" alt="+33 Paris" class="plus33-nav__logo-img">
+            </a>
+        </div>
+
+        <!-- Center: Mobile Logo OR Desktop Classic Nav links -->
+        <div class="plus33-nav__center">
+            <a href="/" class="plus33-nav__logo mobile-only plus33-nav__logo--mobile">
+                <img src="/global/assets/img/plus33-logo.png" alt="+33 Paris" class="plus33-nav__logo-img">
+            </a>
+            <div class="plus33-nav__links desktop-only">
+                <a href="/" class="plus33-nav__link">Home</a>
+                <a href="/store" class="plus33-nav__link">Store</a>
+                <a href="/journal" class="plus33-nav__link">Journal</a>
+                <a href="/franchise" class="plus33-nav__link">Franchise</a>
+                <a href="/find-us" class="plus33-nav__link">Find Us</a>
+            </div>
+        </div>
+
+        <!-- Right: Location -->
+        <div class="plus33-nav__right">
+            <div class="plus33-nav__location">Paris, 7ème</div>
+        </div>
+    </div>
+</nav>
+
+<div id="side-menu" class="plus33-nav__panel">
+    <button id="menu-close" class="plus33-nav__panel-close">
+        <span class="plus33-nav__panel-close-text">Close</span>
+    </button>
+    <div class="plus33-nav__panel-inner">
+        <nav class="plus33-nav__panel-links">
+            <a href="/" class="plus33-nav__panel-link">Home</a>
+            <a href="/store" class="plus33-nav__panel-link">Store</a>
+            <a href="/journal" class="plus33-nav__panel-link">Journal</a>
+            <a href="/franchise" class="plus33-nav__panel-link">Franchise</a>
+            <a href="/find-us" class="plus33-nav__panel-link">Find Us</a>
+        </nav>
+    </div>
+</div>
