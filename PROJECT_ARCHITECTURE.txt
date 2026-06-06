@@ -31,6 +31,7 @@ plus33-europe/
     │   │   │   ├── plus33-typography.png
     │   │   │   └── plus33-wordmark.png
     │   │   ├── fonts/                  # Premium typography fonts (empty)
+    │   │   ├── footer/                 # Local footer custom assets (empty)
     │   │   ├── hero/                   # Homepage hero illustrations and backgrounds
     │   │   │   ├── coffee-bean.png
     │   │   │   ├── coffee-been2.png
@@ -41,15 +42,26 @@ plus33-europe/
     │   │   │   ├── hero-leather-bg.jpg
     │   │   │   ├── hero-product-composition.png
     │   │   │   └── store-hero.jpg
-    │   │   ├── home/                   # Homepage Coffee Ritual banners
+    │   │   ├── home/                   # Homepage banners and media assets
     │   │   │   ├── The Coffee Ritual/  # Sub-folder for specific ritual layouts
     │   │   │   │   ├── coffee-experience-banner.png
     │   │   │   │   ├── coffee-roastery-banner.png
     │   │   │   │   ├── handbrew-coffee.png
     │   │   │   │   └── premium-coffee-quality.png
+    │   │   │   ├── our exprience/      # Handcrafted story and barista assets
+    │   │   │   │   ├── betterfor you.jpg
+    │   │   │   │   ├── coffe-poring-mobile.jpg
+    │   │   │   │   ├── coffee-poring.jpg
+    │   │   │   │   ├── expertly crafted.jpg
+    │   │   │   │   ├── fresh-everyday.jpg
+    │   │   │   │   └── moments.jpg
     │   │   │   ├── The-Experience.png
+    │   │   │   ├── app.jpg
+    │   │   │   ├── cup-brochure.jpg
+    │   │   │   ├── franchise-building.jpg
     │   │   │   ├── hero_espresso_pour.png
-    │   │   │   └── modern-coffee-ritual.png
+    │   │   │   ├── modern-coffee-ritual.png
+    │   │   │   └── QR-code.jpg
     │   │   ├── products/               # Dynamic catalog and category imagery
     │   │   │   ├── desserts/           # Artisan bakery and sweet selection
     │   │   │   │   ├── ALMOND CROISSANT.jpg
@@ -93,6 +105,11 @@ plus33-europe/
     │   │   │   ├── desserts_category.png
     │   │   │   ├── signature_category.jpg
     │   │   │   └── signature_category.png
+    │   │   ├── tiers/                  # Rewards member loyalty tier emblems
+    │   │   │   ├── bronze.png
+    │   │   │   ├── gold.png
+    │   │   │   ├── platinum.png
+    │   │   │   └── silver.png
     │   │   └── video/                  # Immersive video backgrounds (empty)
     │   ├── css/                        # Subsystem styles
     │   │   ├── bakery-showcase.css     # Luxury bakery showcase section styling
@@ -135,6 +152,12 @@ plus33-europe/
     │   │   │   └── plus33-typography.png
     │   │   ├── find-us/                # Geolocation and location resources
     │   │   │   └── map-pin.png
+    │   │   ├── footer/                 # Footer illustration & accordion images
+    │   │   │   ├── about.png
+    │   │   │   ├── franchise.jpg
+    │   │   │   ├── menu-cup.jpg
+    │   │   │   ├── rewards.jpg
+    │   │   │   └── stores.jpg
     │   │   ├── franchise/              # Franchise candidacy documents & layouts
     │   │   │   └── global-expansion-map.png
     │   │   ├── icons/                  # Shared system UI icons (empty / SVG-inlined)
@@ -156,7 +179,8 @@ plus33-europe/
     │   │   ├── global.css
     │   │   ├── journal.css
     │   │   ├── navbar.css
-    │   │   └── responsive.css
+    │   │   ├── responsive.css
+    │   │   └── rewards.css
     │   ├── html/                       # SPA Frame shell & global views
     │   │   ├── index.html              # Main SPA frame shell
     │   │   ├── about.html
@@ -165,6 +189,7 @@ plus33-europe/
     │   │   ├── footer.html
     │   │   ├── franchise.html
     │   │   ├── journal.html
+    │   │   ├── rewards.html            # SPA Rewards program view
     │   │   └── navbar.html
     │   ├── java/                       # Core shared backend architecture
     │   │   └── com/
@@ -214,6 +239,7 @@ plus33-europe/
     │       ├── franchise.js
     │       ├── journal.js
     │       ├── layout-engine.js
+    │       ├── rewards.js
     │       └── router.js               # Client SPA dynamic core router
     │
     └── test/                           # Integration Testing Suite
@@ -347,6 +373,9 @@ C. GLOBAL SYSTEM FILES (src/global/)
 * src/global/html/about.html
   Purpose: Elegant branding chronicle detailing Parisian café history.
 
+* src/global/html/rewards.html
+  Purpose: Interactive rewards membership dashboard, loyalty point tier visualizer, and FAQ panel.
+
 * src/global/css/global.css
   Purpose: Declares system design tokens, luxury typography, HSL palettes, and transitions.
 
@@ -356,8 +385,8 @@ C. GLOBAL SYSTEM FILES (src/global/)
 * src/global/css/navbar.css & footer.css
   Purpose: Specific aesthetics and states for headers, footers, and drop menus.
 
-* src/global/css/chatbot.css & franchise.css & journal.css & find-us.css & about.css
-  Purpose: Dedicated, module-specific styles mapping the global widget components.
+* src/global/css/chatbot.css & franchise.css & journal.css & find-us.css & about.css & rewards.css
+  Purpose: Dedicated, module-specific styles mapping the global widget and page components.
 
 * src/global/js/router.js
   Purpose: SPA Dynamic Client-Side Router. Intercepts URL requests, loads matching HTML
@@ -370,8 +399,8 @@ C. GLOBAL SYSTEM FILES (src/global/)
   Purpose: Drives floating bubble states, chat bubbles animations, API fetches,
            and client offline dialog trees.
 
-* src/global/js/about.js & franchise.js & journal.js & find-us.js
-  Purpose: Visual animations, validation, timeline reveals, and searches for global views.
+* src/global/js/about.js & franchise.js & journal.js & find-us.js & rewards.js
+  Purpose: Visual animations, validation, timeline reveals, dynamic cards, and actions for global views.
 
 * src/global/application.properties
   Purpose: Global configuration properties (H2 db, JPA show-sql, servlet sizes, security frame options).
