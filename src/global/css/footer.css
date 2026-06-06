@@ -1,0 +1,651 @@
+/*
+  FILE: footer.css
+  ══════════════════════════════════════════════════
+  PURPOSE:
+  Global luxury footer, layout grids, and mobile interactions.
+  ══════════════════════════════════════════════════
+*/
+
+/* ═════════ 1. BASE CONTAINER & AMBIENT OVERLAY ═════════ */
+.plus33-footer {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top left, rgba(28,58,92,.28), transparent 38%),
+    radial-gradient(circle at bottom right, rgba(15,40,68,.22), transparent 42%),
+    linear-gradient(180deg, #07111f 0%, #081726 35%, #091b2d 65%, #06111d 100%);
+  padding: clamp(60px, 8vw, 120px) clamp(24px, 4vw, 56px);
+  color: rgba(245,240,232,.88);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  flex-shrink: 0;
+}
+
+.plus33-footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(177,139,86,.06), transparent 28%),
+    radial-gradient(circle at 80% 70%, rgba(255,255,255,.03), transparent 32%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Base utility for stacking index */
+.plus33-footer-top,
+.plus33-footer-divider,
+.plus33-footer-middle,
+.plus33-footer-bottom {
+  position: relative;
+  z-index: 1;
+}
+
+/* ═════════ 2. TOP GRID (BRAND & NAV) ═════════ */
+.plus33-footer-top {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr 1fr 1fr 1fr;
+  gap: clamp(28px, 3vw, 56px);
+  max-width: 1680px;
+  margin-inline: auto;
+  padding-bottom: clamp(64px, 8vw, 120px);
+}
+
+.plus33-footer-column {
+  border-right: 1px solid rgba(255,255,255,.05);
+  padding-right: 24px;
+  position: relative;
+}
+.plus33-footer-column:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+/* ═════════ 3. BRAND COLUMN ═════════ */
+.plus33-footer-logo {
+  height: 38px;
+  width: auto;
+}
+
+.plus33-footer-tagline {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(26px, 3vw, 38px);
+  line-height: 1.2;
+  font-weight: 500;
+  color: #fff;
+  margin-top: 0;
+  margin-bottom: 48px;
+}
+
+.plus33-footer-newsletter-wrap {
+  margin-top: 24px;
+}
+
+.plus33-footer-newsletter-title {
+  font-size: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #b18b56;
+  margin-bottom: 12px;
+  margin-top: 0;
+}
+
+.plus33-footer-newsletter-desc {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  margin-top: 0;
+  color: rgba(245,240,232,.6);
+}
+
+.plus33-footer-newsletter {
+  display: flex;
+  align-items: center;
+  background: rgba(10,22,36,.72);
+  border: 1px solid rgba(177,139,86,.32);
+  border-radius: 18px;
+  overflow: hidden;
+  min-height: 62px;
+  max-width: 320px;
+}
+
+.newsletter-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #f5f0e8;
+  padding-inline: 22px;
+  font-family: inherit;
+  font-size: 15px;
+  outline: none;
+  height: 100%;
+}
+.newsletter-input::placeholder {
+  color: rgba(245,240,232,.3);
+}
+
+.newsletter-btn {
+  width: 64px;
+  height: 62px;
+  background: #b18b56;
+  border: none;
+  color: #07111f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+.newsletter-btn:hover {
+  background: #c89f68;
+  box-shadow: 0 0 16px rgba(177,139,86,.4);
+}
+.newsletter-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ═════════ 4. NAV COLUMNS & ILLUSTRATIONS ═════════ */
+.plus33-footer-heading {
+  font-size: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #b18b56;
+  margin-top: 0;
+  margin-bottom: 26px;
+}
+
+.plus33-footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.plus33-footer-links li {
+  margin-bottom: 14px;
+}
+
+.plus33-footer-links a {
+  color: rgba(245,240,232,.7);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 300;
+  display: inline-block;
+  transition: color 0.4s ease, transform 0.4s ease;
+}
+
+.plus33-footer-links a:hover {
+  color: #b18b56;
+  transform: translateX(4px);
+}
+
+.plus33-footer-illustration {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  width: 140px;
+  max-width: 100%;
+  height: auto;
+  opacity: .32;
+  mix-blend-mode: screen;
+  filter: drop-shadow(0 18px 36px rgba(0,0,0,.45));
+  pointer-events: none;
+  transform: translateX(-50%) translateY(0px);
+  transition: all 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+  z-index: 1;
+}
+
+.plus33-footer-column:hover .plus33-footer-illustration {
+  transform: translateX(-50%) translateY(-6px);
+  opacity: .5;
+}
+
+/* Desktop Accordion Overrides */
+.accordion-icon {
+  display: none;
+}
+.accordion-content {
+  display: block !important;
+}
+
+/* ═════════ 5. LUXURY DIVIDER ═════════ */
+.plus33-footer-divider {
+  height: 1px;
+  margin: clamp(48px, 6vw, 72px) auto;
+  background: linear-gradient(90deg, transparent, rgba(177,139,86,.35), rgba(255,255,255,.06), rgba(177,139,86,.35), transparent);
+  max-width: 1680px;
+}
+
+/* ═════════ 6. MIDDLE GRID (SOCIAL, APP, CONTACT, MERCI) ═════════ */
+.plus33-footer-middle {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1.2fr 1.6fr;
+  gap: 40px;
+  max-width: 1680px;
+  margin-inline: auto;
+  padding-top: clamp(48px, 6vw, 72px);
+  padding-bottom: clamp(48px, 6vw, 72px);
+}
+
+.plus33-footer-socials {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.plus33-social-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.02);
+  border: 1px solid rgba(177,139,86,.38);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(245,240,232,.8);
+  transition: all .35s ease;
+  text-decoration: none;
+}
+.plus33-social-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.plus33-social-icon:hover {
+  background: rgba(177,139,86,.12);
+  box-shadow: 0 10px 24px rgba(177,139,86,.18);
+  transform: translateY(-4px);
+  color: #b18b56;
+}
+
+.plus33-footer-text {
+  color: rgba(245,240,232,.6);
+  font-size: 15px;
+  line-height: 1.5;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.plus33-footer-app-badges {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.app-badge {
+  display: block;
+  transition: transform 0.3s ease;
+}
+.app-badge:hover {
+  transform: translateY(-2px);
+}
+.app-badge svg {
+  height: 40px;
+  width: auto;
+}
+
+.plus33-footer-contact {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.plus33-footer-contact li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+  color: rgba(245,240,232,.8);
+  font-size: 15px;
+  line-height: 1.5;
+}
+.plus33-footer-contact svg {
+  width: 20px;
+  height: 20px;
+  color: #b18b56;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.plus33-footer-merci-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.plus33-footer-merci {
+  font-family: "Great Vibes", "Brush Script MT", cursive;
+  font-size: clamp(48px, 6vw, 92px);
+  line-height: .92;
+  letter-spacing: -2px;
+  color: #b18b56;
+  text-shadow: 0 0 24px rgba(177,139,86,.12);
+  z-index: 2;
+  transform: rotate(-4deg);
+}
+
+.plus33-footer-watermark {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 180px;
+  width: auto;
+  opacity: .08;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ═════════ 7. BOTTOM LEGAL BAR ═════════ */
+.plus33-footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.05);
+  max-width: 1680px;
+  margin-inline: auto;
+  padding-top: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: .88;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.plus33-footer-copy {
+  font-size: 13px;
+  color: rgba(245,240,232,.5);
+  margin: 0;
+}
+
+.plus33-footer-legal {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.plus33-footer-legal a {
+  color: rgba(245,240,232,.5);
+  font-size: 13px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.plus33-footer-legal a:hover {
+  color: #b18b56;
+}
+
+.plus33-footer-payments {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.we-accept {
+  font-size: 13px;
+  color: rgba(245,240,232,.5);
+}
+.payment-icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: .78;
+  filter: brightness(.96);
+}
+.pay-icon-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 1px;
+}
+.pay-icon-svg {
+  width: 24px;
+  height: 24px;
+  color: #fff;
+}
+
+/* ═════════ 8. SCROLL REVEAL ANIMATION ═════════ */
+.footer-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.footer-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═════════ 9. DESKTOP OVERRIDES FOR MOBILE DOM ═════════ */
+.mobile-footer-hamburger,
+.plus33-footer-mobile-divider,
+.plus33-footer-mobile-hero,
+.mobile-accordion-icon,
+.accordion-chevron {
+  display: none !important;
+}
+.mobile-brand-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.plus33-footer-logo-icon {
+  height: 38px;
+  width: auto;
+}
+
+/* ═════════ 10. RESPONSIVE MOBILE STACK (Phases 32 - 52) ═════════ */
+@media (max-width: 900px) {
+  /* Phase 33 & 51: Container & Lighting */
+  .plus33-footer {
+    padding: 34px 22px 38px;
+    border-radius: 36px 36px 0 0;
+    overflow: hidden;
+  }
+  .plus33-footer::before {
+    background: radial-gradient(circle at top left, rgba(177,139,86,.06), transparent 28%),
+                radial-gradient(circle at bottom right, rgba(255,255,255,.02), transparent 34%);
+  }
+
+  .plus33-footer-top {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-bottom: 0;
+  }
+  
+  .plus33-footer-column {
+    border-right: none;
+    padding-right: 0;
+  }
+
+  /* Phase 34-36: Brand Header */
+  .plus33-footer-brand {
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .mobile-brand-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    margin-bottom: 42px;
+  }
+  .plus33-footer-logo-icon {
+    height: 48px;
+    width: auto;
+  }
+  .plus33-footer-logo {
+    height: 48px;
+    margin-bottom: 0;
+  }
+
+  .plus33-footer-tagline {
+    font-size: clamp(34px, 7vw, 48px);
+    line-height: 1.14;
+    letter-spacing: -1px;
+    max-width: 260px;
+    margin-bottom: 42px;
+  }
+
+  .plus33-footer-mobile-divider {
+    display: block !important;
+    width: 54px;
+    height: 1px;
+    background: rgba(177,139,86,.72);
+    margin: 0 0 34px;
+  }
+
+  /* Phase 39: Hero Illustration */
+  .plus33-footer-mobile-hero {
+    display: block !important;
+    position: absolute;
+    top: 140px;
+    right: -20px;
+    width: 300px;
+    opacity: .34;
+    mix-blend-mode: screen;
+    pointer-events: none;
+  }
+
+  /* Phase 37-38: Newsletter */
+  .plus33-footer-newsletter {
+    min-height: 58px;
+    border-radius: 18px;
+    background: rgba(10,22,36,.82);
+    border: 1px solid rgba(177,139,86,.22);
+    max-width: 100%;
+  }
+  .newsletter-btn {
+    width: 72px;
+    border-radius: 14px;
+    margin: 4px;
+    height: 50px;
+  }
+
+  /* Phase 40-44: Luxury Accordions */
+  .has-accordion {
+    border-top: 1px solid rgba(177,139,86,.12);
+  }
+  .has-accordion:last-child {
+    border-bottom: 1px solid rgba(177,139,86,.12);
+  }
+
+  .has-accordion .accordion-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 82px;
+    cursor: pointer;
+    margin-bottom: 0;
+    padding-block: 0;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #b18b56;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .accordion-title {
+    flex: 1;
+    text-align: left;
+    margin-left: 20px;
+  }
+
+  .mobile-accordion-icon {
+    display: block !important;
+    width: 64px;
+    height: auto;
+    mix-blend-mode: screen;
+    opacity: .7;
+  }
+
+  .plus33-footer-illustration {
+    display: none !important; /* Hide old desktop floating imgs on mobile */
+  }
+
+  .accordion-chevron {
+    display: block !important;
+    width: 24px;
+    height: 24px;
+    color: rgba(177,139,86,.6);
+    transition: transform 0.4s ease;
+  }
+  .has-accordion.active .accordion-chevron {
+    transform: rotate(180deg);
+  }
+
+  .has-accordion .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    display: block !important;
+  }
+  .has-accordion.active .accordion-content {
+    max-height: 500px;
+    opacity: 1;
+    margin-bottom: 24px;
+    margin-top: 8px;
+    padding-left: 84px; /* Align links with the title */
+  }
+
+  /* Phase 45-48: Middle Grid */
+  .plus33-footer-middle {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .plus33-footer-socials {
+    gap: 18px;
+  }
+  .plus33-social-icon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .plus33-footer-grid-col:nth-child(2) .plus33-footer-heading,
+  .plus33-footer-grid-col:nth-child(2) .plus33-footer-text {
+    text-align: center;
+  }
+  .plus33-footer-app-badges {
+    justify-content: center;
+  }
+
+  .plus33-footer-contact svg {
+    stroke-width: 1;
+  }
+
+  .plus33-footer-merci-wrap {
+    justify-content: center;
+    text-align: center;
+    margin-top: 32px;
+    padding-bottom: 32px;
+  }
+  .plus33-footer-watermark {
+    opacity: .08;
+    right: 50%;
+    transform: translateX(50%) translateY(-50%);
+    height: 240px;
+  }
+
+  /* Phase 49-50: Bottom Legal Bar */
+  .plus33-footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+    padding-top: 32px;
+  }
+
+  .plus33-footer-legal {
+    justify-content: center;
+  }
+
+  .plus33-footer-payments {
+    opacity: .82;
+    filter: brightness(.96);
+  }
+}

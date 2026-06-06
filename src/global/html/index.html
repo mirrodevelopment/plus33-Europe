@@ -1,0 +1,1701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--
+    FILE: index.html
+    ══════════════════════════════════════════════════
+    PURPOSE:
+    Main SPA shell for the PLUS33 / +33 Paris website.
+    Navbar and footer are hardcoded to prevent layout shifts.
+    Homepage content is baked in for instant first paint.
+    All other pages are loaded via /global/js/router.js.
+    ══════════════════════════════════════════════════
+  -->
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- SEO -->
+  <title>+33 Paris — Parisian Specialty Coffee House</title>
+  <meta name="description" content="PLUS33 is a luxury European-inspired specialty coffee house. Inspired by Parisian café culture, designed for slow living, elevated through artisanal preparation." />
+  <meta name="keywords" content="PLUS33, plus33, Paris coffee, specialty coffee, European café, luxury coffee, artisan coffee, Parisian café" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="+33 Paris — Parisian Specialty Coffee House" />
+  <meta property="og:description" content="A quiet movement in modern coffee craftsmanship — inspired by Parisian café culture." />
+  <meta property="og:url"         content="https://plus33.paris" />
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Premium Luxury Typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Leaflet CSS for map features -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- ── Global Design System ── -->
+  <link rel="stylesheet" href="/global/css/global.css" />
+
+  <!-- ── Global Fragment Styles (split into navbar.css and footer.css) ── -->
+  <link rel="stylesheet" href="/global/css/navbar.css?v=1.2" />
+  <link rel="stylesheet" href="/global/css/footer.css" />
+
+  <!-- ── Global Responsive ── -->
+  <link rel="stylesheet" href="/global/css/responsive.css" />
+
+  <!-- ── Homepage CSS (loaded here for zero flash on first paint) ── -->
+  <link rel="stylesheet" href="/local/css/home.css?v=8.4" />
+
+  <!-- ── Bakery Showcase Section CSS ── -->
+  <link rel="stylesheet" href="/local/css/bakery-showcase.css?v=2.2" />
+
+  <!-- ── Best Sellers Showcase Section CSS ── -->
+  <link rel="stylesheet" href="/local/css/best-sellers.css?v=1.0" />
+
+  <!-- ── Chatbot CSS ── -->
+  <link rel="stylesheet" href="/global/css/chatbot.css" />
+
+</head>
+<body>
+
+  <!-- ════════ LUXURY INTRO PRELOADER / SPLASH SCREEN ════════ -->
+  <div id="plus33-splash" class="plus33-splash">
+    <div class="plus33-splash__bg">
+      <img src="/local/assets/img/hero/intropage.jpeg" alt="+33 Paris Experience" class="plus33-splash__bg-img" />
+    </div>
+    <div class="plus33-splash__content">
+      <img src="/global/assets/brand/plus33-logo.png" alt="+33 Paris Logo" class="plus33-splash__logo" />
+      <img src="/global/assets/brand/plus33-typography.png" alt="+33 Paris Typography" class="plus33-splash__typography" />
+      <h1 class="plus33-splash__title">Parisian Specialty Coffee</h1>
+      <button id="btn-enter-experience" class="plus33-splash__btn">
+        <span>Enter the Experience</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       NAVBAR  — hardcoded (reference: navbar.html)
+  ════════════════════════════════════════════════ -->
+  <nav id="plus33-nav" class="plus33-nav" role="navigation" aria-label="Main navigation">
+    <div class="plus33-nav__inner container">
+
+      <!-- Left: Mobile Hamburger OR Desktop Logo -->
+      <div class="plus33-nav__left">
+        <button id="menu-toggle" class="plus33-nav__toggle mobile-only"
+          aria-label="Open navigation menu" aria-expanded="false" aria-controls="side-menu">
+          <div class="plus33-nav__toggle-lines">
+            <span></span>
+            <span></span>
+          </div>
+          <span class="plus33-nav__toggle-text">Menu</span>
+        </button>
+        <a href="/" class="plus33-nav__logo desktop-only plus33-nav__logo--desktop" aria-label="+33 Paris — Homepage">
+          <img src="/local/assets/brand/logo-gold.png" alt="+33 Paris" class="plus33-nav__logo-img" />
+          <img src="/global/assets/brand/plus33-typography.png" alt="+33 Paris Typography" class="plus33-nav__logo-txt" />
+        </a>
+      </div>
+
+      <!-- Center: Mobile Logo OR Desktop Nav Links -->
+      <div class="plus33-nav__center">
+        <a href="/" class="plus33-nav__logo mobile-only plus33-nav__logo--mobile" aria-label="+33 Paris — Homepage">
+          <img src="/local/assets/brand/logo-gold.png" alt="+33 Paris" class="plus33-nav__logo-img" />
+        </a>
+        <nav class="plus33-nav__links desktop-only" aria-label="Primary navigation links">
+          <a href="/"          class="plus33-nav__link active">Home</a>
+          <a href="/store"     class="plus33-nav__link">Store</a>
+          <a href="/rewards"   class="plus33-nav__link">Rewards</a>
+          <a href="/journal"   class="plus33-nav__link">Journal</a>
+          <a href="/franchise" class="plus33-nav__link">Franchise</a>
+          <a href="/find-us"   class="plus33-nav__link">Find Us</a>
+          <a href="/about"     class="plus33-nav__link">About</a>
+        </nav>
+      </div>
+
+      <!-- Right: Location -->
+      <div class="plus33-nav__right">
+        <div class="plus33-nav__location" aria-label="Current flagship location">Paris, 7ème</div>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- Mobile Side Drawer -->
+  <div id="side-menu" class="plus33-nav__panel" role="dialog" aria-modal="true" aria-label="Navigation menu" aria-hidden="true">
+    <button id="menu-close" class="plus33-nav__panel-close" aria-label="Close navigation menu">
+      <span class="plus33-nav__panel-close-text">Close</span>
+    </button>
+    <div class="plus33-nav__panel-inner">
+      <nav class="plus33-nav__panel-links" aria-label="Mobile navigation links">
+        <a href="/"          class="plus33-nav__panel-link">Home</a>
+        <a href="/store"     class="plus33-nav__panel-link">Store</a>
+        <a href="/rewards"   class="plus33-nav__panel-link">Rewards</a>
+        <a href="/journal"   class="plus33-nav__panel-link">Journal</a>
+        <a href="/franchise" class="plus33-nav__panel-link">Franchise</a>
+        <a href="/find-us"   class="plus33-nav__panel-link">Find Us</a>
+        <a href="/about"     class="plus33-nav__panel-link">About</a>
+      </nav>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════
+       APP SHELL — router mounts page content here
+  ════════════════════════════════════════════════ -->
+  <main id="app" role="main" aria-label="Page content">
+
+    <!-- ─────────────────────────────────────────────
+         HOMEPAGE — baked in for instant first paint
+         (router.js skips fetching this on load)
+    ────────────────────────────────────────────── -->
+    <div class="home-page" id="home-page">
+
+      <!-- ════════ PREMIUM MOBILE HERO ════════ -->
+      <section class="hero-mobile-premium" id="home-hero" aria-label="PLUS33 — Better coffee, made for everyday">
+
+        <!-- 1. HERO HEADLINE -->
+        <div class="hmp-headline hero-reveal hero-reveal--1">
+          <h1 class="hmp-headline__text">
+            Better coffee,<br>
+            made for <em class="hmp-headline__gold">everyday.</em>
+          </h1>
+        </div>
+
+        <!-- 2. HERO PRODUCT COMPOSITION -->
+        <div class="hmp-product hero-reveal hero-reveal--3" aria-label="PLUS33 signature coffee products">
+
+
+          <!-- Main product composition image -->
+          <div class="hmp-product__composition">
+            <img
+              src="/local/assets/hero/hero-product-composition.png"
+              alt="PLUS33 signature coffee cup with croissant, iced coffee and macarons"
+              class="hmp-product__img"
+              loading="eager"
+              onerror="this.parentElement.classList.add('hmp-product__composition--fallback')"
+            />
+            <!-- Fallback: show hero-coffee.jpg if composition unavailable -->
+            <img
+              src="/local/assets/hero/hero-coffee.jpg"
+              alt="PLUS33 Signature Coffee"
+              class="hmp-product__img hmp-product__img--fallback"
+            />
+          </div>
+        </div>
+
+        <!-- 3. CTA BUTTONS -->
+        <div class="hmp-cta hero-reveal hero-reveal--4">
+          <a href="/store" class="hmp-btn hmp-btn--primary" id="hmp-explore-menu">
+            <span>EXPLORE MENU</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="/franchise" class="hmp-btn hmp-btn--outline" id="hmp-franchise-btn">
+            <span>Own a Franchise</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- 4. PRODUCT CAROUSEL ── -->
+        <div class="hmp-carousel-wrap">
+
+          <!-- Existing sbx-slider carousel — untouched -->
+          <div class="sbx-hero__slider" role="region" aria-label="Featured Drinks" id="sbx-slider">
+
+            <button class="sbx-hero__slider-arrow sbx-hero__slider-arrow--prev" aria-label="Previous drink" id="sbx-slider-prev">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+
+            <div class="sbx-hero__slider-track" id="sbx-slider-track">
+
+              <div class="sbx-hero__slider-card" id="sbx-card-1">
+                <div class="sbx-hero__slider-thumb sbx-hero__slider-thumb--rose">
+                  <img src="/local/assets/products/drinks/iced-coffee/iced-punch-coco.jpg" alt="Latte Flat White" onerror="this.style.display='none'" />
+                </div>
+                <span class="sbx-hero__slider-name">Latte Flat White</span>
+                <a href="/store" class="sbx-hero__slider-cta">Add to order +</a>
+              </div>
+
+              <div class="sbx-hero__slider-card sbx-hero__slider-card--featured" id="sbx-card-2">
+                <div class="sbx-hero__slider-thumb sbx-hero__slider-thumb--green">
+                  <img src="/local/assets/products/drinks/iced-coffee/matcha-vanille.jpg" alt="Matcha Vanille" onerror="this.style.display='none'" />
+                </div>
+                <span class="sbx-hero__slider-name">Matcha Vanille</span>
+                <a href="/store" class="sbx-hero__slider-cta">Add to order +</a>
+              </div>
+
+              <div class="sbx-hero__slider-card" id="sbx-card-3">
+                <div class="sbx-hero__slider-thumb sbx-hero__slider-thumb--caramel">
+                  <img src="/local/assets/products/drinks/hot-coffee/pumpkin-latte.jpg" alt="Pumpkin Latte" onerror="this.style.display='none'" />
+                </div>
+                <span class="sbx-hero__slider-name">Pumpkin Latte</span>
+                <a href="/store" class="sbx-hero__slider-cta">Add to order +</a>
+              </div>
+
+            </div>
+
+            <button class="sbx-hero__slider-arrow sbx-hero__slider-arrow--next" aria-label="Next drink" id="sbx-slider-next">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+
+          </div>
+          <!-- /sbx-hero__slider -->
+        </div>
+        <!-- /hmp-carousel-wrap -->
+
+        <!-- METRICS BAR -->
+        <div class="hmp-metrics-bar hero-reveal hero-reveal--2" aria-label="Brand pillars and metrics">
+          <div class="hmp-feature">
+            <div class="hmp-feature__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M4 11h16M4 6l8-4 8 4M6 11v9h12v-9M4 19h16" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="hmp-feature__label">Specialty<br>Beans</span>
+          </div>
+          <div class="hmp-feature__sep" aria-hidden="true"></div>
+          <div class="hmp-feature">
+            <div class="hmp-feature__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 3c-1.2 5.4-4 8.4-4 12a4 4 0 008 0c0-3.6-2.8-6.6-4-12z" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8.5 16.5s.5-1.5 3.5-1.5 3.5 1.5 3.5 1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="hmp-feature__label">Expertly<br>Roasted</span>
+          </div>
+          <div class="hmp-feature__sep" aria-hidden="true"></div>
+          <div class="hmp-feature">
+            <div class="hmp-feature__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="hmp-feature__label">Made With<br>Passion</span>
+          </div>
+          <div class="hmp-feature__sep" aria-hidden="true"></div>
+          <div class="hmp-trust__col">
+            <div class="hmp-trust__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2C8 2 5 5 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-4-3-7-7-7z" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="12" cy="9" r="2.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="hmp-trust__primary">Freshly Roasted</span>
+            <span class="hmp-trust__secondary">Every Week</span>
+          </div>
+          <div class="hmp-trust__divider" aria-hidden="true"></div>
+          <div class="hmp-trust__col">
+            <div class="hmp-trust__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="hmp-trust__rating">
+              <span class="hmp-trust__primary">4.8</span>
+              <div class="hmp-trust__stars" aria-label="4.8 out of 5 stars">
+                <span class="hmp-star hmp-star--full" aria-hidden="true">★</span>
+                <span class="hmp-star hmp-star--full" aria-hidden="true">★</span>
+                <span class="hmp-star hmp-star--full" aria-hidden="true">★</span>
+                <span class="hmp-star hmp-star--full" aria-hidden="true">★</span>
+                <span class="hmp-star hmp-star--half" aria-hidden="true">★</span>
+              </div>
+            </div>
+            <span class="hmp-trust__secondary">10K+ Reviews</span>
+          </div>
+          <div class="hmp-trust__divider" aria-hidden="true"></div>
+          <div class="hmp-trust__col">
+            <div class="hmp-trust__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M18 8h1a4 4 0 010 8h-1" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="6" y1="1" x2="6" y2="4" stroke-linecap="round"/>
+                <line x1="10" y1="1" x2="10" y2="4" stroke-linecap="round"/>
+                <line x1="14" y1="1" x2="14" y2="4" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="hmp-trust__primary">100K+ Cups</span>
+            <span class="hmp-trust__secondary">And Counting</span>
+          </div>
+        </div>
+        <!-- /hmp-trust -->
+
+      </section>
+      <!-- /hero-mobile-premium -->
+
+
+      <!-- ════════ SHOP BY CATEGORY SHOWCASE ════════ -->
+      <section class="hmp-category-section" id="home-category-showcase" aria-label="Shop By Category — +33 Paris">
+        <div class="hmp-category-container">
+
+          <!-- Section Header -->
+          <div class="hmp-category-header">
+            <div class="hmp-category-header__left">
+              <span class="hmp-category-subtitle" aria-hidden="true">SHOP BY CATEGORY</span>
+              <h2 class="hmp-category-title">Find your perfect<br><em>cup and more.</em></h2>
+              <p class="hmp-category-desc">From signature brews to fresh bakes, handcrafted for every moment.</p>
+            </div>
+            <div class="hmp-category-header__right">
+              <a href="/store" class="hmp-category-viewall-btn" id="hmp-category-viewall">
+                <span>View all categories</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Cards Row — populated by home.js _initCategoryShowcase() -->
+          <div class="hmp-category-cards" id="hmp-category-cards-container" role="list" aria-label="Product categories">
+            <!-- JS rendered -->
+          </div>
+
+          <!-- Feature Badges Strip -->
+          <div class="hmp-category-badges" aria-label="+33 brand promises">
+            <div class="hmp-category-badge">
+              <div class="hmp-category-badge__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="hmp-category-badge__text">
+                <h4>Premium Beans</h4>
+                <p>Sourced from the finest farms</p>
+              </div>
+            </div>
+            <div class="hmp-category-badge__divider" aria-hidden="true"></div>
+            <div class="hmp-category-badge">
+              <div class="hmp-category-badge__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3c-1.2 5.4-4 8.4-4 12a4 4 0 008 0c0-3.6-2.8-6.6-4-12z" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 16.5s.5-1.5 3.5-1.5 3.5 1.5 3.5 1.5" stroke-linecap="round"/></svg>
+              </div>
+              <div class="hmp-category-badge__text">
+                <h4>Expertly Roasted</h4>
+                <p>Small batch, weekly fresh</p>
+              </div>
+            </div>
+            <div class="hmp-category-badge__divider" aria-hidden="true"></div>
+            <div class="hmp-category-badge">
+              <div class="hmp-category-badge__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="hmp-category-badge__text">
+                <h4>Made With Passion</h4>
+                <p>Crafted with love in Paris</p>
+              </div>
+            </div>
+            <div class="hmp-category-badge__divider" aria-hidden="true"></div>
+            <div class="hmp-category-badge">
+              <div class="hmp-category-badge__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10" stroke-linecap="round"/><path d="M12 6v6l4 2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="hmp-category-badge__text">
+                <h4>Fresh Daily</h4>
+                <p>Baked and brewed every morning</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+      <!-- /home-category-showcase -->
+
+      <!-- ════════ MOST LOVED AT PLUS33 SHOWCASE ════════ -->
+      <section class="best-sellers-showcase-section" id="home-best-sellers-showcase" aria-label="Most Loved at PLUS33 — +33 Paris">
+        <!-- Rendered dynamically by home.js under _initBestSellersShowcase() -->
+      </section>
+
+      <!-- ════════ SIGNATURE COLLECTION SHOWCASE ════════ -->
+      <section class="signature-collection-section" id="home-signature-collection" aria-label="Signature Collection — +33 Paris">
+        <!-- Rendered dynamically by home.js under _initSignatureCollection() -->
+      </section>
+
+      <!-- ════════ PREMIUM BAKERY SHOWCASE ════════ -->
+      <section class="bakery-showcase-section" id="home-bakery-showcase" aria-label="Fresh Bakery Daily — +33 Paris">
+        <!-- Rendered dynamically by home.js under _initBakeryShowcase() -->
+      </section>
+      <!-- /home-bakery-showcase -->
+
+      <!-- ════════ PLUS33 REWARDS SECTION ════════ -->
+      <section class="plus33-rewards-section" id="home-plus33-rewards" aria-label="PLUS33 Rewards — +33 Paris">
+        <div class="plus33-rewards-container">
+          
+          <!-- Split Hero Layout -->
+          <div class="plus33-rewards-hero">
+            
+            <!-- Left Side Content -->
+            <div class="plus33-rewards-hero__content">
+              <span class="plus33-rewards-eyebrow">PLUS33 REWARDS</span>
+              <h2 class="plus33-rewards-heading">
+                More sips.<br>
+                More rewards.<br>
+                <span class="rewards-gold">All for you.</span>
+              </h2>
+              <p class="plus33-rewards-desc">
+                Join PLUS33 Rewards and earn points every time you order.
+                Unlock exclusive treats, offers and experiences.
+              </p>
+              
+              <a href="/rewards" class="plus33-rewards-btn">
+                JOIN NOW <span class="plus33-rewards-btn-arrow">→</span>
+              </a>
+              
+              <!-- Members Row -->
+              <div class="plus33-rewards-members">
+                <div class="plus33-rewards-members__avatars">
+                  <div class="rewards-avatar-wrap" style="z-index: 3;">
+                    <img src="/local/assets/products/drinks/hot-coffee/latte-flat-white.jpg" alt="Member Avatar" class="rewards-avatar" />
+                  </div>
+                  <div class="rewards-avatar-wrap" style="z-index: 2; margin-left: -12px;">
+                    <img src="/local/assets/products/drinks/iced-coffee/matcha-vanille.jpg" alt="Member Avatar" class="rewards-avatar" />
+                  </div>
+                  <div class="rewards-avatar-wrap" style="z-index: 1; margin-left: -12px;">
+                    <img src="/local/assets/products/drinks/hot-coffee/cappuccino.png" alt="Member Avatar" class="rewards-avatar" />
+                  </div>
+                </div>
+                <div class="plus33-rewards-members__text">
+                  <span class="members-count">100K+ members</span>
+                  <span class="members-sub">and growing!</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Side Graphic -->
+            <div class="plus33-rewards-hero__image-wrap">
+              <img 
+                src="/local/assets/hero/reward.png" 
+                alt="PLUS33 Rewards App Mockup, coffee cup and croissant" 
+                class="plus33-rewards-hero__image"
+                loading="lazy"
+              />
+            </div>
+
+          </div>
+
+          <!-- Features Strip -->
+          <div class="plus33-rewards-features">
+            
+            <!-- Feature 1 -->
+            <div class="plus33-rewards-feature">
+              <div class="plus33-rewards-feature__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h4 class="plus33-rewards-feature__title">EARN POINTS</h4>
+              <p class="plus33-rewards-feature__desc">Earn points on every order</p>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="plus33-rewards-feature">
+              <div class="plus33-rewards-feature__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="3" y="8" width="18" height="14" rx="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12 5a3 3 0 1 0-3-3M12 5a3 3 0 1 1 3-3" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12 5v17" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M3 12h18" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h4 class="plus33-rewards-feature__title">EXCLUSIVE REWARDS</h4>
+              <p class="plus33-rewards-feature__desc">Unlock free drinks, food and more</p>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="plus33-rewards-feature">
+              <div class="plus33-rewards-feature__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 2v4M5 8v13a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M3 8h18" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="12" cy="12" r="2"/>
+                  <path d="M8 12v3M16 12v3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h4 class="plus33-rewards-feature__title">BIRTHDAY TREATS</h4>
+              <p class="plus33-rewards-feature__desc">A special reward, just for you</p>
+            </div>
+
+            <!-- Feature 4 -->
+            <div class="plus33-rewards-feature">
+              <div class="plus33-rewards-feature__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" stroke-linecap="round" stroke-linejoin="round"/>
+                  <line x1="7" y1="7" x2="7.01" y2="7" stroke-linecap="round" stroke-width="2"/>
+                </svg>
+              </div>
+              <h4 class="plus33-rewards-feature__title">MEMBER OFFERS</h4>
+              <p class="plus33-rewards-feature__desc">Enjoy offers and early access</p>
+            </div>
+
+          </div>
+
+          <!-- App Promo Card -->
+          <div class="plus33-rewards-promo">
+            
+            <!-- Left Column: Iced Drink and Phone Mockup Composition -->
+            <div class="plus33-rewards-promo__left">
+              
+              <!-- Product composition backdrop -->
+              <img 
+                src="/local/assets/hero/hero-product-composition.png" 
+                alt="PLUS33 signature iced drinks and bakery composition" 
+                class="promo-composition-bg"
+                loading="lazy"
+              />
+
+              <!-- Embedded dynamic HTML/CSS phone mockup -->
+              <div class="promo-phone-mockup">
+                <div class="promo-phone-screen">
+                  <div class="phone-status-bar">
+                    <span class="phone-time">9:41</span>
+                    <div class="phone-status-icons">
+                      <svg viewBox="0 0 24 24" fill="currentColor" width="10" height="10"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
+                      <svg viewBox="0 0 24 24" fill="currentColor" width="10" height="10"><path d="M17 5H3a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zM9 15H5v-4h4v4zm6 0h-4v-4h4v4z"/></svg>
+                    </div>
+                  </div>
+                  <div class="phone-app-content">
+                    <span class="phone-app-eyebrow">ORDER AHEAD</span>
+                    <h5 class="phone-app-heading">Skip the queue.</h5>
+                    <p class="phone-app-desc">Order your favorites in advance.</p>
+                    <a href="/rewards" class="phone-app-btn">Order Now <span class="arrow">→</span></a>
+                  </div>
+                </div>
+                <div class="phone-notch"></div>
+              </div>
+
+            </div>
+
+            <!-- Right Column: App details and download buttons -->
+            <div class="plus33-rewards-promo__right">
+              <div class="promo-right-header">
+                <div class="promo-header-eyebrow-container">
+                  <div class="promo-eyebrow-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                  </div>
+                  <span class="promo-eyebrow">MORE WITH THE APP</span>
+                </div>
+                <h3 class="promo-heading">Earn. Redeem. Enjoy.</h3>
+                <p class="promo-desc">Get the PLUS33 app for the best experience and more rewards.</p>
+              </div>
+
+              <div class="promo-download-block">
+                <!-- QR code container -->
+                <a href="/rewards" class="promo-qr-container">
+                  <div class="promo-qr-code">
+                    <img src="/local/assets/home/QR-code.jpg" alt="PLUS33 App QR Code" />
+                  </div>
+                  <span class="promo-qr-label">Scan to download</span>
+                </a>
+
+                <!-- Buttons container -->
+                <div class="promo-buttons">
+                  <!-- App Store Button -->
+                  <a href="/rewards" class="store-badge-btn" aria-label="Download on the App Store">
+                    <svg viewBox="0 0 135 40" width="135" height="40">
+                      <rect width="135" height="40" rx="6" fill="#000" />
+                      <!-- Apple Logo -->
+                      <path d="M22 13.5c-.2 0-.8.4-1.1.7-.5.5-.8 1.2-.8 2 0 1.2.7 2.1 1.7 2.3-.5 1.5-1.5 2.5-2.2 2.5-.4 0-.7-.2-.9-.2-.3 0-.6.2-.9.2-.7 0-1.7-1-2.2-2.1-.9-1.8-.9-3.7 0-4.7.5-.6 1.2-.9 1.8-.9.4 0 .7.2.9.2.2 0 .6-.2 1-.2.8 0 1.9.4 2.3 1-.1.1-1.6.9-1.6 2.7 0 2 1.7 2.7 1.8 2.7-.1.2-.3.5-.5.7-1.1 1.6-2.5 1.6-2.7 1.6M19.3 12.3c.7-.9.7-2 .5-2.7-.9.1-1.7.6-2.2 1.4-.6.7-.6 1.8-.4 2.5.9.1 1.6-.4 2.1-1.2" fill="#fff" />
+                      <!-- App Store text -->
+                      <text x="36" y="16" fill="#fff" font-family="-apple-system, sans-serif" font-size="7" font-weight="500">Download on the</text>
+                      <text x="36" y="27" fill="#fff" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">App Store</text>
+                    </svg>
+                  </a>
+
+                  <!-- Google Play Button -->
+                  <a href="/rewards" class="store-badge-btn" aria-label="Get it on Google Play">
+                    <svg viewBox="0 0 135 40" width="135" height="40">
+                      <rect width="135" height="40" rx="6" fill="#000" />
+                      <!-- Play Logo -->
+                      <path d="M14 10.5v19c0 .6.4 1 1 .8l10-7.8-10.7-12.2c-.2 0-.3.1-.3.2z" fill="#00E5FF" />
+                      <path d="M25 22.5l5.2-4.1c.4-.3.4-.8 0-1.1l-5.2-4.1-3 2.6z" fill="#FFC107" />
+                      <path d="M14 10.3c0-.1.1-.2.2-.2.4 0 7.8 6.1 7.8 6.1l3 2.6-11 11.2V10.3z" fill="#FF3D00" />
+                      <path d="M22 18.8l3 2.6 5.2-4.1c.4-.3.4-.8 0-1.1l-5.2-4.1-3 2.6z" fill="#4CAF50" />
+                      <!-- Google Play text -->
+                      <text x="36" y="16" fill="#fff" font-family="-apple-system, sans-serif" font-size="7" font-weight="500">GET IT ON</text>
+                      <text x="36" y="27" fill="#fff" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">Google Play</text>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              
+              <span class="promo-footer-text">Available on iOS and Android</span>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ════════ OUR EXPERIENCE SECTION ════════ -->
+      <section class="our-experience-section" id="home-our-experience" aria-label="Our Experience — PLUS33">
+        <div class="our-experience-container">
+          
+          <!-- Top split layout -->
+          <div class="our-experience-top">
+            
+            <!-- Left Side content -->
+            <div class="our-experience-content">
+              <span class="our-experience-eyebrow home-reveal">OUR EXPERIENCE</span>
+              <h2 class="our-experience-heading home-reveal" style="--reveal-delay: 0.1s;">
+                More than coffee.<br>
+                A moment<br>
+                that’s <span class="experience-gold">yours.</span>
+              </h2>
+              <p class="our-experience-desc home-reveal" style="--reveal-delay: 0.2s;">
+                Great coffee brings people together and makes everyday moments extraordinary.
+              </p>
+              
+              <!-- Feature Icons Row -->
+              <div class="our-experience-features home-reveal" style="--reveal-delay: 0.25s;">
+                <!-- Feature 1 -->
+                <div class="our-experience-feature">
+                  <div class="our-experience-feature__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <ellipse cx="12" cy="12" rx="5" ry="9" transform="rotate(-30, 12, 12)"/>
+                      <path d="M12 3c0 4-3 7-3 9s1.3 3.5 3 5"/>
+                    </svg>
+                  </div>
+                  <span class="our-experience-feature__text">Quality in<br>every cup</span>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="our-experience-feature">
+                  <div class="our-experience-feature__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                  </div>
+                  <span class="our-experience-feature__text">Made with<br>passion</span>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="our-experience-feature">
+                  <div class="our-experience-feature__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                      <circle cx="9" cy="7" r="4"/>
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                  </div>
+                  <span class="our-experience-feature__text">Community<br>at heart</span>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="our-experience-feature">
+                  <div class="our-experience-feature__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M2 22c0-8.3 6.7-15 15-15h5v5c0 8.3-6.7 15-15 15H2z"/>
+                      <path d="M2 22L17 7"/>
+                    </svg>
+                  </div>
+                  <span class="our-experience-feature__text">Sustainable<br>choices</span>
+                </div>
+              </div>
+              
+              <!-- CTA Button -->
+              <a href="/journal" class="our-experience-btn home-reveal" style="--reveal-delay: 0.3s;" id="our-experience-story-btn">
+                OUR STORY <span class="arrow">→</span>
+              </a>
+            </div>
+            
+            <!-- Right Side: large portrait hero image -->
+            <div class="our-experience-hero-wrap home-reveal" style="--reveal-delay: 0.1s;">
+              <picture>
+                <source media="(max-width: 768px)" srcset="/local/assets/home/our%20exprience/coffe-poring-mobile.jpg">
+                <img 
+                  src="/local/assets/home/our%20exprience/coffee-poring.jpg" 
+                  alt="Handcrafted coffee pouring by expert barista" 
+                  class="our-experience-hero-img"
+                  loading="lazy"
+                />
+              </picture>
+              <div class="our-experience-hero-overlay"></div>
+            </div>
+            
+          </div>
+          
+          <!-- Experience Cards Grid (2x2) -->
+          <div class="our-experience-grid">
+            
+            <!-- Card 1 -->
+            <div class="our-experience-card home-reveal" style="--reveal-delay: 0.1s;">
+              <img 
+                src="/local/assets/home/our%20exprience/expertly%20crafted.jpg" 
+                alt="Expertly Crafted specialty coffee machine extraction" 
+                class="our-experience-card-img"
+                loading="lazy"
+              />
+              <div class="our-experience-card-overlay"></div>
+              <div class="our-experience-card-content">
+                <div class="our-experience-card-icon-circle">
+                  <!-- coffee cup icon -->
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                    <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                    <line x1="6" y1="1" x2="6" y2="4"/>
+                    <line x1="10" y1="1" x2="10" y2="4"/>
+                    <line x1="14" y1="1" x2="14" y2="4"/>
+                  </svg>
+                </div>
+                <h3 class="our-experience-card-title">Expertly Crafted</h3>
+                <p class="our-experience-card-desc">Precision, care and skill in every single cup.</p>
+              </div>
+            </div>
+            
+            <!-- Card 2 -->
+            <div class="our-experience-card home-reveal" style="--reveal-delay: 0.2s;">
+              <img 
+                src="/local/assets/home/our%20exprience/moments.jpg" 
+                alt="Warm café moments with friends at PLUS33" 
+                class="our-experience-card-img"
+                loading="lazy"
+              />
+              <div class="our-experience-card-overlay"></div>
+              <div class="our-experience-card-content">
+                <div class="our-experience-card-icon-circle">
+                  <!-- community/people icon -->
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                  </svg>
+                </div>
+                <h3 class="our-experience-card-title">Moments That Matter</h3>
+                <p class="our-experience-card-desc">Good coffee. Great company. Memories made daily.</p>
+              </div>
+            </div>
+            
+            <!-- Card 3 -->
+            <div class="our-experience-card home-reveal" style="--reveal-delay: 0.3s;">
+              <img 
+                src="/local/assets/home/our%20exprience/fresh-everyday.jpg" 
+                alt="Freshly baked croissants and pastries daily" 
+                class="our-experience-card-img"
+                loading="lazy"
+              />
+              <div class="our-experience-card-overlay"></div>
+              <div class="our-experience-card-content">
+                <div class="our-experience-card-icon-circle">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M12 2c0 10 10 10 10 0M12 2C2 2 2 12 12 12M2 12c0 10 10 10 10 0"/>
+                    <circle cx="12" cy="12" r="10"/>
+                  </svg>
+                </div>
+                <h3 class="our-experience-card-title">Fresh Every Day</h3>
+                <p class="our-experience-card-desc">Baked fresh every morning using the finest ingredients.</p>
+              </div>
+            </div>
+            
+            <!-- Card 4 -->
+            <div class="our-experience-card home-reveal" style="--reveal-delay: 0.4s;">
+              <img 
+                src="/local/assets/home/our%20exprience/betterfor%20you.jpg" 
+                alt="Sustainable coffee sourcing and plant care" 
+                class="our-experience-card-img"
+                loading="lazy"
+              />
+              <div class="our-experience-card-overlay"></div>
+              <div class="our-experience-card-content">
+                <div class="our-experience-card-icon-circle">
+                  <!-- leaf/planet icon -->
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M2 22c0-8.3 6.7-15 15-15h5v5c0 8.3-6.7 15-15 15H2z"/>
+                    <path d="M2 22L17 7"/>
+                  </svg>
+                </div>
+                <h3 class="our-experience-card-title">Better for You & the Planet</h3>
+                <p class="our-experience-card-desc">Thoughtful sourcing. Responsible choices. A better tomorrow.</p>
+              </div>
+            </div>
+            
+          </div>
+          
+          <!-- Bottom Stats Strip -->
+          <div class="our-experience-stats home-reveal" style="--reveal-delay: 0.1s;">
+            
+            <!-- Stat 1 -->
+            <div class="our-experience-stat">
+              <span class="our-experience-stat__num">4.8</span>
+              <div class="our-experience-stat__stars" aria-label="4.8 out of 5 stars">
+                <span class="star-gold">★</span>
+                <span class="star-gold">★</span>
+                <span class="star-gold">★</span>
+                <span class="star-gold">★</span>
+                <span class="star-gold">★</span>
+              </div>
+              <span class="our-experience-stat__label">(2,500+ reviews)</span>
+            </div>
+            
+            <div class="our-experience-stat-sep"></div>
+            
+            <!-- Stat 2 -->
+            <div class="our-experience-stat">
+              <div class="our-experience-stat__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
+              <span class="our-experience-stat__num">100K+</span>
+              <span class="our-experience-stat__label">Happy Customers</span>
+            </div>
+            
+            <div class="our-experience-stat-sep"></div>
+            
+            <!-- Stat 3 -->
+            <div class="our-experience-stat">
+              <div class="our-experience-stat__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24">
+                  <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                  <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                  <line x1="6" y1="1" x2="6" y2="4"/>
+                  <line x1="10" y1="1" x2="10" y2="4"/>
+                  <line x1="14" y1="1" x2="14" y2="4"/>
+                </svg>
+              </div>
+              <span class="our-experience-stat__num">1M+</span>
+              <span class="our-experience-stat__label">Cups Served</span>
+            </div>
+            
+            <div class="our-experience-stat-sep"></div>
+            
+            <!-- Stat 4 -->
+            <div class="our-experience-stat">
+              <div class="our-experience-stat__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <span class="our-experience-stat__num">45+</span>
+              <span class="our-experience-stat__label">Stores Worldwide</span>
+            </div>
+            
+          </div>
+          
+        </div>
+      </section>
+
+      <!-- ════════ FRANCHISE OPPORTUNITY SECTION ════════ -->
+      <section class="franchise-opportunity-section" id="home-franchise-opportunity" aria-label="Franchise Opportunity — PLUS33">
+        <div class="franchise-opportunity-container">
+          
+          <!-- Top Split Layout -->
+          <div class="franchise-opportunity-top">
+            
+            <!-- Left Side content -->
+            <div class="franchise-opportunity-content">
+              <span class="franchise-opportunity-eyebrow home-reveal">FRANCHISE OPPORTUNITY</span>
+              <h2 class="franchise-opportunity-heading home-reveal" style="--reveal-delay: 0.1s;">
+                Bring PLUS33<br>
+                to your city.<br>
+                <span class="franchise-gold">Let’s brew success<br>together.</span>
+              </h2>
+              <p class="franchise-opportunity-desc home-reveal" style="--reveal-delay: 0.2s;">
+                Join a growing global coffee brand built on quality, passion and people.
+              </p>
+              
+              <!-- Learn More Button -->
+              <a href="/franchise" class="franchise-learn-more-btn home-reveal" style="--reveal-delay: 0.3s;" id="franchise-learn-more-cta">
+                LEARN MORE <span class="arrow">→</span>
+              </a>
+            </div>
+            
+            <!-- Right Side storefront hero image -->
+            <div class="franchise-opportunity-hero-wrap home-reveal" style="--reveal-delay: 0.1s;">
+              <img 
+                src="/local/assets/home/franchise-building.jpg" 
+                alt="PLUS33 Premium Storefront and Outdoor Seating" 
+                class="franchise-opportunity-hero-img"
+                loading="lazy"
+              />
+              <div class="franchise-opportunity-hero-overlay"></div>
+            </div>
+            
+          </div>
+          
+          <!-- Center Title Divider -->
+          <div class="franchise-divider home-reveal" style="--reveal-delay: 0.1s;">
+            <div class="franchise-divider-line"></div>
+            <h3 class="franchise-divider-title">WHY PARTNER WITH PLUS33?</h3>
+            <div class="franchise-divider-line"></div>
+          </div>
+          
+          <!-- Benefits Row (4 Columns on Desktop, 2x2 on Mobile) -->
+          <div class="franchise-benefits-grid">
+            
+            <!-- Benefit 1 -->
+            <div class="franchise-benefit-card home-reveal" style="--reveal-delay: 0.1s;">
+              <div class="franchise-benefit-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32">
+                  <rect x="3" y="14" width="4" height="6" rx="1" />
+                  <rect x="10" y="9" width="4" height="11" rx="1" />
+                  <rect x="17" y="4" width="4" height="16" rx="1" />
+                  <path d="M3 12 L9 8 L15 10 L21 4" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M17 4 H21 V8" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <h4 class="franchise-benefit-title">PROVEN BUSINESS MODEL</h4>
+              <p class="franchise-benefit-desc">A successful formula with strong unit economics.</p>
+            </div>
+            
+            <!-- Benefit 2 -->
+            <div class="franchise-benefit-card home-reveal" style="--reveal-delay: 0.2s;">
+              <div class="franchise-benefit-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32">
+                  <path d="M12 2 L2 7 L12 12 L22 7 Z" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M6 10 V16 C6 18 18 18 18 16 V10" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M20 9 V15 C20 15 21 16 21 17 C21 18 20 18 20 18" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <h4 class="franchise-benefit-title">COMPLETE SUPPORT</h4>
+              <p class="franchise-benefit-desc">End-to-end support from site selection to opening and beyond.</p>
+            </div>
+            
+            <!-- Benefit 3 -->
+            <div class="franchise-benefit-card home-reveal" style="--reveal-delay: 0.3s;">
+              <div class="franchise-benefit-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32">
+                  <ellipse cx="9" cy="15" rx="5" ry="7" transform="rotate(-30, 9, 15)"/>
+                  <path d="M6 18 C7 16 9 16 12 12" stroke-linecap="round" stroke-linejoin="round"/>
+                  <ellipse cx="15" cy="9" rx="5" ry="7" transform="rotate(-30, 15, 9)"/>
+                  <path d="M12 12 C13 10 15 10 18 6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h4 class="franchise-benefit-title">PREMIUM QUALITY</h4>
+              <p class="franchise-benefit-desc">World-class coffee, fresh ingredients and consistent quality.</p>
+            </div>
+            
+            <!-- Benefit 4 -->
+            <div class="franchise-benefit-card home-reveal" style="--reveal-delay: 0.4s;">
+              <div class="franchise-benefit-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+              <h4 class="franchise-benefit-title">STRONG BRAND</h4>
+              <p class="franchise-benefit-desc">A trusted brand with a loyal customer base and growing demand.</p>
+            </div>
+            
+          </div>
+          
+          <!-- Stats Strip -->
+          <div class="franchise-stats-strip home-reveal" style="--reveal-delay: 0.1s;">
+            
+            <!-- Stat 1 -->
+            <div class="franchise-stat-item">
+              <div class="franchise-stat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28" height="28">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div class="franchise-stat-details">
+                <span class="franchise-stat-number">45+</span>
+                <span class="franchise-stat-label">STORES<br>WORLDWIDE</span>
+              </div>
+            </div>
+            
+            <!-- Stat 2 -->
+            <div class="franchise-stat-item">
+              <div class="franchise-stat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28" height="28">
+                  <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                  <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                  <line x1="6" y1="1" x2="6" y2="4"/>
+                  <line x1="10" y1="1" x2="10" y2="4"/>
+                  <line x1="14" y1="1" x2="14" y2="4"/>
+                </svg>
+              </div>
+              <div class="franchise-stat-details">
+                <span class="franchise-stat-number">1M+</span>
+                <span class="franchise-stat-label">CUPS SERVED<br>EVERY MONTH</span>
+              </div>
+            </div>
+            
+            <!-- Stat 3 -->
+            <div class="franchise-stat-item">
+              <div class="franchise-stat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28" height="28">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M2 12h20"/>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+              </div>
+              <div class="franchise-stat-details">
+                <span class="franchise-stat-label">GROWING IN</span>
+                <span class="franchise-stat-number">15+</span>
+                <span class="franchise-stat-label">COUNTRIES</span>
+              </div>
+            </div>
+            
+            <!-- Stat 4 -->
+            <div class="franchise-stat-item">
+              <div class="franchise-stat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28" height="28">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M8 8h8 M8 11h8 M8 8c4 0 8 0 8 3s-4 3-8 3 M13 14l-5 6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <div class="franchise-stat-details">
+                <span class="franchise-stat-number">HIGH ROI</span>
+                <span class="franchise-stat-label">ATTRACTIVE RETURNS<br>ON INVESTMENT</span>
+              </div>
+            </div>
+            
+          </div>
+          
+          <!-- Bottom CTA Card -->
+          <div class="franchise-cta-card home-reveal" style="--reveal-delay: 0.15s;">
+            <div class="franchise-cta-left">
+              <img 
+                src="/local/assets/home/cup-brochure.jpg" 
+                alt="PLUS33 Franchise Brochure with coffee cup" 
+                class="franchise-brochure-img"
+                loading="lazy"
+              />
+            </div>
+            <div class="franchise-cta-right">
+              <h3 class="franchise-cta-heading">Let’s build something<br>extraordinary.</h3>
+              <p class="franchise-cta-desc">Be a part of the PLUS33 family and inspire communities with every cup.</p>
+              <div class="franchise-cta-buttons">
+                <a href="/franchise" class="franchise-cta-btn franchise-cta-btn--primary">
+                  <span>REQUEST BROCHURE</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+                <a href="/franchise" class="franchise-cta-btn franchise-cta-btn--secondary">
+                  <span>CONTACT OUR TEAM</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Footer Divider -->
+          <div class="franchise-footer home-reveal" style="--reveal-delay: 0.1s;">
+            <div class="franchise-footer-line"></div>
+            <div class="franchise-footer-content">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20">
+                <circle cx="12" cy="8" r="7"/>
+                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+              </svg>
+              <span>Your success is our success.</span>
+            </div>
+            <div class="franchise-footer-line"></div>
+          </div>
+          
+        </div>
+      </section>
+
+      <!-- ════════ PLUS33 APP SECTION ════════ -->
+      <section class="plus33-app-section" id="home-plus33-app" aria-label="PLUS33 App — +33 Paris">
+        <div class="plus33-app-container">
+          
+          <!-- Top Split Layout -->
+          <div class="plus33-app-top">
+            
+            <!-- Left Side content -->
+            <div class="plus33-app-content">
+              <span class="plus33-app-eyebrow home-reveal">PLUS33 APP</span>
+              <h2 class="plus33-app-heading home-reveal" style="--reveal-delay: 0.1s;">
+                Skip the queue.<br>
+                Savor more.
+              </h2>
+              <p class="plus33-app-desc home-reveal" style="--reveal-delay: 0.2s;">
+                Order ahead, earn rewards and enjoy a better coffee experience with the PLUS33 App.
+              </p>
+              
+              <!-- Vertical Feature List -->
+              <div class="plus33-app-features-list">
+                
+                <!-- Feature 1 -->
+                <div class="plus33-app-feature-row home-reveal" style="--reveal-delay: 0.15s;">
+                  <div class="plus33-app-feature-icon-circle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24">
+                      <rect x="5" y="2" width="14" height="20" rx="2" />
+                      <polygon points="12,7 13.5,10 16.5,10.5 14,12.5 15,15.5 12,14 9,15.5 10,12.5 7.5,10.5 10.5,10" fill="none" />
+                    </svg>
+                  </div>
+                  <div class="plus33-app-feature-text">
+                    <h4 class="plus33-app-feature-title">ORDER AHEAD</h4>
+                    <p class="plus33-app-feature-desc">Place your order in advance and pick up, hassle-free.</p>
+                  </div>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="plus33-app-feature-row home-reveal" style="--reveal-delay: 0.2s;">
+                  <div class="plus33-app-feature-icon-circle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24">
+                      <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" />
+                    </svg>
+                  </div>
+                  <div class="plus33-app-feature-text">
+                    <h4 class="plus33-app-feature-title">EARN REWARDS</h4>
+                    <p class="plus33-app-feature-desc">Earn points on every order and unlock exciting rewards.</p>
+                  </div>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="plus33-app-feature-row home-reveal" style="--reveal-delay: 0.25s;">
+                  <div class="plus33-app-feature-icon-circle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24">
+                      <rect x="3" y="8" width="18" height="14" rx="2" />
+                      <path d="M12 5a3 3 0 1 0-3 3h6a3 3 0 1 0-3-3" />
+                      <line x1="12" y1="8" x2="12" y2="22" />
+                      <line x1="3" y1="12" x2="21" y2="12" />
+                    </svg>
+                  </div>
+                  <div class="plus33-app-feature-text">
+                    <h4 class="plus33-app-feature-title">EXCLUSIVE OFFERS</h4>
+                    <p class="plus33-app-feature-desc">Get access to member-only offers and early launches.</p>
+                  </div>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="plus33-app-feature-row home-reveal" style="--reveal-delay: 0.3s;">
+                  <div class="plus33-app-feature-icon-circle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                  </div>
+                  <div class="plus33-app-feature-text">
+                    <h4 class="plus33-app-feature-title">STORE LOCATOR</h4>
+                    <p class="plus33-app-feature-desc">Find your nearest PLUS33 store, wherever you are.</p>
+                  </div>
+                </div>
+                
+              </div>
+              
+              <!-- Download CTA Button -->
+              <a href="#" class="plus33-app-download-btn plus33-app-trigger home-reveal" style="--reveal-delay: 0.35s;" id="plus33-app-download-cta">
+                DOWNLOAD NOW <span class="arrow">→</span>
+              </a>
+            </div>
+            
+            <!-- Right Side app hero image -->
+            <div class="plus33-app-hero-wrap home-reveal" style="--reveal-delay: 0.1s;">
+              <img 
+                src="/local/assets/home/app.jpg" 
+                alt="PLUS33 Mobile App showing ordering and rewards" 
+                class="plus33-app-hero-img"
+                loading="lazy"
+              />
+              <div class="plus33-app-hero-overlay"></div>
+            </div>
+            
+          </div>
+          
+          <!-- Bottom App Features Panel -->
+          <div class="plus33-app-divider home-reveal" style="--reveal-delay: 0.1s;">
+            <div class="plus33-app-divider-line"></div>
+            <h3 class="plus33-app-divider-title">BETTER COFFEE. BETTER EXPERIENCE.</h3>
+            <div class="plus33-app-divider-line"></div>
+          </div>
+          
+          <!-- Bottom Feature Row (4 Columns on Desktop, 2x2 on Mobile) -->
+          <div class="plus33-app-bottom-grid">
+            
+            <!-- Feature 1 -->
+            <div class="plus33-app-bottom-card home-reveal" style="--reveal-delay: 0.1s;">
+              <div class="plus33-app-bottom-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32">
+                  <rect x="5" y="2" width="14" height="20" rx="2" />
+                  <circle cx="15" cy="18" r="5" />
+                  <polyline points="15,16 15,18 16.5,19" />
+                </svg>
+              </div>
+              <h4 class="plus33-app-bottom-title">SAVE TIME</h4>
+              <p class="plus33-app-bottom-desc">Order ahead and skip the line.</p>
+            </div>
+            
+            <!-- Feature 2 -->
+            <div class="plus33-app-bottom-card home-reveal" style="--reveal-delay: 0.2s;">
+              <div class="plus33-app-bottom-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32">
+                  <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" />
+                </svg>
+              </div>
+              <h4 class="plus33-app-bottom-title">MORE REWARDS</h4>
+              <p class="plus33-app-bottom-desc">More you sip, more you earn.</p>
+            </div>
+            
+            <!-- Feature 3 -->
+            <div class="plus33-app-bottom-card home-reveal" style="--reveal-delay: 0.3s;">
+              <div class="plus33-app-bottom-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32">
+                  <rect x="2" y="5" width="20" height="14" rx="2" />
+                  <line x1="2" y1="10" x2="22" y2="10" />
+                  <rect x="6" y="14" width="4" height="2" />
+                </svg>
+              </div>
+              <h4 class="plus33-app-bottom-title">EASY PAYMENT</h4>
+              <p class="plus33-app-bottom-desc">Secure payments at your fingertips.</p>
+            </div>
+            
+            <!-- Feature 4 -->
+            <div class="plus33-app-bottom-card home-reveal" style="--reveal-delay: 0.4s;">
+              <div class="plus33-app-bottom-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32">
+                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                  <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                </svg>
+              </div>
+              <h4 class="plus33-app-bottom-title">REAL-TIME UPDATES</h4>
+              <p class="plus33-app-bottom-desc">Track your order in real time.</p>
+            </div>
+            
+          </div>
+          
+          <!-- Download Bar -->
+          <div class="plus33-app-download-bar home-reveal" style="--reveal-delay: 0.15s;">
+            <div class="plus33-app-download-left">
+              <div class="plus33-app-download-qr">
+                <img src="/local/assets/home/QR-code.jpg" alt="Download QR Code" />
+              </div>
+              <div class="plus33-app-download-text">
+                <h3 class="plus33-app-download-heading">DOWNLOAD THE PLUS33 APP</h3>
+                <p class="plus33-app-download-desc">Available on iOS and Android</p>
+              </div>
+            </div>
+            <div class="plus33-app-download-right">
+              <!-- Fake App Store Button -->
+              <a href="#" class="plus33-app-badge-btn plus33-app-trigger" aria-label="Download on the App Store">
+                <svg viewBox="0 0 135 40" width="135" height="40">
+                  <rect width="135" height="40" rx="6" fill="#000" />
+                  <path d="M22 13.5c-.2 0-.8.4-1.1.7-.5.5-.8 1.2-.8 2 0 1.2.7 2.1 1.7 2.3-.5 1.5-1.5 2.5-2.2 2.5-.4 0-.7-.2-.9-.2-.3 0-.6.2-.9.2-.7 0-1.7-1-2.2-2.1-.9-1.8-.9-3.7 0-4.7.5-.6 1.2-.9 1.8-.9.4 0 .7.2.9.2.2 0 .6-.2 1-.2.8 0 1.9.4 2.3 1-.1.1-1.6.9-1.6 2.7 0 2 1.7 2.7 1.8 2.7-.1.2-.3.5-.5.7-1.1 1.6-2.5 1.6-2.7 1.6M19.3 12.3c.7-.9.7-2 .5-2.7-.9.1-1.7.6-2.2 1.4-.6.7-.6 1.8-.4 2.5.9.1 1.6-.4 2.1-1.2" fill="#fff" />
+                  <text x="36" y="16" fill="#fff" font-family="-apple-system, sans-serif" font-size="7" font-weight="500">Download on the</text>
+                  <text x="36" y="27" fill="#fff" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">App Store</text>
+                </svg>
+              </a>
+              <!-- Fake Google Play Button -->
+              <a href="#" class="plus33-app-badge-btn plus33-app-trigger" aria-label="Get it on Google Play">
+                <svg viewBox="0 0 135 40" width="135" height="40">
+                  <rect width="135" height="40" rx="6" fill="#000" />
+                  <path d="M14 10.5v19c0 .6.4 1 1 .8l10-7.8-10.7-12.2c-.2 0-.3.1-.3.2z" fill="#00E5FF" />
+                  <path d="M25 22.5l5.2-4.1c.4-.3.4-.8 0-1.1l-5.2-4.1-3 2.6z" fill="#FFC107" />
+                  <path d="M14 10.3c0-.1.1-.2.2-.2.4 0 7.8 6.1 7.8 6.1l3 2.6-11 11.2V10.3z" fill="#FF3D00" />
+                  <path d="M22 18.8l3 2.6 5.2-4.1c.4-.3.4-.8 0-1.1l-5.2-4.1-3 2.6z" fill="#4CAF50" />
+                  <text x="36" y="16" fill="#fff" font-family="-apple-system, sans-serif" font-size="7" font-weight="500">GET IT ON</text>
+                  <text x="36" y="27" fill="#fff" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">Google Play</text>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+        </div>
+      </section>
+
+
+
+
+
+
+
+    </div>
+    <!-- /home-page -->
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER  — hardcoded (reference: footer.html)
+  ════════════════════════════════════════════════ -->
+  <footer class="plus33-footer">
+    <div class="plus33-footer-top">
+      
+      <!-- BRAND COLUMN -->
+      <div class="plus33-footer-column plus33-footer-brand">
+        <div class="mobile-brand-header">
+          <img src="/global/assets/brand/plus33-logo.png" alt="PLUS33 Logo" class="plus33-footer-logo-icon">
+          <img src="/global/assets/brand/plus33-typography.png" alt="PLUS33" class="plus33-footer-logo">
+        </div>
+        <p class="plus33-footer-tagline">Exceptional coffee.<br>Timeless moments.</p>
+        <div class="plus33-footer-mobile-divider"></div>
+        <img src="/global/assets/footer/stores.jpg" alt="" class="plus33-footer-mobile-hero">
+        
+        <div class="plus33-footer-newsletter-wrap">
+          <h4 class="plus33-footer-newsletter-title">STAY IN THE LOOP</h4>
+          <p class="plus33-footer-newsletter-desc">Get updates on new arrivals,<br>offers and more.</p>
+          <div class="plus33-footer-newsletter">
+            <input type="email" placeholder="Enter your email" class="newsletter-input">
+            <button class="newsletter-btn" aria-label="Subscribe">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- MENU COLUMN -->
+      <div class="plus33-footer-column has-accordion">
+        <h4 class="plus33-footer-heading accordion-trigger">
+          <img src="/global/assets/footer/menu-cup.jpg" alt="" class="mobile-accordion-icon">
+          <span class="accordion-title">MENU</span>
+          <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </h4>
+        <div class="accordion-content">
+          <ul class="plus33-footer-links">
+            <li><a href="/store?category=hot-coffee">Hot Coffee</a></li>
+            <li><a href="/store?category=iced-coffee">Iced Coffee</a></li>
+            <li><a href="/store?category=signature">Signature Drinks</a></li>
+            <li><a href="/store?category=bakery">Bakery</a></li>
+            <li><a href="/store?category=desserts">Desserts</a></li>
+            <li><a href="/store?category=merchandise">Merchandise</a></li>
+            <li><a href="/store?category=coffee-beans">Coffee Beans</a></li>
+            <li><a href="/store?category=gift-cards">Gift Cards</a></li>
+          </ul>
+          <img src="/global/assets/footer/menu-cup.jpg" alt="" class="plus33-footer-illustration">
+        </div>
+      </div>
+
+      <!-- STORES COLUMN -->
+      <div class="plus33-footer-column has-accordion">
+        <h4 class="plus33-footer-heading accordion-trigger">
+          <img src="/global/assets/footer/stores.jpg" alt="" class="mobile-accordion-icon">
+          <span class="accordion-title">STORES</span>
+          <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </h4>
+        <div class="accordion-content">
+          <ul class="plus33-footer-links">
+            <li><a href="/find-us">Find a Store</a></li>
+            <li><a href="/find-us">All Locations</a></li>
+            <li><a href="/find-us">Store Experience</a></li>
+            <li><a href="/about">Careers</a></li>
+            <li><a href="/franchise">Franchise Stores</a></li>
+          </ul>
+          <img src="/global/assets/footer/stores.jpg" alt="" class="plus33-footer-illustration">
+        </div>
+      </div>
+
+      <!-- REWARDS COLUMN -->
+      <div class="plus33-footer-column has-accordion">
+        <h4 class="plus33-footer-heading accordion-trigger">
+          <img src="/global/assets/footer/rewards.jpg" alt="" class="mobile-accordion-icon">
+          <span class="accordion-title">REWARDS</span>
+          <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </h4>
+        <div class="accordion-content">
+          <ul class="plus33-footer-links">
+            <li><a href="/rewards">PLUS33 Rewards</a></li>
+            <li><a href="/rewards#how-rewards-work-section">How It Works</a></li>
+            <li><a href="/rewards#how-rewards-work-section">Earn Points</a></li>
+            <li><a href="/rewards#unlockable-rewards-section">Redeem Rewards</a></li>
+            <li><a href="/rewards#benefits-section">Member Offers</a></li>
+            <li><a href="/rewards#benefits-section">Birthday Rewards</a></li>
+          </ul>
+          <img src="/global/assets/footer/rewards.jpg" alt="" class="plus33-footer-illustration">
+        </div>
+      </div>
+
+      <!-- FRANCHISE COLUMN -->
+      <div class="plus33-footer-column has-accordion">
+        <h4 class="plus33-footer-heading accordion-trigger">
+          <img src="/global/assets/footer/franchise.jpg" alt="" class="mobile-accordion-icon">
+          <span class="accordion-title">FRANCHISE</span>
+          <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </h4>
+        <div class="accordion-content">
+          <ul class="plus33-footer-links">
+            <li><a href="/franchise">Why PLUS33</a></li>
+            <li><a href="/franchise">Franchise Opportunity</a></li>
+            <li><a href="/franchise">Investment Details</a></li>
+            <li><a href="/franchise">Our Support</a></li>
+            <li><a href="/franchise#apply">Application Process</a></li>
+            <li><a href="/franchise">FAQs</a></li>
+          </ul>
+          <img src="/global/assets/footer/franchise.jpg" alt="" class="plus33-footer-illustration">
+        </div>
+      </div>
+
+      <!-- ABOUT COLUMN -->
+      <div class="plus33-footer-column has-accordion">
+        <h4 class="plus33-footer-heading accordion-trigger">
+          <img src="/global/assets/footer/about.png" alt="" class="mobile-accordion-icon">
+          <span class="accordion-title">ABOUT</span>
+          <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </h4>
+        <div class="accordion-content">
+          <ul class="plus33-footer-links">
+            <li><a href="/about">Our Story</a></li>
+            <li><a href="/about">Our Values</a></li>
+            <li><a href="/about">Sustainability</a></li>
+            <li><a href="/about">News & Press</a></li>
+            <li><a href="/about">Careers</a></li>
+            <li><a href="/about">Contact Us</a></li>
+          </ul>
+          <img src="/global/assets/footer/about.png" alt="" class="plus33-footer-illustration">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="plus33-footer-divider"></div>
+
+    <div class="plus33-footer-middle">
+      <!-- FOLLOW US -->
+      <div class="plus33-footer-grid-col">
+        <h4 class="plus33-footer-heading">FOLLOW US</h4>
+        <div class="plus33-footer-socials">
+          <a href="#" class="plus33-social-icon" aria-label="Instagram">
+             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" class="plus33-social-icon" aria-label="Facebook">
+             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" class="plus33-social-icon" aria-label="LinkedIn">
+             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="#" class="plus33-social-icon" aria-label="YouTube">
+             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+          </a>
+        </div>
+      </div>
+      
+      <!-- DOWNLOAD APP -->
+      <div class="plus33-footer-grid-col">
+        <h4 class="plus33-footer-heading">DOWNLOAD THE APP</h4>
+        <p class="plus33-footer-text">Order ahead, earn rewards<br>and skip the queue.</p>
+        <div class="plus33-footer-app-badges">
+          <a href="#" class="app-badge app-store-btn">
+            <svg viewBox="0 0 120 40" fill="none"><rect width="120" height="40" rx="6" fill="#fff" fill-opacity="0.1"/><text x="40" y="25" fill="#fff" font-size="12" font-family="sans-serif">App Store</text><path d="M25 15c0 3-2 5-5 5s-5-2-5-5 2-5 5-5 5 2 5 5z" fill="#fff"/></svg>
+          </a>
+          <a href="#" class="app-badge google-play-btn">
+            <svg viewBox="0 0 120 40" fill="none"><rect width="120" height="40" rx="6" fill="#fff" fill-opacity="0.1"/><text x="40" y="25" fill="#fff" font-size="12" font-family="sans-serif">Google Play</text><path d="M15 10l10 10-10 10v-20z" fill="#fff"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- CONTACT US -->
+      <div class="plus33-footer-grid-col">
+        <h4 class="plus33-footer-heading">CONTACT US</h4>
+        <ul class="plus33-footer-contact">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            +91 98765 33333
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            hello@plus33cafe.com
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>PLUS33 Café Français<br>New Delhi, India</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- MERCI -->
+      <div class="plus33-footer-grid-col plus33-footer-merci-wrap">
+        <div class="plus33-footer-merci">
+          Merci!<br>À bientôt
+        </div>
+        <img src="/global/assets/brand/plus33-horse-gold.png" class="plus33-footer-watermark" alt="">
+      </div>
+    </div>
+
+    <div class="plus33-footer-bottom">
+      <p class="plus33-footer-copy">© 2024 PLUS33 Café Français. All rights reserved.</p>
+      <div class="plus33-footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Shipping Policy</a>
+        <a href="#">Refund Policy</a>
+      </div>
+      <div class="plus33-footer-payments">
+        <span class="we-accept">We accept</span>
+        <div class="payment-icons">
+          <span class="pay-icon-text">VISA</span>
+          <span class="pay-icon-text">Mastercard</span>
+          <span class="pay-icon-text">AMEX</span>
+          <span class="pay-icon-text">UPI</span>
+          <svg viewBox="0 0 24 24" class="pay-icon-svg" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2" ry="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. Mobile Accordions
+      const accordions = document.querySelectorAll('.has-accordion');
+      accordions.forEach(acc => {
+        const trigger = acc.querySelector('.accordion-trigger');
+        if(trigger) {
+          trigger.addEventListener('click', () => {
+            if(window.innerWidth <= 900) {
+              const isActive = acc.classList.contains('active');
+              accordions.forEach(a => a.classList.remove('active'));
+              if(!isActive) acc.classList.add('active');
+            }
+          });
+        }
+      });
+
+      // 2. Scroll Reveal
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -50px 0px', threshold: 0.1 });
+      
+      const footer = document.querySelector('.plus33-footer');
+      if (footer) {
+        footer.classList.add('footer-reveal');
+        observer.observe(footer);
+      }
+    });
+  </script>
+
+  <!-- ═══════════════════════════════════════════════
+       SCRIPTS — load order matters
+  ════════════════════════════════════════════════ -->
+
+  <!-- GSAP Core & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Leaflet JS for map features -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- 1. Store data -->
+  <script src="/local/js/store-data.js"></script>
+
+  <!-- 2. Chatbot data -->
+  <script src="/global/js/chatbot-data.js"></script>
+
+  <!-- 3. Layout engine (navbar interactions) -->
+  <script type="module">
+    import { initNavbar } from '/global/js/layout-engine.js';
+    initNavbar();
+  </script>
+
+  <!-- 4. Chatbot widget -->
+  <script src="/global/js/chatbot.js"></script>
+
+  <!-- 5. Homepage controller -->
+  <script src="/local/js/home.js?v=2.8"></script>
+
+  <!-- 7. Splash Preloader Action -->
+  <script>
+    (function() {
+      const enterBtn = document.getElementById('btn-enter-experience');
+      const splash = document.getElementById('plus33-splash');
+      if (enterBtn && splash) {
+        let hasEntered = false;
+        
+        // Lock body scrolling while the preloader is active to prevent overshooting on scroll-to-enter
+        document.body.style.overflow = 'hidden';
+        
+        const enterExperience = () => {
+          if (hasEntered) return;
+          hasEntered = true;
+
+          // Perfectly scroll/align the viewport to the hero video at the very top
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+
+          // Trigger elite cinematic dolly-zoom transitions using GSAP
+          if (window.gsap) {
+            // 1. Zoom In the Splash Background Image (takes exactly 1.75 seconds)
+            window.gsap.to('.plus33-splash__bg-img', {
+              scale: 1.18,
+              duration: 1.75,
+              ease: 'power3.inOut'
+            });
+
+            // 2. Fade Out the preloader content text/logo (slightly faster for elegant transition)
+            window.gsap.to('.plus33-splash__content', {
+              opacity: 0,
+              scale: 0.90,
+              duration: 1.2,
+              ease: 'power2.out'
+            });
+
+            // 3. Fade Out the preloader overlay container (takes exactly 1.75 seconds)
+            window.gsap.to('#plus33-splash', {
+              opacity: 0,
+              duration: 1.75,
+              ease: 'power3.inOut',
+              onComplete: () => {
+                splash.style.visibility = 'hidden';
+                splash.style.pointerEvents = 'none';
+                // Unlock body scrolling once preloader is fully gone
+                document.body.style.overflow = '';
+              }
+            });
+
+            // 4. Zoom Out the home hero background image under it (with trailing organic cushion)
+            window.gsap.fromTo('.home-hero__bg-img', 
+              { scale: 1.25 },
+              {
+                scale: 1.04,
+                duration: 2.6,
+                ease: 'power3.out',
+                delay: 0.1
+              }
+            );
+
+            // 5. Trigger organic hero typography staggers
+            window.gsap.from('.hero-reveal', {
+              y: 35,
+              opacity: 0,
+              duration: 1.5,
+              stagger: 0.15,
+              ease: 'power4.out',
+              delay: 0.4
+            });
+          } else {
+            // Fallback if GSAP is not loaded
+            splash.classList.add('plus33-splash--hidden');
+            document.body.style.overflow = '';
+          }
+        };
+
+        // Click event listener
+        enterBtn.addEventListener('click', enterExperience);
+
+        // Mouse wheel scroll down to enter
+        splash.addEventListener('wheel', (e) => {
+          if (e.deltaY > 0) {
+            enterExperience();
+          }
+        }, { passive: true });
+
+        // Mobile touch swipe up to enter
+        let touchStartY = 0;
+        splash.addEventListener('touchstart', (e) => {
+          touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+
+        splash.addEventListener('touchmove', (e) => {
+          const touchEndY = e.touches[0].clientY;
+          if (touchStartY - touchEndY > 45) { // Swipe up threshold
+            enterExperience();
+          }
+        }, { passive: true });
+      }
+    })();
+  </script>
+
+  <!-- 6. SPA Router (must load last) -->
+  <script src="/global/js/router.js?v=1.1"></script>
+
+</body>
+</html>

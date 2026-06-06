@@ -1,0 +1,95 @@
+<!-- ═════════ PARIS PONY CHATBOT WIDGET ═════════ -->
+<div id="pp-chatbot" role="complementary" aria-label="Paris Pony Coffee Assistant">
+
+  <!-- ── Floating Trigger Button ── -->
+  <button
+    id="pp-trigger"
+    aria-label="Open Paris Pony Coffee Assistant"
+    aria-expanded="false"
+    aria-controls="pp-window">
+    <span class="pp-icon" aria-hidden="true">
+      <img src="/global/assets/brand/plus33-logo.png" alt="+33 Logo" style="width: 32px; height: 32px; object-fit: contain; filter: brightness(0) invert(1);" />
+    </span>
+    <span class="pp-pulse-ring" aria-hidden="true"></span>
+  </button>
+
+  <!-- ── Chat Window ── -->
+  <div
+    id="pp-window"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Paris Pony Coffee Assistant"
+    aria-hidden="true">
+
+    <!-- Header -->
+    <div class="pp-header">
+      <div class="pp-header-avatar" aria-hidden="true">
+        <img src="/global/assets/brand/plus33-logo.png" alt="+33 Logo" style="width: 24px; height: 24px; object-fit: contain; filter: brightness(0) invert(1);" />
+      </div>
+      <div class="pp-header-text">
+        <div class="pp-header-name">Hi. Welcome to Paris Pony.</div>
+        <div class="pp-header-sub">Every cup is a call to Paris.</div>
+      </div>
+      <button
+        class="pp-close-btn"
+        id="pp-close-btn"
+        aria-label="Close coffee assistant">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6"  y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Quick Action Buttons -->
+    <div class="pp-quick-actions" id="pp-quick-actions" role="group" aria-label="Quick questions"></div>
+
+    <!-- Messages Area -->
+    <div
+      class="pp-messages"
+      id="pp-messages"
+      role="log"
+      aria-live="polite"
+      aria-label="Chat messages">
+    </div>
+
+    <!-- Menu Popup for Predefined Questions -->
+    <div id="pp-menu-popup" class="pp-menu-popup" aria-hidden="true"></div>
+
+    <!-- Input Area -->
+    <div class="pp-input-area">
+      <button
+        id="pp-menu-btn"
+        aria-label="Toggle predefined questions menu"
+        aria-expanded="false"
+        aria-controls="pp-menu-popup">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <line x1="4" y1="6" x2="20" y2="6"/>
+          <line x1="4" y1="12" x2="20" y2="12"/>
+          <line x1="4" y1="18" x2="20" y2="18"/>
+        </svg>
+      </button>
+      <input
+        type="text"
+        id="pp-input"
+        placeholder="Ask me anything..."
+        autocomplete="off"
+        autocorrect="off"
+        spellcheck="false"
+        maxlength="200"
+        aria-label="Type your message"/>
+      <button
+        id="pp-send-btn"
+        aria-label="Send message">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <line x1="22" y1="2" x2="11" y2="13"/>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Powered by -->
+    <p class="pp-powered" aria-hidden="true">Paris Pony · Coffee Assistant</p>
+
+  </div><!-- /pp-window -->
+</div><!-- /pp-chatbot -->

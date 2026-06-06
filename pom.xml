@@ -87,6 +87,16 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
@@ -109,7 +119,81 @@
 	</dependencyManagement>
 
 	<build>
+		<resources>
+			<!-- Properties file mapped to classpath root -->
+			<resource>
+				<directory>src/global</directory>
+				<includes>
+					<include>application.properties</include>
+				</includes>
+				<targetPath>.</targetPath>
+			</resource>
+			<!-- Local engine assets mapped to target classes -->
+			<resource>
+				<directory>src/local/html</directory>
+				<targetPath>static/local/html</targetPath>
+			</resource>
+			<resource>
+				<directory>src/local/css</directory>
+				<targetPath>static/local/css</targetPath>
+			</resource>
+			<resource>
+				<directory>src/local/js</directory>
+				<targetPath>static/local/js</targetPath>
+			</resource>
+			<resource>
+				<directory>src/local/assets</directory>
+				<targetPath>static/local/assets</targetPath>
+			</resource>
+			<!-- Global engine assets mapped to target classes -->
+			<resource>
+				<directory>src/global/html</directory>
+				<includes>
+					<include>index.html</include>
+				</includes>
+				<targetPath>static</targetPath>
+			</resource>
+			<resource>
+				<directory>src/global/html</directory>
+				<excludes>
+					<exclude>index.html</exclude>
+				</excludes>
+				<targetPath>static/global/html</targetPath>
+			</resource>
+			<resource>
+				<directory>src/global/css</directory>
+				<targetPath>static/global/css</targetPath>
+			</resource>
+			<resource>
+				<directory>src/global/js</directory>
+				<targetPath>static/global/js</targetPath>
+			</resource>
+			<resource>
+				<directory>src/global/assets</directory>
+				<targetPath>static/global/assets</targetPath>
+			</resource>
+		</resources>
 		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>3.5.0</version>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src/local/java</source>
+								<source>src/global/java</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>

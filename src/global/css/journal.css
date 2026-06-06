@@ -1,0 +1,1301 @@
+/*
+  FILE: journal.css
+  ══════════════════════════════════════════════════
+  PURPOSE:
+  Layout and presentation styles for the journal/lifestyle blog.
+
+  RESPONSIBILITIES:
+  - Formats backgrounds, page paddings, and radial gradients.
+  - Controls alignment, gap sizes, and padding for header descriptions.
+  - Implements sticky filters, blur backdrops, and active category tags.
+  - Configures grid ratios, responsive image containers, and typography sizing.
+  - Manages transitions, shadow glows, and hover effects for article cards.
+
+  DEVELOPED BY : MIRRO
+  CODED BY     : SIVASURYA
+  ══════════════════════════════════════════════════
+*/
+
+.journal-page {
+    background: var(--navy-deep);
+    min-height: 100vh;
+    padding-top: 120px;
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Atmospheric Background Glow */
+.journal-page::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, var(--copper-pale) 0%, transparent 60%);
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ── Header ───────────────────────────────────────── */
+.journal-page__header {
+    position: relative;
+    z-index: 1;
+    padding: var(--s6) 0 var(--s5);
+    border-bottom: 1px solid var(--border-glass);
+}
+
+.journal-page__header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: var(--s4);
+}
+
+.journal-page__header-inner h1 {
+    margin-top: 24px;
+}
+
+/* ── Filters ──────────────────────────────────────── */
+.journal-page__filters {
+    padding: var(--s3) 0;
+    border-bottom: 1px solid var(--border-glass);
+    position: sticky;
+    top: 80px;
+    z-index: 10;
+    background: rgba(4, 16, 31, 0.85);
+    backdrop-filter: var(--glass-blur);
+}
+
+/* ── Grid ─────────────────────────────────────────── */
+.journal-articles {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 48px 32px;
+    padding: var(--s5) 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Article Card ─────────────────────────────────── */
+.journal-article {
+    display: flex;
+    flex-direction: column;
+    group: article;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: var(--r-sm);
+    overflow: hidden;
+    transition: transform 0.8s var(--ease-rr), border-color 0.8s var(--ease-rr), box-shadow 0.8s var(--ease-rr);
+}
+
+.journal-article:hover {
+    transform: translateY(-12px);
+    border-color: rgba(184, 115, 51, 0.3);
+    box-shadow: var(--shadow-copper-sm);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+/* Image Container */
+.journal-article__img {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.journal-article__img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(4, 16, 31, 0.6), transparent 50%);
+    opacity: 0.6;
+    transition: opacity 0.6s ease;
+}
+
+.journal-article:hover .journal-article__img::after {
+    opacity: 0.2;
+}
+
+.journal-article__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.85) brightness(0.9);
+    transition: transform 1.6s var(--ease-luxury), filter 1.6s var(--ease-luxury);
+}
+
+.journal-article:hover .journal-article__img img {
+    transform: scale(1.08);
+    filter: saturate(1.1) brightness(1.05);
+}
+
+/* Content Area */
+.journal-article__content {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    position: relative;
+}
+
+.journal-article__content h3 {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-top: 16px;
+    transition: color 0.4s ease;
+}
+
+.journal-article:hover .journal-article__content h3 {
+    color: var(--copper) !important;
+}
+
+/* Read More Indicator */
+.journal-article__read {
+    margin-top: auto;
+    padding-top: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-ui);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--copper);
+    opacity: 0.6;
+    transition: opacity 0.4s ease, gap 0.4s var(--ease-rr);
+}
+
+.journal-article:hover .journal-article__read {
+    opacity: 1;
+    gap: 16px;
+}
+
+/* ── Mobile Responsiveness ─────────────────────── */
+@media (max-width: 768px) {
+    .journal-page {
+        padding-top: 80px;
+    }
+
+    .journal-page__header {
+        padding: var(--s4) 0 var(--s3);
+    }
+
+    .journal-articles {
+        grid-template-columns: 1fr;
+        gap: var(--s3);
+    }
+
+    .journal-article__content {
+        padding: 24px;
+    }
+}
+
+
+/* === MOVED FROM HOME.CSS === */
+}
+  background: var(--h-navy);
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+  border-top: 1px solid rgba(254, 229, 177, 0.05);
+  padding: 40px 0 60px 0;
+}
+
+.home-craft__container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 80px;
+  position: relative;
+}
+
+.home-craft__eu-stars {
+  position: absolute;
+  top: calc(50% - var(--h-s3));
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(280px, 45vw, 420px);
+  height: clamp(280px, 45vw, 420px);
+  color: var(--h-copper);
+  opacity: 0.45;
+  pointer-events: none;
+  z-index: 1;
+  animation: stars-slow-spin 48s linear infinite;
+  transform-origin: center center;
+}
+
+.home-craft__eu-stars svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@keyframes stars-slow-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.home-craft__label,
+.home-craft__headline,
+.home-craft__body,
+.home-craft__seal {
+  position: relative;
+  z-index: 5;
+}
+
+.home-craft__label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.home-craft__label-line {
+  width: 24px;
+  height: 1px;
+  background: #ffcc00;
+}
+
+.home-craft__label-text {
+  font-family: var(--h-font-ui);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  color: #ffcc00;
+}
+
+.home-craft__headline {
+  font-family: var(--h-font-serif);
+  font-size: clamp(2.8rem, 6vw, 4.8rem);
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--h-cream);
+  margin: 0 0 36px 0;
+}
+
+.home-craft__headline-em {
+  font-style: italic;
+  font-weight: 300;
+  color: #ffcc00;
+  display: block;
+}
+
+.home-craft__body {
+  font-family: var(--h-font-sans);
+  font-size: 0.95rem;
+  font-weight: 200;
+  line-height: 2.1;
+  color: rgba(245, 241, 234, 0.68);
+  letter-spacing: 0.015em;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.home-craft__seal {
+  position: absolute;
+  bottom: -10px;
+  right: 80px;
+  width: 72px;
+  height: 72px;
+  background: #ffcc00;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(255, 204, 0, 0.25);
+  animation: seal-rotate 24s linear infinite;
+  z-index: 10;
+}
+
+.home-craft__seal-inner {
+  width: 85%;
+  height: 85%;
+  border-radius: 50%;
+  border: 1px dashed rgba(26, 38, 52, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-craft__seal-img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+  filter: brightness(0.1);
+}
+
+@keyframes seal-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1024px) {
+  .home-craft {
+    padding: 60px 0 45px 0;
+  }
+
+  .home-craft__container {
+    padding: 0 40px;
+  }
+
+  .home-craft__seal {
+    right: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-craft__seal {
+    position: relative;
+    margin: 48px auto 0 auto;
+    right: auto;
+    bottom: auto;
+  }
+
+  .home-craft__container {
+    padding: 0 24px;
+  }
+}
+
+.home-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 1.1s var(--h-ease-cinema) var(--reveal-delay, 0s),
+    transform 1.1s var(--h-ease-cinema) var(--reveal-delay, 0s);
+}
+
+.home-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#home-experience .home-reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.home-craft-journey {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background: var(--h-navy-deep);
+  overflow: hidden;
+  z-index: 12;
+  display: flex;
+  align-items: center;
+  padding-top: 120px;
+}
+
+.home-craft-journey__glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1000px;
+  height: 1000px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 204, 0, 0.04) 0%, transparent 75%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.home-craft-journey__container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+  position: relative;
+  z-index: 2;
+  height: 100%;
+}
+
+.home-craft-journey__left {
+  width: 38%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.home-craft-journey__label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.home-craft-journey__label-line {
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--h-copper) 0%, var(--h-gold) 100%);
+  flex-shrink: 0;
+}
+
+.home-craft-journey__label-text {
+  font-family: var(--h-font-ui);
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--h-copper);
+}
+
+.home-craft-journey__text-track {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.home-craft-journey__text-block {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(15px);
+  will-change: opacity, transform;
+}
+
+.home-craft-journey__text-block.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.home-craft-journey__card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.home-craft-journey__card-num {
+  font-family: var(--h-font-ui);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: var(--h-copper);
+}
+
+.home-craft-journey__card-pill {
+  font-family: var(--h-font-ui);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--h-copper);
+  border: 1px solid rgba(255, 204, 0, 0.35);
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.home-craft-journey__card-title {
+  font-family: var(--h-font-serif);
+  font-size: clamp(2rem, 3.8vw, 2.8rem);
+  font-weight: 300;
+  color: var(--h-cream);
+  margin-bottom: 16px;
+  line-height: 1.25;
+}
+
+.home-craft-journey__card-text {
+  font-family: var(--h-font-sans);
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: rgba(254, 229, 177, 0.65);
+  font-weight: 300;
+}
+
+.home-craft-journey__card-subtext {
+  font-family: var(--h-font-sans);
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: rgba(254, 229, 177, 0.45);
+  margin-top: 12px;
+  font-weight: 300;
+}
+
+.home-craft-journey__step-indicators,
+.home-craft-journey__label--mobile,
+.home-craft-journey__step-names--mobile {
+  display: none !important;
+}
+
+.home-craft-journey__indicator {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  opacity: 0.35;
+  transition: opacity 0.5s var(--h-ease-cinema);
+}
+
+.home-craft-journey__indicator.active {
+  opacity: 1;
+}
+
+.home-craft-journey__indicator .indicator-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--h-copper);
+  transform: scale(0);
+  transition: transform 0.5s var(--h-ease-spring);
+}
+
+.home-craft-journey__indicator.active .indicator-dot {
+  transform: scale(1);
+}
+
+.home-craft-journey__indicator .indicator-text {
+  font-family: var(--h-font-ui);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--h-cream);
+  transition: color 0.5s var(--h-ease-cinema), transform 0.5s var(--h-ease-cinema);
+}
+
+.home-craft-journey__indicator.active .indicator-text {
+  color: var(--h-copper);
+  transform: translateX(4px);
+}
+
+.home-craft-journey__right {
+  width: 56%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+
+.home-craft-journey__scroll-track {
+  position: relative;
+  width: 100%;
+  height: 75vh;
+  will-change: transform;
+  overflow: hidden;
+}
+
+.home-craft-journey__card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--h-navy-deep);
+  border: 1px solid rgba(255, 204, 0, 0.15);
+  box-shadow:
+    0 30px 80px rgba(3, 8, 16, 0.6),
+    0 10px 30px rgba(3, 8, 16, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  will-change: transform, opacity, filter;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.home-craft-journey__card.active,
+.home-craft-journey__card:first-child {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.home-craft-journey__card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+  filter: saturate(0.9) brightness(0.85);
+  transition: filter 0.8s var(--h-ease-cinema);
+}
+
+.home-craft-journey__card-badge {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 2;
+  font-family: var(--h-font-ui);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--h-copper);
+  border: 1px solid rgba(255, 204, 0, 0.35);
+  background: rgba(26, 38, 52, 0.75);
+  backdrop-filter: blur(8px);
+  padding: 6px 12px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.home-craft-journey__card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(26, 38, 52, 0) 50%, rgba(26, 38, 52, 0.75) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.home-craft-journey__card-overlay-small {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  z-index: 2;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.home-craft-journey__card-overlay-num {
+  font-family: var(--h-font-ui);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--h-copper);
+  opacity: 0.85;
+}
+
+.home-craft-journey__card-overlay-title {
+  font-family: var(--h-font-serif);
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--h-cream);
+  font-style: italic;
+  text-shadow: 0 4px 15px rgba(3, 8, 16, 0.5);
+}
+
+.home-craft-journey__text-block .home-feat-card__metrics {
+  display: flex !important;
+  max-height: none !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  margin: 18px 0 !important;
+  padding: 12px 0 !important;
+  overflow: visible !important;
+  border-top: 1px dashed rgba(254, 229, 177, 0.15) !important;
+  border-bottom: 1px dashed rgba(254, 229, 177, 0.15) !important;
+}
+
+.home-craft-journey__text-block .home-feat-card__footer-tag {
+  display: flex !important;
+  max-height: none !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  margin-top: 20px !important;
+  padding-top: 12px !important;
+  overflow: visible !important;
+  border-top: 1px solid rgba(254, 229, 177, 0.08) !important;
+}
+
+.home-craft-journey__text-block .home-feat-card__menu-cta-wrap {
+  display: block !important;
+  max-height: none !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  margin-top: 16px !important;
+  margin-bottom: 16px !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+.home-craft-journey__text-block .home-feat-card__menu-cta {
+  display: inline-flex !important;
+  transform: none !important;
+}
+
+.home-craft-journey__text-block .home-feat-card__menu-cta:hover {
+  transform: translateY(-2px) !important;
+}
+
+@media (max-width: 1024px) {
+  .home-craft-journey__container {
+    padding: 0 48px;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 1440px) and (min-width: 769px),
+(max-height: 900px) and (min-width: 769px) {
+  .home-craft-journey {
+    height: 100vh;
+    min-height: 600px;
+    align-items: center;
+  }
+
+  .home-craft-journey__container {
+    padding: 0 40px;
+    gap: 30px;
+  }
+
+  .home-craft-journey__left {
+    width: 42%;
+    max-width: 440px;
+  }
+
+  .home-craft-journey__text-track {
+    height: 420px;
+    margin-bottom: 16px;
+  }
+
+  .home-craft-journey__card-title {
+    font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+    margin-bottom: 10px;
+  }
+
+  .home-craft-journey__card-text {
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  .home-craft-journey__card-subtext {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin-top: 8px;
+  }
+
+  .home-craft-journey__text-block .home-feat-card__metrics {
+    margin: 12px 0 !important;
+    padding: 8px 0 !important;
+  }
+
+  .home-craft-journey__text-block .home-feat-card__metric-val {
+    font-size: 1.25rem !important;
+  }
+
+  .home-craft-journey__text-block .home-feat-card__metric-lbl {
+    font-size: 0.58rem !important;
+  }
+
+  .home-craft-journey__right {
+    width: 52%;
+    height: 100%;
+  }
+
+  .home-craft-journey__scroll-track {
+    height: 65vh;
+  }
+
+  .home-craft-journey__step-indicators {
+    gap: 20px;
+  }
+
+  .home-craft-journey__indicator {
+    gap: 10px;
+  }
+
+  .home-craft-journey__indicator .indicator-text {
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .home-craft .home-reveal,
+  .home-intro .home-reveal,
+  .home-experience .home-reveal {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  .home-craft-journey {
+    height: auto;
+    min-height: 100dvh;
+    padding: 80px 20px 32px 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background: var(--h-navy-deep) !important;
+  }
+
+  .home-craft-journey__container {
+    display: flex !important;
+    flex-direction: column-reverse !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: auto !important;
+    gap: 16px !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  .home-craft-journey__left {
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .home-craft-journey__left .home-craft-journey__label {
+    display: none !important;
+  }
+
+  .home-craft-journey__label--mobile {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 16px !important;
+    margin-bottom: 8px !important;
+    width: 100% !important;
+  }
+
+  .home-craft-journey__step-names--mobile {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    height: 32px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .home-craft-journey__step-name--mobile {
+    position: absolute !important;
+    inset: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: baseline !important;
+    gap: 6px !important;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out !important;
+  }
+
+  .home-craft-journey__step-name--mobile.active {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  .home-craft-journey__step-name-num {
+    font-family: var(--h-font-ui);
+    font-size: 0.72rem !important;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--h-copper);
+  }
+
+  .home-craft-journey__step-name-title {
+    font-family: var(--h-font-serif);
+    font-size: 1.45rem !important;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--h-cream);
+    font-style: italic;
+  }
+
+  .home-craft-journey__text-track {
+    height: 240px !important;
+    position: relative !important;
+    width: 100% !important;
+    margin-bottom: 0 !important;
+    display: block !important;
+    overflow: hidden !important;
+  }
+
+  .home-craft-journey__text-block {
+    position: absolute !important;
+    inset: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    opacity: 0;
+    pointer-events: none;
+    transform: none !important;
+    will-change: opacity !important;
+  }
+
+  .home-craft-journey__text-block.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: none !important;
+  }
+
+  .home-craft-journey__card-top {
+    display: none !important;
+  }
+
+  .home-craft-journey__card-title {
+    font-size: 1.55rem !important;
+    margin-bottom: 8px !important;
+    line-height: 1.2 !important;
+  }
+
+  .home-craft-journey__card-text {
+    font-size: 0.88rem !important;
+    line-height: 1.6 !important;
+    color: rgba(254, 229, 177, 0.7) !important;
+  }
+
+  .home-craft-journey__card-subtext {
+    display: none !important;
+  }
+
+  .home-craft-journey__text-block .home-feat-card__metrics {
+    display: flex !important;
+    width: 100% !important;
+    max-width: 280px !important;
+    margin: 4px auto !important;
+    padding: 2px 0 !important;
+    gap: 4px !important;
+    border-top: 1px dashed rgba(254, 229, 177, 0.12) !important;
+    border-bottom: 1px dashed rgba(254, 229, 177, 0.12) !important;
+    max-height: none !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+  }
+
+  .home-craft-journey__text-block .home-feat-card__metric {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .home-craft-journey__text-block .home-feat-card__metric-val {
+    font-size: 1.15rem !important;
+  }
+
+  .home-craft-journey__text-block .home-feat-card__metric-lbl {
+    font-size: 0.55rem !important;
+    margin-top: 2px !important;
+  }
+
+  .home-craft-journey__text-block .home-feat-card__footer-tag {
+    display: flex !important;
+    opacity: 1 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    border-top: 1px solid rgba(254, 229, 177, 0.06) !important;
+    padding-top: 4px !important;
+    margin-top: 4px !important;
+  }
+
+  .home-craft-journey__text-block .home-feat-card__tag-text {
+    font-size: 0.65rem !important;
+  }
+
+  .home-craft-journey__text-block .home-feat-card__menu-cta-wrap {
+    display: block !important;
+    opacity: 1 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    width: 100% !important;
+    max-width: 300px !important;
+    margin: 6px auto !important;
+  }
+
+  .home-craft-journey__text-block .home-feat-card__menu-cta {
+    padding: 8px 16px !important;
+    font-size: 0.62rem !important;
+    display: inline-flex !important;
+    width: auto !important;
+  }
+
+  .home-craft-journey__heading {
+    margin-bottom: 10px !important;
+  }
+
+  .home-craft-journey__right {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px !important;
+    overflow: hidden !important;
+    margin: 0 auto !important;
+  }
+
+  .home-craft-journey__scroll-track {
+    position: relative !important;
+    width: calc(100vw - 40px) !important;
+    height: calc(100vw - 40px) !important;
+    max-width: 380px !important;
+    max-height: 380px !important;
+    aspect-ratio: 1 / 1 !important;
+    display: block !important;
+    margin: 0 auto !important;
+    overflow: hidden !important;
+  }
+
+  .home-craft-journey__card {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    visibility: visible !important;
+    box-shadow: 0 15px 35px rgba(3, 8, 16, 0.5) !important;
+  }
+
+  .home-craft-journey__card-overlay-small {
+    display: none !important;
+  }
+
+  .home-craft-journey__card-overlay-num {
+    font-size: 0.75rem !important;
+  }
+
+  .home-craft-journey__card-overlay-title {
+    font-size: 1.6rem !important;
+  }
+
+  .home-craft-journey__card-badge {
+    top: 16px !important;
+    right: 16px !important;
+    font-size: 0.6rem !important;
+    padding: 5px 10px !important;
+  }
+
+  .home-craft-journey__step-indicators {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    margin-top: 8px !important;
+    width: 100% !important;
+  }
+
+  .home-craft-journey__indicator {
+    gap: 4px !important;
+    display: flex !important;
+    align-items: center !important;
+    opacity: 0.35 !important;
+    cursor: pointer !important;
+  }
+
+  .home-craft-journey__indicator.active {
+    opacity: 1 !important;
+  }
+
+  .home-craft-journey__indicator .indicator-text {
+    display: inline-block !important;
+    font-size: 0.58rem !important;
+    letter-spacing: 0.05em !important;
+    font-family: var(--h-font-ui);
+    text-transform: uppercase;
+    color: var(--h-cream);
+  }
+
+  .home-craft-journey__indicator.active .indicator-text {
+    color: var(--h-copper) !important;
+  }
+
+  .home-craft-journey__indicator .indicator-dot {
+    width: 5px !important;
+    height: 5px !important;
+    border-radius: 50%;
+    background: var(--h-copper);
+    transform: scale(0.8) !important;
+    display: inline-block !important;
+  }
+
+  .home-craft-journey__indicator.active .indicator-dot {
+    transform: scale(1.2) !important;
+  }
+}
+
+
+/* === MOVED EXPERIENCE FROM HOME.CSS === */
+.home-experience {
+  background: var(--h-cream);
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid rgba(254, 229, 177, 0.15);
+  border-bottom: 1px solid rgba(254, 229, 177, 0.15);
+  padding: 80px 0;
+}
+
+.home-experience__container {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 80px;
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.home-experience__visual {
+  position: relative;
+  width: 85%;
+  margin: 0 auto;
+  border-radius: 4px;
+  overflow: visible;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.45);
+}
+
+.home-experience__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  border-radius: 4px;
+  transition: transform 1.8s var(--h-ease-luxury);
+}
+
+.home-experience__visual:hover .home-experience__img {
+  transform: scale(1.03);
+}
+
+.home-experience__copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--h-s3);
+}
+
+.home-experience__label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.home-experience__label-line {
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--h-copper) 0%, transparent 100%);
+  flex-shrink: 0;
+}
+
+.home-experience__label-text {
+  font-family: var(--h-font-ui);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  color: var(--h-walnut);
+}
+
+.home-experience__headline {
+  font-family: var(--h-font-serif);
+  font-size: clamp(2.6rem, 4.5vw, 4.2rem);
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: var(--h-navy-deep);
+  margin: 0;
+}
+
+.home-experience__headline-em {
+  font-style: italic;
+  font-weight: 300;
+  color: #b87333;
+  display: block;
+}
+
+.home-experience__body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.home-experience__body p {
+  font-family: var(--h-font-sans);
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 2.0;
+  color: var(--h-navy);
+  letter-spacing: 0.015em;
+  margin: 0;
+}
+
+.home-experience__body-ritual {
+  font-family: var(--h-font-serif) !important;
+  font-size: 1.1rem !important;
+  font-style: italic;
+  font-weight: 300 !important;
+  color: var(--h-navy-deep) !important;
+  line-height: 1.75 !important;
+  border-left: 2px solid #b87333;
+  padding-left: 20px;
+}
+
+#experience-cta {
+  background: var(--h-navy-deep) !important;
+  color: var(--h-cream) !important;
+  padding: 18px 40px;
+  border-radius: 99px;
+  box-shadow: 0 8px 30px rgba(26, 38, 52, 0.15) !important;
+  border: 1px solid var(--h-navy-deep) !important;
+}
+
+#experience-cta:hover {
+  background: var(--h-navy) !important;
+  color: var(--h-copper) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(26, 38, 52, 0.25) !important;
+  border-color: var(--h-navy) !important;
+}
+
+@media (max-width: 1024px) {
+  .home-experience__container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 0 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-experience__container {
+    padding: 0 24px;
+    gap: 24px;
+  }
+
+  .home-experience {
+    padding: 48px 0;
+    min-height: auto;
+  }
+}
+

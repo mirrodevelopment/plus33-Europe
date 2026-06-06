@@ -1,0 +1,81 @@
+<!--
+  FILE: navbar.html
+  FRAGMENT REFERENCE: Navbar
+  ══════════════════════════════════════════════════
+  PURPOSE:
+  This file is a REFERENCE COPY of the navbar HTML 
+  that lives inline inside index.html.
+
+  RESPONSIBILITIES:
+  - Serves as a reference copy of the interactive navbar and mobile side drawer menu.
+  - Hardcoded inside index.html to prevent layout shifts and network fetch delays.
+
+  ARCHITECTURE NOTES:
+  - DO NOT fetch or load this fragment dynamically at runtime.
+  - All modifications to navbar structure/classes must be synchronized in /index.html.
+
+  DEVELOPED BY : MIRRO
+  CODED BY     : SIVASURYA
+  ══════════════════════════════════════════════════
+-->
+
+<nav id="plus33-nav" class="plus33-nav" role="navigation" aria-label="Main navigation">
+    <div class="plus33-nav__inner container">
+
+      <!-- Left: Mobile Hamburger OR Desktop Logo -->
+      <div class="plus33-nav__left">
+        <button id="menu-toggle" class="plus33-nav__toggle mobile-only"
+          aria-label="Open navigation menu" aria-expanded="false" aria-controls="side-menu">
+          <div class="plus33-nav__toggle-lines">
+            <span></span>
+            <span></span>
+          </div>
+          <span class="plus33-nav__toggle-text">Menu</span>
+        </button>
+        <a href="/" class="plus33-nav__logo desktop-only plus33-nav__logo--desktop" aria-label="+33 Paris — Homepage">
+          <img src="/global/assets/brand/plus33-logo.png" alt="+33 Paris" class="plus33-nav__logo-img" />
+          <img src="/global/assets/brand/plus33-typography.png" alt="+33 Paris Typography" class="plus33-nav__logo-txt" />
+        </a>
+      </div>
+
+      <!-- Center: Mobile Logo OR Desktop Nav Links -->
+      <div class="plus33-nav__center">
+        <a href="/" class="plus33-nav__logo mobile-only plus33-nav__logo--mobile" aria-label="+33 Paris — Homepage">
+          <img src="/global/assets/brand/plus33-logo.png" alt="+33 Paris" class="plus33-nav__logo-img" />
+        </a>
+        <nav class="plus33-nav__links desktop-only" aria-label="Primary navigation links">
+          <a href="/"          class="plus33-nav__link">Home</a>
+          <a href="/store"     class="plus33-nav__link">Store</a>
+          <a href="/rewards"   class="plus33-nav__link">Rewards</a>
+          <a href="/journal"   class="plus33-nav__link">Journal</a>
+          <a href="/franchise" class="plus33-nav__link">Franchise</a>
+          <a href="/find-us"   class="plus33-nav__link">Find Us</a>
+          <a href="/about"     class="plus33-nav__link">About</a>
+        </nav>
+      </div>
+
+      <!-- Right: Location -->
+      <div class="plus33-nav__right">
+        <div class="plus33-nav__location" aria-label="Current flagship location">Paris, 7ème</div>
+      </div>
+
+    </div>
+</nav>
+
+<!-- Mobile Side Drawer -->
+<div id="side-menu" class="plus33-nav__panel" role="dialog" aria-modal="true" aria-label="Navigation menu" aria-hidden="true">
+    <button id="menu-close" class="plus33-nav__panel-close" aria-label="Close navigation menu">
+      <span class="plus33-nav__panel-close-text">Close</span>
+    </button>
+    <div class="plus33-nav__panel-inner">
+      <nav class="plus33-nav__panel-links" aria-label="Mobile navigation links">
+        <a href="/"          class="plus33-nav__panel-link">Home</a>
+        <a href="/store"     class="plus33-nav__panel-link">Store</a>
+        <a href="/rewards"   class="plus33-nav__panel-link">Rewards</a>
+        <a href="/journal"   class="plus33-nav__panel-link">Journal</a>
+        <a href="/franchise" class="plus33-nav__panel-link">Franchise</a>
+        <a href="/find-us"   class="plus33-nav__panel-link">Find Us</a>
+        <a href="/about"     class="plus33-nav__panel-link">About</a>
+      </nav>
+    </div>
+</div>

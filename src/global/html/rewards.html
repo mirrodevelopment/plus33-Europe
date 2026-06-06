@@ -1,0 +1,772 @@
+<!--
+  FILE: rewards.html
+  FRAGMENT REFERENCE: Rewards Showcase Page
+  ══════════════════════════════════════════════════
+  PURPOSE:
+  HTML fragment for the PLUS33 Rewards Showcase page.
+  Designed for Apple-level presentation, luxury editorial spacing,
+  and smooth interactive transitions.
+  ══════════════════════════════════════════════════
+-->
+
+<div class="rewards-page" id="rewards-page-root">
+  
+  <!-- ════════ HERO SECTION ════════ -->
+  <section class="rewards-hero" id="rewards-hero-section">
+    <div class="rewards-container rewards-hero__grid">
+      
+      <!-- Left side: content -->
+      <div class="rewards-hero__content">
+        <span class="rewards-eyebrow">PLUS33 REWARDS</span>
+        <h1 class="rewards-hero__heading">
+          More sips.<br>
+          More rewards.<br>
+          <span class="rewards-gold">All for you.</span>
+        </h1>
+        <p class="rewards-hero__description">
+          Join PLUS33 Rewards and earn points every time you order.<br><br>
+          Unlock exclusive treats, offers and experiences.
+        </p>
+        <div class="rewards-hero__ctas">
+          <button class="rewards-btn-primary rewards-toast-trigger" data-toast-msg="Rewards system coming soon">
+            <span>JOIN NOW</span>
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <button class="rewards-btn-secondary rewards-scroll-trigger" data-target="#how-rewards-work-section">
+            <span>HOW IT WORKS</span>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Right side: large layered phone mockup -->
+      <div class="rewards-hero__mockup-wrapper">
+        <div class="rewards-phone-mockup">
+          <div class="rewards-phone-inner">
+            
+            <!-- Dynamic Island -->
+            <div class="rewards-phone-island">
+              <div class="rewards-island-speaker"></div>
+              <div class="rewards-island-camera"></div>
+              <div class="rewards-island-gloss"></div>
+            </div>
+            
+            <!-- Screen Header -->
+            <div class="rewards-app-header">
+              <div class="rewards-app-logo">
+                <!-- Paris Pony Gold Logo icon -->
+                <svg viewBox="0 0 100 100" class="app-logo-svg">
+                  <path d="M50 15c-1.2 5.4-4 8.4-4 12a4 4 0 0 0 8 0c0-3.6-2.8-6.6-4-12z" fill="#b18b56"/>
+                  <path d="M41 40c2.5-4 5.5-6.5 11-7.5.5-2.5 1.5-4 3.5-5 .5 1.5 1.5 2.5 3 2.5s2.5-1 3-2.5c2 1.5 3.5 3 4 5 1.5.5 2.5 1.5 2.5 3.5s-1 3.5-2.5 3.5c-4.5.5-7 3.5-8.5 7.5-.5 1.5-1.5 2-3.5 2s-3.5-.5-4-2c-1.5-4.5-4-7-8-7.5z" fill="#061a33"/>
+                </svg>
+                <span class="app-logo-text">PLUS33</span>
+              </div>
+              <div class="rewards-app-bell">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="bell-dot"></span>
+              </div>
+            </div>
+            
+            <!-- App Scrollable Container -->
+            <div class="rewards-app-body">
+              
+              <!-- Greeting -->
+              <div class="rewards-app-greeting">
+                <span class="greeting-subtitle">Good morning,</span>
+                <h3 class="greeting-title">Ananya ☀️</h3>
+              </div>
+              
+              <!-- Center Card: Navy Rewards card -->
+              <div class="rewards-app-card">
+                <div class="app-card-shine"></div>
+                <div class="app-card-header">
+                  <span class="app-card-eyebrow">REWARDS BALANCE</span>
+                  <div class="app-card-badge">
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="badge-star"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <span>Gold Member</span>
+                  </div>
+                </div>
+                <div class="app-card-balance">
+                  <span class="balance-num">4,250</span>
+                  <span class="balance-label">Points</span>
+                </div>
+                <div class="app-card-progress">
+                  <div class="progress-header">
+                    <span>750 points to reach Platinum</span>
+                  </div>
+                  <div class="progress-track">
+                    <div class="progress-fill" style="width: 82%;"></div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Middle Section: Quick Reorder -->
+              <div class="rewards-app-reorder">
+                <div class="reorder-header">
+                  <h4 class="reorder-title">ORDER AGAIN</h4>
+                  <a href="/store" class="reorder-viewall">View all</a>
+                </div>
+                <div class="reorder-grid">
+                  <!-- Product 1: Cappuccino -->
+                  <a href="/product/2" class="reorder-card">
+                    <div class="reorder-card__img-wrap">
+                      <img src="/local/assets/products/drinks/hot-coffee/cappuccino.png" alt="Cappuccino" loading="lazy" />
+                    </div>
+                    <span class="reorder-card__name">Cappuccino</span>
+                    <span class="reorder-card__price">₹199</span>
+                  </a>
+                  <!-- Product 2: Iced Spanish Latte -->
+                  <a href="/product/10" class="reorder-card">
+                    <div class="reorder-card__img-wrap">
+                      <img src="/local/assets/products/drinks/iced-coffee/iced-punch-coco.jpg" alt="Iced Spanish Latte" loading="lazy" />
+                    </div>
+                    <span class="reorder-card__name">Iced Spanish Latte</span>
+                    <span class="reorder-card__price">₹229</span>
+                  </a>
+                  <!-- Product 3: Butter Croissant -->
+                  <a href="/product/18" class="reorder-card">
+                    <div class="reorder-card__img-wrap">
+                      <img src="/local/assets/products/desserts/croissant.jpg" alt="Butter Croissant" loading="lazy" />
+                    </div>
+                    <span class="reorder-card__name">Butter Croissant</span>
+                    <span class="reorder-card__price">₹129</span>
+                  </a>
+                </div>
+              </div>
+              
+              <!-- What's New Section -->
+              <div class="rewards-app-whatsnew">
+                <h4 class="whatsnew-title">WHAT'S NEW</h4>
+                <a href="/product/7" class="whatsnew-banner">
+                  <div class="whatsnew-banner__img-wrap">
+                    <img src="/local/assets/products/signature/rose-pistachio-latte.jpg" alt="Rose Pistachio Latte" loading="lazy" />
+                  </div>
+                  <div class="whatsnew-banner__content">
+                    <span class="banner-tag">Featured Drink</span>
+                    <h5 class="banner-title">Rose Pistachio Latte</h5>
+                    <p class="banner-desc">A delicate blend of rose, pistachio and espresso.</p>
+                  </div>
+                </a>
+              </div>
+              
+            </div>
+            
+            <!-- Bottom Navigation Bar -->
+            <div class="rewards-app-tabs">
+              <div class="tab-item active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                <span>Home</span>
+              </div>
+              <div class="tab-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                <span>Order</span>
+              </div>
+              <div class="tab-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                <span>Rewards</span>
+              </div>
+              <div class="tab-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span>Profile</span>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Reflections -->
+          <div class="rewards-phone-glare"></div>
+          <div class="rewards-phone-highlight"></div>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+  
+  <!-- ════════ MEMBERSHIP CARD SECTION ════════ -->
+  <section class="rewards-membership" id="membership-card-section">
+    <div class="rewards-container text-center">
+      <span class="rewards-section-subtitle">THE COLLECTIBLE EXPERIENCE</span>
+      <h2 class="rewards-section-title">A prestigious status<br>crafted for you.</h2>
+      
+      <div class="collectible-card-wrapper">
+        <div class="collectible-card">
+          <div class="collectible-card__shimmer"></div>
+          <div class="collectible-card__inner">
+            
+            <div class="collectible-card__header">
+              <span class="card-brand">PLUS33 RESERVE</span>
+              <!-- Pony Logo outline -->
+              <svg viewBox="0 0 100 100" class="card-horse-logo">
+                <path d="M50 15c-1.2 5.4-4 8.4-4 12a4 4 0 0 0 8 0c0-3.6-2.8-6.6-4-12z" fill="none" stroke="currentColor" stroke-width="2"/>
+                <path d="M41 40c2.5-4 5.5-6.5 11-7.5.5-2.5 1.5-4 3.5-5 .5 1.5 1.5 2.5 3 2.5s2.5-1 3-2.5c2 1.5 3.5 3 4 5 1.5.5 2.5 1.5 2.5 3.5s-1 3.5-2.5 3.5c-4.5.5-7 3.5-8.5 7.5-.5 1.5-1.5 2-3.5 2s-3.5-.5-4-2c-1.5-4.5-4-7-8-7.5z" fill="none" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </div>
+            
+            <div class="collectible-card__body">
+              <span class="card-gold-badge">GOLD MEMBER</span>
+              <div class="card-number">•••• •••• •••• 4250</div>
+            </div>
+            
+            <div class="collectible-card__footer">
+              <div class="card-holder">
+                <span class="footer-label">MEMBER SINCE</span>
+                <span class="footer-val">2024</span>
+              </div>
+              <div class="card-holder align-right">
+                <span class="footer-label">HOLDER</span>
+                <span class="footer-val">ANANYA SHARMA</span>
+              </div>
+            </div>
+            
+          </div>
+          <div class="collectible-card__hologram"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ════════ HOW REWARDS WORK ════════ -->
+  <section class="rewards-how" id="how-rewards-work-section">
+    <div class="rewards-container">
+      <div class="rewards-grid-three">
+        
+        <!-- Step 1 -->
+        <div class="how-step">
+          <div class="how-step__icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <h3 class="how-step__title">1. Order Coffee</h3>
+          <p class="how-step__desc">Order your daily favorites in-app or in-salon at any of our global boutiques.</p>
+        </div>
+        
+        <!-- Step 2 -->
+        <div class="how-step">
+          <div class="how-step__icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <h3 class="how-step__title">2. Earn Points</h3>
+          <p class="how-step__desc">Receive 10 points for every ₹100 spent, piling up and opening new privileges.</p>
+        </div>
+        
+        <!-- Step 3 -->
+        <div class="how-step">
+          <div class="how-step__icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+          </div>
+          <h3 class="how-step__title">3. Unlock Rewards</h3>
+          <p class="how-step__desc">Redeem points for complimentary sips, fresh bakes, and private boutique tasting events.</p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+  
+  <!-- ════════ MEMBERSHIP TIERS ════════ -->
+  <section class="rewards-tiers" id="membership-tiers-section">
+    <div class="rewards-container">
+      <div class="text-center rewards-section-header">
+        <span class="rewards-section-subtitle" style="margin-bottom: 8px; display: inline-block;">MEMBERSHIP TIERS</span>
+        <div class="section-divider-fleur" style="margin-bottom: 16px;">
+           <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24" style="color: var(--rw-gold);"><path d="M12 2L15 10L22 12L15 14L12 22L9 14L2 12L9 10L12 2Z"/></svg>
+        </div>
+        <h2 class="rewards-section-title" style="margin-bottom: 12px;">Status that grows with every sip.</h2>
+        <p class="transactions-intro" style="margin-inline:auto; max-width:540px; color:var(--rw-muted); line-height:1.6; font-size:16px;">Unlock elevated experiences, exclusive rewards, and premium hospitality benefits as your PLUS33 journey evolves.</p>
+      </div>
+      
+      <!-- HORIZONTAL ASCENDING PROGRESSION TRACK -->
+      <div class="status-progression-track">
+        
+        <!-- Bronze -->
+        <div class="status-node active" data-tier="bronze">
+          <div class="your-tier-badge">YOUR TIER</div>
+          <div class="status-node__header">
+            <div class="status-node__emblem-wrap">
+              <img src="/local/assets/tiers/bronze.png" alt="Bronze Emblem" class="tier-emblem" loading="lazy" />
+            </div>
+            <div class="status-node__info">
+              <h3 class="status-node__title">Bronze</h3>
+              <span class="status-node__req">0+ Points</span>
+              <div class="luxury-progress-graph">
+                <div class="luxury-progress-graph__fill" style="width: 100%;"></div>
+              </div>
+            </div>
+            <div class="status-node__chevron">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Silver -->
+        <div class="status-node" data-tier="silver">
+          <div class="status-node__header">
+            <div class="status-node__emblem-wrap">
+              <img src="/local/assets/tiers/silver.png" alt="Silver Emblem" class="tier-emblem" loading="lazy" />
+            </div>
+            <div class="status-node__info">
+              <h3 class="status-node__title">Silver</h3>
+              <span class="status-node__req">3,000+ Points</span>
+              <div class="luxury-progress-graph">
+                <div class="luxury-progress-graph__fill" style="width: 45%;"></div>
+              </div>
+            </div>
+            <div class="status-node__chevron">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Gold -->
+        <div class="status-node" data-tier="gold">
+          <div class="status-node__header">
+            <div class="status-node__emblem-wrap">
+              <img src="/local/assets/tiers/gold.png" alt="Gold Emblem" class="tier-emblem" loading="lazy" />
+            </div>
+            <div class="status-node__info">
+              <h3 class="status-node__title">Gold</h3>
+              <span class="status-node__req">8,000+ Points</span>
+              <div class="luxury-progress-graph">
+                <div class="luxury-progress-graph__fill" style="width: 0%;"></div>
+              </div>
+            </div>
+            <div class="status-node__chevron">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Platinum -->
+        <div class="status-node" data-tier="platinum">
+          <div class="status-node__header">
+            <div class="status-node__emblem-wrap">
+              <img src="/local/assets/tiers/platinum.png" alt="Platinum Emblem" class="tier-emblem" loading="lazy" />
+            </div>
+            <div class="status-node__info">
+              <h3 class="status-node__title">Platinum</h3>
+              <span class="status-node__req">15,000+ Points</span>
+              <div class="luxury-progress-graph">
+                <div class="luxury-progress-graph__fill" style="width: 0%;"></div>
+              </div>
+            </div>
+            <div class="status-node__chevron">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      
+      <!-- DESKTOP DETAILS PANEL -->
+      <div class="status-details-panel" id="desktop-details-panel">
+        <div class="status-details-panel__inner">
+          <div class="details-left">
+            <div class="details-tier-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15 10L22 12L15 14L12 22L9 14L2 12L9 10L12 2Z"/></svg>
+            </div>
+            <h4 class="details-tier-name">Bronze</h4>
+            <div class="details-divider-small">
+               <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 2L15 10L22 12L15 14L12 22L9 14L2 12L9 10L12 2Z"/></svg>
+            </div>
+            <p class="details-tier-desc">Welcome perks and entry-level luxury benefits.</p>
+          </div>
+          
+          <div class="details-divider-mobile-only">
+            <div class="divider-line"></div>
+            <svg viewBox="0 0 24 24" class="divider-icon" fill="currentColor"><path d="M12 2L15 10L22 12L15 14L12 22L9 14L2 12L9 10L12 2Z"/></svg>
+            <div class="divider-line"></div>
+          </div>
+          
+          <div class="details-right">
+            <ul class="details-perks-list">
+              <li class="perk-item">
+                <div class="perk-icon perk-icon-desktop">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+                </div>
+                <div class="perk-icon perk-icon-mobile">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="checkmark"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div class="perk-text">
+                  <h5>Welcome perks</h5>
+                  <p>Enjoy exclusive welcome treats and offers.</p>
+                </div>
+              </li>
+              <li class="perk-item">
+                <div class="perk-icon perk-icon-desktop">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                </div>
+                <div class="perk-icon perk-icon-mobile">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="checkmark"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div class="perk-text">
+                  <h5>Birthday rewards</h5>
+                  <p>A special treat, just for you.</p>
+                </div>
+              </li>
+              <li class="perk-item">
+                <div class="perk-icon perk-icon-desktop">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                </div>
+                <div class="perk-icon perk-icon-mobile">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="checkmark"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div class="perk-text">
+                  <h5>Early offers</h5>
+                  <p>Be the first to know about select promotions.</p>
+                </div>
+              </li>
+              <li class="perk-item">
+                <div class="perk-icon perk-icon-desktop">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <div class="perk-icon perk-icon-mobile">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="checkmark"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div class="perk-text">
+                  <h5>Member support</h5>
+                  <p>Dedicated support for a seamless experience.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="status-details-footer">
+          Points reset annually. Terms & conditions apply.
+        </div>
+      </div>
+      
+    </div>
+  </section>
+  
+  <!-- ════════ UNLOCKABLE REWARDS SECTION ════════ -->
+  <section class="rewards-unlockable" id="unlockable-rewards-section">
+    <div class="rewards-container">
+      <div class="text-center rewards-section-header">
+        <span class="rewards-section-subtitle">UNLOCKED MILESTONES</span>
+        <h2 class="rewards-section-title">Artisanal treats to unlock.</h2>
+      </div>
+      
+      <div class="unlockable-grid">
+        
+        <!-- Reward 1: Butter Croissant -->
+        <div class="reward-card">
+          <div class="reward-card__image-container">
+            <img src="/local/assets/products/desserts/croissant.jpg" alt="Butter Croissant" loading="lazy" />
+            <span class="reward-card__gold-label">Classic Bake</span>
+          </div>
+          <div class="reward-card__content">
+            <h3 class="reward-card__title">Butter Croissant</h3>
+            <span class="reward-card__spend">Unlock at ₹2,000 spent</span>
+            <div class="reward-card__progress">
+              <div class="progress-info">
+                <span>Progress</span>
+                <span>100%</span>
+              </div>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar-fill" style="width: 100%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Reward 2: Free Latte -->
+        <div class="reward-card">
+          <div class="reward-card__image-container">
+            <img src="/local/assets/products/signature/paris-vanilla-latte.jpg" alt="Paris Vanilla Latte" loading="lazy" />
+            <span class="reward-card__gold-label">Specialty Sip</span>
+          </div>
+          <div class="reward-card__content">
+            <h3 class="reward-card__title">Free Latte</h3>
+            <span class="reward-card__spend">Unlock at ₹5,000 spent</span>
+            <div class="reward-card__progress">
+              <div class="progress-info">
+                <span>Progress</span>
+                <span>80%</span>
+              </div>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar-fill" style="width: 80%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Reward 3: Free Dessert -->
+        <div class="reward-card">
+          <div class="reward-card__image-container">
+            <img src="/local/assets/products/drinks/iced-coffee/tiramisu-glace.jpg" alt="Tiramisu Glacé" loading="lazy" />
+            <span class="reward-card__gold-label">Patisserie Lab</span>
+          </div>
+          <div class="reward-card__content">
+            <h3 class="reward-card__title">Free Dessert</h3>
+            <span class="reward-card__spend">Unlock at ₹8,000 spent</span>
+            <div class="reward-card__progress">
+              <div class="progress-info">
+                <span>Progress</span>
+                <span>50%</span>
+              </div>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar-fill" style="width: 50%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Reward 4: Exclusive Signature Drink -->
+        <div class="reward-card">
+          <div class="reward-card__image-container">
+            <img src="/local/assets/products/signature/rose-pistachio-latte.jpg" alt="Rose Pistachio Latte" loading="lazy" />
+            <span class="reward-card__gold-label">Atelier Only</span>
+          </div>
+          <div class="reward-card__content">
+            <h3 class="reward-card__title">Exclusive Signature Drink</h3>
+            <span class="reward-card__spend">Unlock at ₹12,000 spent</span>
+            <div class="reward-card__progress">
+              <div class="progress-info">
+                <span>Progress</span>
+                <span>35%</span>
+              </div>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar-fill" style="width: 35%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Reward 5: VIP Tasting Event -->
+        <div class="reward-card reward-card--span-two">
+          <div class="reward-card__image-container">
+            <img src="/global/assets/img/boutique-tablescape.png" alt="VIP Tasting Event" loading="lazy" />
+            <span class="reward-card__gold-label">Reserve Lounge</span>
+          </div>
+          <div class="reward-card__content">
+            <h3 class="reward-card__title">VIP Tasting Event</h3>
+            <span class="reward-card__spend">Unlock at ₹20,000 spent</span>
+            <div class="reward-card__progress">
+              <div class="progress-info">
+                <span>Progress</span>
+                <span>20%</span>
+              </div>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar-fill" style="width: 20%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+  
+  <!-- ════════ CUSTOMER BENEFITS SECTION ════════ -->
+  <section class="rewards-benefits" id="benefits-section">
+    <div class="rewards-container">
+      <div class="benefits-strip">
+        
+        <!-- Benefit 1 -->
+        <div class="benefit-item">
+          <div class="benefit-item__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <span class="benefit-item__label">Faster Checkout</span>
+        </div>
+        
+        <div class="benefit-separator"></div>
+        
+        <!-- Benefit 2 -->
+        <div class="benefit-item">
+          <div class="benefit-item__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          </div>
+          <span class="benefit-item__label">Priority Offers</span>
+        </div>
+        
+        <div class="benefit-separator"></div>
+        
+        <!-- Benefit 3 -->
+        <div class="benefit-item">
+          <div class="benefit-item__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v4M5 8v13a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8M3 8h18M8 12v3M16 12v3"/></svg>
+          </div>
+          <span class="benefit-item__label">Birthday Rewards</span>
+        </div>
+        
+        <div class="benefit-separator"></div>
+        
+        <!-- Benefit 4 -->
+        <div class="benefit-item">
+          <div class="benefit-item__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
+          </div>
+          <span class="benefit-item__label">Exclusive Drinks</span>
+        </div>
+        
+        <div class="benefit-separator"></div>
+        
+        <!-- Benefit 5 -->
+        <div class="benefit-item">
+          <div class="benefit-item__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <span class="benefit-item__label">Community Events</span>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+  
+  <!-- ════════ DEMO TRANSACTION SECTION ════════ -->
+  <section class="rewards-transactions" id="transactions-section">
+    <div class="rewards-container rewards-transactions__inner">
+      <div class="transactions-header">
+        <span class="rewards-section-subtitle">LEDGER ACTIVITY</span>
+        <h2 class="rewards-section-title">Recent Transactions</h2>
+        <p class="transactions-intro">Interactive view of your point rewards ledger, styled like your Apple Wallet card statement.</p>
+      </div>
+      
+      <div class="transactions-list">
+        
+        <!-- Row 1 -->
+        <div class="transaction-row">
+          <div class="transaction-row__left">
+            <div class="product-thumb">
+              <img src="/local/assets/products/drinks/iced-coffee/iced-punch-coco.jpg" alt="Iced Spanish Latte" />
+            </div>
+            <div class="product-details">
+              <span class="product-name">Iced Spanish Latte</span>
+              <span class="product-date">Today, 10:14 AM · Paris Maison</span>
+            </div>
+          </div>
+          <span class="points-badge positive">+120 Points</span>
+        </div>
+        
+        <!-- Row 2 -->
+        <div class="transaction-row">
+          <div class="transaction-row__left">
+            <div class="product-thumb">
+              <img src="/local/assets/products/desserts/croissant.jpg" alt="Butter Croissant" />
+            </div>
+            <div class="product-details">
+              <span class="product-name">Butter Croissant</span>
+              <span class="product-date">Yesterday, 9:20 AM · Milan Atelier</span>
+            </div>
+          </div>
+          <span class="points-badge positive">+40 Points</span>
+        </div>
+        
+        <!-- Row 3 -->
+        <div class="transaction-row">
+          <div class="transaction-row__left">
+            <div class="product-thumb">
+              <img src="/local/assets/products/signature/rose-pistachio-latte.jpg" alt="Rose Pistachio Latte" />
+            </div>
+            <div class="product-details">
+              <span class="product-name">Rose Pistachio Latte</span>
+              <span class="product-date">June 4, 3:45 PM · London Atelier</span>
+            </div>
+          </div>
+          <span class="points-badge positive">+180 Points</span>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+  
+  <!-- ════════ FAQ SECTION ════════ -->
+  <section class="rewards-faq" id="faq-section">
+    <div class="rewards-container rewards-faq__inner">
+      <div class="text-center rewards-section-header">
+        <span class="rewards-section-subtitle">FAQ</span>
+        <h2 class="rewards-section-title">Frequently Asked Questions</h2>
+      </div>
+      
+      <div class="faq-accordion-container">
+        
+        <!-- Accordion 1 -->
+        <div class="faq-card">
+          <button class="faq-card__header" aria-expanded="false">
+            <span class="faq-question">How do I earn points?</span>
+            <span class="faq-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="faq-icon-svg"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </button>
+          <div class="faq-card__content">
+            <div class="faq-card__content-inner">
+              <p>You earn points on every purchase made via the PLUS33 App or directly at our physical boutique salons. Simply scan your digital membership card at checkout or order ahead using the app to receive 10 points for every ₹100 spent.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Accordion 2 -->
+        <div class="faq-card">
+          <button class="faq-card__header" aria-expanded="false">
+            <span class="faq-question">When do rewards unlock?</span>
+            <span class="faq-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="faq-icon-svg"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </button>
+          <div class="faq-card__content">
+            <div class="faq-card__content-inner">
+              <p>Rewards unlock automatically once your cumulative spend passes certain milestones. You will receive immediate notifications in-app and via email with digital vouchers that can be redeemed at checkout.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Accordion 3 -->
+        <div class="faq-card">
+          <button class="faq-card__header" aria-expanded="false">
+            <span class="faq-question">Do points expire?</span>
+            <span class="faq-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="faq-icon-svg"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </button>
+          <div class="faq-card__content">
+            <div class="faq-card__content-inner">
+              <p>Points are valid for 12 months from the date they are earned. Your account dashboard inside the app will display any points nearing expiration so you can easily redeem them in time.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Accordion 4 -->
+        <div class="faq-card">
+          <button class="faq-card__header" aria-expanded="false">
+            <span class="faq-question">Can I use rewards in-store?</span>
+            <span class="faq-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="faq-icon-svg"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </button>
+          <div class="faq-card__content">
+            <div class="faq-card__content-inner">
+              <p>Yes, all unlocked rewards and vouchers can be redeemed online via app orders or in-person at any of our physical boutique salons. Show your member QR code to the barista at the counter to apply your rewards.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Accordion 5 -->
+        <div class="faq-card">
+          <button class="faq-card__header" aria-expanded="false">
+            <span class="faq-question">Will the app launch soon?</span>
+            <span class="faq-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="faq-icon-svg"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </button>
+          <div class="faq-card__content">
+            <div class="faq-card__content-inner">
+              <p>The premium PLUS33 Rewards app ecosystem is currently under active development and scheduled for launch in selected flagship locations later this year. Sign up to our journal letter to receive exclusive launch event invites.</p>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+  
+  <!-- ════════ FINAL CTA SECTION ════════ -->
+  <section class="rewards-cta" id="cta-section">
+    <div class="rewards-cta-glow"></div>
+    <div class="rewards-container rewards-cta__content text-center">
+      <h2 class="rewards-cta__title">Start earning with every sip.</h2>
+      <p class="rewards-cta__desc">Join the future of premium coffee rewards.</p>
+      <button class="rewards-btn-primary rewards-btn-cta rewards-toast-trigger" data-toast-msg="PLUS33 Rewards launches soon">
+        <span>COMING SOON</span>
+        <div class="btn-shine-sweep"></div>
+      </button>
+    </div>
+  </section>
+  
+</div>

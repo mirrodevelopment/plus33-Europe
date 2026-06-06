@@ -1,0 +1,416 @@
+================================================================================
+PLUS33 EUROPE — ENTERPRISE ARCHITECTURE AND FILE MAP
+================================================================================
+A premium modular monolith SPA + Spring Boot system. Decoupled into LOCAL 
+business engines and GLOBAL website platform engines.
+
+================================================================================
+PART 1: SYSTEM FILE STRUCTURE (HIERARCHICAL TREE)
+================================================================================
+
+plus33-europe/
+├── .mvn/
+│   └── wrapper/
+│       ├── maven-wrapper.jar           # Maven Wrapper runtime binary
+│       └── maven-wrapper.properties    # Maven Wrapper configuration
+├── .vscode/
+│   ├── launch.json                     # Custom VS Code launch profiles
+│   └── settings.json                   # Custom workspace settings
+├── compose.yaml                        # Docker compose services config
+├── HELP.md                             # Project setup & resources references
+├── mvnw                                # Unix Maven wrapper shell script
+├── mvnw.cmd                            # Windows Maven wrapper execution script
+├── pom.xml                             # Core Maven Build Descriptor
+├── README.md                           # Quickstart info
+├── PROJECT_ARCHITECTURE.txt            # [THIS FILE] Unified architecture & file guide
+└── src/
+    ├── local/                          # Local Subsystem (Curated Store)
+    │   ├── assets/                     # Premium product & storefront media
+    │   │   ├── brand/                  # Custom local brand assets
+    │   │   │   ├── logo-gold.png       # Gold logo variant
+    │   │   │   ├── plus33-typography.png
+    │   │   │   └── plus33-wordmark.png
+    │   │   ├── fonts/                  # Premium typography fonts (empty)
+    │   │   ├── hero/                   # Homepage hero illustrations and backgrounds
+    │   │   │   ├── coffee-bean.png
+    │   │   │   ├── coffee-been2.png
+    │   │   │   ├── dessert-section.jpg
+    │   │   │   ├── hero tey 2.png
+    │   │   │   ├── hero-coffee.jpg
+    │   │   │   ├── hero-img2.png
+    │   │   │   ├── hero-leather-bg.jpg
+    │   │   │   ├── hero-product-composition.png
+    │   │   │   └── store-hero.jpg
+    │   │   ├── home/                   # Homepage Coffee Ritual banners
+    │   │   │   ├── The Coffee Ritual/  # Sub-folder for specific ritual layouts
+    │   │   │   │   ├── coffee-experience-banner.png
+    │   │   │   │   ├── coffee-roastery-banner.png
+    │   │   │   │   ├── handbrew-coffee.png
+    │   │   │   │   └── premium-coffee-quality.png
+    │   │   │   ├── The-Experience.png
+    │   │   │   ├── hero_espresso_pour.png
+    │   │   │   └── modern-coffee-ritual.png
+    │   │   ├── products/               # Dynamic catalog and category imagery
+    │   │   │   ├── desserts/           # Artisan bakery and sweet selection
+    │   │   │   │   ├── ALMOND CROISSANT.jpg
+    │   │   │   │   ├── croissant.jpg
+    │   │   │   │   ├── donut.jpg
+    │   │   │   │   ├── pretzel.jpg
+    │   │   │   │   └── tiramisu-glace.jpg
+    │   │   │   ├── drinks/             # Beverage categories
+    │   │   │   │   ├── hot-coffee/     # Hot classics
+    │   │   │   │   │   ├── cafe-filtre.png
+    │   │   │   │   │   ├── cappuccino.png
+    │   │   │   │   │   ├── chai-latte.png
+    │   │   │   │   │   ├── latte-flat-white.jpg
+    │   │   │   │   │   └── pumpkin-latte.jpg
+    │   │   │   │   └── iced-coffee/    # Chilled beverages and cold brews
+    │   │   │   │       ├── iced-punch-coco.jpg
+    │   │   │   │       ├── matcha-vanille.jpg
+    │   │   │   │       ├── the-glace-dhiver.png
+    │   │   │   │       └── tiramisu-glace.jpg
+    │   │   │   ├── matcha/             # Special matcha category assets
+    │   │   │   │   └── matcha.jpeg
+    │   │   │   ├── merchandise/        # Branded apparel and customizable goods
+    │   │   │   │   ├── atelier-gift-pack.jpeg
+    │   │   │   │   └── organic-tote.png
+    │   │   │   ├── retail/             # Coffee beans and retail bags
+    │   │   │   │   ├── cerrado-colombia.jpg
+    │   │   │   │   ├── sachet-de-cafe.png
+    │   │   │   │   └── signature-dark-roast.png
+    │   │   │   ├── signature/          # Signature/Specialty drinks selection
+    │   │   │   │   ├── biscoff-cream-latte.webp
+    │   │   │   │   ├── champs-elysees-cold-brew.jpg
+    │   │   │   │   ├── louvre-mocha.jpg
+    │   │   │   │   ├── montmartre-caramel-latte.png
+    │   │   │   │   ├── paris-vanilla-latte.jpg
+    │   │   │   │   └── rose-pistachio-latte.jpg
+    │   │   │   ├── bakery_category.jpg
+    │   │   │   ├── bakery_category.png
+    │   │   │   ├── beans_category.jpg
+    │   │   │   ├── beans_category.png
+    │   │   │   ├── desserts_category.jpg
+    │   │   │   ├── desserts_category.png
+    │   │   │   ├── signature_category.jpg
+    │   │   │   └── signature_category.png
+    │   │   └── video/                  # Immersive video backgrounds (empty)
+    │   ├── css/                        # Subsystem styles
+    │   │   ├── bakery-showcase.css     # Luxury bakery showcase section styling
+    │   │   ├── best-sellers.css        # Luxury best sellers showcase section styling
+    │   │   ├── home.css
+    │   │   ├── product-details.css
+    │   │   └── store.css
+    │   ├── html/                       # Custom SPA page views
+    │   │   ├── home.html
+    │   │   ├── product-details.html
+    │   │   └── store.html
+    │   ├── java/                       # Curated store backend logic
+    │   │   └── com/
+    │   │       └── plus33/
+    │   │           └── europe/
+    │   │               └── local/
+    │   │                   ├── Plus33EuropeApplication.java (Main Entry Point)
+    │   │                   ├── controller/
+    │   │                   │   └── ProductRestController.java
+    │   │                   ├── dto/
+    │   │                   │   └── ProductDTO.java
+    │   │                   ├── model/
+    │   │                   │   └── Product.java
+    │   │                   ├── repository/
+    │   │                   │   └── ProductRepository.java
+    │   │                   └── service/
+    │   │                       ├── ProductService.java
+    │   │                       └── ProductServiceImpl.java
+    │   └── js/                         # Subsystem controllers & loaders
+    │       ├── home.js
+    │       ├── product-details.js
+    │       ├── store-data.js
+    │       └── store.js
+    │
+    ├── global/                         # Shared Subsystem (Website Core Engine)
+    │   ├── application.properties      # Central Spring Boot config properties
+    │   ├── assets/                     # Shared branding fonts, icons & images
+    │   │   ├── brand/                  # Global core branding logos and typography
+    │   │   │   ├── plus33-logo.png
+    │   │   │   └── plus33-typography.png
+    │   │   ├── find-us/                # Geolocation and location resources
+    │   │   │   └── map-pin.png
+    │   │   ├── franchise/              # Franchise candidacy documents & layouts
+    │   │   │   └── global-expansion-map.png
+    │   │   ├── icons/                  # Shared system UI icons (empty / SVG-inlined)
+    │   │   ├── img/                    # Organized boutique and interior layouts
+    │   │   │   ├── architecture-taste.png
+    │   │   │   ├── boutique-tablescape.png
+    │   │   │   ├── outdoor-terrace-cafe.png
+    │   │   │   └── soil-ethiopia.png
+    │   │   ├── journal/                # Dynamic article imagery and visual narratives
+    │   │   │   ├── architecture-taste.png
+    │   │   │   └── soil-ethiopia.png
+    │   │   └── video/                  # Ambient backgrounds (empty)
+    │   ├── css/                        # Global style & utility sheets
+    │   │   ├── about.css
+    │   │   ├── chatbot.css
+    │   │   ├── find-us.css
+    │   │   ├── footer.css
+    │   │   ├── franchise.css
+    │   │   ├── global.css
+    │   │   ├── journal.css
+    │   │   ├── navbar.css
+    │   │   └── responsive.css
+    │   ├── html/                       # SPA Frame shell & global views
+    │   │   ├── index.html              # Main SPA frame shell
+    │   │   ├── about.html
+    │   │   ├── chatbot.html
+    │   │   ├── find-us.html
+    │   │   ├── footer.html
+    │   │   ├── franchise.html
+    │   │   ├── journal.html
+    │   │   └── navbar.html
+    │   ├── java/                       # Core shared backend architecture
+    │   │   └── com/
+    │   │       └── plus33/
+    │   │           └── europe/
+    │   │               └── global/
+    │   │                   ├── config/
+    │   │                   │   ├── DatabaseSeeder.java
+    │   │                   │   ├── SecurityConfig.java
+    │   │                   │   └── WebController.java (SPA Redirector)
+    │   │                   ├── constants/
+    │   │                   │   └── AppConstants.java
+    │   │                   ├── controller/
+    │   │                   │   ├── ChatbotRestController.java
+    │   │                   │   ├── FranchiseRestController.java
+    │   │                   │   └── JournalRestController.java
+    │   │                   ├── dto/
+    │   │                   │   ├── ChatRequestDTO.java
+    │   │                   │   ├── ChatResponseDTO.java
+    │   │                   │   ├── FranchiseApplicationDTO.java
+    │   │                   │   └── JournalStoryDTO.java
+    │   │                   ├── exception/
+    │   │                   │   ├── GlobalExceptionHandler.java
+    │   │                   │   └── ResourceNotFoundException.java
+    │   │                   ├── model/
+    │   │                   │   ├── ChatRequest.java
+    │   │                   │   ├── ChatResponse.java
+    │   │                   │   ├── FranchiseApplication.java
+    │   │                   │   └── JournalStory.java
+    │   │                   ├── repository/
+    │   │                   │   ├── FranchiseRepository.java
+    │   │                   │   └── JournalStoryRepository.java
+    │   │                   ├── service/
+    │   │                   │   ├── ChatbotService.java
+    │   │                   │   ├── ChatbotServiceImpl.java
+    │   │                   │   ├── FranchiseService.java
+    │   │                   │   ├── FranchiseServiceImpl.java
+    │   │                   │   ├── JournalStoryService.java
+    │   │                   │   └── JournalStoryServiceImpl.java
+    │   │                   └── util/
+    │   │                       └── DtoMapper.java
+    │   └── js/                         # SPA Core Router, widgets & animations
+    │       ├── about.js
+    │       ├── chatbot-data.js
+    │       ├── chatbot.js
+    │       ├── find-us.js
+    │       ├── franchise.js
+    │       ├── journal.js
+    │       ├── layout-engine.js
+    │       └── router.js               # Client SPA dynamic core router
+    │
+    └── test/                           # Integration Testing Suite
+        └── java/
+            └── com/
+                └── plus33/
+                    └── europe/
+                        └── Plus33EuropeApplicationTests.java
+
+================================================================================
+PART 2: SUBSYSTEM DESIGN & RESPONSIBILITIES
+================================================================================
+
+--------------------------------------------------------------------------------
+1. LOCAL SYSTEM PURPOSE (Primary Business Engine)
+--------------------------------------------------------------------------------
+The src/local/ directory holds the commercial logic and transactional features.
+It manages:
+* Product items presentation and dynamic loading.
+* Curriculum-based filters and storefront views (Catalog).
+* Specific styles and scripts for commercial grids.
+* APIs, Services, and JPA Repositories relative to transactional models.
+
+--------------------------------------------------------------------------------
+2. GLOBAL SYSTEM PURPOSE (Shared Website Platform Engine)
+--------------------------------------------------------------------------------
+The src/global/ directory holds the platform elements, layouts, and utilities.
+It manages:
+* Single Page Application (SPA) state, dynamic asset handling, and routing.
+* Shared layouts and responsive elements (Navbar, Footer, CSS Variables).
+* Global components (AI Chatbot, Franchise candidacy, Boutiques mapper).
+* Central application configurations, Spring Security rules, seeder processes,
+  and cross-cutting utilities (Exception handlers, custom DTO mappers).
+
+================================================================================
+PART 3: DEEP-DIVE FILE-BY-FILE PURPOSE MAP
+================================================================================
+
+--------------------------------------------------------------------------------
+A. ROOT WORKSPACE CONFIGURATIONS
+--------------------------------------------------------------------------------
+* pom.xml
+  Purpose: Maven Build Descriptor. Imports Spring Boot starter models, configures
+           properties (Java 21, Spring Boot 3.5), registers src/local/java and
+           src/global/java dynamically using the build-helper-maven-plugin,
+           and defines precise packaging target paths so resources copy to target/classes/.
+
+* .vscode/launch.json
+  Purpose: Instructs VS Code's Java extension to run com.plus33.europe.Plus33EuropeApplication
+           explicitly with correct classpaths, neutralizing launch conflicts.
+
+* .vscode/settings.json
+  Purpose: Enables automatic workspace rebuilds on pom.xml changes.
+
+--------------------------------------------------------------------------------
+B. LOCAL SYSTEM FILES (src/local/)
+--------------------------------------------------------------------------------
+* src/local/html/home.html
+  Purpose: Curious landing page introducing the brand's aesthetic.
+
+* src/local/html/store.html
+  Purpose: Signature storefront view showing artisan products, accessories, and gear.
+
+* src/local/html/product-details.html
+  Purpose: Deep-dive view loaded dynamically when an item card is selected.
+
+* src/local/css/bakery-showcase.css
+  Purpose: Isolated luxury bakery showcase section styles namespaced under .bakery-showcase-* to prevent conflicts.
+
+* src/local/css/best-sellers.css
+  Purpose: Isolated luxury best sellers showcase section styles namespaced under .best-sellers-showcase-* to prevent conflicts.
+
+* src/local/css/home.css
+  Purpose: Custom styling for landing slideshows, staggers, and luxury sections.
+
+* src/local/css/store.css
+  Purpose: Curated storefront flex grids, selection cards, and interactive categories.
+
+* src/local/css/product-details.css
+  Purpose: Visual styles for tasting parameters, accordions, and checkout specs.
+
+* src/local/js/home.js
+  Purpose: Coordinates slide controllers and scrolling reveals on the home page.
+
+* src/local/js/store.js
+  Purpose: Filters selections and handles store grid rendering.
+
+* src/local/js/store-data.js
+  Purpose: Local JavaScript mock backup array for catalog operations.
+
+* src/local/js/product-details.js
+  Purpose: Fetches data from /api/store/products/{id} and binds it to detail views.
+
+* src/local/java/com/plus33/europe/local/model/Product.java
+  Purpose: JPA Entity model representing a signature collection product item.
+
+* src/local/java/com/plus33/europe/local/repository/ProductRepository.java
+  Purpose: Spring Data JPA Repository interface mapping product queries.
+
+* src/local/java/com/plus33/europe/local/dto/ProductDTO.java
+  Purpose: Exposes refined data schema wrappers to frontend catalog endpoints.
+
+* src/local/java/com/plus33/europe/local/service/ProductService.java & ProductServiceImpl.java
+  Purpose: Catalog service mapping and business operations implementation.
+
+* src/local/java/com/plus33/europe/local/controller/ProductRestController.java
+  Purpose: REST controller handling catalog product requests on /api/store/products.
+
+--------------------------------------------------------------------------------
+C. GLOBAL SYSTEM FILES (src/global/)
+--------------------------------------------------------------------------------
+* src/global/html/index.html
+  Purpose: Master SPA Shell frame. Houses core stylesheet linkages and the global
+           <main id="spa-content"> viewport shell.
+
+* src/global/html/navbar.html & footer.html
+  Purpose: Global sub-views rendered dynamically as header and footer modules.
+
+* src/global/html/chatbot.html
+  Purpose: Glassmorphic panel layout for the AI messaging assistant.
+
+* src/global/html/franchise.html
+  Purpose: Multistep interactive franchise candidate submission interface.
+
+* src/global/html/journal.html
+  Purpose: Curated articles portal and design storytelling.
+
+* src/global/html/find-us.html
+  Purpose: Boutiques search panel and geolocation listings.
+
+* src/global/html/about.html
+  Purpose: Elegant branding chronicle detailing Parisian café history.
+
+* src/global/css/global.css
+  Purpose: Declares system design tokens, luxury typography, HSL palettes, and transitions.
+
+* src/global/css/responsive.css
+  Purpose: Global breakpoints, fluid layout variables, and mobile layout overrides.
+
+* src/global/css/navbar.css & footer.css
+  Purpose: Specific aesthetics and states for headers, footers, and drop menus.
+
+* src/global/css/chatbot.css & franchise.css & journal.css & find-us.css & about.css
+  Purpose: Dedicated, module-specific styles mapping the global widget components.
+
+* src/global/js/router.js
+  Purpose: SPA Dynamic Client-Side Router. Intercepts URL requests, loads matching HTML
+           and asset layers on the fly, updates window history state, and runs views.
+
+* src/global/js/layout-engine.js
+  Purpose: Handles async modular loading for the shared Navbar and Footer layouts.
+
+* src/global/js/chatbot.js & chatbot-data.js
+  Purpose: Drives floating bubble states, chat bubbles animations, API fetches,
+           and client offline dialog trees.
+
+* src/global/js/about.js & franchise.js & journal.js & find-us.js
+  Purpose: Visual animations, validation, timeline reveals, and searches for global views.
+
+* src/global/application.properties
+  Purpose: Global configuration properties (H2 db, JPA show-sql, servlet sizes, security frame options).
+
+* src/local/java/com/plus33/europe/local/Plus33EuropeApplication.java
+  Purpose: Spring Boot Main Bootstrap class. Declares scan-targets across the entire
+           parent package com.plus33.europe using custom scan annotations to bind the
+           local and global subsystems seamlessly (resolving Spring Security config scans).
+
+* src/global/java/com/plus33/europe/global/config/SecurityConfig.java
+  Purpose: Configures Spring Security filters (permitAll, sameOrigin headers).
+
+* src/global/java/com/plus33/europe/global/config/WebController.java
+  Purpose: Catch-all router helper forwarding unknown SPA client routes to index.html.
+
+* src/global/java/com/plus33/europe/global/config/DatabaseSeeder.java
+  Purpose: Feeds mock database instances (15 products and 3 seasonal stories) on startup.
+
+* src/global/java/com/plus33/europe/global/constants/AppConstants.java
+  Purpose: Centralized container for app messages, constants, and ranges.
+
+* src/global/java/com/plus33/europe/global/exception/GlobalExceptionHandler.java
+  Purpose: Catches application anomalies and maps them to clean JSON responses.
+
+* src/global/java/com/plus33/europe/global/exception/ResourceNotFoundException.java
+  Purpose: Custom 404 HTTP Exception mapping model.
+
+* src/global/java/com/plus33/europe/global/util/DtoMapper.java
+  Purpose: Maps JPA Entities safely to DTO envelopes and back.
+
+* src/global/java/com/plus33/europe/global/model/ & repository/ & service/ & controller/
+  Purpose: Contains backend architectures supporting Global features:
+           - ChatRequest/ChatResponse (Chatbot API)
+           - FranchiseApplication (Franchise API)
+           - JournalStory (seasonal articles API)
+
+--------------------------------------------------------------------------------
+D. TEST SUITE
+--------------------------------------------------------------------------------
+* src/test/java/com/plus33/europe/Plus33EuropeApplicationTests.java
+  Purpose: Verifies Spring context load and backend component connectivity.
+================================================================================
