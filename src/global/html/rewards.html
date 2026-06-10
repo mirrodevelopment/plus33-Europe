@@ -15,7 +15,7 @@
   <section class="rewards-hero" id="rewards-hero-section">
     <div class="rewards-container rewards-hero__grid">
       
-      <!-- Left side: content -->
+      <!-- Left side: content (42% width) -->
       <div class="rewards-hero__content">
         <span class="rewards-eyebrow">PLUS33 REWARDS</span>
         <h1 class="rewards-hero__heading">
@@ -24,13 +24,12 @@
           <span class="rewards-gold">All for you.</span>
         </h1>
         <p class="rewards-hero__description">
-          Join PLUS33 Rewards and earn points every time you order.<br><br>
+          Join PLUS33 Rewards and earn points every time you order.<br>
           Unlock exclusive treats, offers and experiences.
         </p>
         <div class="rewards-hero__ctas">
-          <button class="rewards-btn-primary rewards-toast-trigger" data-toast-msg="Rewards system coming soon">
-            <span>JOIN NOW</span>
-            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <button class="rewards-btn-primary rewards-toast-trigger">
+            <span>JOIN NOW &rarr;</span>
           </button>
           <button class="rewards-btn-secondary rewards-scroll-trigger" data-target="#how-rewards-work-section">
             <span>HOW IT WORKS</span>
@@ -38,7 +37,7 @@
         </div>
       </div>
       
-      <!-- Right side: large layered phone mockup -->
+      <!-- Right side: large layered phone mockup (58% width) -->
       <div class="rewards-hero__mockup-wrapper">
         <div class="rewards-phone-mockup">
           <div class="rewards-phone-inner">
@@ -53,7 +52,6 @@
             <!-- Screen Header -->
             <div class="rewards-app-header">
               <div class="rewards-app-logo">
-                <!-- Paris Pony Gold Logo icon -->
                 <svg viewBox="0 0 100 100" class="app-logo-svg">
                   <path d="M50 15c-1.2 5.4-4 8.4-4 12a4 4 0 0 0 8 0c0-3.6-2.8-6.6-4-12z" fill="#b18b56"/>
                   <path d="M41 40c2.5-4 5.5-6.5 11-7.5.5-2.5 1.5-4 3.5-5 .5 1.5 1.5 2.5 3 2.5s2.5-1 3-2.5c2 1.5 3.5 3 4 5 1.5.5 2.5 1.5 2.5 3.5s-1 3.5-2.5 3.5c-4.5.5-7 3.5-8.5 7.5-.5 1.5-1.5 2-3.5 2s-3.5-.5-4-2c-1.5-4.5-4-7-8-7.5z" fill="#061a33"/>
@@ -71,8 +69,8 @@
               
               <!-- Greeting -->
               <div class="rewards-app-greeting">
-                <span class="greeting-subtitle">Good morning,</span>
-                <h3 class="greeting-title">Ananya ☀️</h3>
+                <span class="greeting-subtitle">Hello,</span>
+                <h3 class="greeting-title">Ananya &nbsp;<span class="sparkle">✦</span></h3>
               </div>
               
               <!-- Center Card: Navy Rewards card -->
@@ -89,63 +87,55 @@
                   <span class="balance-num">4,250</span>
                   <span class="balance-label">Points</span>
                 </div>
+                
+                <!-- Gold Progress Ring & Bar integrated styling -->
                 <div class="app-card-progress">
-                  <div class="progress-header">
-                    <span>750 points to reach Platinum</span>
+                  <div class="progress-info-row">
+                    <span class="progress-details-txt">750 points to reach Platinum</span>
+                    <div class="progress-ring-mini">
+                      <svg viewBox="0 0 36 36" class="circular-chart-gold">
+                        <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        <path class="circle" stroke-dasharray="85, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                      </svg>
+                    </div>
                   </div>
                   <div class="progress-track">
-                    <div class="progress-fill" style="width: 82%;"></div>
+                    <div class="progress-fill" style="width: 85%;"></div>
                   </div>
                 </div>
               </div>
               
-              <!-- Middle Section: Quick Reorder -->
+              <!-- Middle Section: Quick Reorder Grid -->
               <div class="rewards-app-reorder">
                 <div class="reorder-header">
-                  <h4 class="reorder-title">ORDER AGAIN</h4>
-                  <a href="/store" class="reorder-viewall">View all</a>
+                  <h4 class="reorder-title">QUICK REORDER</h4>
                 </div>
                 <div class="reorder-grid">
                   <!-- Product 1: Cappuccino -->
-                  <a href="/product/2" class="reorder-card">
+                  <div class="reorder-card">
                     <div class="reorder-card__img-wrap">
                       <img src="/local/assets/products/drinks/hot-coffee/cappuccino.png" alt="Cappuccino" loading="lazy" />
                     </div>
                     <span class="reorder-card__name">Cappuccino</span>
                     <span class="reorder-card__price">₹199</span>
-                  </a>
+                  </div>
                   <!-- Product 2: Iced Spanish Latte -->
-                  <a href="/product/10" class="reorder-card">
+                  <div class="reorder-card">
                     <div class="reorder-card__img-wrap">
                       <img src="/local/assets/products/drinks/iced-coffee/iced-punch-coco.jpg" alt="Iced Spanish Latte" loading="lazy" />
                     </div>
                     <span class="reorder-card__name">Iced Spanish Latte</span>
                     <span class="reorder-card__price">₹229</span>
-                  </a>
+                  </div>
                   <!-- Product 3: Butter Croissant -->
-                  <a href="/product/18" class="reorder-card">
+                  <div class="reorder-card">
                     <div class="reorder-card__img-wrap">
                       <img src="/local/assets/products/desserts/croissant.jpg" alt="Butter Croissant" loading="lazy" />
                     </div>
                     <span class="reorder-card__name">Butter Croissant</span>
                     <span class="reorder-card__price">₹129</span>
-                  </a>
+                  </div>
                 </div>
-              </div>
-              
-              <!-- What's New Section -->
-              <div class="rewards-app-whatsnew">
-                <h4 class="whatsnew-title">WHAT'S NEW</h4>
-                <a href="/product/7" class="whatsnew-banner">
-                  <div class="whatsnew-banner__img-wrap">
-                    <img src="/local/assets/products/signature/rose-pistachio-latte.jpg" alt="Rose Pistachio Latte" loading="lazy" />
-                  </div>
-                  <div class="whatsnew-banner__content">
-                    <span class="banner-tag">Featured Drink</span>
-                    <h5 class="banner-title">Rose Pistachio Latte</h5>
-                    <p class="banner-desc">A delicate blend of rose, pistachio and espresso.</p>
-                  </div>
-                </a>
               </div>
               
             </div>
@@ -171,7 +161,7 @@
             </div>
             
           </div>
-          <!-- Reflections -->
+          <!-- Hardware Reflections -->
           <div class="rewards-phone-glare"></div>
           <div class="rewards-phone-highlight"></div>
         </div>
@@ -201,14 +191,14 @@
             </div>
             
             <div class="collectible-card__body">
-              <span class="card-gold-badge">GOLD MEMBER</span>
+              <span class="card-gold-badge">GOLD RESERVE MEMBER</span>
               <div class="card-number">•••• •••• •••• 4250</div>
             </div>
             
             <div class="collectible-card__footer">
               <div class="card-holder">
                 <span class="footer-label">MEMBER SINCE</span>
-                <span class="footer-val">2024</span>
+                <span class="footer-val">2026</span>
               </div>
               <div class="card-holder align-right">
                 <span class="footer-label">HOLDER</span>
@@ -231,27 +221,27 @@
         <!-- Step 1 -->
         <div class="how-step">
           <div class="how-step__icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
           </div>
-          <h3 class="how-step__title">1. Order Coffee</h3>
+          <h3 class="how-step__title">ORDER COFFEE</h3>
           <p class="how-step__desc">Order your daily favorites in-app or in-salon at any of our global boutiques.</p>
         </div>
         
         <!-- Step 2 -->
         <div class="how-step">
           <div class="how-step__icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
           </div>
-          <h3 class="how-step__title">2. Earn Points</h3>
+          <h3 class="how-step__title">EARN POINTS</h3>
           <p class="how-step__desc">Receive 10 points for every ₹100 spent, piling up and opening new privileges.</p>
         </div>
         
         <!-- Step 3 -->
         <div class="how-step">
           <div class="how-step__icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
           </div>
-          <h3 class="how-step__title">3. Unlock Rewards</h3>
+          <h3 class="how-step__title">UNLOCK REWARDS</h3>
           <p class="how-step__desc">Redeem points for complimentary sips, fresh bakes, and private boutique tasting events.</p>
         </div>
         
@@ -259,301 +249,335 @@
     </div>
   </section>
   
-  <!-- ════════ MEMBERSHIP TIERS ════════ -->
+  <!-- ════════ MEMBERSHIP TIERS SECTION ════════ -->
   <section class="rewards-tiers" id="membership-tiers-section">
     <div class="rewards-container">
       <div class="text-center rewards-section-header">
-        <span class="rewards-section-subtitle" style="margin-bottom: 8px; display: inline-block;">MEMBERSHIP TIERS</span>
-        <div class="section-divider-fleur" style="margin-bottom: 16px;">
-           <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24" style="color: var(--rw-gold);"><path d="M12 2L15 10L22 12L15 14L12 22L9 14L2 12L9 10L12 2Z"/></svg>
-        </div>
-        <h2 class="rewards-section-title" style="margin-bottom: 12px;">Status that grows with every sip.</h2>
-        <p class="transactions-intro" style="margin-inline:auto; max-width:540px; color:var(--rw-muted); line-height:1.6; font-size:16px;">Unlock elevated experiences, exclusive rewards, and premium hospitality benefits as your PLUS33 journey evolves.</p>
+        <span class="rewards-section-subtitle">MEMBERSHIP TIERS</span>
+        <div class="fleur-de-lis">⚜</div>
+        <h2 class="rewards-section-title">Status that grows with every sip.</h2>
+        <p class="rewards-section-description">
+          Unlock elevated experiences, exclusive rewards,<br>
+          and premium hospitality benefits as your PLUS33 journey evolves.
+        </p>
       </div>
       
-      <!-- HORIZONTAL ASCENDING PROGRESSION TRACK -->
-      <div class="status-progression-track">
-        
-        <!-- Bronze -->
-        <div class="status-node active" data-tier="bronze">
-          <div class="your-tier-badge">YOUR TIER</div>
-          <div class="status-node__header">
-            <div class="status-node__emblem-wrap">
-              <img src="/local/assets/tiers/bronze.png" alt="Bronze Emblem" class="tier-emblem" loading="lazy" />
-            </div>
-            <div class="status-node__info">
-              <h3 class="status-node__title">Bronze</h3>
-              <span class="status-node__req">0+ Points</span>
-              <div class="luxury-progress-graph">
-                <div class="luxury-progress-graph__fill" style="width: 100%;"></div>
-              </div>
-            </div>
-            <div class="status-node__chevron">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg>
-            </div>
+      <!-- Horizontal Tiers Grid -->
+      <div class="tiers-grid-row">
+        <!-- Bronze Card -->
+        <div class="tier-card-new" data-tier="bronze">
+          <div class="tier-badge-your">YOUR TIER</div>
+          <div class="tier-card-image-wrap">
+            <img src="/local/assets/tiers/bronze.png" alt="Bronze Tier Coin" class="tier-coin-img">
+          </div>
+          <h3 class="tier-card-title">Bronze</h3>
+          <span class="tier-card-points">0+ POINTS</span>
+          <div class="tier-card-progress-bar">
+            <div class="tier-card-progress-fill" style="width: 100%;"></div>
           </div>
         </div>
-        
-        <!-- Silver -->
-        <div class="status-node" data-tier="silver">
-          <div class="status-node__header">
-            <div class="status-node__emblem-wrap">
-              <img src="/local/assets/tiers/silver.png" alt="Silver Emblem" class="tier-emblem" loading="lazy" />
-            </div>
-            <div class="status-node__info">
-              <h3 class="status-node__title">Silver</h3>
-              <span class="status-node__req">3,000+ Points</span>
-              <div class="luxury-progress-graph">
-                <div class="luxury-progress-graph__fill" style="width: 45%;"></div>
-              </div>
-            </div>
-            <div class="status-node__chevron">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg>
-            </div>
+
+        <!-- Silver Card -->
+        <div class="tier-card-new" data-tier="silver">
+          <div class="tier-badge-your">YOUR TIER</div>
+          <div class="tier-card-image-wrap">
+            <img src="/local/assets/tiers/silver.png" alt="Silver Tier Coin" class="tier-coin-img">
+          </div>
+          <h3 class="tier-card-title">Silver</h3>
+          <span class="tier-card-points">3,000+ POINTS</span>
+          <div class="tier-card-progress-bar">
+            <div class="tier-card-progress-fill" style="width: 0%;"></div>
           </div>
         </div>
-        
-        <!-- Gold -->
-        <div class="status-node" data-tier="gold">
-          <div class="status-node__header">
-            <div class="status-node__emblem-wrap">
-              <img src="/local/assets/tiers/gold.png" alt="Gold Emblem" class="tier-emblem" loading="lazy" />
-            </div>
-            <div class="status-node__info">
-              <h3 class="status-node__title">Gold</h3>
-              <span class="status-node__req">8,000+ Points</span>
-              <div class="luxury-progress-graph">
-                <div class="luxury-progress-graph__fill" style="width: 0%;"></div>
-              </div>
-            </div>
-            <div class="status-node__chevron">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg>
-            </div>
+
+        <!-- Gold Card -->
+        <div class="tier-card-new" data-tier="gold">
+          <div class="tier-badge-your">YOUR TIER</div>
+          <div class="tier-card-image-wrap">
+            <img src="/local/assets/tiers/gold.png" alt="Gold Tier Coin" class="tier-coin-img">
+          </div>
+          <h3 class="tier-card-title">Gold</h3>
+          <span class="tier-card-points">8,000+ POINTS</span>
+          <div class="tier-card-progress-bar">
+            <div class="tier-card-progress-fill" style="width: 0%;"></div>
           </div>
         </div>
-        
-        <!-- Platinum -->
-        <div class="status-node" data-tier="platinum">
-          <div class="status-node__header">
-            <div class="status-node__emblem-wrap">
-              <img src="/local/assets/tiers/platinum.png" alt="Platinum Emblem" class="tier-emblem" loading="lazy" />
-            </div>
-            <div class="status-node__info">
-              <h3 class="status-node__title">Platinum</h3>
-              <span class="status-node__req">15,000+ Points</span>
-              <div class="luxury-progress-graph">
-                <div class="luxury-progress-graph__fill" style="width: 0%;"></div>
-              </div>
-            </div>
-            <div class="status-node__chevron">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg>
-            </div>
+
+        <!-- Platinum Card -->
+        <div class="tier-card-new" data-tier="platinum">
+          <div class="tier-badge-your">YOUR TIER</div>
+          <div class="tier-card-image-wrap">
+            <img src="/local/assets/tiers/platinum.png" alt="Platinum Tier Coin" class="tier-coin-img">
+          </div>
+          <h3 class="tier-card-title">Platinum</h3>
+          <span class="tier-card-points">15,000+ POINTS</span>
+          <div class="tier-card-progress-bar">
+            <div class="tier-card-progress-fill" style="width: 0%;"></div>
           </div>
         </div>
-        
       </div>
-      
-      <!-- DESKTOP DETAILS PANEL -->
-      <div class="status-details-panel" id="desktop-details-panel">
-        <div class="status-details-panel__inner">
-          <div class="details-left">
-            <div class="details-tier-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15 10L22 12L15 14L12 22L9 14L2 12L9 10L12 2Z"/></svg>
-            </div>
-            <h4 class="details-tier-name">Bronze</h4>
-            <div class="details-divider-small">
-               <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 2L15 10L22 12L15 14L12 22L9 14L2 12L9 10L12 2Z"/></svg>
-            </div>
-            <p class="details-tier-desc">Welcome perks and entry-level luxury benefits.</p>
-          </div>
-          
-          <div class="details-divider-mobile-only">
-            <div class="divider-line"></div>
-            <svg viewBox="0 0 24 24" class="divider-icon" fill="currentColor"><path d="M12 2L15 10L22 12L15 14L12 22L9 14L2 12L9 10L12 2Z"/></svg>
-            <div class="divider-line"></div>
-          </div>
-          
-          <div class="details-right">
-            <ul class="details-perks-list">
-              <li class="perk-item">
-                <div class="perk-icon perk-icon-desktop">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
-                </div>
-                <div class="perk-icon perk-icon-mobile">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="checkmark"><polyline points="20 6 9 17 4 12"/></svg>
-                </div>
-                <div class="perk-text">
-                  <h5>Welcome perks</h5>
-                  <p>Enjoy exclusive welcome treats and offers.</p>
-                </div>
-              </li>
-              <li class="perk-item">
-                <div class="perk-icon perk-icon-desktop">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-                </div>
-                <div class="perk-icon perk-icon-mobile">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="checkmark"><polyline points="20 6 9 17 4 12"/></svg>
-                </div>
-                <div class="perk-text">
-                  <h5>Birthday rewards</h5>
-                  <p>A special treat, just for you.</p>
-                </div>
-              </li>
-              <li class="perk-item">
-                <div class="perk-icon perk-icon-desktop">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
-                </div>
-                <div class="perk-icon perk-icon-mobile">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="checkmark"><polyline points="20 6 9 17 4 12"/></svg>
-                </div>
-                <div class="perk-text">
-                  <h5>Early offers</h5>
-                  <p>Be the first to know about select promotions.</p>
-                </div>
-              </li>
-              <li class="perk-item">
-                <div class="perk-icon perk-icon-desktop">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                </div>
-                <div class="perk-icon perk-icon-mobile">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="checkmark"><polyline points="20 6 9 17 4 12"/></svg>
-                </div>
-                <div class="perk-text">
-                  <h5>Member support</h5>
-                  <p>Dedicated support for a seamless experience.</p>
-                </div>
-              </li>
-            </ul>
+
+      <!-- Tier Details Panel -->
+      <div class="tier-details-panel">
+        <div class="tier-details-left">
+          <!-- Background SVG Horse logo watermark -->
+          <svg viewBox="0 0 100 100" class="details-horse-watermark">
+            <path d="M50 15c-1.2 5.4-4 8.4-4 12a4 4 0 0 0 8 0c0-3.6-2.8-6.6-4-12z" fill="none" stroke="currentColor" stroke-width="1"/>
+            <path d="M41 40c2.5-4 5.5-6.5 11-7.5.5-2.5 1.5-4 3.5-5 .5 1.5 1.5 2.5 3 2.5s2.5-1 3-2.5c2 1.5 3.5 3 4 5 1.5.5 2.5 1.5 2.5 3.5s-1 3.5-2.5 3.5c-4.5.5-7 3.5-8.5 7.5-.5 1.5-1.5 2-3.5 2s-3.5-.5-4-2c-1.5-4.5-4-7-8-7.5z" fill="none" stroke="currentColor" stroke-width="1"/>
+          </svg>
+          <div class="tier-details-header">
+            <h3 class="tier-details-title" id="selected-tier-title">Bronze</h3>
+            <div class="tier-details-divider">⚜</div>
+            <p class="tier-details-subtitle" id="selected-tier-desc">Welcome perks and entry-level luxury benefits.</p>
           </div>
         </div>
-        <div class="status-details-footer">
-          Points reset annually. Terms & conditions apply.
+        
+        <div class="tier-details-right">
+          <!-- 2x2 Grid of benefits with circular icons and text -->
+          <div class="benefits-quadrant" id="tier-benefits-quadrant">
+            <!-- Dynamic benefits injected by JS, fallback to Bronze -->
+            <div class="benefit-quad-item">
+              <div class="benefit-icon-circle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 12 20 22 4 22 4 12"></polyline>
+                  <rect x="2" y="7" width="20" height="5"></rect>
+                  <line x1="12" y1="22" x2="12" y2="7"></line>
+                  <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+                  <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+                </svg>
+              </div>
+              <div class="benefit-quad-text">
+                <h4 class="benefit-quad-title">Welcome perks</h4>
+                <p class="benefit-quad-desc">Enjoy exclusive welcome treats and offers.</p>
+              </div>
+            </div>
+            
+            <div class="benefit-quad-item">
+              <div class="benefit-icon-circle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="5" r="2"></circle>
+                  <path d="M12 7v2M7 14c0-2.5 2-4 5-4s5 1.5 5 4H7z"></path>
+                  <path d="M8 14l1.5 7h5l1.5-7"></path>
+                  <path d="M10 14l-.5 7M12 14v7M14 14l.5 7"></path>
+                </svg>
+              </div>
+              <div class="benefit-quad-text">
+                <h4 class="benefit-quad-title">Birthday rewards</h4>
+                <p class="benefit-quad-desc">A special treat, just for you.</p>
+              </div>
+            </div>
+            
+            <div class="benefit-quad-item">
+              <div class="benefit-icon-circle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                  <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                  <path d="M9.5 14.5l5-5"></path>
+                  <circle cx="10.5" cy="10.5" r="0.5" fill="currentColor"></circle>
+                  <circle cx="13.5" cy="13.5" r="0.5" fill="currentColor"></circle>
+                </svg>
+              </div>
+              <div class="benefit-quad-text">
+                <h4 class="benefit-quad-title">Early offers</h4>
+                <p class="benefit-quad-desc">Be the first to know about select promotions.</p>
+              </div>
+            </div>
+            
+            <div class="benefit-quad-item">
+              <div class="benefit-icon-circle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+              </div>
+              <div class="benefit-quad-text">
+                <h4 class="benefit-quad-title">Member support</h4>
+                <p class="benefit-quad-desc">Dedicated support for a seamless experience.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       
+      <p class="reset-conditions text-center">Points reset annually. Terms & conditions apply.</p>
     </div>
   </section>
   
   <!-- ════════ UNLOCKABLE REWARDS SECTION ════════ -->
   <section class="rewards-unlockable" id="unlockable-rewards-section">
     <div class="rewards-container">
+      
+      <!-- Section Header -->
       <div class="text-center rewards-section-header">
         <span class="rewards-section-subtitle">UNLOCKED MILESTONES</span>
+        <div class="fleur-de-lis">⚜</div>
         <h2 class="rewards-section-title">Artisanal treats to unlock.</h2>
+        <p class="rewards-section-description">
+          Every sip, every visit brings you closer to something special.<br>
+          Unlock exclusive treats and experiences crafted for you.
+        </p>
       </div>
-      
-      <div class="unlockable-grid">
+
+      <!-- Asymmetrical Premium Cards Container -->
+      <div class="milestones-asymmetric-layout">
         
-        <!-- Reward 1: Butter Croissant -->
-        <div class="reward-card">
-          <div class="reward-card__image-container">
-            <img src="/local/assets/products/desserts/croissant.jpg" alt="Butter Croissant" loading="lazy" />
-            <span class="reward-card__gold-label">Classic Bake</span>
+        <!-- Card 1: Large Featured Card (Café Filtre) -->
+        <div class="milestone-card-premium featured-filtre-card">
+          <div class="milestone-image-area">
+            <img src="/local/assets/products/drinks/hot-coffee/cafe-filtre.png" alt="Café Filtre" class="milestone-photo">
           </div>
-          <div class="reward-card__content">
-            <h3 class="reward-card__title">Butter Croissant</h3>
-            <span class="reward-card__spend">Unlock at ₹2,000 spent</span>
-            <div class="reward-card__progress">
-              <div class="progress-info">
-                <span>Progress</span>
-                <span>100%</span>
-              </div>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar-fill" style="width: 100%;"></div>
+          <div class="milestone-content-area">
+            <span class="milestone-category-badge">SINGLE ORIGIN</span>
+            <h3 class="milestone-title">Café Filtre</h3>
+            <span class="milestone-spend-limit">Unlock at ₹2,000 spent</span>
+            <div class="milestone-divider-crest">⚜</div>
+            <div class="milestone-status-block">
+              <span class="milestone-status-label">STATUS</span>
+              <div class="unlocked-luxury-badge">
+                <span>UNLOCKED</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="lock-icon-svg">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
               </div>
             </div>
           </div>
         </div>
-        
-        <!-- Reward 2: Free Latte -->
-        <div class="reward-card">
-          <div class="reward-card__image-container">
-            <img src="/local/assets/products/signature/paris-vanilla-latte.jpg" alt="Paris Vanilla Latte" loading="lazy" />
-            <span class="reward-card__gold-label">Specialty Sip</span>
-          </div>
-          <div class="reward-card__content">
-            <h3 class="reward-card__title">Free Latte</h3>
-            <span class="reward-card__spend">Unlock at ₹5,000 spent</span>
-            <div class="reward-card__progress">
-              <div class="progress-info">
-                <span>Progress</span>
-                <span>80%</span>
+
+        <!-- Medium Grid Row -->
+        <div class="milestones-medium-row">
+          
+          <!-- Card 2: Donut -->
+          <div class="milestone-card-premium medium-milestone-card">
+            <div class="milestone-image-area">
+              <img src="/local/assets/products/desserts/donut.jpg" alt="Donut" class="milestone-photo">
+            </div>
+            <div class="milestone-content-area">
+              <span class="milestone-category-badge">PATISSERIE</span>
+              <h3 class="milestone-title">Donut</h3>
+              <span class="milestone-spend-limit">Unlock at ₹5,000 spent</span>
+              <div class="milestone-progress-block">
+                <div class="progress-labels-row">
+                  <span class="progress-lbl">PROGRESS</span>
+                  <span class="progress-pct">80%</span>
+                </div>
+                <div class="progress-luxury-track">
+                  <div class="progress-luxury-fill" style="width: 80%;"></div>
+                </div>
               </div>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar-fill" style="width: 80%;"></div>
+            </div>
+          </div>
+
+          <!-- Card 3: Iced Punch Coco -->
+          <div class="milestone-card-premium medium-milestone-card">
+            <div class="milestone-image-area">
+              <img src="/local/assets/products/drinks/iced-coffee/iced-punch-coco.jpg" alt="Iced Punch Coco" class="milestone-photo">
+            </div>
+            <div class="milestone-content-area">
+              <span class="milestone-category-badge">SIGNATURE CHILLED</span>
+              <h3 class="milestone-title">Iced Punch Coco</h3>
+              <span class="milestone-spend-limit">Unlock at ₹8,000 spent</span>
+              <div class="milestone-progress-block">
+                <div class="progress-labels-row">
+                  <span class="progress-lbl">PROGRESS</span>
+                  <span class="progress-pct">50%</span>
+                </div>
+                <div class="progress-luxury-track">
+                  <div class="progress-luxury-fill" style="width: 50%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Card 4: Premium Reward Card (Tiramisu Glacé) -->
+        <div class="milestone-card-premium premium-tiramisu-card">
+          <div class="milestone-image-area">
+            <img src="/local/assets/products/desserts/tiramisu-glace.jpg" alt="Tiramisu Glacé" class="milestone-photo">
+          </div>
+          <div class="milestone-content-area">
+            <span class="milestone-category-badge">ATELIER DESSERT</span>
+            <h3 class="milestone-title">Tiramisu Glacé</h3>
+            <span class="milestone-spend-limit">Unlock at ₹12,000 spent</span>
+            <div class="milestone-progress-block">
+              <div class="progress-labels-row">
+                <span class="progress-lbl">PROGRESS</span>
+                <span class="progress-pct">35%</span>
+              </div>
+              <div class="progress-luxury-track">
+                <div class="progress-luxury-fill" style="width: 35%;"></div>
               </div>
             </div>
           </div>
         </div>
-        
-        <!-- Reward 3: Free Dessert -->
-        <div class="reward-card">
-          <div class="reward-card__image-container">
-            <img src="/local/assets/products/drinks/iced-coffee/tiramisu-glace.jpg" alt="Tiramisu Glacé" loading="lazy" />
-            <span class="reward-card__gold-label">Patisserie Lab</span>
-          </div>
-          <div class="reward-card__content">
-            <h3 class="reward-card__title">Free Dessert</h3>
-            <span class="reward-card__spend">Unlock at ₹8,000 spent</span>
-            <div class="reward-card__progress">
-              <div class="progress-info">
-                <span>Progress</span>
-                <span>50%</span>
+
+        <!-- Card 5: Full-Width Immersive Final Reward Card (+33 Atelier Gift Pack) -->
+        <div class="milestone-card-premium final-giftpack-card">
+          <div class="giftpack-card-content">
+            <span class="milestone-category-badge giftpack-badge">LUXURY RETAIL</span>
+            <h3 class="milestone-title giftpack-title">+33 Atelier Gift Pack</h3>
+            <span class="milestone-spend-limit giftpack-desc">Unlock at ₹20,000 spent</span>
+            
+            <div class="milestone-progress-block giftpack-progress">
+              <div class="progress-labels-row">
+                <span class="progress-lbl giftpack-progress-lbl">PROGRESS</span>
+                <span class="progress-pct giftpack-progress-pct">20%</span>
               </div>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar-fill" style="width: 50%;"></div>
+              <div class="progress-luxury-track giftpack-track">
+                <div class="progress-luxury-fill giftpack-fill" style="width: 20%;"></div>
+              </div>
+            </div>
+
+            <!-- Bottom Benefits Strip -->
+            <div class="giftpack-benefits-strip">
+              <!-- Item 1 -->
+              <div class="giftpack-benefit-item">
+                <div class="giftpack-benefit-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                  </svg>
+                </div>
+                <span class="giftpack-benefit-text">Curated reserve coffee bags</span>
+              </div>
+              <!-- Item 2 -->
+              <div class="giftpack-benefit-item">
+                <div class="giftpack-benefit-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/>
+                  </svg>
+                </div>
+                <span class="giftpack-benefit-text">Specialty whole bean pouch</span>
+              </div>
+              <!-- Item 3 -->
+              <div class="giftpack-benefit-item">
+                <div class="giftpack-benefit-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                  </svg>
+                </div>
+                <span class="giftpack-benefit-text">Handcrafted brand cards</span>
+              </div>
+              <!-- Item 4 -->
+              <div class="giftpack-benefit-item">
+                <div class="giftpack-benefit-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  </svg>
+                </div>
+                <span class="giftpack-benefit-text">Exclusive members-only access</span>
               </div>
             </div>
           </div>
-        </div>
-        
-        <!-- Reward 4: Exclusive Signature Drink -->
-        <div class="reward-card">
-          <div class="reward-card__image-container">
-            <img src="/local/assets/products/signature/rose-pistachio-latte.jpg" alt="Rose Pistachio Latte" loading="lazy" />
-            <span class="reward-card__gold-label">Atelier Only</span>
-          </div>
-          <div class="reward-card__content">
-            <h3 class="reward-card__title">Exclusive Signature Drink</h3>
-            <span class="reward-card__spend">Unlock at ₹12,000 spent</span>
-            <div class="reward-card__progress">
-              <div class="progress-info">
-                <span>Progress</span>
-                <span>35%</span>
-              </div>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar-fill" style="width: 35%;"></div>
-              </div>
-            </div>
+          <div class="giftpack-card-image-area">
+            <img src="/local/assets/products/merchandise/atelier-gift-pack.jpeg" alt="+33 Atelier Gift Pack" class="giftpack-immersive-img">
           </div>
         </div>
-        
-        <!-- Reward 5: VIP Tasting Event -->
-        <div class="reward-card reward-card--span-two">
-          <div class="reward-card__image-container">
-            <img src="/global/assets/img/boutique-tablescape.png" alt="VIP Tasting Event" loading="lazy" />
-            <span class="reward-card__gold-label">Reserve Lounge</span>
-          </div>
-          <div class="reward-card__content">
-            <h3 class="reward-card__title">VIP Tasting Event</h3>
-            <span class="reward-card__spend">Unlock at ₹20,000 spent</span>
-            <div class="reward-card__progress">
-              <div class="progress-info">
-                <span>Progress</span>
-                <span>20%</span>
-              </div>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar-fill" style="width: 20%;"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
       </div>
+
     </div>
   </section>
   
-  <!-- ════════ CUSTOMER BENEFITS SECTION ════════ -->
+  <!-- ════════ CUSTOMER BENEFITS STRIP SECTION ════════ -->
   <section class="rewards-benefits" id="benefits-section">
     <div class="rewards-container">
       <div class="benefits-strip">
@@ -561,7 +585,7 @@
         <!-- Benefit 1 -->
         <div class="benefit-item">
           <div class="benefit-item__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
           </div>
           <span class="benefit-item__label">Faster Checkout</span>
         </div>
@@ -571,7 +595,7 @@
         <!-- Benefit 2 -->
         <div class="benefit-item">
           <div class="benefit-item__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
           </div>
           <span class="benefit-item__label">Priority Offers</span>
         </div>
@@ -581,7 +605,7 @@
         <!-- Benefit 3 -->
         <div class="benefit-item">
           <div class="benefit-item__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v4M5 8v13a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8M3 8h18M8 12v3M16 12v3"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M5 8v13a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8M3 8h18M8 12v3M16 12v3"/></svg>
           </div>
           <span class="benefit-item__label">Birthday Rewards</span>
         </div>
@@ -591,7 +615,7 @@
         <!-- Benefit 4 -->
         <div class="benefit-item">
           <div class="benefit-item__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
           </div>
           <span class="benefit-item__label">Exclusive Drinks</span>
         </div>
@@ -601,7 +625,7 @@
         <!-- Benefit 5 -->
         <div class="benefit-item">
           <div class="benefit-item__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
           <span class="benefit-item__label">Community Events</span>
         </div>
@@ -610,60 +634,302 @@
     </div>
   </section>
   
-  <!-- ════════ DEMO TRANSACTION SECTION ════════ -->
+  <!-- ════════ TRANSACTIONS SECTION ════════ -->
   <section class="rewards-transactions" id="transactions-section">
-    <div class="rewards-container rewards-transactions__inner">
-      <div class="transactions-header">
-        <span class="rewards-section-subtitle">LEDGER ACTIVITY</span>
-        <h2 class="rewards-section-title">Recent Transactions</h2>
-        <p class="transactions-intro">Interactive view of your point rewards ledger, styled like your Apple Wallet card statement.</p>
-      </div>
+    <div class="rewards-container">
       
-      <div class="transactions-list">
-        
-        <!-- Row 1 -->
-        <div class="transaction-row">
-          <div class="transaction-row__left">
-            <div class="product-thumb">
-              <img src="/local/assets/products/drinks/iced-coffee/iced-punch-coco.jpg" alt="Iced Spanish Latte" />
-            </div>
-            <div class="product-details">
-              <span class="product-name">Iced Spanish Latte</span>
-              <span class="product-date">Today, 10:14 AM · Paris Maison</span>
-            </div>
-          </div>
-          <span class="points-badge positive">+120 Points</span>
-        </div>
-        
-        <!-- Row 2 -->
-        <div class="transaction-row">
-          <div class="transaction-row__left">
-            <div class="product-thumb">
-              <img src="/local/assets/products/desserts/croissant.jpg" alt="Butter Croissant" />
-            </div>
-            <div class="product-details">
-              <span class="product-name">Butter Croissant</span>
-              <span class="product-date">Yesterday, 9:20 AM · Milan Atelier</span>
-            </div>
-          </div>
-          <span class="points-badge positive">+40 Points</span>
-        </div>
-        
-        <!-- Row 3 -->
-        <div class="transaction-row">
-          <div class="transaction-row__left">
-            <div class="product-thumb">
-              <img src="/local/assets/products/signature/rose-pistachio-latte.jpg" alt="Rose Pistachio Latte" />
-            </div>
-            <div class="product-details">
-              <span class="product-name">Rose Pistachio Latte</span>
-              <span class="product-date">June 4, 3:45 PM · London Atelier</span>
-            </div>
-          </div>
-          <span class="points-badge positive">+180 Points</span>
-        </div>
-        
+      <!-- Section Header -->
+      <div class="text-center rewards-section-header">
+        <span class="rewards-section-subtitle">LEDGER ACTIVITY</span>
+        <div class="fleur-de-lis">⚜</div>
+        <h2 class="rewards-section-title">Recent Transactions</h2>
+        <p class="rewards-section-description">
+          Track your points activity and stay close to<br>
+          exclusive rewards, crafted for you.
+        </p>
       </div>
+
+      <!-- Stats Summary Row -->
+      <div class="transactions-stats-row">
+        <!-- Box 1 -->
+        <div class="stat-box">
+          <div class="stat-icon-circle star-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          <span class="stat-label">AVAILABLE POINTS</span>
+          <h3 class="stat-value">12,450</h3>
+          <span class="stat-subtitle">Balance</span>
+        </div>
+
+        <!-- Box 2 -->
+        <div class="stat-box">
+          <div class="stat-icon-circle trend-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+              <polyline points="17 6 23 6 23 12"></polyline>
+            </svg>
+          </div>
+          <span class="stat-label">POINTS EARNED</span>
+          <h3 class="stat-value">+3,280</h3>
+          <span class="stat-subtitle">This Month</span>
+        </div>
+
+        <!-- Box 3 -->
+        <div class="stat-box">
+          <div class="stat-icon-circle gift-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 12 20 22 4 22 4 12"></polyline>
+              <rect x="2" y="7" width="20" height="5"></rect>
+              <line x1="12" y1="22" x2="12" y2="7"></line>
+              <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+              <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+            </svg>
+          </div>
+          <span class="stat-label">POINTS REDEEMED</span>
+          <h3 class="stat-value">-1,050</h3>
+          <span class="stat-subtitle">This Month</span>
+        </div>
+
+        <!-- Box 4 -->
+        <div class="stat-box">
+          <div class="stat-icon-circle calendar-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+          </div>
+          <span class="stat-label">LAST UPDATED</span>
+          <h3 class="stat-value" style="font-size: 20px; font-weight: 600; margin-block: 10px 8px;">Today, 10:30 AM</h3>
+          <span class="stat-subtitle">June 5, 2024</span>
+        </div>
+      </div>
+
+      <!-- Filters & Navigation Bar -->
+      <div class="transactions-filter-bar">
+        <div class="filter-tabs-group">
+          <button class="filter-tab-btn active" data-filter="all">ALL TRANSACTIONS</button>
+          <button class="filter-tab-btn" data-filter="earned">EARNED</button>
+          <button class="filter-tab-btn" data-filter="redeemed">REDEEMED</button>
+        </div>
+        <div class="filter-controls-group">
+          <button class="filter-dropdown-btn toast-trigger-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="dropdown-btn-icon">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span>May 6 - June 5, 2024</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="dropdown-arrow-icon"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <button class="filter-dropdown-btn toast-trigger-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="dropdown-btn-icon">
+              <line x1="4" y1="21" x2="4" y2="14"></line>
+              <line x1="4" y1="10" x2="4" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12" y2="3"></line>
+              <line x1="20" y1="21" x2="20" y2="16"></line>
+              <line x1="20" y1="12" x2="20" y2="3"></line>
+              <line x1="1" y1="14" x2="7" y2="14"></line>
+              <line x1="9" y1="8" x2="15" y2="8"></line>
+              <line x1="17" y1="16" x2="23" y2="16"></line>
+            </svg>
+            <span>FILTER</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Transactions List Container -->
+      <div class="transactions-list-new">
+        <!-- Row 1: Iced Spanish Latte -->
+        <div class="transaction-row-new" data-category="earned">
+          <div class="tx-col-details">
+            <div class="tx-thumb-circle">
+              <img src="/local/assets/products/drinks/iced-coffee/iced-punch-coco.jpg" alt="Iced Spanish Latte" class="tx-thumb-img">
+            </div>
+            <div class="tx-text-stack">
+              <h4 class="tx-title">Iced Spanish Latte</h4>
+              <span class="tx-location">Paris Maison</span>
+              <span class="tx-date">Today, 10:14 AM</span>
+            </div>
+          </div>
+          <div class="tx-col-badge">
+            <span class="badge-tx badge-earned">EARNED</span>
+            <span class="tx-type-desc">Purchase</span>
+          </div>
+          <div class="tx-col-points positive">
+            <span>+120</span>
+            <span class="tx-points-label">Points</span>
+          </div>
+          <div class="tx-col-balance">
+            <span class="tx-balance-val">12,450</span>
+            <span class="tx-balance-label">Balance</span>
+          </div>
+          <div class="tx-col-chevron">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </div>
+        </div>
+
+        <!-- Row 2: Butter Croissant -->
+        <div class="transaction-row-new" data-category="earned">
+          <div class="tx-col-details">
+            <div class="tx-thumb-circle">
+              <img src="/local/assets/products/desserts/croissant.jpg" alt="Butter Croissant" class="tx-thumb-img">
+            </div>
+            <div class="tx-text-stack">
+              <h4 class="tx-title">Butter Croissant</h4>
+              <span class="tx-location">Milan Atelier</span>
+              <span class="tx-date">Yesterday, 9:20 AM</span>
+            </div>
+          </div>
+          <div class="tx-col-badge">
+            <span class="badge-tx badge-earned">EARNED</span>
+            <span class="tx-type-desc">Purchase</span>
+          </div>
+          <div class="tx-col-points positive">
+            <span>+40</span>
+            <span class="tx-points-label">Points</span>
+          </div>
+          <div class="tx-col-balance">
+            <span class="tx-balance-val">12,330</span>
+            <span class="tx-balance-label">Balance</span>
+          </div>
+          <div class="tx-col-chevron">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </div>
+        </div>
+
+        <!-- Row 3: Rose Pistachio Latte -->
+        <div class="transaction-row-new" data-category="earned">
+          <div class="tx-col-details">
+            <div class="tx-thumb-circle">
+              <img src="/local/assets/products/signature/rose-pistachio-latte.jpg" alt="Rose Pistachio Latte" class="tx-thumb-img">
+            </div>
+            <div class="tx-text-stack">
+              <h4 class="tx-title">Rose Pistachio Latte</h4>
+              <span class="tx-location">London Atelier</span>
+              <span class="tx-date">June 4, 3:45 PM</span>
+            </div>
+          </div>
+          <div class="tx-col-badge">
+            <span class="badge-tx badge-earned">EARNED</span>
+            <span class="tx-type-desc">Purchase</span>
+          </div>
+          <div class="tx-col-points positive">
+            <span>+180</span>
+            <span class="tx-points-label">Points</span>
+          </div>
+          <div class="tx-col-balance">
+            <span class="tx-balance-val">12,290</span>
+            <span class="tx-balance-label">Balance</span>
+          </div>
+          <div class="tx-col-chevron">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </div>
+        </div>
+
+        <!-- Row 4: Gold Membership Upgrade -->
+        <div class="transaction-row-new" data-category="redeemed">
+          <div class="tx-col-details">
+            <div class="tx-thumb-circle card-thumb-wrap">
+              <div class="mini-gold-card">
+                <div class="mini-gold-card-inner">
+                  <svg viewBox="0 0 100 100" class="mini-card-logo">
+                    <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="2"/>
+                    <path d="M50 25c-0.6 2.7-2 4.2-2 6a2 2 0 0 0 4 0c0-1.8-1.4-3.3-2-6z" fill="currentColor"/>
+                    <path d="M41 50c2.5-4 5.5-6.5 11-7.5.5-2.5 1.5-4 3.5-5 .5 1.5 1.5 2.5 3 2.5s2.5-1 3-2.5c2 1.5 3.5 3 4 5 1.5.5 2.5 1.5 2.5 3.5s-1 3.5-2.5 3.5c-4.5.5-7 3.5-8.5 7.5-.5 1.5-1.5 2-3.5 2s-3.5-.5-4-2c-1.5-4.5-4-7-8-7.5z" fill="currentColor"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="tx-text-stack">
+              <h4 class="tx-title">Gold Membership Upgrade</h4>
+              <span class="tx-location">Membership</span>
+              <span class="tx-date">June 2, 12:30 PM</span>
+            </div>
+          </div>
+          <div class="tx-col-badge">
+            <span class="badge-tx badge-redeemed">REDEEMED</span>
+            <span class="tx-type-desc">Membership Reward</span>
+          </div>
+          <div class="tx-col-points negative">
+            <span>-1,000</span>
+            <span class="tx-points-label">Points</span>
+          </div>
+          <div class="tx-col-balance">
+            <span class="tx-balance-val">12,110</span>
+            <span class="tx-balance-label">Balance</span>
+          </div>
+          <div class="tx-col-chevron">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </div>
+        </div>
+
+        <!-- Row 5: Biscoff Cream Cake -->
+        <div class="transaction-row-new" data-category="earned">
+          <div class="tx-col-details">
+            <div class="tx-thumb-circle">
+              <img src="/local/assets/products/signature/biscoff-cream-latte.webp" alt="Biscoff Cream Cake" class="tx-thumb-img">
+            </div>
+            <div class="tx-text-stack">
+              <h4 class="tx-title">Biscoff Cream Cake</h4>
+              <span class="tx-location">Paris Maison</span>
+              <span class="tx-date">June 1, 4:15 PM</span>
+            </div>
+          </div>
+          <div class="tx-col-badge">
+            <span class="badge-tx badge-earned">EARNED</span>
+            <span class="tx-type-desc">Purchase</span>
+          </div>
+          <div class="tx-col-points positive">
+            <span>+60</span>
+            <span class="tx-points-label">Points</span>
+          </div>
+          <div class="tx-col-balance">
+            <span class="tx-balance-val">13,110</span>
+            <span class="tx-balance-label">Balance</span>
+          </div>
+          <div class="tx-col-chevron">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination-container">
+        <button class="pagination-btn toast-trigger-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <span class="pagination-text">Showing 1–5 of 24 transactions</span>
+        <button class="pagination-btn toast-trigger-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+
+      <!-- Brand Banner -->
+      <div class="brand-banner">
+        <div class="brand-banner-left">
+          <div class="dotted-logo-circle">
+            <img src="/global/assets/brand/plus33-logo.png" alt="PLUS33 Logo" class="banner-horse-logo">
+          </div>
+          <div class="banner-text-stack">
+            <h3 class="banner-quote">Every sip. Every moment.</h3>
+            <p class="banner-desc">Thank you for being a valued part of the PLUS33 family.</p>
+          </div>
+        </div>
+        <div class="banner-divider"></div>
+        <div class="brand-banner-right">
+          <button class="banner-cta-btn rewards-toast-trigger">
+            <span>VIEW REWARDS</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="cta-arrow-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </div>
+      </div>
+
     </div>
   </section>
   
@@ -682,7 +948,7 @@
           <button class="faq-card__header" aria-expanded="false">
             <span class="faq-question">How do I earn points?</span>
             <span class="faq-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="faq-icon-svg"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="faq-icon-svg"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             </span>
           </button>
           <div class="faq-card__content">
@@ -697,7 +963,7 @@
           <button class="faq-card__header" aria-expanded="false">
             <span class="faq-question">When do rewards unlock?</span>
             <span class="faq-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="faq-icon-svg"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="faq-icon-svg"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             </span>
           </button>
           <div class="faq-card__content">
@@ -712,7 +978,7 @@
           <button class="faq-card__header" aria-expanded="false">
             <span class="faq-question">Do points expire?</span>
             <span class="faq-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="faq-icon-svg"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="faq-icon-svg"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             </span>
           </button>
           <div class="faq-card__content">
@@ -727,7 +993,7 @@
           <button class="faq-card__header" aria-expanded="false">
             <span class="faq-question">Can I use rewards in-store?</span>
             <span class="faq-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="faq-icon-svg"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="faq-icon-svg"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             </span>
           </button>
           <div class="faq-card__content">
@@ -742,7 +1008,7 @@
           <button class="faq-card__header" aria-expanded="false">
             <span class="faq-question">Will the app launch soon?</span>
             <span class="faq-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="faq-icon-svg"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="faq-icon-svg"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             </span>
           </button>
           <div class="faq-card__content">
@@ -762,7 +1028,7 @@
     <div class="rewards-container rewards-cta__content text-center">
       <h2 class="rewards-cta__title">Start earning with every sip.</h2>
       <p class="rewards-cta__desc">Join the future of premium coffee rewards.</p>
-      <button class="rewards-btn-primary rewards-btn-cta rewards-toast-trigger" data-toast-msg="PLUS33 Rewards launches soon">
+      <button class="rewards-btn-primary rewards-btn-cta rewards-toast-trigger">
         <span>COMING SOON</span>
         <div class="btn-shine-sweep"></div>
       </button>

@@ -3,25 +3,17 @@
  * ══════════════════════════════════════════════════
  * PURPOSE:
  * Premium styling sheet for the PLUS33 Rewards Showcase.
- * Recreates a high-end luxury editorial, Apple product launch,
- * and AMEX Centurion style loyalty ecosystem.
+ * Apple Wallet meets AMEX Centurion luxury editorial style.
  * ══════════════════════════════════════════════════
  */
 
-/* ──────────────────────────────────────────────────
-   DESIGN SYSTEM LOCAL VARIABLES
-   ────────────────────────────────────────────────── */
 .rewards-page {
   --rw-bg: #f7f2eb;
   --rw-navy: #061a33;
   --rw-gold: #b18b56;
   --rw-dark: #111827;
   --rw-muted: #6b7280;
-  --rw-card-bg: rgba(255, 255, 255, 0.45);
-  --rw-glass-border: rgba(255, 255, 255, 0.6);
-  --rw-shadow: 0 20px 50px rgba(6, 26, 51, 0.06);
-  --rw-shadow-card: 0 30px 70px rgba(0, 0, 0, 0.08);
-
+  
   background-color: var(--rw-bg);
   color: var(--rw-dark);
   font-family: 'Manrope', 'Inter', sans-serif;
@@ -30,9 +22,7 @@
   min-height: 100vh;
 }
 
-/* ──────────────────────────────────────────────────
-   NAVBAR ACTIVE OVERRIDES
-   ────────────────────────────────────────────────── */
+/* ═════════ NAVBAR ACTIVE THEME OVERRIDES ═════════ */
 body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) .plus33-nav__link {
   color: var(--rw-navy) !important;
   opacity: 0.85;
@@ -52,82 +42,82 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   border-bottom: 1px solid rgba(6, 26, 51, 0.05);
 }
 
-/* ──────────────────────────────────────────────────
-   LAYOUT & CONTAINER
-   ────────────────────────────────────────────────── */
+/* ═════════ CONTAINER & SECTION SPACING ═════════ */
 .rewards-container {
   max-width: 1580px;
   margin-inline: auto;
   padding-inline: clamp(20px, 3vw, 48px);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .rewards-page section {
-  padding-block: clamp(80px, 10vw, 140px);
+  padding-block: clamp(90px, 10vw, 160px);
+  position: relative;
+  box-sizing: border-box;
 }
 
-/* Typography styles */
+/* ═════════ HERO TYPOGRAPHY ═════════ */
 .rewards-eyebrow {
   font-family: 'Manrope', sans-serif;
   font-size: 13px;
   font-weight: 600;
-  letter-spacing: 4px;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--rw-gold);
   display: block;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .rewards-hero__heading {
   font-family: 'Cormorant Garamond', 'Georgia', serif;
-  font-size: clamp(48px, 6.5vw, 105px);
-  line-height: 0.96;
-  letter-spacing: -3px;
-  font-weight: 500;
-  color: var(--rw-dark);
-  margin-bottom: 24px;
+  font-size: clamp(64px, 8vw, 118px);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  font-weight: 400;
+  color: var(--rw-navy);
+  margin: 0 0 28px 0;
 }
 
 .rewards-gold {
   color: var(--rw-gold);
   position: relative;
-  text-shadow: 0 0 30px rgba(177, 139, 86, 0.15);
+  text-shadow: 0 0 40px rgba(177, 139, 86, 0.12);
 }
 
 .rewards-hero__description {
-  font-size: clamp(16px, 1.25vw, 20px);
-  line-height: 1.8;
+  font-size: clamp(16px, 1.2vw, 19px);
+  line-height: 1.75;
   color: var(--rw-muted);
-  max-width: 580px;
-  margin-bottom: 40px;
+  max-width: 540px;
+  margin: 0 0 40px 0;
   font-weight: 300;
 }
 
 .rewards-section-subtitle {
   font-family: 'Manrope', sans-serif;
   font-size: 11px;
-  letter-spacing: 5px;
+  letter-spacing: 0.4em;
   text-transform: uppercase;
   font-weight: 600;
   color: var(--rw-gold);
   display: block;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .rewards-section-title {
   font-family: 'Cormorant Garamond', 'Georgia', serif;
-  font-size: clamp(36px, 4.5vw, 68px);
+  font-size: clamp(38px, 4.5vw, 68px);
   line-height: 1.1;
   font-weight: 400;
-  letter-spacing: -1px;
+  letter-spacing: -0.02em;
   color: var(--rw-navy);
-  margin-bottom: 24px;
+  margin: 0 0 48px 0;
 }
 
-/* ──────────────────────────────────────────────────
-   HERO LAYOUT
-   ────────────────────────────────────────────────── */
+/* ═════════ HERO LAYOUT ═════════ */
 .rewards-hero {
-  padding-top: clamp(140px, 12vw, 200px) !important;
+  padding-top: clamp(150px, 12vw, 210px) !important;
   background-color: var(--rw-bg);
 }
 
@@ -135,7 +125,7 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   display: grid;
   grid-template-columns: 42fr 58fr;
   align-items: center;
-  gap: clamp(40px, 5vw, 100px);
+  gap: clamp(40px, 5vw, 120px);
 }
 
 .rewards-hero__content {
@@ -145,75 +135,66 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
 .rewards-hero__ctas {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 18px;
 }
 
-/* Buttons */
+/* ═════════ BUTTONS ═════════ */
 .rewards-btn-primary {
   background: var(--rw-navy);
   color: #fff;
   border: none;
-  border-radius: 99px;
-  padding: 16px 36px;
+  border-radius: 999px;
+  height: 62px;
+  padding-inline: 34px;
   font-family: 'Manrope', sans-serif;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
   cursor: pointer;
-  box-shadow: 0 10px 30px rgba(6, 26, 51, 0.15);
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px rgba(6, 26, 51, 0.12);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease, box-shadow 0.4s ease;
   position: relative;
   overflow: hidden;
 }
 
-.rewards-btn-primary svg.arrow {
-  width: 14px;
-  height: 14px;
-  transition: transform 0.4s ease;
-}
-
 .rewards-btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 40px rgba(6, 26, 51, 0.25);
-  background: #0b2447;
-}
-
-.rewards-btn-primary:hover svg.arrow {
-  transform: translateX(5px);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 40px rgba(6, 26, 51, 0.22);
 }
 
 .rewards-btn-secondary {
   background: transparent;
   color: var(--rw-navy);
-  border: 1px solid rgba(6, 26, 51, 0.15);
-  border-radius: 99px;
-  padding: 16px 36px;
+  border: 1px solid rgba(6, 26, 51, 0.12);
+  border-radius: 999px;
+  height: 62px;
+  padding-inline: 34px;
   font-family: 'Manrope', sans-serif;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   cursor: pointer;
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, background-color 0.4s ease;
 }
 
 .rewards-btn-secondary:hover {
-  border-color: var(--rw-navy);
+  transform: translateY(-2px);
+  border-color: rgba(6, 26, 51, 0.24);
   background: rgba(6, 26, 51, 0.03);
 }
 
-/* ──────────────────────────────────────────────────
-   PHONE MOCKUP FRAME
-   ────────────────────────────────────────────────── */
+/* ═════════ CINEMATIC PHONE MOCKUP ═════════ */
 .rewards-hero__mockup-wrapper {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   position: relative;
-  perspective: 1000px;
+  perspective: 1200px;
 }
 
 .rewards-phone-mockup {
@@ -224,12 +205,12 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   padding: 12px;
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 40px 100px rgba(0,0,0,.25), 0 10px 30px rgba(0,0,0,.12);
+  box-shadow: 0 40px 100px rgba(0,0,0,0.3), 0 10px 30px rgba(0,0,0,0.15);
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   transform-style: preserve-3d;
 }
 
-/* Add realistic hardware reflections */
+/* Realistic hardware reflections */
 .rewards-phone-mockup::after {
   content: '';
   position: absolute;
@@ -303,9 +284,7 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   border-radius: 54px;
 }
 
-/* ──────────────────────────────────────────────────
-   APP SCREEN LAYOUT
-   ────────────────────────────────────────────────── */
+/* APP SCREEN CONTENT */
 .rewards-app-header {
   padding: 44px 24px 12px;
   display: flex;
@@ -356,19 +335,17 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   border: 1px solid var(--rw-bg);
 }
 
-/* App body scroll container */
 .rewards-app-body {
   flex: 1;
   overflow-y: auto;
   padding: 8px 24px 80px;
-  scrollbar-width: none; /* Hide scrollbar Firefox */
+  scrollbar-width: none;
 }
 
 .rewards-app-body::-webkit-scrollbar {
-  display: none; /* Hide scrollbar Chrome/Safari */
+  display: none;
 }
 
-/* Greeting */
 .rewards-app-greeting {
   margin-bottom: 20px;
 }
@@ -385,6 +362,10 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   font-weight: 500;
   color: var(--rw-navy);
   margin-top: 2px;
+}
+
+.sparkle {
+  color: var(--rw-gold);
 }
 
 /* Center Navy Rewards Card */
@@ -407,16 +388,6 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
-/* Gold edge glow on the card */
-.rewards-app-card::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: 26px;
-  background: linear-gradient(135deg, rgba(177, 139, 86, 0.3), transparent 70%);
-  z-index: -1;
-}
-
 .app-card-shine {
   position: absolute;
   top: -150%;
@@ -432,13 +403,13 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
     transparent 55%
   );
   transform: rotate(45deg);
-  animation: sheenSweep 6s infinite ease-in-out;
+  animation: sheenSweepApp 6s infinite ease-in-out;
   pointer-events: none;
 }
 
-@keyframes sheenSweep {
+@keyframes sheenSweepApp {
   0% { transform: translate(-100%, -100%) rotate(45deg); }
-  30% { transform: translate(100%, 100%) rotate(45deg); }
+  35% { transform: translate(100%, 100%) rotate(45deg); }
   100% { transform: translate(100%, 100%) rotate(45deg); }
 }
 
@@ -446,7 +417,7 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .app-card-eyebrow {
@@ -480,12 +451,12 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
 }
 
 .app-card-balance {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .balance-num {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 40px;
+  font-size: 44px;
   font-weight: 300;
   line-height: 1;
 }
@@ -497,40 +468,68 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   letter-spacing: 1px;
 }
 
+/* Progress Ring & Bar styling inside card */
 .app-card-progress {
   position: relative;
 }
 
-.progress-header {
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.6);
+.progress-info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 8px;
+}
+
+.progress-details-txt {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.progress-ring-mini {
+  width: 20px;
+  height: 20px;
+}
+
+.circular-chart-gold {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.circular-chart-gold .circle-bg {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 3.8;
+}
+
+.circular-chart-gold .circle {
+  fill: none;
+  stroke: var(--rw-gold);
+  stroke-width: 3.8;
+  stroke-linecap: round;
 }
 
 .progress-track {
   width: 100%;
-  height: 4px;
+  height: 6px;
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 2px;
+  border-radius: 99px;
   overflow: hidden;
 }
 
 .progress-fill {
   height: 100%;
   background: var(--rw-gold);
-  border-radius: 2px;
+  border-radius: 99px;
   box-shadow: 0 0 10px rgba(177, 139, 86, 0.5);
 }
 
-/* Quick Reorder Section */
+/* Quick Reorder Grid */
 .rewards-app-reorder {
   margin-top: 32px;
 }
 
 .reorder-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   margin-bottom: 16px;
 }
 
@@ -539,12 +538,6 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   letter-spacing: 2px;
   font-weight: 700;
   color: var(--rw-navy);
-}
-
-.reorder-viewall {
-  font-size: 11px;
-  color: var(--rw-gold);
-  font-weight: 500;
 }
 
 .reorder-grid {
@@ -563,12 +556,6 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   text-align: center;
   box-shadow: 0 4px 15px rgba(6, 26, 51, 0.03);
   border: 1px solid rgba(6, 26, 51, 0.02);
-  transition: all 0.4s ease;
-}
-
-.reorder-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(6, 26, 51, 0.06);
 }
 
 .reorder-card__img-wrap {
@@ -577,17 +564,16 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   overflow: hidden;
   border-radius: 10px;
   margin-bottom: 8px;
+  background: #fbf9f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .reorder-card__img-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease;
-}
-
-.reorder-card:hover .reorder-card__img-wrap img {
-  transform: scale(1.08);
+  width: 80%;
+  height: 80%;
+  object-fit: contain; /* Containment sizing */
 }
 
 .reorder-card__name {
@@ -606,80 +592,7 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   display: block;
 }
 
-/* What's New */
-.rewards-app-whatsnew {
-  margin-top: 32px;
-}
-
-.whatsnew-title {
-  font-size: 11px;
-  letter-spacing: 2px;
-  font-weight: 700;
-  color: var(--rw-navy);
-  margin-bottom: 16px;
-}
-
-.whatsnew-banner {
-  background: #fff;
-  border-radius: 20px;
-  overflow: hidden;
-  display: block;
-  box-shadow: 0 4px 15px rgba(6, 26, 51, 0.03);
-  border: 1px solid rgba(6, 26, 51, 0.02);
-  transition: all 0.4s ease;
-}
-
-.whatsnew-banner:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(6, 26, 51, 0.08);
-}
-
-.whatsnew-banner__img-wrap {
-  width: 100%;
-  height: 140px;
-  overflow: hidden;
-}
-
-.whatsnew-banner__img-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.8s ease;
-}
-
-.whatsnew-banner:hover .whatsnew-banner__img-wrap img {
-  transform: scale(1.05);
-}
-
-.whatsnew-banner__content {
-  padding: 16px 20px;
-}
-
-.banner-tag {
-  font-size: 9px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--rw-gold);
-  font-weight: 700;
-  display: block;
-  margin-bottom: 4px;
-}
-
-.banner-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
-  font-weight: 500;
-  color: var(--rw-navy);
-  margin-bottom: 4px;
-}
-
-.banner-desc {
-  font-size: 11px;
-  color: var(--rw-muted);
-  line-height: 1.4;
-}
-
-/* iOS Navigation Tabs */
+/* App tab bar */
 .rewards-app-tabs {
   position: absolute;
   bottom: 0;
@@ -695,6 +608,7 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   justify-content: space-around;
   padding-bottom: 12px;
   z-index: 10;
+  box-sizing: border-box;
 }
 
 .tab-item {
@@ -702,8 +616,6 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   flex-direction: column;
   align-items: center;
   color: var(--rw-muted);
-  cursor: pointer;
-  transition: color 0.3s ease;
 }
 
 .tab-item svg {
@@ -721,9 +633,7 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   color: var(--rw-navy);
 }
 
-/* ──────────────────────────────────────────────────
-   MEMBERSHIP STANDALONE CARD
-   ────────────────────────────────────────────────── */
+/* ═════════ STANDALONE MEMBERSHIP CARD ═════════ */
 .rewards-membership {
   background-color: var(--rw-bg);
   position: relative;
@@ -746,12 +656,11 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   overflow: hidden;
   box-shadow: 0 35px 80px rgba(6, 26, 51, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(177, 139, 86, 0.25);
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.8s ease;
   transform-style: preserve-3d;
   cursor: pointer;
 }
 
-/* Gold border highlight */
 .collectible-card::after {
   content: '';
   position: absolute;
@@ -776,9 +685,9 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   background: linear-gradient(
     115deg,
     transparent 45%,
-    rgba(255, 255, 255, 0.05) 48%,
-    rgba(255, 255, 255, 0.12) 50%,
-    rgba(255, 255, 255, 0.05) 52%,
+    rgba(255, 255, 255, 0.04) 48%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.04) 52%,
     transparent 55%
   );
   transform: rotate(30deg);
@@ -798,380 +707,832 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-sizing: border-box;
   z-index: 5;
 }
 
 .collectible-card__header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: flex-start;
 }
 
 .card-brand {
   font-family: 'Manrope', sans-serif;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 4px;
   color: var(--rw-gold);
 }
 
 .card-horse-logo {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   color: var(--rw-gold);
-  opacity: 0.85;
+  opacity: 0.8;
 }
 
 .collectible-card__body {
   margin-top: auto;
+  margin-bottom: 24px;
+  text-align: left;
 }
 
 .card-gold-badge {
   font-family: 'Manrope', sans-serif;
-  font-size: 12px;
-  letter-spacing: 5px;
-  font-weight: 600;
-  color: var(--rw-gold);
-  display: block;
-  margin-bottom: 8px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #fff;
+  border: 1px solid var(--rw-gold);
+  padding: 4px 10px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 16px;
+  background: rgba(177, 139, 86, 0.1);
 }
 
 .card-number {
-  font-family: 'Inter', monospace;
-  font-size: clamp(18px, 2.5vw, 24px);
-  color: #fff;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
   letter-spacing: 3px;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .collectible-card__footer {
   display: flex;
-  align-items: flex-end;
   justify-content: space-between;
-  margin-top: 24px;
+  align-items: flex-end;
 }
 
 .card-holder {
   display: flex;
   flex-direction: column;
+  gap: 4px;
+  text-align: left;
+}
+
+.card-holder.align-right {
+  text-align: right;
 }
 
 .footer-label {
-  font-size: 9px;
-  color: rgba(255, 255, 255, 0.4);
+  font-size: 8px;
   letter-spacing: 1px;
-  margin-bottom: 4px;
+  color: rgba(255, 255, 255, 0.45);
 }
 
 .footer-val {
-  font-size: 12px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
   color: #fff;
   letter-spacing: 1px;
-  font-weight: 500;
 }
 
 .collectible-card__hologram {
   position: absolute;
-  right: 40px;
-  top: 45%;
-  width: 50px;
-  height: 50px;
-  background: radial-gradient(circle, rgba(177, 139, 86, 0.35) 0%, rgba(6, 26, 51, 0) 70%);
+  right: -50px;
+  bottom: -50px;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(177, 139, 86, 0.15) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
-  filter: blur(10px);
+  transition: transform 1.2s ease;
 }
 
-/* ──────────────────────────────────────────────────
-   HOW REWARDS WORK
-   ────────────────────────────────────────────────── */
+.collectible-card:hover .collectible-card__hologram {
+  transform: scale(1.2) translate(-20px, -20px);
+}
+
+/* ═════════ HOW REWARDS WORK ═════════ */
 .rewards-how {
   background-color: var(--rw-bg);
-  border-top: 1px solid rgba(6, 26, 51, 0.03);
 }
 
 .rewards-grid-three {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(30px, 4vw, 60px);
+  gap: clamp(32px, 4vw, 80px);
 }
 
 .how-step {
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 24px;
-}
-
-.how-step__icon-wrap {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--rw-card-bg);
-  border: 1px solid var(--rw-glass-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--rw-navy);
-  margin-bottom: 24px;
-  box-shadow: var(--rw-shadow);
-}
-
-.how-step__icon-wrap svg {
-  width: 24px;
-  height: 24px;
-}
-
-.how-step__title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 26px;
-  font-weight: 400;
-  color: var(--rw-navy);
-  margin-bottom: 12px;
-}
-
-.how-step__desc {
-  font-size: 15px;
-  line-height: 1.6;
-  color: var(--rw-muted);
-  font-weight: 300;
-}
-
-/* ──────────────────────────────────────────────────
-   MEMBERSHIP TIERS
-   ────────────────────────────────────────────────── */
-.rewards-tiers {
-  background-color: var(--rw-bg);
-  border-top: 1px solid rgba(6, 26, 51, 0.03);
-}
-
-.status-progression-track {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-top: 60px;
-  margin-bottom: 40px;
-}
-
-.status-node {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  cursor: pointer;
-  background: white;
-  border-radius: 20px;
-  padding: 40px 24px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-  border: 1px solid rgba(0,0,0,0.03);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.how-step:hover {
+  transform: translateY(-4px);
+}
+
+.how-step__icon-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(177, 139, 86, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  color: var(--rw-gold);
+  border: 1px solid rgba(177, 139, 86, 0.12);
+}
+
+.how-step__icon-wrap svg {
+  width: 28px;
+  height: 28px;
+}
+
+.how-step__title {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--rw-navy);
+  margin: 0 0 12px 0;
+  text-transform: uppercase;
+}
+
+.how-step__desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--rw-muted);
+  font-weight: 300;
+  margin: 0;
+  max-width: 280px;
+}
+
+/* ═════════ MEMBERSHIP TIERS SECTION ═════════ */
+.rewards-tiers {
+  background-color: var(--rw-bg);
+}
+
+.fleur-de-lis {
+  font-size: 20px;
+  color: var(--rw-gold);
+  margin-bottom: 12px;
+}
+
+.rewards-section-description {
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  color: var(--rw-muted);
+  max-width: 600px;
+  margin: 0 auto 48px auto;
+}
+
+/* Horizontal Tiers Grid Row */
+.tiers-grid-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+  width: 100%;
+}
+
+/* New Tier Card Style */
+.tier-card-new {
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid rgba(6, 26, 51, 0.04);
+  padding: 36px 24px;
+  box-shadow: 0 10px 30px rgba(6, 26, 51, 0.02);
+  text-align: center;
   position: relative;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.4s ease, 
+              background-color 0.4s ease, 
+              box-shadow 0.4s ease;
   overflow: hidden;
 }
 
-.your-tier-badge {
+.tier-card-new:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(6, 26, 51, 0.05);
+}
+
+/* Selected Card Highlight */
+.tier-card-new.selected {
+  background-color: #fbf9f6;
+  border: 1.5px solid var(--rw-gold);
+  box-shadow: 0 20px 40px rgba(177, 139, 86, 0.08);
+}
+
+/* YOUR TIER Badge style */
+.tier-badge-your {
   position: absolute;
   top: 16px;
   left: 16px;
-  background: #9d7b4d;
-  color: white;
-  font-size: 10px;
+  background-color: var(--rw-gold);
+  color: #ffffff;
+  font-size: 8px;
   font-weight: 700;
   letter-spacing: 1px;
-  padding: 4px 10px;
-  border-radius: 99px;
   text-transform: uppercase;
-  display: none;
+  padding: 4px 10px;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(177, 139, 86, 0.15);
+  display: none; /* Hidden by default */
+  z-index: 5;
 }
 
-.status-node.active .your-tier-badge {
-  display: block;
+.tier-card-new.is-user-tier .tier-badge-your {
+  display: block; /* Shown only on user's current tier */
 }
 
-.status-node:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+/* Image wrapper for 3D Coins */
+.tier-card-image-wrap {
+  width: 130px;
+  height: 130px;
+  margin: 0 auto 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.status-node.active {
-  background: #fdfaf5;
-  border: 1px solid var(--rw-gold);
-  box-shadow: 0 15px 40px rgba(177, 139, 86, 0.12);
-  transform: translateY(-4px);
-}
-
-.status-node__emblem-wrap {
-  width: 140px;
-  height: 140px;
-  margin-bottom: 24px;
-  position: relative;
-  transition: all 0.5s ease;
-}
-
-.tier-emblem {
+.tier-coin-img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  mix-blend-mode: darken;
-  filter: drop-shadow(0 20px 30px rgba(0,0,0,0.08));
-  transition: filter 0.5s ease;
+  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.12));
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.status-node__header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+.tier-card-new:hover .tier-coin-img {
+  transform: scale(1.06) rotate(2deg);
 }
 
-.status-node__info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-.status-node__chevron {
-  display: none;
-}
-
-.status-node__title {
+.tier-card-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: 26px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--rw-navy);
-  margin-bottom: 8px;
-  transition: color 0.3s ease;
+  margin: 0 0 6px 0;
 }
 
-.status-node.active .status-node__title {
-  color: var(--rw-gold);
-}
-
-.status-node__req {
+.tier-card-points {
   font-size: 11px;
-  color: var(--rw-muted);
-  letter-spacing: 1px;
+  font-weight: 600;
+  color: var(--rw-gold);
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  margin-bottom: 12px;
+  display: block;
+  margin-bottom: 24px;
 }
 
-/* Premium Progress Graph */
-.luxury-progress-graph {
-  width: 100%;
-  max-width: 140px;
-  height: 8px;
-  background: var(--rw-navy);
-  border-radius: 99px;
+.tier-card-progress-bar {
+  width: 80px;
+  height: 4px;
+  background-color: rgba(6, 26, 51, 0.08);
+  border-radius: 2px;
+  margin: 0 auto;
   overflow: hidden;
   position: relative;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
 }
 
-.luxury-progress-graph__fill {
+.tier-card-progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #b18b56, #d4b584);
-  border-radius: 99px;
-  box-shadow: 0 0 10px rgba(177, 139, 86, 0.5);
-  transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  background-color: var(--rw-gold);
+  border-radius: 2px;
+  width: 0%; /* Dynamic fill */
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Details Panel */
-.status-details-panel {
-  width: 100%;
-  background: white;
-  border-radius: 32px;
-  border: 1px solid rgba(177, 139, 86, 0.2);
-  padding: 48px;
-  margin-top: 24px;
-  transition: all 0.5s ease;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.status-details-panel.fade-out {
-  opacity: 0;
-  transform: translateY(10px);
-}
-
-.status-details-panel__inner {
-  display: flex;
-  align-items: stretch;
-  justify-content: space-between;
-  gap: 40px;
-}
-
-.details-left {
-  flex: 0 0 32%;
+/* Tier Details Panel */
+.tier-details-panel {
+  display: grid;
+  grid-template-columns: 32fr 68fr;
+  gap: 48px;
+  background-color: #ffffff;
+  border-radius: 28px;
+  border: 1px solid rgba(6, 26, 51, 0.06);
+  padding: 48px 60px;
+  box-shadow: 0 15px 40px rgba(6, 26, 51, 0.02);
+  margin-top: 48px;
   position: relative;
+  overflow: hidden;
+}
+
+.tier-details-left {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: flex-start;
-  border-right: 1px solid rgba(177, 139, 86, 0.2);
-  padding-right: 40px;
+  position: relative;
 }
 
-.details-tier-icon {
+.details-horse-watermark {
   position: absolute;
-  top: -20px;
   left: -20px;
-  width: 200px;
-  height: 200px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 170px;
+  height: 170px;
   color: rgba(177, 139, 86, 0.04);
   pointer-events: none;
-  z-index: 0;
-}
-
-.details-tier-name, .details-divider-small, .details-tier-desc {
-  position: relative;
   z-index: 1;
 }
 
-.details-tier-name {
+.tier-details-header {
+  position: relative;
+  z-index: 2;
+}
+
+.tier-details-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 40px;
-  font-weight: 600;
+  font-size: 44px;
+  font-weight: 500;
   color: var(--rw-navy);
-  margin-bottom: 12px;
+  margin: 0 0 12px 0;
 }
 
-.details-divider-small {
-  margin-bottom: 16px;
-  color: var(--rw-gold);
-}
-
-.details-divider-mobile-only {
-  display: none;
-}
-
-.details-tier-desc {
+.tier-details-divider {
   font-size: 16px;
+  color: var(--rw-gold);
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+.tier-details-subtitle {
+  font-size: 15px;
   line-height: 1.6;
   color: var(--rw-muted);
+  max-width: 280px;
+  margin: 0;
+  font-weight: 300;
 }
 
-.details-right {
-  flex: 1;
-  padding-left: 20px;
+.tier-details-right {
+  display: flex;
+  align-items: center;
 }
 
-.details-perks-list {
+/* 2x2 Grid of benefits with intersecting lines */
+.benefits-quadrant {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px 24px;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  row-gap: 40px;
+  column-gap: 48px;
+  position: relative;
 }
 
-.perk-item {
+/* Intersecting line dividers */
+.benefits-quadrant::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(6, 26, 51, 0.06);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.benefits-quadrant::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(6, 26, 51, 0.06);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.benefit-quad-item {
   display: flex;
   align-items: flex-start;
-  gap: 16px;
+  gap: 20px;
+  position: relative;
+  z-index: 2;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.perk-icon {
+.benefit-icon-circle {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  border: 1px solid rgba(177, 139, 86, 0.4);
+  border: 1px solid rgba(177, 139, 86, 0.25);
+  background-color: rgba(177, 139, 86, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--rw-gold);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.benefit-quad-item:hover .benefit-icon-circle {
+  transform: scale(1.08);
+}
+
+.benefit-icon-circle svg {
+  width: 20px;
+  height: 20px;
+}
+
+.benefit-quad-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.benefit-quad-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--rw-navy);
+  margin: 0;
+}
+
+.benefit-quad-desc {
+  font-size: 13px;
+  color: var(--rw-muted);
+  line-height: 1.45;
+  margin: 0;
+  font-weight: 300;
+}
+
+/* ═════════ UNLOCKABLE REWARDS SECTION ═════════ */
+.rewards-unlockable {
+  background-color: var(--rw-bg);
+}
+
+.milestones-asymmetric-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.milestone-card-premium {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(177, 139, 86, 0.18);
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(177, 139, 86, 0.04), 0 1px 3px rgba(0, 0, 0, 0.01);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.4s ease;
+  box-sizing: border-box;
+}
+
+.milestone-card-premium:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 60px rgba(177, 139, 86, 0.12);
+  border-color: rgba(177, 139, 86, 0.4);
+}
+
+/* Featured & Premium Row Cards */
+.featured-filtre-card {
+  display: flex;
+  flex-direction: row;
+  min-height: 420px;
+  align-items: stretch;
+}
+
+.featured-filtre-card .milestone-image-area {
+  flex: 1.25;
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid rgba(177, 139, 86, 0.15);
+  background: radial-gradient(circle at center, #ffffff 0%, #faf6f0 100%);
+}
+
+.featured-filtre-card .milestone-content-area {
+  flex: 1;
+  padding: 48px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.premium-tiramisu-card {
+  display: flex;
+  flex-direction: row;
+  min-height: 420px;
+  align-items: stretch;
+  background: linear-gradient(135deg, #1f140e 0%, #0f0a07 100%);
+  border: 1px solid rgba(177, 139, 86, 0.3);
+  color: #fff;
+}
+
+.premium-tiramisu-card .milestone-image-area {
+  flex: 1.25;
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid rgba(177, 139, 86, 0.2);
+  background: radial-gradient(circle at center, #231610 0%, #0c0806 100%);
+}
+
+.premium-tiramisu-card .milestone-content-area {
+  flex: 1;
+  padding: 48px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.premium-tiramisu-card .milestone-title {
+  color: #f7f2eb;
+}
+
+.premium-tiramisu-card .milestone-spend-limit {
+  color: rgba(247, 242, 235, 0.6);
+}
+
+.premium-tiramisu-card .progress-lbl {
+  color: rgba(247, 242, 235, 0.4);
+}
+
+.premium-tiramisu-card .progress-luxury-track {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Medium Row (Grid) */
+.milestones-medium-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.medium-milestone-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 540px;
+  align-items: stretch;
+}
+
+.medium-milestone-card .milestone-image-area {
+  height: 290px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(177, 139, 86, 0.15);
+  background: radial-gradient(circle at center, #ffffff 0%, #faf6f0 100%);
+}
+
+.medium-milestone-card .milestone-content-area {
+  padding: 36px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+/* Image Areas Styling */
+.milestone-photo {
+  width: auto;
+  height: 85%;
+  max-width: 90%;
+  object-fit: contain;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.milestone-card-premium:hover .milestone-photo {
+  transform: scale(1.05);
+}
+
+/* Content Area Components */
+.milestone-category-badge {
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: var(--rw-gold);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: block;
+  text-align: left;
+}
+
+.milestone-title {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-size: clamp(28px, 2.5vw, 38px);
+  font-weight: 400;
+  color: var(--rw-navy);
+  margin: 0 0 10px 0;
+  line-height: 1.15;
+  text-align: left;
+}
+
+.milestone-spend-limit {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--rw-muted);
+  margin-bottom: 24px;
+  display: block;
+  text-align: left;
+}
+
+.milestone-divider-crest {
+  font-size: 18px;
+  color: var(--rw-gold);
+  margin-bottom: 24px;
+  display: inline-block;
+  text-align: left;
+}
+
+/* Status block for unlocked */
+.milestone-status-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+  align-items: flex-start;
+}
+
+.milestone-status-label {
+  font-family: 'Manrope', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--rw-muted);
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.unlocked-luxury-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #0f8b4d;
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  background: rgba(15, 139, 77, 0.08);
+  padding: 8px 18px;
+  border-radius: 99px;
+  border: 1px solid rgba(15, 139, 77, 0.2);
+}
+
+.lock-icon-svg {
+  width: 13px;
+  height: 13px;
+  color: #0f8b4d;
+}
+
+/* Progress Blocks */
+.milestone-progress-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+  width: 100%;
+}
+
+.progress-labels-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progress-lbl {
+  font-family: 'Manrope', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--rw-muted);
+  text-transform: uppercase;
+}
+
+.progress-pct {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--rw-gold);
+}
+
+.progress-luxury-track {
+  width: 100%;
+  height: 3px;
+  background: rgba(6, 26, 51, 0.06);
+  border-radius: 99px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-luxury-fill {
+  height: 100%;
+  background: var(--rw-gold);
+  border-radius: 99px;
+  box-shadow: 0 0 8px rgba(177, 139, 86, 0.6);
+}
+
+/* Final Reward Card (+33 Atelier Gift Pack) */
+.final-giftpack-card {
+  display: flex;
+  flex-direction: row;
+  min-height: 480px;
+  background: linear-gradient(135deg, #070e17 0%, #03060a 100%);
+  border: 1px solid rgba(177, 139, 86, 0.35);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  align-items: stretch;
+}
+
+.final-giftpack-card:hover {
+  border-color: rgba(177, 139, 86, 0.6);
+  box-shadow: 0 30px 60px rgba(177, 139, 86, 0.15), 0 0 30px rgba(177, 139, 86, 0.1);
+}
+
+.final-giftpack-card .giftpack-card-content {
+  flex: 1.25;
+  padding: 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.final-giftpack-card .giftpack-card-image-area {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  border-left: 1px solid rgba(177, 139, 86, 0.25);
+  background: radial-gradient(circle at center, #111a24 0%, #03060a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.giftpack-immersive-img {
+  height: 85%;
+  width: auto;
+  max-width: 90%;
+  object-fit: contain;
+  opacity: 0.85;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+}
+
+.final-giftpack-card:hover .giftpack-immersive-img {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+.giftpack-badge {
+  color: var(--rw-gold);
+}
+
+.giftpack-title {
+  color: #ffffff;
+}
+
+.giftpack-desc {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.giftpack-progress-lbl {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.giftpack-progress-pct {
+  color: var(--rw-gold);
+}
+
+.giftpack-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.giftpack-fill {
+  background: var(--rw-gold);
+  box-shadow: 0 0 12px rgba(177, 139, 86, 0.8);
+}
+
+/* Bottom Benefits Strip in Gift Pack card */
+.giftpack-benefits-strip {
+  display: flex;
+  gap: 24px;
+  margin-top: 36px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 24px;
+  flex-wrap: wrap;
+}
+
+.giftpack-benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.giftpack-benefit-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(177, 139, 86, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1179,448 +1540,722 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   flex-shrink: 0;
 }
 
-.perk-icon-mobile {
-  display: none;
+.giftpack-benefit-icon svg {
+  width: 14px;
+  height: 14px;
 }
 
-.perk-icon-desktop {
-  display: flex;
-}
-
-.perk-icon svg {
-  width: 24px;
-  height: 24px;
-}
-
-.perk-text {
-  display: flex;
-  flex-direction: column;
-}
-
-.perk-text h5 {
-  font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--rw-navy);
-  margin-bottom: 4px;
-}
-
-.perk-text p {
-  font-size: 13px;
-  color: var(--rw-muted);
-  line-height: 1.5;
-}
-
-.status-details-footer {
-  text-align: center;
-  font-size: 12px;
-  color: var(--rw-muted);
-  margin-top: 40px;
-}
-
-/* ──────────────────────────────────────────────────
-   UNLOCKABLE REWARDS
-   ────────────────────────────────────────────────── */
-.rewards-unlockable {
-  background-color: var(--rw-bg);
-  border-top: 1px solid rgba(6, 26, 51, 0.03);
-}
-
-.unlockable-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: clamp(20px, 3vw, 40px);
-  margin-top: 60px;
-}
-
-.reward-card {
-  background: var(--rw-card-bg);
-  border: 1px solid var(--rw-glass-border);
-  border-radius: 32px;
-  overflow: hidden;
-  box-shadow: var(--rw-shadow);
-  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  display: flex;
-  flex-direction: column;
-}
-
-.reward-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--rw-shadow-card);
-  border-color: rgba(177, 139, 86, 0.3);
-}
-
-.reward-card__image-container {
-  width: 100%;
-  aspect-ratio: 1.2/1;
-  overflow: hidden;
-  position: relative;
-}
-
-.reward-card__image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.reward-card:hover .reward-card__image-container img {
-  transform: scale(1.05);
-}
-
-.reward-card__gold-label {
-  position: absolute;
-  top: 18px;
-  left: 18px;
-  background: rgba(6, 26, 51, 0.8);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: var(--rw-gold);
-  border: 1px solid rgba(177, 139, 86, 0.3);
-  font-size: 9px;
-  letter-spacing: 2px;
-  font-weight: 700;
-  text-transform: uppercase;
-  padding: 6px 12px;
-  border-radius: 99px;
-  z-index: 2;
-}
-
-.reward-card__content {
-  padding: 24px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.reward-card__title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 22px;
-  font-weight: 400;
-  color: var(--rw-navy);
-  margin-bottom: 6px;
-  line-height: 1.2;
-}
-
-.reward-card__spend {
-  font-size: 12px;
-  color: var(--rw-muted);
-  display: block;
-  margin-bottom: 20px;
-}
-
-.reward-card__progress {
-  margin-top: auto;
-}
-
-.progress-info {
-  display: flex;
-  justify-content: space-between;
+.giftpack-benefit-text {
   font-size: 11px;
-  color: var(--rw-muted);
-  margin-bottom: 6px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  letter-spacing: 0.02em;
 }
 
-.progress-bar-wrap {
-  width: 100%;
-  height: 4px;
-  background: rgba(6, 26, 51, 0.05);
-  border-radius: 2px;
-  overflow: hidden;
+/* ═════════ RESPONSIVE OVERRIDES ═════════ */
+@media (max-width: 1024px) {
+  .featured-filtre-card,
+  .premium-tiramisu-card,
+  .final-giftpack-card {
+    flex-direction: column;
+    min-height: auto;
+  }
+  
+  .featured-filtre-card .milestone-image-area,
+  .premium-tiramisu-card .milestone-image-area,
+  .final-giftpack-card .giftpack-card-image-area {
+    height: 320px;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid rgba(177, 139, 86, 0.15);
+  }
+  
+  .milestones-medium-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .medium-milestone-card {
+    min-height: auto;
+  }
+  
+  .medium-milestone-card .milestone-image-area {
+    height: 300px;
+  }
+  
+  .final-giftpack-card .giftpack-card-content {
+    padding: 40px;
+  }
 }
 
-.progress-bar-fill {
-  height: 100%;
-  background: var(--rw-gold);
-  border-radius: 2px;
+@media (max-width: 768px) {
+  .featured-filtre-card .milestone-content-area,
+  .premium-tiramisu-card .milestone-content-area,
+  .medium-milestone-card .milestone-content-area,
+  .final-giftpack-card .giftpack-card-content {
+    padding: 32px 24px;
+  }
+  
+  .giftpack-benefits-strip {
+    gap: 16px;
+    margin-top: 24px;
+    padding-top: 20px;
+  }
+  
+  .giftpack-benefit-item {
+    width: 100%;
+  }
 }
 
-/* Span two layout for VIP */
-.reward-card--span-two {
-  grid-column: span 2;
-}
-
-.reward-card--span-two .reward-card__image-container {
-  aspect-ratio: 2.4/1;
-}
-
-/* ──────────────────────────────────────────────────
-   CUSTOMER BENEFITS SECTION
-   ────────────────────────────────────────────────── */
+/* ═════════ CUSTOMER BENEFITS STRIP ═════════ */
 .rewards-benefits {
   background-color: var(--rw-bg);
-  border-top: 1px solid rgba(6, 26, 51, 0.03);
 }
 
 .benefits-strip {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  width: 100%;
-  padding-block: 20px;
+  align-items: center;
+  background: #fff;
+  border-radius: 28px;
+  padding: 32px 48px;
+  box-shadow: 0 10px 30px rgba(6, 26, 51, 0.02);
+  border: 1px solid rgba(6, 26, 51, 0.03);
 }
 
 .benefit-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  flex: 1;
-  padding: 0 16px;
+  gap: 12px;
 }
 
 .benefit-item__icon {
   color: var(--rw-gold);
-  margin-bottom: 16px;
 }
 
 .benefit-item__icon svg {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
 }
 
 .benefit-item__label {
-  font-family: 'Manrope', sans-serif;
-  font-size: 12px;
-  letter-spacing: 2px;
+  font-size: 13px;
   font-weight: 600;
-  text-transform: uppercase;
   color: var(--rw-navy);
 }
 
 .benefit-separator {
   width: 1px;
-  height: 60px;
-  background-color: rgba(6, 26, 51, 0.06);
+  height: 40px;
+  background-color: rgba(6, 26, 51, 0.08);
 }
 
-/* ──────────────────────────────────────────────────
-   DEMO TRANSACTION SECTION
-   ────────────────────────────────────────────────── */
+/* ═════════ TRANSACTIONS LEDGER SECTION ═════════ */
 .rewards-transactions {
   background-color: var(--rw-bg);
-  border-top: 1px solid rgba(6, 26, 51, 0.03);
 }
 
-.rewards-transactions__inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 720px;
-  margin-inline: auto;
-  gap: 40px;
+/* Stats Summary Row */
+.transactions-stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+  width: 100%;
 }
 
-.transactions-header {
+.stat-box {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid rgba(6, 26, 51, 0.04);
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(6, 26, 51, 0.015);
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
 }
 
-.transactions-intro {
-  font-size: 15px;
-  line-height: 1.7;
+.stat-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(6, 26, 51, 0.04);
+}
+
+.stat-icon-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--rw-navy);
+  color: var(--rw-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  box-shadow: 0 6px 12px rgba(6, 26, 51, 0.15);
+}
+
+.stat-icon-circle svg {
+  width: 18px;
+  height: 18px;
+}
+
+.stat-label {
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--rw-muted);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--rw-navy);
+  margin: 0 0 4px 0;
+  line-height: 1.1;
+}
+
+.stat-subtitle {
+  font-size: 12px;
   color: var(--rw-muted);
   font-weight: 300;
-  margin-top: 16px;
-  max-width: 480px;
-  text-align: center;
 }
 
-.transactions-list {
+/* Filters & Navigation Bar */
+.transactions-filter-bar {
   display: flex;
-  flex-direction: column;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: 24px;
-  box-shadow: var(--rw-shadow);
-  overflow: hidden;
-}
-
-.transaction-row {
-  padding: 18px 24px;
-  display: flex;
-  align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(6, 26, 51, 0.06);
-  background: transparent;
-  transition: background 0.3s ease;
-}
-
-.transaction-row:last-child {
-  border-bottom: none;
-}
-
-.transaction-row:hover {
-  background: rgba(6, 26, 51, 0.02);
-}
-
-.transaction-row__left {
-  display: flex;
   align-items: center;
-  gap: 16px;
-}
-
-.product-thumb {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  overflow: hidden;
-  flex-shrink: 0;
-  background: #fff;
-  border: 1px solid rgba(6, 26, 51, 0.05);
-}
-
-.product-thumb img {
+  margin-bottom: 24px;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
-.product-details {
+.filter-tabs-group {
   display: flex;
-  flex-direction: column;
+  gap: 12px;
 }
 
-.product-name {
-  font-size: 14px;
-  font-weight: 600;
+.filter-tab-btn {
+  background: transparent;
+  color: var(--rw-muted);
+  border: 1px solid rgba(6, 26, 51, 0.08);
+  border-radius: 99px;
+  padding: 10px 20px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-tab-btn:hover {
+  border-color: rgba(6, 26, 51, 0.2);
   color: var(--rw-navy);
 }
 
-.product-date {
+.filter-tab-btn.active {
+  background-color: var(--rw-navy);
+  color: var(--rw-gold);
+  border-color: var(--rw-navy);
+  box-shadow: 0 4px 12px rgba(6, 26, 51, 0.1);
+}
+
+.filter-controls-group {
+  display: flex;
+  gap: 12px;
+}
+
+.filter-dropdown-btn {
+  background: #ffffff;
+  color: var(--rw-navy);
+  border: 1px solid rgba(6, 26, 51, 0.08);
+  border-radius: 99px;
+  padding: 10px 20px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(6, 26, 51, 0.01);
+  transition: all 0.3s ease;
+}
+
+.filter-dropdown-btn:hover {
+  border-color: rgba(6, 26, 51, 0.2);
+  transform: translateY(-1px);
+}
+
+.dropdown-btn-icon {
+  width: 14px;
+  height: 14px;
+  color: var(--rw-gold);
+}
+
+.dropdown-arrow-icon {
+  width: 12px;
+  height: 12px;
+  color: var(--rw-muted);
+}
+
+/* Transactions Table List */
+.transactions-list-new {
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid rgba(6, 26, 51, 0.05);
+  box-shadow: 0 10px 30px rgba(6, 26, 51, 0.015);
+  overflow: hidden;
+  width: 100%;
+}
+
+.transaction-row-new {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 32px;
+  border-bottom: 1px solid rgba(6, 26, 51, 0.04);
+  cursor: pointer;
+  transition: background-color 0.25s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+.transaction-row-new:last-child {
+  border-bottom: none;
+}
+
+.transaction-row-new:hover {
+  background-color: rgba(6, 26, 51, 0.008);
+}
+
+.tx-col-details {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 3;
+}
+
+.tx-thumb-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 1px solid rgba(6, 26, 51, 0.05);
+  background: #faf7f2;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tx-thumb-img {
+  width: 75%;
+  height: 75%;
+  object-fit: contain;
+}
+
+.tx-text-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+}
+
+.tx-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--rw-navy);
+  margin: 0;
+}
+
+.tx-location {
+  font-size: 13px;
+  color: var(--rw-muted);
+}
+
+.tx-date {
   font-size: 11px;
   color: var(--rw-muted);
-  margin-top: 2px;
+  font-weight: 300;
 }
 
-.points-badge {
-  font-size: 13px;
+.tx-col-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 2;
+}
+
+.badge-tx {
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.5px;
-  padding: 6px 14px;
-  border-radius: 99px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  text-align: center;
+  display: inline-block;
 }
 
-.points-badge.positive {
-  background: rgba(177, 139, 86, 0.08);
+.badge-earned {
+  background-color: rgba(46, 125, 50, 0.08);
+  color: #2e7d32;
+}
+
+.badge-redeemed {
+  background-color: rgba(198, 40, 40, 0.08);
+  color: #c62828;
+}
+
+.tx-type-desc {
+  font-size: 11px;
+  color: var(--rw-muted);
+  font-weight: 300;
+}
+
+.tx-col-points {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: 18px;
+  font-weight: 700;
+  flex: 2;
+}
+
+.tx-col-points.positive {
+  color: #2e7d32;
+}
+
+.tx-col-points.negative {
+  color: #c62828;
+}
+
+.tx-points-label {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--rw-muted);
+}
+
+.tx-col-balance {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  flex: 2;
+}
+
+.tx-balance-val {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--rw-navy);
+}
+
+.tx-balance-label {
+  font-size: 11px;
+  color: var(--rw-muted);
+  font-weight: 300;
+}
+
+.tx-col-chevron {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: rgba(6, 26, 51, 0.25);
+  flex: 0.5;
+}
+
+.tx-col-chevron svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Pure CSS Mini Gold VIP Card */
+.tx-thumb-circle.card-thumb-wrap {
+  border: none;
+  background: transparent;
+  width: 60px;
+  height: 60px;
+}
+
+.mini-gold-card {
+  width: 60px;
+  height: 38px;
+  background: linear-gradient(135deg, #0e1b2e 0%, #061020 50%, #020710 100%);
+  border-radius: 6px;
+  border: 1px solid rgba(177, 139, 86, 0.35);
+  position: relative;
+  box-shadow: 0 4px 10px rgba(6, 26, 51, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.mini-gold-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(115deg, transparent 40%, rgba(255, 255, 255, 0.06) 50%, transparent 60%);
+  transform: skewX(-20deg);
+}
+
+.mini-card-logo {
+  width: 18px;
+  height: 18px;
   color: var(--rw-gold);
-  border: 1px solid rgba(177, 139, 86, 0.2);
+  opacity: 0.85;
 }
 
-/* ──────────────────────────────────────────────────
-   FAQ SECTION
-   ────────────────────────────────────────────────── */
+/* Pagination Row */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 32px;
+  width: 100%;
+}
+
+.pagination-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(6, 26, 51, 0.08);
+  background-color: #ffffff;
+  color: var(--rw-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(6, 26, 51, 0.02);
+  transition: all 0.3s ease;
+}
+
+.pagination-btn:hover {
+  border-color: rgba(6, 26, 51, 0.2);
+  background-color: rgba(6, 26, 51, 0.02);
+  transform: translateY(-1px);
+}
+
+.pagination-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.pagination-text {
+  font-size: 13px;
+  color: var(--rw-muted);
+  font-weight: 300;
+}
+
+/* Bottom Brand Banner */
+.brand-banner {
+  background: #061a33;
+  border-radius: 24px;
+  border: 1px solid rgba(177, 139, 86, 0.25);
+  padding: 36px 48px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 56px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(6, 26, 51, 0.3);
+}
+
+.brand-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 10% 50%, rgba(177, 139, 86, 0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.brand-banner-left {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.dotted-logo-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(177, 139, 86, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.banner-horse-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.banner-text-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+
+.banner-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0;
+}
+
+.banner-desc {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 300;
+  margin: 0;
+}
+
+.banner-divider {
+  width: 1px;
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin-inline: 40px;
+}
+
+.brand-banner-right {
+  display: flex;
+  align-items: center;
+}
+
+.banner-cta-btn {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid var(--rw-gold);
+  border-radius: 99px;
+  height: 52px;
+  padding-inline: 28px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
+}
+
+.banner-cta-btn:hover {
+  background-color: var(--rw-gold);
+  color: var(--rw-navy);
+  box-shadow: 0 8px 20px rgba(177, 139, 86, 0.25);
+  transform: translateY(-2px);
+}
+
+.cta-arrow-icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* ═════════ FAQ SECTION ACCORDION ═════════ */
 .rewards-faq {
   background-color: var(--rw-bg);
-  border-top: 1px solid rgba(6, 26, 51, 0.03);
 }
 
 .rewards-faq__inner {
-  max-width: 980px;
-  margin-inline: auto;
+  max-width: 960px;
 }
 
 .faq-accordion-container {
-  margin-top: 50px;
+  margin-top: 48px;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
 .faq-card {
-  background: var(--rw-card-bg);
-  border: 1px solid var(--rw-glass-border);
+  background: #fff;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: var(--rw-shadow);
-  transition: all 0.4s ease;
+  border: 1px solid rgba(6, 26, 51, 0.03);
+  box-shadow: 0 8px 24px rgba(6, 26, 51, 0.02);
+  transition: box-shadow 0.4s ease;
 }
 
 .faq-card__header {
   width: 100%;
+  padding: 24px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background: transparent;
   border: none;
-  padding: 24px 30px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   cursor: pointer;
   text-align: left;
-  color: var(--rw-navy);
-  gap: 20px;
 }
 
 .faq-question {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(18px, 2vw, 24px);
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--rw-navy);
 }
 
 .faq-icon-wrap {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: rgba(6, 26, 51, 0.02);
+  color: var(--rw-gold);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.4s ease, background 0.4s ease;
-  flex-shrink: 0;
 }
 
 .faq-icon-svg {
-  width: 14px;
-  height: 14px;
-  color: var(--rw-navy);
-  transition: transform 0.4s ease;
+  width: 18px;
+  height: 18px;
 }
 
-/* Opened state details */
 .faq-card__content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .faq-card__content-inner {
-  padding: 0 30px 24px;
-}
-
-.faq-card__content-inner p {
+  padding: 0 32px 24px 32px;
   font-size: 14px;
   line-height: 1.6;
   color: var(--rw-muted);
-  font-weight: 300;
 }
 
+/* Accordion open state transformations */
 .faq-card.is-open {
-  background: #fff;
-  border-color: rgba(177, 139, 86, 0.2);
+  box-shadow: 0 16px 40px rgba(6, 26, 51, 0.06);
 }
 
 .faq-card.is-open .faq-icon-wrap {
   transform: rotate(45deg);
-  background: rgba(177, 139, 86, 0.15);
 }
 
-.faq-card.is-open .faq-icon-svg {
-  color: var(--rw-gold);
-}
-
-/* ──────────────────────────────────────────────────
-   FINAL CTA
-   ────────────────────────────────────────────────── */
+/* ═════════ FINAL CTA SECTION ═════════ */
 .rewards-cta {
   background: linear-gradient(135deg, #061a33, #081f3d, #0d2d56);
-  position: relative;
+  color: #fff;
   overflow: hidden;
-  z-index: 1;
+  padding-block: clamp(100px, 12vw, 180px) !important;
 }
 
 .rewards-cta-glow {
@@ -1628,80 +2263,51 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 60%;
-  aspect-ratio: 1;
-  background: radial-gradient(circle, rgba(177, 139, 86, 0.12) 0%, rgba(6, 26, 51, 0) 70%);
-  pointer-events: none;
-  z-index: -1;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(177, 139, 86, 0.08) 0%, transparent 70%);
   filter: blur(50px);
+  pointer-events: none;
 }
 
 .rewards-cta__content {
-  max-width: 800px;
   position: relative;
   z-index: 5;
 }
 
 .rewards-cta__title {
-  font-family: 'Cormorant Garamond', 'Georgia', serif;
-  font-size: clamp(38px, 5vw, 72px);
-  color: #fff;
-  font-weight: 300;
-  letter-spacing: -1px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(40px, 5.5vw, 76px);
   line-height: 1.1;
-  margin-bottom: 20px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px 0;
 }
 
 .rewards-cta__desc {
-  font-size: clamp(16px, 1.3vw, 22px);
-  color: rgba(255, 255, 255, 0.6);
+  font-size: clamp(16px, 1.2vw, 20px);
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 44px 0;
   font-weight: 300;
-  margin-bottom: 40px;
 }
 
 .rewards-btn-cta {
-  padding: 18px 48px;
-  background: linear-gradient(135deg, #ffcc00 0%, #ffd633 50%, #ffcc00 100%);
-  color: #061a33;
-  box-shadow: 0 10px 40px rgba(255, 204, 0, 0.2);
+  background: #fff;
+  color: var(--rw-navy);
 }
 
 .rewards-btn-cta:hover {
-  background: #ffcc00;
-  box-shadow: 0 15px 50px rgba(255, 204, 0, 0.35);
+  background: #faf7f2;
 }
 
-/* ──────────────────────────────────────────────────
-   TOAST NOTIFICATION STYLING
-   ────────────────────────────────────────────────── */
+/* ═════════ PREMIUM TOAST SYSTEM ═════════ */
 .rewards-toast-container {
   position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 9999;
   pointer-events: none;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-/* Desktop positioning bottom-right */
-@media (min-width: 769px) {
-  .rewards-toast-container {
-    right: 40px;
-    bottom: 40px;
-    align-items: flex-end;
-  }
-}
-
-/* Mobile positioning top-center */
-@media (max-width: 768px) {
-  .rewards-toast-container {
-    left: 50%;
-    transform: translateX(-50%);
-    top: 40px;
-    width: 90%;
-    max-width: 380px;
-    align-items: center;
-  }
 }
 
 .rewards-toast {
@@ -1709,26 +2315,15 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 0 15px 45px rgba(6, 26, 51, 0.08);
-  padding: 16px 24px;
+  padding: 12px 24px;
   display: flex;
   align-items: center;
-  gap: 16px;
-  width: max-content;
-  max-width: 380px;
-  pointer-events: auto;
+  gap: 12px;
+  box-shadow: 0 20px 48px rgba(6, 26, 51, 0.12), 0 4px 12px rgba(6, 26, 51, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Adjust sliding transform direction for top mobile notification */
-@media (max-width: 768px) {
-  .rewards-toast {
-    transform: translateY(-20px);
-    width: 100%;
-  }
+  transform: translateY(12px);
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .rewards-toast.is-visible {
@@ -1736,16 +2331,11 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   transform: translateY(0);
 }
 
-@media (max-width: 768px) {
-  .rewards-toast.is-visible {
-    transform: translateY(0);
-  }
-}
-
 .rewards-toast-icon {
   color: var(--rw-gold);
-  flex-shrink: 0;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .rewards-toast-msg {
@@ -1753,30 +2343,22 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   font-weight: 600;
   color: var(--rw-navy);
   letter-spacing: 0.5px;
-  line-height: 1.4;
 }
 
-/* ──────────────────────────────────────────────────
-   RESPONSIVENESS (MOBILE-FIRST RHYTHMS)
-   ────────────────────────────────────────────────── */
-
+/* ═════════ RESPONSIVE BREAKPOINTS (MOBILE & TABLET) ═════════ */
 @media (max-width: 1200px) {
-  .rewards-tiers__grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-  }
-  .unlockable-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .rewards-hero__grid {
+    gap: 40px;
   }
 }
 
 @media (max-width: 991px) {
   .rewards-hero__grid {
     grid-template-columns: 1fr;
+    gap: 64px;
     text-align: center;
-    gap: 60px;
   }
-  
+
   .rewards-hero__content {
     display: flex;
     flex-direction: column;
@@ -1787,78 +2369,147 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
     margin-inline: auto;
   }
 
+  .rewards-hero__ctas {
+    justify-content: center;
+  }
+
   .rewards-hero__mockup-wrapper {
     justify-content: center;
   }
 
-  .rewards-phone-mockup {
-    max-width: 380px;
+  /* Redesigned Membership Tiers layout stack */
+  .tiers-grid-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 36px;
   }
 
-  .rewards-phone-inner {
-    height: 720px;
+  .tier-card-new {
+    padding: 28px 16px;
   }
 
-  .rewards-how {
-    padding-block: 80px;
-  }
-  
-  .rewards-grid-three {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 0;
+  .tier-card-image-wrap {
+    width: 110px;
+    height: 110px;
   }
 
-  .how-step {
-    flex: 1;
+  .tier-card-title {
+    font-size: 22px;
+  }
+
+  .tier-details-panel {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 36px 28px;
+    margin-top: 36px;
+  }
+
+  .tier-details-left {
     align-items: center;
     text-align: center;
-    padding: 0 16px;
-    position: relative;
   }
 
-  .how-step:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    top: 15%;
-    right: 0;
-    width: 1px;
-    height: 70%;
-    background-color: rgba(6, 26, 51, 0.08);
+  .tier-details-title {
+    font-size: 36px;
   }
 
-  .how-step__icon-wrap {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 16px;
-    box-shadow: none;
+  .tier-details-subtitle {
+    max-width: 100%;
   }
 
-  .how-step__icon-wrap svg {
-    width: 20px;
-    height: 20px;
+  .details-horse-watermark {
+    display: none;
   }
 
-  .how-step__title {
-    font-size: 16px;
-    margin-bottom: 8px;
-    line-height: 1.2;
+  .benefits-quadrant::before,
+  .benefits-quadrant::after {
+    display: none;
   }
 
-  .how-step__desc {
-    font-size: 12px;
-    line-height: 1.4;
+  .benefits-quadrant {
+    grid-template-columns: 1fr;
+    row-gap: 24px;
   }
 
-  .rewards-transactions__inner {
-    gap: 32px;
+  /* Unlockable rewards list */
+  .unlockable-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reward-card--span-two {
+    grid-column: span 1;
+  }  /* Benefits Strip list */
+  .benefits-strip {
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px 24px;
+  }
+
+  .benefit-separator {
+    display: none;
+  }
+
+  /* Responsive Transactions Section */
+  .transactions-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .stat-box {
+    padding: 18px;
+  }
+
+  .stat-value {
+    font-size: 28px;
+  }
+
+  .transactions-filter-bar {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .filter-tabs-group {
+    justify-content: center;
+  }
+
+  .filter-controls-group {
+    justify-content: center;
+  }
+
+  .transaction-row-new {
+    padding: 16px 20px;
+  }
+
+  .brand-banner {
+    flex-direction: column;
+    text-align: center;
+    gap: 28px;
+    padding: 36px 24px;
+  }
+
+  .brand-banner-left {
+    flex-direction: column;
+  }
+
+  .banner-text-stack {
+    text-align: center;
+    align-items: center;
+  }
+
+  .banner-divider {
+    width: 100%;
+    height: 1px;
+    margin: 0;
+  }
+
+  .brand-banner-right {
+    justify-content: center;
   }
 }
 
-@media (max-width: 768px) {
-  /* Mobile Stack Sequence enforcement */
+@media (max-width: 576px) {
+  /* Strict stacked mobile ordering */
   .rewards-hero__grid {
     display: flex;
     flex-direction: column;
@@ -1868,322 +2519,104 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
     order: 1;
   }
 
-  .rewards-hero__heading {
-    order: 1;
-    margin-bottom: 16px;
-  }
-
-  .rewards-hero__description {
-    order: 2;
-    margin-bottom: 24px;
-  }
-
-  .rewards-hero__ctas {
-    order: 3;
-    margin-bottom: 40px;
-    width: 100%;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .rewards-hero__ctas button {
-    width: 100%;
-    justify-content: center;
-  }
-
   .rewards-hero__mockup-wrapper {
-    order: 4;
-    width: 100%;
-  }
-
-  .rewards-phone-mockup {
-    margin-inline: auto;
-    max-width: 320px;
-  }
-
-  .rewards-phone-inner {
-    height: 600px;
-  }
-
-  .rewards-app-body {
-    padding: 8px 16px 60px;
-  }
-
-  .rewards-app-card {
-    padding: 16px;
-  }
-
-  .balance-num {
-    font-size: 32px;
-  }
-
-  .reorder-grid {
-    gap: 8px;
-  }
-
-  .reorder-card {
-    padding: 8px;
-  }
-
-  .rewards-tiers__grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .tier-card {
-    min-height: auto;
-  }
-
-  .unlockable-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .reward-card--span-two {
-    grid-column: span 1;
-  }
-
-  .reward-card--span-two .reward-card__image-container {
-    aspect-ratio: 1.2/1;
-  }
-
-  .benefits-strip {
-    flex-direction: row;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    padding-block: 16px;
-    gap: 32px;
-    justify-content: flex-start;
-  }
-  .benefits-strip::-webkit-scrollbar {
-    display: none;
-  }
-  .benefit-item {
-    flex: 0 0 auto;
-    width: 130px;
-    padding: 0;
-  }
-  .rewards-benefits {
-    display: none;
-  }
-
-  .status-progression-track {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
+    order: 2;
     margin-top: 40px;
   }
 
-  .status-node {
+  .rewards-phone-mockup {
+    max-width: 100%;
+  }
+
+  .rewards-phone-inner {
+    height: 720px;
+  }
+
+  .collectible-card__inner {
+    padding: 24px;
+  }
+
+  .card-brand {
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+
+  .card-horse-logo {
+    width: 28px;
+    height: 28px;
+  }
+
+  .card-number {
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+
+  .rewards-grid-three {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .tiers-grid-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .reward-card {
     flex-direction: column;
+    height: auto;
+  }
+
+  .reward-card__image-container {
     width: 100%;
-    max-width: 380px;
-    transform: none !important;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 20px;
-    padding: 16px 20px;
-    border: 1px solid rgba(0, 0, 0, 0.03);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    height: 180px;
   }
 
-  .status-node__header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  .reward-card__content {
     width: 100%;
-  }
-  
-  .status-node:hover {
-    transform: none !important;
+    padding: 24px;
   }
 
-  .status-node.active {
-    background: #fdfaf5;
-    border: 1px solid var(--rw-gold);
-    box-shadow: 0 8px 24px rgba(177, 139, 86, 0.1);
+  .reward-card__title {
+    font-size: 20px;
   }
 
-  .status-node__emblem-wrap {
-    width: 72px;
-    height: 72px;
-    margin-bottom: 0;
-    margin-right: 16px;
-    flex-shrink: 0;
+  .reward-card__spend {
+    margin-bottom: 16px;
   }
 
-  .status-node__info {
-    align-items: flex-start;
-    text-align: left;
-    flex: 1;
+  .transactions-stats-row {
+    grid-template-columns: 1fr;
   }
 
-  .status-node__chevron {
-    display: block;
-    width: 24px;
-    height: 24px;
-    color: var(--rw-gold);
-    opacity: 0.6;
-    margin-left: 12px;
-    flex-shrink: 0;
-  }
-
-  .status-node__title {
-    margin-bottom: 4px;
-  }
-
-  .luxury-progress-graph {
-    max-width: 100px;
-  }
-
-  .status-node.active .your-tier-badge {
-    display: none;
-  }
-
-  .status-mobile-details {
-    display: block;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .status-node.active .status-mobile-details {
-    max-height: 600px;
-    opacity: 1;
-    margin-top: 16px;
-  }
-
-  .status-mobile-details__inner {
-    border-top: 1px solid rgba(177, 139, 86, 0.15);
-    padding-top: 16px;
-  }
-
-  .status-details-panel {
-    display: none !important;
-  }
-  
-  .status-details-panel__inner {
+  .transaction-row-new {
     flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-    gap: 0;
-  }
-
-  .details-left {
-    border-right: none;
-    padding-right: 0;
-    align-items: flex-start;
-    width: 100%;
-  }
-  
-  .details-tier-name {
-    font-size: 32px;
-  }
-
-  .details-tier-icon {
-    display: none;
-  }
-
-  .details-divider-small {
-    display: none;
-  }
-
-  .details-divider-mobile-only {
-    display: flex;
     align-items: center;
     gap: 16px;
-    margin: 24px 0 32px 0;
-    width: 100%;
+    padding: 24px 16px;
+    text-align: center;
   }
 
-  .details-divider-mobile-only .divider-line {
-    flex: 1;
-    height: 1px;
-    background: rgba(177, 139, 86, 0.2);
-  }
-
-  .details-divider-mobile-only .divider-icon {
-    width: 16px;
-    height: 16px;
-    color: var(--rw-gold);
-  }
-
-  .details-right {
-    padding-left: 0;
-    width: 100%;
-  }
-
-  .details-perks-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px 16px;
-    width: 100%;
-    text-align: left;
-  }
-
-  .perk-item {
-    flex-direction: row;
+  .tx-col-details {
+    flex-direction: column;
     align-items: center;
-    gap: 12px;
-    padding: 0;
+    text-align: center;
+    width: 100%;
   }
 
-  .perk-icon-desktop {
-    display: none;
-  }
-
-  .perk-icon-mobile {
-    display: flex;
-    width: 32px;
-    height: 32px;
-    background: #fdfaf5;
-    border-radius: 50%;
+  .tx-text-stack {
     align-items: center;
-    justify-content: center;
-    color: var(--rw-gold);
-    flex-shrink: 0;
-    border: none;
+    text-align: center;
   }
 
-  .perk-icon-mobile svg {
-    width: 16px;
-    height: 16px;
+  .tx-col-badge,
+  .tx-col-points,
+  .tx-col-balance {
+    width: 100%;
+    align-items: center;
+    text-align: center;
   }
 
-  .perk-text p {
+  .tx-col-chevron {
     display: none;
-  }
-
-  .perk-text h5 {
-    font-size: 14px;
-    margin-bottom: 0;
-  }
-
-  .details-divider {
-    margin: 24px 0;
-  }
-
-  .rewards-transactions__inner {
-    padding: 12px 16px;
-  }
-
-  .benefit-separator {
-    display: none;
-  }
-
-  .transaction-row {
-    padding: 12px 16px;
-  }
-
-  .product-thumb {
-    width: 40px;
-    height: 40px;
-  }
-
-  .points-badge {
-    font-size: 11px;
-    padding: 4px 10px;
   }
 }

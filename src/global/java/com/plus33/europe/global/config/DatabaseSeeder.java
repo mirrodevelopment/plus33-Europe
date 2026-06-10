@@ -108,7 +108,7 @@ public class DatabaseSeeder implements CommandLineRunner {
                 new Product(
                     "Sachet de Café",
                     "Our signature luxury whole bean coffee pouch. Hand-packaged and nitrogen-flushed in Paris to guarantee peak aroma, featuring sweet notes of jasmine, bergamot, and honey. 250g.",
-                    24.00, "retail", "Ethiopia Yirgacheffe & Geisha", "Light-Medium Blend",
+                    24.00, "retail,signature", "Ethiopia Yirgacheffe & Geisha", "Light-Medium Blend",
                     "Whole Bean, Geisha Blend, Paris Sourced",
                     "/local/assets/products/retail/sachet-de-cafe.png", "Micro-Lot Pouch"
                 ),
@@ -122,21 +122,21 @@ public class DatabaseSeeder implements CommandLineRunner {
                 new Product(
                     "Signature Dark Roast",
                     "A bold, deep espresso blend roasted slightly longer to express rich dark cacao notes, heavy-bodied texture, and a smooth, bittersweet smoky caramel finish.",
-                    21.00, "retail", "Central & South America", "Dark Roast",
+                    21.00, "retail,signature", "Central & South America", "Dark Roast",
                     "Whole Bean, Dark Cacao, Bold Body",
                     "/local/assets/products/retail/signature-dark-roast.png", "Intense Selection"
                 ),
                 new Product(
                     "+33 Atelier Gift Pack",
                     "The ultimate sensory coffee gift. Beautifully boxed collection including two of our micro-lot single-origin filter bags, one whole bean reserve pouch, and custom brand cards.",
-                    48.00, "merchandise", "Curated Selection", "Multi-Roast Edition",
+                    63.30, "merchandise,signature", "Curated Selection", "Multi-Roast Edition",
                     "Gift Box, Curated Reserve, Handcrafted",
                     "/local/assets/products/merchandise/atelier-gift-pack.jpeg", "Luxury Set"
                 ),
                 new Product(
                     "+33 Organic Tote",
                     "Heavyweight organic cotton canvas tote featuring our hand-pressed signature wordmark. Durable, elegant, and designed to carry your daily coffee ritual essentials.",
-                    18.00, "merchandise", "Parisian Atelier", "Cotton Canvas",
+                    18.00, "merchandise,signature", "Parisian Atelier", "Cotton Canvas",
                     "Organic Cotton, French Design, Everyday Carry",
                     "/local/assets/products/merchandise/organic-tote.png", "Ritual Object"
                 ),
@@ -174,6 +174,34 @@ public class DatabaseSeeder implements CommandLineRunner {
                     4.20, "desserts", "Plus33 Pastry Lab", "Salty & Chewy",
                     "Sea Salt, Baked Fresh, Traditional Style",
                     "/local/assets/products/desserts/pretzel.jpg", "Atelier Baked"
+                ),
+                new Product(
+                    "Éclair au Chocolat",
+                    "Classic French pastry made with light choux dough, filled with rich chocolate pastry cream, and finished with a glossy dark chocolate glaze.",
+                    5.50, "desserts", "Plus33 Pastry Lab", "Choux & Chocolate",
+                    "Choux Pastry, Valrhona Cocoa, Parisian Classic",
+                    "/local/assets/products/desserts/Éclairs.png", "Atelier Classic"
+                ),
+                new Product(
+                    "Artisanal Gelato",
+                    "House-churned Italian-style gelato made with fresh organic milk, organic Madagascar vanilla beans, and a smooth, creamy texture.",
+                    6.20, "desserts", "Plus33 Pastry Lab", "Cool & Creamy",
+                    "Madagascar Vanilla, Organic Milk, House Churned",
+                    "/local/assets/products/desserts/Gelato.png", "Summer Special"
+                ),
+                new Product(
+                    "Tiramisu Glacé",
+                    "An elevated frozen expression of the classic Italian dessert, featuring espresso-soaked ladyfingers, whipped mascarpone cream, and dusted cocoa.",
+                    6.80, "desserts", "Plus33 Pastry Lab", "Espresso & Mascarpone",
+                    "Single-Origin Espresso, Mascarpone, Cocoa",
+                    "/local/assets/products/desserts/tiramisu-glace.jpg", "Chef's Choice"
+                ),
+                new Product(
+                    "Zefir",
+                    "A light, airy, and delicately sweet fruit confection made with organic apple purée, fresh egg whites, and agar-agar, dusted with powdered sugar.",
+                    4.50, "desserts", "Plus33 Pastry Lab", "Light & Fruity",
+                    "Apple Purée, Meringue Style, Delicate Sweet",
+                    "/local/assets/products/desserts/Zefir.png", "Delicate Treat"
                 )
             };
 

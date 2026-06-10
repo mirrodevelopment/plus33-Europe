@@ -3,9 +3,9 @@
  * PAGE: Rewards Showcase Page
  * ══════════════════════════════════════════════════
  * PURPOSE:
- * Interactive controls for the PLUS33 Rewards page.
- * Manages FAQ accordions, premium toast notifications,
- * scroll indicators, and navbar theme color active state class.
+ * Premium interactive script for the PLUS33 Rewards page.
+ * Coordinates inline status medal drawer expansions, smooth scrolls,
+ * custom luxury toasts, and page navigation themes.
  * ══════════════════════════════════════════════════
  */
 
@@ -14,16 +14,14 @@
  * @returns {Function} Clean up function to be called on route destroy.
  */
 export function mountRewardsPage() {
-  // ── 1. Enable rewards theme active class on body for header style changes ──
   document.body.classList.add('rewards-theme-active');
 
-  // Cache elements
   const pageRoot = document.getElementById('rewards-page-root');
   if (!pageRoot) return () => {};
 
   const cleanups = [];
 
-  // ── 2. FAQ Accordion Toggle System ──
+  // ── 1. FAQ Accordion Toggle System ──
   const faqCards = pageRoot.querySelectorAll('.faq-card');
   faqCards.forEach((card) => {
     const header = card.querySelector('.faq-card__header');
@@ -33,10 +31,8 @@ export function mountRewardsPage() {
 
     const onHeaderClick = (e) => {
       e.preventDefault();
-      
       const isOpen = card.classList.contains('is-open');
 
-      // Close all other accordion cards for a clean, calm reading rhythm
       faqCards.forEach((otherCard) => {
         if (otherCard !== card && otherCard.classList.contains('is-open')) {
           const otherContent = otherCard.querySelector('.faq-card__content');
@@ -47,7 +43,6 @@ export function mountRewardsPage() {
         }
       });
 
-      // Toggle current card
       if (isOpen) {
         card.classList.remove('is-open');
         header.setAttribute('aria-expanded', 'false');
@@ -55,7 +50,6 @@ export function mountRewardsPage() {
       } else {
         card.classList.add('is-open');
         header.setAttribute('aria-expanded', 'true');
-        // Set height to scrollHeight for a smooth transition
         content.style.maxHeight = content.scrollHeight + 'px';
       }
     };
@@ -64,7 +58,7 @@ export function mountRewardsPage() {
     cleanups.push(() => header.removeEventListener('click', onHeaderClick));
   });
 
-  // ── 3. Smooth Scroll Triggers ──
+  // ── 2. Smooth Scroll Triggers ──
   const scrollTriggers = pageRoot.querySelectorAll('.rewards-scroll-trigger');
   scrollTriggers.forEach((trigger) => {
     const targetSelector = trigger.getAttribute('data-target');
@@ -82,163 +76,352 @@ export function mountRewardsPage() {
     cleanups.push(() => trigger.removeEventListener('click', onTriggerClick));
   });
 
-  // ── 4. Toast Trigger Systems ──
+  // ── 3. Toast Trigger System ──
   const toastTriggers = pageRoot.querySelectorAll('.rewards-toast-trigger');
   toastTriggers.forEach((trigger) => {
-    const msg = trigger.getAttribute('data-toast-msg') || 'Feature coming soon';
-    
     const onTriggerClick = (e) => {
       e.preventDefault();
-      showPremiumToast(msg);
+      showPremiumToast('Rewards system coming soon');
     };
 
     trigger.addEventListener('click', onTriggerClick);
     cleanups.push(() => trigger.removeEventListener('click', onTriggerClick));
   });
 
-  // ── 5. Status Progression Interactivity ──
-  const statusNodes = pageRoot.querySelectorAll('.status-node');
-  const detailsPanelName = pageRoot.querySelector('.details-tier-name');
-  const detailsPanelDesc = pageRoot.querySelector('.details-tier-desc');
-  const perksList = pageRoot.querySelector('.details-perks-list');
-  const desktopDetailsPanel = pageRoot.querySelector('#desktop-details-panel');
+  // ── 4. Clickable Horizontal Status Tiers Grid ──
+  const USER_POINTS = 1200; // Mock current points
+  const TIER_THRESHOLDS = {
+    bronze: 0,
+    silver: 3000,
+    gold: 8000,
+    platinum: 15000
+  };
 
-  const giftIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>`;
-  const starIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
-  const tagIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>`;
-  const cupIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>`;
-  const userIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`;
-  const mapIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>`;
-
-  const tierData = {
+  const TIER_DETAILS = {
     bronze: {
-      name: 'Bronze',
-      desc: 'Welcome perks and entry-level luxury benefits.',
-      perks: [
-        { title: 'Welcome perks', desc: 'Enjoy exclusive welcome treats and offers.', icon: giftIcon },
-        { title: 'Birthday rewards', desc: 'A special treat, just for you.', icon: cupIcon },
-        { title: 'Early offers', desc: 'Be the first to know about select promotions.', icon: tagIcon },
-        { title: 'Member support', desc: 'Dedicated support for a seamless experience.', icon: starIcon }
+      title: "Bronze",
+      desc: "Welcome perks and entry-level luxury benefits.",
+      benefits: [
+        {
+          title: "Welcome perks",
+          desc: "Enjoy exclusive welcome treats and offers.",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 12 20 22 4 22 4 12"></polyline>
+            <rect x="2" y="7" width="20" height="5"></rect>
+            <line x1="12" y1="22" x2="12" y2="7"></line>
+            <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+            <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+          </svg>`
+        },
+        {
+          title: "Birthday rewards",
+          desc: "A special treat, just for you.",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="5" r="2"></circle>
+            <path d="M12 7v2M7 14c0-2.5 2-4 5-4s5 1.5 5 4H7z"></path>
+            <path d="M8 14l1.5 7h5l1.5-7"></path>
+            <path d="M10 14l-.5 7M12 14v7M14 14l.5 7"></path>
+          </svg>`
+        },
+        {
+          title: "Early offers",
+          desc: "Be the first to know about select promotions.",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+            <line x1="7" y1="7" x2="7.01" y2="7"></line>
+            <path d="M9.5 14.5l5-5"></path>
+            <circle cx="10.5" cy="10.5" r="0.5" fill="currentColor"></circle>
+            <circle cx="13.5" cy="13.5" r="0.5" fill="currentColor"></circle>
+          </svg>`
+        },
+        {
+          title: "Member support",
+          desc: "Dedicated support for a seamless experience.",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>`
+        }
       ]
     },
     silver: {
-      name: 'Silver',
-      desc: 'Recognized guest and refined experiences.',
-      perks: [
-        { title: '1.2x points', desc: 'Accelerated earning on every purchase.', icon: starIcon },
-        { title: 'Priority offers', desc: 'Get access to offers before anyone else.', icon: tagIcon },
-        { title: 'Free upgrades', desc: 'Enjoy complimentary size upgrades.', icon: cupIcon },
-        { title: 'Dedicated support', desc: 'Priority queue for member support.', icon: userIcon }
+      title: "Silver",
+      desc: "Refined lounge comfort and sizing upgrades.",
+      benefits: [
+        {
+          title: "Points multiplier",
+          desc: "Earn 1.2x points on every order.",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+            <polyline points="17 6 23 6 23 12"></polyline>
+          </svg>`
+        },
+        {
+          title: "Size upgrades",
+          desc: "Complimentary size upgrades on select drinks.",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+            <polyline points="7 14 10 11 13 14"></polyline>
+            <line x1="10" y1="11" x2="10" y2="17"></line>
+          </svg>`
+        },
+        {
+          title: "Priority helpline",
+          desc: "Priority helpline for faster assistance.",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>`
+        },
+        {
+          title: "Birthday rewards",
+          desc: "Elevated birthday treats and custom offers.",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+            <polygon points="12 12 13 14 15.5 14.5 13.5 16 14 18.5 12 17 10 18.5 10.5 16 8.5 14.5 11 14"></polygon>
+          </svg>`
+        }
       ]
     },
     gold: {
-      name: 'Gold',
-      desc: 'Elite member signature experience.',
-      perks: [
-        { title: '1.5x points', desc: 'Elite earning multiplier on all orders.', icon: starIcon },
-        { title: 'Monthly dessert', desc: 'A complimentary dessert every month.', icon: cupIcon },
-        { title: 'Early launches', desc: 'Be the first to taste new menu items.', icon: tagIcon },
-        { title: 'Private events', desc: 'Exclusive invitations to boutique events.', icon: mapIcon }
+      title: "Gold",
+      desc: "Elite Atelier privileges and curated patisserie.",
+      benefits: [
+        {
+          title: "Elite multiplier",
+          desc: "Earn 1.5x points on all boutique orders.",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+            <polyline points="17 6 23 6 23 12"></polyline>
+            <polyline points="23 11 18 16 13.5 11.5 6 19"></polyline>
+          </svg>`
+        },
+        {
+          title: "Free patisserie",
+          desc: "One complimentary dessert every calendar month.",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 14c2.5-3 5.5-5 9-5s6.5 2 9 5c-1-2.5-3.5-4-6.5-4h-5c-3 0-5.5 1.5-6.5 4z"></path>
+            <path d="M6.5 11.5C8 9.5 10 8.5 12 8.5s4 1 5.5 3"></path>
+            <path d="M2 16c4-1 6-2 10-2s6 1 10 2c-3.5-3-7.5-4.5-10-4.5S5.5 13 2 16z"></path>
+          </svg>`
+        },
+        {
+          title: "Priority queue",
+          desc: "Skip the wait with priority ordering.",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>`
+        },
+        {
+          title: "Private events",
+          desc: "Exclusive invites to boutique social salons.",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="5" width="20" height="14" rx="2" ry="2"></rect>
+            <path d="M2 12a3 3 0 0 1 3-3V5h14v4a3 3 0 0 1 0 6v4H5v-4a3 3 0 0 1-3-3z"></path>
+          </svg>`
+        }
       ]
     },
     platinum: {
-      name: 'Platinum',
-      desc: 'Private reserve circle and ultra premium status.',
-      perks: [
-        { title: '2x points', desc: 'Maximum earning potential on purchases.', icon: starIcon },
-        { title: 'VIP support', desc: '24/7 dedicated concierge service.', icon: userIcon },
-        { title: 'Tasting experiences', desc: 'Private tastings with master roasters.', icon: cupIcon },
-        { title: 'Surprise rewards', desc: 'Unannounced seasonal luxury gifts.', icon: giftIcon }
+      title: "Platinum",
+      desc: "Ultimate Private Reserve circle and rare micro-lots.",
+      benefits: [
+        {
+          title: "Reserve multiplier",
+          desc: "Earn 2.0x points on all purchases.",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7z"></path>
+            <path d="M3 20h18"></path>
+          </svg>`
+        },
+        {
+          title: "Private concierge",
+          desc: "24/7 dedicated boutique reservation concierge.",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3m-3-3l2.5-2.5"></path>
+          </svg>`
+        },
+        {
+          title: "Master tastings",
+          desc: "Complimentary salon tastings with master roasters.",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="12" cy="12" rx="5" ry="9" transform="rotate(-45 12 12)"></ellipse>
+            <path d="M8.5 15.5c2-1 3.5-3.5 5-7"></path>
+          </svg>`
+        },
+        {
+          title: "Rare reserves",
+          desc: "Priority access to ultra-rare micro-lot coffees.",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 3h12l4 6-10 12L2 9z"></path>
+            <path d="M11 3l-4 6 5 12"></path>
+            <path d="M13 3l4 6-5 12"></path>
+            <path d="M2 9h20"></path>
+          </svg>`
+        }
       ]
     }
   };
 
-  const renderPerks = (perks) => {
-    return perks.map(perk => `
-      <li class="perk-item">
-        <div class="perk-icon perk-icon-desktop">
-          ${perk.icon}
-        </div>
-        <div class="perk-icon perk-icon-mobile">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="checkmark"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <div class="perk-text">
-          <h5>${perk.title}</h5>
-          <p>${perk.desc}</p>
-        </div>
-      </li>
-    `).join('');
+  // 1. Calculate active user tier
+  let activeTier = 'bronze';
+  if (USER_POINTS >= TIER_THRESHOLDS.platinum) {
+    activeTier = 'platinum';
+  } else if (USER_POINTS >= TIER_THRESHOLDS.gold) {
+    activeTier = 'gold';
+  } else if (USER_POINTS >= TIER_THRESHOLDS.silver) {
+    activeTier = 'silver';
+  }
+
+  const tierCards = pageRoot.querySelectorAll('.tier-card-new');
+  
+  // Mark user tier card
+  const activeCard = pageRoot.querySelector(`.tier-card-new[data-tier="${activeTier}"]`);
+  if (activeCard) {
+    activeCard.classList.add('is-user-tier');
+  }
+
+  // Update progress fills
+  const bronzeFill = pageRoot.querySelector('.tier-card-new[data-tier="bronze"] .tier-card-progress-fill');
+  const silverFill = pageRoot.querySelector('.tier-card-new[data-tier="silver"] .tier-card-progress-fill');
+  const goldFill = pageRoot.querySelector('.tier-card-new[data-tier="gold"] .tier-card-progress-fill');
+  const platinumFill = pageRoot.querySelector('.tier-card-new[data-tier="platinum"] .tier-card-progress-fill');
+
+  if (bronzeFill) bronzeFill.style.width = '100%';
+  if (silverFill) silverFill.style.width = `${Math.min(100, Math.max(0, (USER_POINTS / 3000) * 100))}%`;
+  if (goldFill) goldFill.style.width = `${Math.min(100, Math.max(0, ((USER_POINTS - 3000) / 5000) * 100))}%`;
+  if (platinumFill) platinumFill.style.width = `${Math.min(100, Math.max(0, ((USER_POINTS - 8000) / 7000) * 100))}%`;
+
+  // Dynamic details panel update function
+  const updateDetailsPanel = (tierKey) => {
+    const titleEl = pageRoot.querySelector('#selected-tier-title');
+    const descEl = pageRoot.querySelector('#selected-tier-desc');
+    const quadrantEl = pageRoot.querySelector('#tier-benefits-quadrant');
+    const detailsData = TIER_DETAILS[tierKey];
+
+    if (!titleEl || !descEl || !quadrantEl || !detailsData) return;
+
+    // Highlight selected card
+    tierCards.forEach(c => c.classList.toggle('selected', c.getAttribute('data-tier') === tierKey));
+
+    // Transitions
+    titleEl.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+    descEl.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+    quadrantEl.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+
+    titleEl.style.opacity = '0';
+    titleEl.style.transform = 'translateY(-4px)';
+    descEl.style.opacity = '0';
+    descEl.style.transform = 'translateY(-4px)';
+    quadrantEl.style.opacity = '0';
+    quadrantEl.style.transform = 'translateY(4px)';
+
+    setTimeout(() => {
+      titleEl.textContent = detailsData.title;
+      descEl.textContent = detailsData.desc;
+
+      let quadrantHtml = '';
+      detailsData.benefits.forEach(b => {
+        quadrantHtml += `
+          <div class="benefit-quad-item">
+            <div class="benefit-icon-circle">
+              ${b.icon}
+            </div>
+            <div class="benefit-quad-text">
+              <h4 class="benefit-quad-title">${b.title}</h4>
+              <p class="benefit-quad-desc">${b.desc}</p>
+            </div>
+          </div>
+        `;
+      });
+      quadrantEl.innerHTML = quadrantHtml;
+
+      requestAnimationFrame(() => {
+        titleEl.style.opacity = '1';
+        titleEl.style.transform = 'translateY(0)';
+        descEl.style.opacity = '1';
+        descEl.style.transform = 'translateY(0)';
+        quadrantEl.style.opacity = '1';
+        quadrantEl.style.transform = 'translateY(0)';
+      });
+    }, 200);
   };
 
-  // Dynamically generate mobile accordion details for each node
-  statusNodes.forEach(node => {
-    const tierId = node.getAttribute('data-tier');
-    const data = tierData[tierId];
-    if (data) {
-      const mobileDetails = document.createElement('div');
-      mobileDetails.className = 'status-mobile-details';
-      mobileDetails.innerHTML = `
-        <div class="status-mobile-details__inner">
-          <p class="details-tier-desc" style="color: var(--rw-muted); font-size: 14px; margin-bottom: 0; text-align: left;">${data.desc}</p>
-          <div class="details-divider-mobile-only" style="display: flex;">
-            <div class="divider-line"></div>
-            <svg viewBox="0 0 24 24" class="divider-icon" fill="currentColor"><path d="M12 2L15 10L22 12L15 14L12 22L9 14L2 12L9 10L12 2Z"/></svg>
-            <div class="divider-line"></div>
-          </div>
-          <ul class="details-perks-list">
-            ${renderPerks(data.perks)}
-          </ul>
-        </div>
-      `;
-      node.appendChild(mobileDetails);
-    }
+  // Add click listeners to cards
+  tierCards.forEach(card => {
+    const tierKey = card.getAttribute('data-tier');
+    const onCardClick = (e) => {
+      e.preventDefault();
+      updateDetailsPanel(tierKey);
+    };
+    card.addEventListener('click', onCardClick);
+    cleanups.push(() => card.removeEventListener('click', onCardClick));
   });
 
-  statusNodes.forEach(node => {
-    const onNodeClick = () => {
-      const tierId = node.getAttribute('data-tier');
-      if (!tierId || !tierData[tierId]) return;
+  // Select the active user tier by default
+  updateDetailsPanel(activeTier);
 
-      const isActive = node.classList.contains('active');
+  // ── 5. Recent Transactions Filtering System ──
+  const filterTabs = pageRoot.querySelectorAll('.filter-tab-btn');
+  const txRows = pageRoot.querySelectorAll('.transaction-row-new');
 
-      if (isActive) {
-        // Allow collapsing the accordion on mobile
-        if (window.innerWidth <= 991) {
-          node.classList.remove('active');
+  filterTabs.forEach(tab => {
+    const onTabClick = (e) => {
+      e.preventDefault();
+      const filterVal = tab.getAttribute('data-filter');
+
+      // Update active class
+      filterTabs.forEach(t => t.classList.toggle('active', t === tab));
+
+      // Filter rows
+      txRows.forEach(row => {
+        const category = row.getAttribute('data-category');
+        if (filterVal === 'all' || category === filterVal) {
+          row.style.display = 'flex';
+          row.style.opacity = '0';
+          row.style.transform = 'translateY(4px)';
+          requestAnimationFrame(() => {
+            row.style.opacity = '1';
+            row.style.transform = 'translateY(0)';
+          });
+        } else {
+          row.style.display = 'none';
         }
-        // On desktop, clicking active node does nothing (keeps it selected)
-        return;
-      }
-
-      // Update active classes
-      statusNodes.forEach(n => n.classList.remove('active'));
-      node.classList.add('active');
-
-      // Update panel content with a fade effect
-      if (desktopDetailsPanel) {
-        desktopDetailsPanel.classList.add('fade-out');
-        
-        setTimeout(() => {
-          const data = tierData[tierId];
-          if(detailsPanelName) detailsPanelName.textContent = data.name;
-          if(detailsPanelDesc) detailsPanelDesc.textContent = data.desc;
-          if(perksList) perksList.innerHTML = renderPerks(data.perks);
-          
-          desktopDetailsPanel.classList.remove('fade-out');
-        }, 250); // Matches CSS transition duration
-      }
+      });
     };
 
-    node.addEventListener('click', onNodeClick);
-    cleanups.push(() => node.removeEventListener('click', onNodeClick));
+    tab.addEventListener('click', onTabClick);
+    cleanups.push(() => tab.removeEventListener('click', onTabClick));
   });
 
-  // ── 6. Standard cleanup returned to router ──
-  return () => {
-    // Remove class from body
-    document.body.classList.remove('rewards-theme-active');
+  // ── 6. Filter & Dropdown Toast Alerts ──
+  const toastTriggerBtns = pageRoot.querySelectorAll('.toast-trigger-btn');
+  toastTriggerBtns.forEach(btn => {
+    const onBtnClick = (e) => {
+      e.preventDefault();
+      showPremiumToast('Filter option coming soon');
+    };
+    btn.addEventListener('click', onBtnClick);
+    cleanups.push(() => btn.removeEventListener('click', onBtnClick));
+  });
 
-    // Run custom cleanups
+  // ── 7. Clickable Transaction Row details ──
+  txRows.forEach(row => {
+    const onRowClick = (e) => {
+      e.preventDefault();
+      const title = row.querySelector('.tx-title')?.textContent || 'Transaction';
+      const points = row.querySelector('.tx-col-points span')?.textContent || '';
+      showPremiumToast(`${title}: ${points} Points`);
+    };
+    row.addEventListener('click', onRowClick);
+    cleanups.push(() => row.removeEventListener('click', onRowClick));
+  });
+
+  // Cleanup handler
+  return () => {
+    document.body.classList.remove('rewards-theme-active');
     cleanups.forEach((fn) => {
       try { fn(); } catch (err) { /* silent */ }
     });
@@ -258,7 +441,6 @@ function showPremiumToast(message) {
     document.body.appendChild(container);
   }
 
-  // Clear existing toasts in container to prevent pileups and layout shifts
   container.innerHTML = '';
 
   const toast = document.createElement('div');
@@ -274,15 +456,12 @@ function showPremiumToast(message) {
   
   container.appendChild(toast);
 
-  // Trigger entering animation
   requestAnimationFrame(() => {
     toast.classList.add('is-visible');
   });
 
-  // Auto dismiss after 3 seconds
   setTimeout(() => {
     toast.classList.remove('is-visible');
-    // Wait for fade transition, then remove element
     setTimeout(() => {
       toast.remove();
       if (container.children.length === 0) {

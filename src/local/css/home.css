@@ -3391,11 +3391,12 @@
 .sbx-hero__slider {
   position: relative;
   z-index: 12;
-  background: #2A1208;
-  border-radius: 20px;
-  width: 70%;
-  margin: 20px auto 16px;
-  padding: 0 64px 14px;
+  background: #201008; /* Deep rich espresso dark brown */
+  border-radius: 48px; /* Extremely rounded ends matching reference image */
+  width: 85%;
+  max-width: 1050px;
+  margin: 40px auto 24px;
+  padding: 0 96px 24px; /* Roomy padding to separate cards from arrow buttons */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -3403,27 +3404,26 @@
   gap: 0;
   overflow: visible;
   box-shadow:
-    0 -4px 30px rgba(42, 18, 8, 0.20),
-    0 10px 40px rgba(0, 0, 0, 0.40);
+    0 -4px 30px rgba(28, 15, 6, 0.15),
+    0 20px 50px rgba(0, 0, 0, 0.35); /* Soft premium drop shadow */
   flex-shrink: 0;
 }
 
 .sbx-hero__slider-arrow {
   position: absolute;
-  top: 48px;
-  /* fixed top position relative to card track center */
+  top: 50%; /* Perfectly centered vertically on the bar */
   transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   border: none;
   background: #FFFFFF;
-  color: #2A1208;
+  color: #201008;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 14;
+  z-index: 20;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
   transition: all 0.3s ease;
   flex-shrink: 0;
@@ -3442,89 +3442,88 @@
 }
 
 .sbx-hero__slider-arrow--prev {
-  left: 16px;
+  left: 32px; /* Positioned inside the bar matching reference image */
 }
 
 .sbx-hero__slider-arrow--next {
-  right: 16px;
+  right: 32px; /* Positioned inside the bar matching reference image */
 }
 
 .sbx-hero__slider-track {
   display: flex;
   align-items: flex-end;
-  /* Align cards at the bottom of the track */
   justify-content: center;
-  gap: 16px;
+  gap: 28px; /* Balanced spacing */
   overflow: visible;
-  /* must be visible so translated circles peek above the bar */
   width: 100%;
 }
 
-/* Individual slider card — sits at bottom, circles peek above using negative margin */
+/* Individual slider card styling - all text aligns perfectly */
 .sbx-hero__slider-card {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-end; /* Align components to bottom of flow */
   gap: 6px;
   min-width: 90px;
   flex: 1;
-  max-width: 160px;
+  max-width: 170px;
+  height: 145px; /* Constant height to align name and CTA horizontal lines */
   padding-top: 0;
-  transform: none;
-  /* stays at bottom */
-  transform-origin: bottom center;
+  position: relative;
+  overflow: visible;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .sbx-hero__slider-card:hover {
-  transform: scale(1.05);
+  transform: translateY(-4px); /* Premium hover float */
 }
 
-/* Featured center card scales up from the bottom */
-.sbx-hero__slider-card--featured {
-  transform: scale(1.12);
+/* Card container scale resets to prevent text baseline misalignment */
+#sbx-card-1, #sbx-card-5,
+#sbx-card-2, #sbx-card-4,
+#sbx-card-3 {
+  transform: none;
 }
 
-.sbx-hero__slider-card--featured:hover {
-  transform: scale(1.18);
-}
-
-/* Circular product thumbnail */
+/* Cups stand tall, no circular mask */
 .sbx-hero__slider-thumb {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  overflow: hidden;
+  width: 90px;
+  height: 90px;
+  border-radius: 0;
+  overflow: visible;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   flex-shrink: 0;
+  background: transparent !important;
   box-shadow: none;
-  transition: margin-top 0.4s ease;
-  margin-top: -38px;
-  /* pull thumbnail up out of card, peeking above bar */
-  background: transparent;
+  transition: all 0.4s ease;
+  transform-origin: bottom center;
 }
 
-.sbx-hero__slider-card--featured .sbx-hero__slider-thumb {
-  width: 84px;
-  height: 84px;
-  margin-top: -46px;
-  /* larger card needs slightly more pull-up */
+/* Staggered scale and translateY on the thumbs to show depth without text misalignment */
+#sbx-card-1 .sbx-hero__slider-thumb, 
+#sbx-card-5 .sbx-hero__slider-thumb {
+  transform: translateY(-20px) scale(0.85);
+}
+
+#sbx-card-2 .sbx-hero__slider-thumb, 
+#sbx-card-4 .sbx-hero__slider-thumb {
+  transform: translateY(-34px) scale(1.05);
+}
+
+#sbx-card-3 .sbx-hero__slider-thumb {
+  transform: translateY(-56px) scale(1.36); /* Featured cup stands tall and large */
+  z-index: 15;
 }
 
 .sbx-hero__slider-card:hover .sbx-hero__slider-thumb {
   box-shadow: none;
 }
 
-.sbx-hero__slider-thumb--rose {
-  background: transparent !important;
-}
-
-.sbx-hero__slider-thumb--green {
-  background: transparent !important;
-}
-
+.sbx-hero__slider-thumb--rose,
+.sbx-hero__slider-thumb--green,
 .sbx-hero__slider-thumb--caramel {
   background: transparent !important;
 }
@@ -3532,28 +3531,29 @@
 .sbx-hero__slider-thumb img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  object-fit: contain; /* Ensure cup renders fully without clipping */
 }
 
 .sbx-hero__slider-name {
   font-family: 'Manrope', sans-serif;
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   font-weight: 700;
   color: #FFFFFF;
   text-align: center;
   line-height: 1.3;
+  transition: all 0.3s ease;
 }
 
 .sbx-hero__slider-card--featured .sbx-hero__slider-name {
-  font-size: 0.88rem;
+  font-size: 1.06rem;
+  font-weight: 800; /* Bolder and slightly larger name for active item */
 }
 
 .sbx-hero__slider-cta {
   font-family: 'Manrope', sans-serif;
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.6);
   text-align: center;
   text-decoration: none;
   transition: color 0.3s ease;
@@ -3561,7 +3561,7 @@
 }
 
 .sbx-hero__slider-cta:hover {
-  color: rgba(255, 255, 255, 0.90);
+  color: #FFFFFF;
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -3852,6 +3852,7 @@
     min-width: 70px;
     max-width: 130px;
     gap: 6px;
+    height: auto; /* Reset desktop fixed height */
     transform: none;
     transform-origin: bottom center;
   }
@@ -3864,12 +3865,14 @@
     width: 54px;
     height: 54px;
     margin-top: -28px;
+    transform: none !important; /* Reset desktop translates/scales */
   }
 
   .sbx-hero__slider-card--featured .sbx-hero__slider-thumb {
     width: 66px;
     height: 66px;
     margin-top: -36px;
+    transform: none !important; /* Reset desktop translates/scales */
   }
 
   .sbx-hero__slider-name {
@@ -4014,12 +4017,14 @@
     width: 54px;
     height: 54px;
     margin-top: -28px;
+    transform: none !important;
   }
 
   .sbx-hero__slider-card--featured .sbx-hero__slider-thumb {
     width: 66px;
     height: 66px;
     margin-top: -36px;
+    transform: none !important;
   }
 
   .sbx-hero__slider-arrow {
@@ -4505,14 +4510,14 @@ body:has(#home-page) .plus33-nav--solid {
     width: 94% !important;
     margin: 32px auto 20px !important;
     padding: 0 40px 18px !important;
-    /* Increased bottom padding for taller cards */
-    border-radius: 20px !important;
+    border-radius: 24px !important;
+    background: #1C0F06 !important;
   }
 
   .sbx-hero__slider-arrow {
     width: 34px !important;
     height: 34px !important;
-    top: 48px !important;
+    top: 52px !important;
   }
 
   .sbx-hero__slider-arrow svg {
@@ -4526,33 +4531,54 @@ body:has(#home-page) .plus33-nav--solid {
 
   .sbx-hero__slider-card {
     min-width: 82px !important;
-    /* Increased card min-width for larger thumbnails */
+    transform-origin: bottom center;
+  }
+
+  /* Staggered scaling on mobile */
+  #sbx-card-1, #sbx-card-3 {
+    transform: scale(0.9) !important;
+  }
+  #sbx-card-2 {
+    transform: scale(1.15) !important;
+    z-index: 10;
   }
 
   .sbx-hero__slider-name {
     font-size: 0.74rem !important;
+    font-weight: 800 !important;
   }
 
-  .sbx-hero__slider-card--featured .sbx-hero__slider-name {
+  #sbx-card-2 .sbx-hero__slider-name {
     font-size: 0.82rem !important;
   }
 
   .sbx-hero__slider-cta {
     font-size: 0.64rem !important;
+    font-weight: 700 !important;
   }
 
   .sbx-hero__slider-thumb {
-    width: 72px !important;
-    /* Increased from 62px to make carousel taller */
-    height: 72px !important;
-    margin-top: -36px !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+    background: transparent !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+    box-shadow: none !important;
+    transition: all 0.4s ease !important;
   }
 
-  .sbx-hero__slider-card--featured .sbx-hero__slider-thumb {
-    width: 90px !important;
-    /* Increased from 76px to make carousel taller */
-    height: 90px !important;
-    margin-top: -46px !important;
+  #sbx-card-1 .sbx-hero__slider-thumb,
+  #sbx-card-3 .sbx-hero__slider-thumb {
+    width: 65px !important;
+    height: 65px !important;
+    margin-top: -40px !important;
+  }
+
+  #sbx-card-2 .sbx-hero__slider-thumb {
+    width: 85px !important;
+    height: 85px !important;
+    margin-top: -55px !important;
   }
 
   .sbx-hero__slider-badge {

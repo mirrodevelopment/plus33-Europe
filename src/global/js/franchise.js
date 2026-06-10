@@ -22,40 +22,71 @@
 export function mountFranchisePage() {
     gsap.registerPlugin(ScrollTrigger);
 
-    // ═════════ ENTRANCE ANIMATIONS ═════════
-    gsap.from('.franchise-hero__content h1', {
-        y: 40,
-        opacity: 0,
-        duration: 1.5,
-        ease: 'power4.out'
-    });
+    // Create GSAP context for reliable lifecycle management and cleanup
+    const ctx = gsap.context(() => {
+        // ═════════ ENTRANCE ANIMATIONS ═════════
+        gsap.from('.franchise-hero__content h1', {
+            y: 40,
+            opacity: 0,
+            duration: 1.5,
+            ease: 'power4.out'
+        });
 
-    gsap.from('.reveal', {
-        scrollTrigger: {
-            trigger: '.reveal',
-            start: 'top 85%'
-        },
-        y: 30,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.1,
-        ease: 'power2.out'
-    });
+        // Trigger each reveal element individually as it enters the viewport
+        gsap.utils.toArray('.reveal').forEach(el => {
+            gsap.from(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 85%',
+                    toggleActions: 'play none none none'
+                },
+                y: 30,
+                opacity: 0,
+                duration: 1,
+                ease: 'power2.out'
+            });
+        });
 
-    // ═════════ STATS TICKERS ═════════
-    const stats = document.querySelectorAll('.franchise-stats__val[data-target]');
-    stats.forEach(stat => {
-        const target = +stat.getAttribute('data-target');
-        gsap.to(stat, {
-            innerText: target,
-            duration: 2,
-            snap: { innerText: 1 },
-            scrollTrigger: {
-                trigger: '.franchise-stats',
-                start: 'top 90%'
-            }
+        // ═════════ STATS TICKERS ═════════
+        const stats = document.querySelectorAll('.franchise-stats__val[data-target]');
+        stats.forEach(stat => {
+            const target = +stat.getAttribute('data-target');
+            gsap.to(stat, {
+                innerText: target,
+                duration: 2,
+                snap: { innerText: 1 },
+                scrollTrigger: {
+                    trigger: '.franchise-stats',
+                    start: 'top 90%',
+                    toggleActions: 'play none none none'
+                }
+            });
+        });
+
+        // ═════════ SMOOTH SCROLL FOR APPLY CTAS ═════════
+        const applyButtons = document.querySelectorAll('a[href="#apply"]');
+        applyButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetEl = document.getElementById('apply');
+                if (targetEl) {
+                    const targetY = targetEl.getBoundingClientRect().top + window.scrollY - 80; // 80px offset for floating navbar
+                    const obj = { y: window.scrollY };
+                    gsap.to(obj, {
+                        y: targetY,
+                        duration: 1.5,
+                        ease: 'power2.out',
+                        onUpdate: () => window.scrollTo(0, obj.y)
+                    });
+                }
+            });
         });
     });
+
+    // Refresh ScrollTrigger coordinates for the dynamic layout changes
+    setTimeout(() => {
+        ScrollTrigger.refresh();
+    }, 100);
 
     // ═════════ APPLICATION FORM ═════════
     const form = document.getElementById('franchise-form');
@@ -234,6 +265,7 @@ export function mountFranchisePage() {
 
     // ═════════ CLEANUP Lifecycle Hook ═════════
     return () => {
+        ctx.revert(); // Reverts all GSAP animations and kills ScrollTriggers in context
         if (franchiseMapInstance) {
             franchiseMapInstance.remove();
             franchiseMapInstance = null;

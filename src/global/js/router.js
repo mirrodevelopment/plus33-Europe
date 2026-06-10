@@ -36,7 +36,7 @@
   const ROUTES = {
     '/': {
       fragment: null,                           // baked into index.html — no fetch
-      css:      '/local/css/home.css?v=8.4',
+      css:      '/local/css/home.css?v=8.6',
       title:    '+33 Paris — Parisian Specialty Coffee House',
       init:     () => { window._homeController = window.initHome?.(); },
       destroy:  () => window._homeController?.destroy?.()
@@ -87,11 +87,11 @@
       }
     },
     '/store': {
-      fragment: '/local/html/store.html?v=1.3',
-      css:      '/local/css/store.css',
+      fragment: '/local/html/store.html?v=2.4',
+      css:      '/local/css/store.css?v=2.4',
       title:    'Store — +33 Paris',
       init:     async () => {
-        const mod = await import('/local/js/store.js?v=1.3');
+        const mod = await import('/local/js/store.js?v=2.4');
         window._storeCleanup = mod.mountStorePage();
       },
       destroy:  () => {
@@ -221,7 +221,6 @@
 
     /* Boot the current route (homepage is already rendered) */
     const path = location.pathname;
-    _currentPath = path;
     
     const matched = matchRoute(path) || { route: ROUTES['/'], params: {} };
     _ensureCss(matched.route);
@@ -229,6 +228,7 @@
 
     /* Init home page JS (content already in DOM) */
     if (path === '/' || path === '') {
+      _currentPath = path;
       const route = ROUTES['/'];
       _currentDestroy = route.destroy;
       requestAnimationFrame(() => route.init?.());

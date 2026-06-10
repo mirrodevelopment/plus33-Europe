@@ -92,7 +92,7 @@ const FALLBACK_PRODUCTS = [
     description: "A bold, deep espresso blend roasted slightly longer to express rich dark cacao notes, heavy-bodied texture, and a smooth, bittersweet smoky caramel finish."
   },
   {
-    id: 14, name: "+33 Atelier Gift Pack", category: "equipment", price: 48.00,
+    id: 14, name: "+33 Atelier Gift Pack", category: "equipment", price: 63.30,
     origin: "Curated Selection", roast: "Multi-Roast Edition", badge: "Luxury Set",
     notes: "Gift Box, Curated Reserve, Handcrafted", imagePath: "/local/assets/products/merchant/gift-pack.jpeg",
     description: "The ultimate sensory coffee gift. Beautifully boxed collection including two of our micro-lot single-origin filter bags, one whole bean reserve pouch, and custom brand cards."

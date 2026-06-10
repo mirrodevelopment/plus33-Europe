@@ -424,8 +424,8 @@
       'iced-coffee': { label: 'Iced Coffee & Cold Drinks', desc: 'Chilled refreshments for every season',       img: '/local/assets/products/drinks/iced-coffee/iced-punch-coco.jpg',      icon: '<path d="M5 8h14l-1.5 10H6.5L5 8zM3 8h18M10 4h4" stroke-linecap="round" stroke-linejoin="round"/>' },
       'signature':   { label: 'Signature Drinks',          desc: 'Unique house specialties & seasonal creates', img: '/local/assets/products/signature_category.jpg',                      icon: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke-linecap="round" stroke-linejoin="round"/>' },
       'bakery':      { label: 'Bakery',                    desc: 'Fresh pastries baked every morning',          img: '/local/assets/products/bakery_category.jpg',                         icon: '<circle cx="12" cy="9" r="5" stroke-linecap="round"/><path d="M4.22 19.78a10 10 0 0115.56 0" stroke-linecap="round" stroke-linejoin="round"/>' },
-      'desserts':    { label: 'Snacks & Desserts',          desc: 'Indulgent treats and seasonal delights',      img: '/local/assets/products/desserts_category.jpg',                       icon: '<path d="M4 11c0-3.87 3.58-7 8-7s8 3.13 8 7H4zM2 11h20M12 11v10M6 21h12" stroke-linecap="round" stroke-linejoin="round"/>' },
-      'retail':      { label: 'Coffee Beans & Retail',      desc: 'Micro-lot single-origin beans to brew at home', img: '/local/assets/products/beans_category.jpg',                          icon: '<ellipse cx="12" cy="12" rx="10" ry="6" stroke-linecap="round"/><path d="M12 6c-5.5 0-10 2.69-10 6s4.5 6 10 6 10-2.69 10-6-4.5-6-10-6z" stroke-linecap="round"/>' },
+      'desserts':    { label: 'Snacks & Desserts',          desc: 'Indulgent treats and seasonal delights',      img: '/local/assets/products/desserts/tiramisu-glace.jpg',                       icon: '<path d="M4 11c0-3.87 3.58-7 8-7s8 3.13 8 7H4zM2 11h20M12 11v10M6 21h12" stroke-linecap="round" stroke-linejoin="round"/>' },
+      'retail':      { label: 'Coffee Beans & Retail',      desc: 'Micro-lot single-origin beans to brew at home', img: '/local/assets/products/retail/sachet-de-cafe.png',                          icon: '<ellipse cx="12" cy="12" rx="10" ry="6" stroke-linecap="round"/><path d="M12 6c-5.5 0-10 2.69-10 6s4.5 6 10 6 10-2.69 10-6-4.5-6-10-6z" stroke-linecap="round"/>' },
       'merchandise': { label: 'Gifts & Merchandise',        desc: 'Curated gift sets and branded lifestyle items', img: '/local/assets/products/merchandise/atelier-gift-pack.jpeg',          icon: '<path d="M20 12v10H4V12M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z" stroke-linecap="round" stroke-linejoin="round"/>' },
     };
 
@@ -772,7 +772,7 @@
         ));
         
         // Find a suitable starting product or default to the middle of the list
-        const startIdx = products.findIndex(p => p.name === 'Matcha Vanille');
+        const startIdx = products.findIndex(p => p.name === 'Pumpkin Latte');
         activeProductIndex = startIdx !== -1 ? startIdx : Math.floor(products.length / 2);
         
         _render();
