@@ -34,18 +34,174 @@ export function mountFranchisePage() {
 
         // Trigger each reveal element individually as it enters the viewport
         gsap.utils.toArray('.reveal').forEach(el => {
-            gsap.from(el, {
-                scrollTrigger: {
-                    trigger: el,
-                    start: 'top 85%',
-                    toggleActions: 'play none none none'
-                },
-                y: 30,
-                opacity: 0,
-                duration: 1,
-                ease: 'power2.out'
-            });
+            const targetOpacity = el.classList.contains('apply-brand-seal-signature') ? 0.45 : 1;
+            gsap.fromTo(el,
+                { y: 30, opacity: 0 },
+                {
+                    scrollTrigger: {
+                        trigger: el,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none'
+                    },
+                    y: 0,
+                    opacity: targetOpacity,
+                    duration: 1,
+                    ease: 'power2.out'
+                }
+            );
         });
+
+        // ═════════ LUXURY BUSINESS MODEL ANIMATIONS ═════════
+        gsap.from('.luxury-quote-block', {
+            scrollTrigger: {
+                trigger: '.luxury-quote-block',
+                start: 'top 85%',
+                toggleActions: 'play none none none'
+            },
+            opacity: 0,
+            y: 20,
+            duration: 1.2,
+            ease: 'power2.out'
+        });
+
+        gsap.from('.luxury-pillar', {
+            scrollTrigger: {
+                trigger: '.luxury-pillars-container',
+                start: 'top 85%',
+                toggleActions: 'play none none none'
+            },
+            y: 25,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.15,
+            ease: 'power2.out'
+        });
+
+        gsap.from('.investment-ledger-card', {
+            scrollTrigger: {
+                trigger: '.investment-ledger-card',
+                start: 'top 80%',
+                toggleActions: 'play none none none',
+                onEnter: () => {
+                    // Animate growth indicator bars
+                    const bars = document.querySelectorAll('.indicator-bar[data-width]');
+                    bars.forEach(bar => {
+                        const targetWidth = bar.getAttribute('data-width');
+                        gsap.to(bar, {
+                            width: targetWidth,
+                            duration: 2.2,
+                            ease: 'power4.out',
+                            delay: 0.3
+                        });
+                    });
+                }
+            },
+            scale: 0.96,
+            y: 40,
+            opacity: 0,
+            duration: 1.4,
+            ease: 'power3.out'
+        });
+
+        // ═════════ PROSPECTUS ANIMATIONS ═════════
+        gsap.from('.inside-item', {
+            scrollTrigger: {
+                trigger: '.prospectus-inside',
+                start: 'top 85%',
+                toggleActions: 'play none none none'
+            },
+            x: -20,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: 'power2.out'
+        });
+
+        gsap.from('.metadata-badge', {
+            scrollTrigger: {
+                trigger: '.prospectus-metadata',
+                start: 'top 90%',
+                toggleActions: 'play none none none'
+            },
+            scale: 0.9,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: 'back.out(1.7)'
+        });
+
+        // ═════════ JOURNEY STEPS ANIMATIONS ═════════
+        gsap.from('.journey-card', {
+            scrollTrigger: {
+                trigger: '.journey-grid',
+                start: 'top 85%',
+                toggleActions: 'play none none none'
+            },
+            y: 30,
+            opacity: 0,
+            duration: 1.2,
+            stagger: 0.12,
+            ease: 'power3.out',
+            clearProps: 'transform,opacity',
+            onComplete: () => {
+                document.querySelectorAll('.journey-card').forEach(el => el.classList.add('ready'));
+            }
+        });
+
+        // ═════════ FAQ & QUALIFICATIONS ANIMATIONS ═════════
+        gsap.from('.qualification-card', {
+            scrollTrigger: {
+                trigger: '.qualification-cards-list',
+                start: 'top 85%',
+                toggleActions: 'play none none none'
+            },
+            y: 30,
+            opacity: 0,
+            duration: 1.2,
+            stagger: 0.15,
+            ease: 'power3.out',
+            clearProps: 'transform,opacity',
+            onComplete: () => {
+                document.querySelectorAll('.qualification-card').forEach(el => el.classList.add('ready'));
+            }
+        });
+
+        gsap.from('.luxury-faq-item', {
+            scrollTrigger: {
+                trigger: '.luxury-faq-accordion',
+                start: 'top 85%',
+                toggleActions: 'play none none none'
+            },
+            y: 30,
+            opacity: 0,
+            duration: 1.2,
+            stagger: 0.15,
+            ease: 'power3.out',
+            clearProps: 'transform,opacity',
+            onComplete: () => {
+                document.querySelectorAll('.luxury-faq-item').forEach(el => el.classList.add('ready'));
+            }
+        });
+
+        gsap.from('.luxury-cta-card', {
+            scrollTrigger: {
+                trigger: '.luxury-cta-card',
+                start: 'top 90%',
+                toggleActions: 'play none none none'
+            },
+            scale: 0.98,
+            y: 20,
+            opacity: 0,
+            duration: 1.2,
+            ease: 'power2.out',
+            clearProps: 'transform,opacity',
+            onComplete: () => {
+                const el = document.querySelector('.luxury-cta-card');
+                if (el) el.classList.add('ready');
+            }
+        });
+
+
 
         // ═════════ STATS TICKERS ═════════
         const stats = document.querySelectorAll('.franchise-stats__val[data-target]');
@@ -94,7 +250,9 @@ export function mountFranchisePage() {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             const btn = form.querySelector('button');
-            btn.textContent = 'SENDING...';
+            const btnSpan = btn.querySelector('span');
+            if (btnSpan) btnSpan.textContent = 'SENDING...';
+            else btn.textContent = 'SENDING...';
             btn.disabled = true;
 
             const payload = {
@@ -116,17 +274,20 @@ export function mountFranchisePage() {
             .then(res => res.json())
             .then(data => {
                 if (data.success) {
-                    btn.textContent = 'APPLICATION SENT';
-                    btn.style.background = 'var(--gold)';
+                    if (btnSpan) btnSpan.textContent = 'CONSULTATION REQUESTED';
+                    else btn.textContent = 'CONSULTATION REQUESTED';
+                    btn.style.background = 'linear-gradient(to right, #C8A46B, #aa771c)';
                     form.reset();
                 } else {
-                    btn.textContent = 'ERROR';
+                    if (btnSpan) btnSpan.textContent = 'ERROR';
+                    else btn.textContent = 'ERROR';
                     btn.style.background = '#d9534f';
                     btn.disabled = false;
                 }
             })
             .catch(() => {
-                btn.textContent = 'ERROR';
+                if (btnSpan) btnSpan.textContent = 'ERROR';
+                else btn.textContent = 'ERROR';
                 btn.style.background = '#d9534f';
                 btn.disabled = false;
             });
@@ -134,21 +295,21 @@ export function mountFranchisePage() {
     }
 
     // ═════════ FAQ ACCORDION ═════════
-    const faqs = document.querySelectorAll('.faq-question');
-    faqs.forEach(faq => {
-        faq.addEventListener('click', () => {
-            const parent = faq.parentElement;
+    const faqHeaders = document.querySelectorAll('.faq-card-header');
+    faqHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+            const parent = header.parentElement; // .luxury-faq-item
             
             // Close other accordion elements
-            document.querySelectorAll('.faq-item').forEach(item => {
+            document.querySelectorAll('.luxury-faq-item').forEach(item => {
                 if (item !== parent) {
                     item.classList.remove('active');
-                    item.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                    item.querySelector('.faq-card-header').setAttribute('aria-expanded', 'false');
                 }
             });
 
             const isActive = parent.classList.toggle('active');
-            faq.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+            header.setAttribute('aria-expanded', isActive ? 'true' : 'false');
         });
     });
 
@@ -173,14 +334,54 @@ export function mountFranchisePage() {
 
     // ═════════ GLOBAL EXPANSION MAP ═════════
     let franchiseMapInstance = null;
+    let markersMap = {};
+    let handleMapResize = null;
+
+    const EXPANSION_MARKERS = [
+        { name: "Paris", lat: 48.8584, lng: 2.3262, status: "Flagship Established" },
+        { name: "London", lat: 51.5074, lng: -0.1278, status: "Atelier Established" },
+        { name: "New York City", lat: 40.7128, lng: -74.0060, status: "Downtown Lounge" },
+        { name: "Tokyo", lat: 35.6762, lng: 139.6503, status: "Midnight Atelier" },
+        { name: "Dubai", lat: 25.2048, lng: 55.2708, status: "Skyline Reserve" },
+        { name: "Singapore", lat: 1.3521, lng: 103.8198, status: "Tropical Sanctuary" },
+        { name: "Sydney", lat: -33.8688, lng: 151.2093, status: "Harbour Pavilion" },
+        { name: "São Paulo", lat: -23.5505, lng: -46.6333, status: "Modernist Salon" },
+        { name: "Milan", lat: 45.4665, lng: 9.1843, status: "Espresso Bar" },
+        { name: "Istanbul", lat: 41.0082, lng: 28.9784, status: "Bosphorus Lounge" }
+    ];
+
+    function highlightFranchiseMarker(cityName) {
+        Object.keys(markersMap).forEach(name => {
+            const m = markersMap[name];
+            const element = m.getElement();
+            if (element) {
+                if (name === cityName) {
+                    element.classList.add('gold-custom-marker--active');
+                } else {
+                    element.classList.remove('gold-custom-marker--active');
+                }
+            }
+        });
+
+        // Toggle active button style
+        document.querySelectorAll('.map-city-btn').forEach(btn => {
+            const btnCity = btn.getAttribute('data-city');
+            if (btnCity === cityName) {
+                btn.classList.add('map-city-btn--active');
+            } else {
+                btn.classList.remove('map-city-btn--active');
+            }
+        });
+    }
+
     (function initFranchiseMap() {
         const mapNode = document.getElementById('franchise-map');
         if (!mapNode || !window.L) return;
 
-        // Center map initially over Europe [Lat, Lng], Zoom level 4.0 to display the expansion footprint beautifully.
+        // Center map initially over the world to display the global expansion footprint beautifully.
         franchiseMapInstance = L.map('franchise-map', {
-            center: [48.2, 10.0],
-            zoom: 4.0,
+            center: [25.0, 10.0],
+            zoom: 2.0,
             zoomSnap: 0.1,
             minZoom: 1,
             scrollWheelZoom: false,
@@ -196,42 +397,37 @@ export function mountFranchisePage() {
             maxZoom: 20
         }).addTo(franchiseMapInstance);
 
-        const EXPANSION_MARKERS = [
-            { name: "Paris", lat: 48.8584, lng: 2.3262, status: "Flagship Established" },
-            { name: "London", lat: 51.5074, lng: -0.1278, status: "Atelier Established" },
-            { name: "Rome", lat: 41.9028, lng: 12.4964, status: "Galleria Established" },
-            { name: "Florence", lat: 43.7696, lng: 11.2558, status: "Palazzo Established" },
-            { name: "Barcelona", lat: 41.3912, lng: 2.1648, status: "Terrace Established" },
-            { name: "Amsterdam", lat: 52.3688, lng: 4.8856, status: "Galerie Established" },
-            { name: "Vienna", lat: 48.2098, lng: 16.3654, status: "Salon Established" },
-            { name: "Copenhagen", lat: 55.6798, lng: 12.5898, status: "Salon Established" },
-            { name: "Berlin", lat: 52.5253, lng: 13.3924, status: "Pavilion Established" },
-            { name: "Athens", lat: 37.9755, lng: 23.7290, status: "Sanctuary Established" },
-            { name: "Prague", lat: 50.0870, lng: 14.4207, status: "Cabinet Established" }
-        ];
-
         EXPANSION_MARKERS.forEach(loc => {
             const customIcon = L.divIcon({
                 className: 'gold-custom-marker',
                 html: `
-                    <div class="marker-pin-dot"></div>
-                    <div class="marker-pulse-ring"></div>
+                    <div class="marker-pin-wrapper">
+                        <img src="/global/assets/find-us/map-pin.png" class="marker-pin-img" alt="${loc.name}" />
+                        <div class="marker-pulse-ring"></div>
+                        <span class="marker-city-label">${loc.name}</span>
+                    </div>
                 `,
-                iconSize: [28, 28],
-                iconAnchor: [14, 14]
+                iconSize: [36, 58],
+                iconAnchor: [18, 42]
             });
 
             const marker = L.marker([loc.lat, loc.lng], { icon: customIcon }).addTo(franchiseMapInstance);
+            markersMap[loc.name] = marker;
+
+            // Highlight on direct marker click
+            marker.on('click', () => {
+                highlightFranchiseMarker(loc.name);
+            });
             
             const popupHtml = `
-                <div class="popup-card" style="padding: 10px; min-width: 150px; background: transparent; text-align: center; border: none; box-shadow: none;">
-                    <span class="popup-eyebrow" style="color: var(--copper); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;">${loc.status}</span>
-                    <h4 class="popup-title" style="margin: 6px 0 0; color: var(--navy); font-family: var(--font-serif); font-weight: 400; font-size: 1.1rem;">${loc.name}</h4>
+                <div class="popup-card">
+                    <span class="popup-eyebrow">${loc.status}</span>
+                    <h4 class="popup-title">${loc.name}</h4>
                 </div>
             `;
             marker.bindPopup(popupHtml, {
                 closeButton: false,
-                offset: [0, -10]
+                offset: [0, -36]
             });
         });
 
@@ -240,7 +436,7 @@ export function mountFranchisePage() {
         EXPANSION_MARKERS.forEach(loc => {
             if (loc.name !== "Paris") {
                 L.polyline([hubCoords, [loc.lat, loc.lng]], {
-                    color: '#B87333', // var(--copper)
+                    color: '#C8A46B', // var(--f-gold)
                     weight: 1.5,
                     opacity: 0.45,
                     dashArray: '5, 8',
@@ -248,16 +444,68 @@ export function mountFranchisePage() {
                 }).addTo(franchiseMapInstance);
             }
         });
+
+        // Force size recalculation to ensure the map renders correctly in mobile/responsive layouts
+        setTimeout(() => {
+            if (franchiseMapInstance) {
+                franchiseMapInstance.invalidateSize();
+            }
+        }, 500);
+
+        handleMapResize = () => {
+            if (franchiseMapInstance) {
+                franchiseMapInstance.invalidateSize();
+            }
+        };
+        window.addEventListener('resize', handleMapResize);
     })();
+
+    // City Quick Links Map Control
+    const cityButtons = document.querySelectorAll('.map-city-btn');
+    cityButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const cityName = btn.getAttribute('data-city');
+            const targetLoc = EXPANSION_MARKERS.find(loc => loc.name === cityName);
+            if (targetLoc && franchiseMapInstance) {
+                franchiseMapInstance.flyTo([targetLoc.lat, targetLoc.lng], 8.0, {
+                    animate: true,
+                    duration: 2.0
+                });
+
+                highlightFranchiseMarker(cityName);
+                const marker = markersMap[cityName];
+                if (marker) {
+                    setTimeout(() => {
+                        marker.openPopup();
+                    }, 1800);
+                }
+            }
+        });
+    });
 
     // Reset franchise map view click handler
     const resetFranchiseBtn = document.getElementById('franchise-map-reset-btn');
     if (resetFranchiseBtn) {
         resetFranchiseBtn.addEventListener('click', () => {
             if (franchiseMapInstance) {
-                franchiseMapInstance.flyTo([48.2, 10.0], 4.0, {
+                franchiseMapInstance.flyTo([25.0, 10.0], 2.0, {
                     animate: true,
                     duration: 2.5
+                });
+                
+                // Clear active highlights and popups
+                Object.keys(markersMap).forEach(name => {
+                    const m = markersMap[name];
+                    m.closePopup();
+                    const element = m.getElement();
+                    if (element) {
+                        element.classList.remove('gold-custom-marker--active');
+                    }
+                });
+
+                // Clear active selector button highlights
+                document.querySelectorAll('.map-city-btn').forEach(btn => {
+                    btn.classList.remove('map-city-btn--active');
                 });
             }
         });
@@ -266,9 +514,13 @@ export function mountFranchisePage() {
     // ═════════ CLEANUP Lifecycle Hook ═════════
     return () => {
         ctx.revert(); // Reverts all GSAP animations and kills ScrollTriggers in context
+        if (handleMapResize) {
+            window.removeEventListener('resize', handleMapResize);
+        }
         if (franchiseMapInstance) {
             franchiseMapInstance.remove();
             franchiseMapInstance = null;
+            markersMap = {};
             console.log('+33 Franchise | Expansion Map Destroyed');
         }
     };

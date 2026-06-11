@@ -32,7 +32,11 @@ public class DtoMapper {
             entity.getTitle(),
             entity.getCategory(),
             entity.getDateString(),
-            entity.getImagePath()
+            entity.getImagePath(),
+            entity.getExcerpt(),
+            entity.getReadTime(),
+            entity.getSubtitle(),
+            entity.isFeatured()
         );
     }
 

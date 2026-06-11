@@ -25,6 +25,7 @@
  * @returns {Function} Teardown cleanup function.
  */
 export function mountFindUsPage() {
+  document.body.classList.add('find-us-theme-active');
   const cleanups = [];
   let mapInstance = null;
   let activeTileLayer = null;
@@ -176,7 +177,7 @@ export function mountFindUsPage() {
         className: 'gold-custom-marker',
         html: `
           <div class="marker-pin-wrapper">
-            <img src="/global/assets/img/map-pin.png" class="marker-pin-img" alt="${store.name}" />
+            <img src="/global/assets/find-us/map-pin.png" class="marker-pin-img" alt="${store.name}" />
             <div class="marker-pulse-ring"></div>
             <span class="marker-city-label">${store.city}</span>
           </div>
@@ -829,6 +830,7 @@ export function mountFindUsPage() {
 
   // ═════════ TEARDOWN CLEANUP Lifecycle Hook ═════════
   return () => {
+    document.body.classList.remove('find-us-theme-active');
     // 1. Remove map instance completely to release DOM memory leaks
     if (mapInstance) {
       mapInstance.remove();

@@ -2,12 +2,14 @@
   FILE: journal.html
   ══════════════════════════════════════════════════
   PURPOSE:
-  Lifestyle blog/journal presentation for PLUS33.
+  Luxury editorial publication for PLUS33.
+  Inspired by Kinfolk, Monocle, Aman Journal, Apple Editorial.
 
   RESPONSIBILITIES:
-  - Renders the journal category filters and header description.
+  - Renders the editorial hero with featured article.
   - Dynamically hosts the grid container for articles fetched via JSON.
-  - Showcases featured editorial stories at the top.
+  - Showcases editorial quote banners and newsletter CTA.
+  - Preserves brand storytelling sections (Craft, Intro, Experience, Journey).
 
   ARCHITECTURE NOTES:
   - Dynamically mounted by /js/router.js inside the #app SPA root.
@@ -22,40 +24,119 @@
   ══════════════════════════════════════════════════
 -->
 <div class="journal-page">
-  <!-- ═════════ JOURNAL HEADER ═════════ -->
-  <section class="journal-page__header">
-    <div class="container">
-      <div class="journal-page__header-inner">
-        <div>
-          <span class="t-label reveal reveal-1">+33 · Founded 2024</span>
-          <h1 class="display-lg text-cream reveal reveal-2" style="margin-top: 20px;">Journal</h1>
+  <!-- Scroll Progress Bar -->
+  <div class="journal-scroll-progress" aria-hidden="true"></div>
+
+  <!-- ═════════ EDITORIAL HERO ═════════ -->
+  <section class="journal-editorial-hero" aria-label="Journal Editorial Hero">
+    <div class="container journal-editorial-hero__inner">
+      <!-- Left: Masthead -->
+      <div class="journal-editorial-hero__masthead">
+        <div class="journal-editorial-hero__badge reveal reveal-1">
+          <span class="journal-editorial-hero__badge-line" aria-hidden="true"></span>
+          <span class="journal-editorial-hero__badge-text">+33 Journal</span>
+          <span class="journal-editorial-hero__badge-line" aria-hidden="true"></span>
         </div>
-        <p class="t-body reveal reveal-3" style="max-width: 360px;">
-          Stories from inside the cup. Dispatches from Paris, London, Dubai 
+        <h1 class="journal-editorial-hero__title reveal reveal-2">
+          Dispatches<br>
+          from the<br>
+          <em class="journal-editorial-hero__title-em">Counter.</em>
+        </h1>
+        <p class="journal-editorial-hero__subtitle reveal reveal-3">
+          Stories from inside the cup — from Paris, London, Dubai,
           and every terroir we visit in between.
+        </p>
+        <div class="journal-editorial-hero__meta reveal reveal-4">
+          <span>Vol. I</span>
+          <span class="journal-editorial-hero__meta-dot" aria-hidden="true">·</span>
+          <span>2024</span>
+          <span class="journal-editorial-hero__meta-dot" aria-hidden="true">·</span>
+          <span>Paris</span>
+        </div>
+      </div>
+      <!-- Right: Featured Article Card (injected by JS) -->
+      <div class="journal-editorial-hero__featured" id="journal-featured-root">
+        <!-- Dynamically injected by journal.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════ CATEGORY FILTERS ═════════ -->
+  <div class="journal-page__filters" id="journal-filters-bar">
+    <div class="container">
+      <nav class="journal-filters-inner" id="journal-filters" aria-label="Article categories">
+        <button class="journal-filter-pill active" data-category="all" type="button">All</button>
+        <button class="journal-filter-pill" data-category="Origins" type="button">Origins</button>
+        <button class="journal-filter-pill" data-category="Process" type="button">Process</button>
+        <button class="journal-filter-pill" data-category="Lifestyle" type="button">Lifestyle</button>
+        <button class="journal-filter-pill" data-category="Design" type="button">Design</button>
+        <button class="journal-filter-pill" data-category="Rituals" type="button">Rituals</button>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ═════════ EDITORIAL QUOTE ═════════ -->
+  <section class="journal-quote-banner" aria-label="Editorial Quote">
+    <div class="container">
+      <div class="journal-quote-banner__inner reveal">
+        <span class="journal-quote-banner__line" aria-hidden="true"></span>
+        <blockquote class="journal-quote-banner__text">
+          <span class="journal-quote-banner__quote-mark" aria-hidden="true">“</span>
+          "Coffee is a language in itself."
+        </blockquote>
+        <cite class="journal-quote-banner__cite">— Jackie Chan</cite>
+        <span class="journal-quote-banner__line" aria-hidden="true"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════ JOURNAL GRID ═════════ -->
+  <section class="journal-page__grid" aria-label="Journal Articles">
+    <div class="container">
+      <div class="journal-articles" id="journal-grid">
+        <!-- Dynamically injected by journal.js -->
+      </div>
+      <!-- Empty state -->
+      <div class="journal-empty-state" id="journal-empty" style="display: none;">
+        <p>No articles found in this category.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════ PARIS BANNER ═════════ -->
+  <section class="journal-paris-banner" aria-label="From Paris to Everywhere">
+    <div class="container">
+      <div class="journal-paris-banner__inner reveal">
+        <span class="journal-paris-banner__overline">+33 · Est. 2024</span>
+        <h2 class="journal-paris-banner__heading">
+          From Paris,<br>
+          <em>to everywhere.</em>
+        </h2>
+        <p class="journal-paris-banner__body">
+          Each cup we serve carries the story of its origin, the philosophy of its preparation,
+          and the culture of the city that shaped us.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- ═════════ FEATURED STORY ═════════ -->
-  <section class="journal-page__featured">
-    <div class="container" id="journal-featured-root"></div>
-  </section>
-
-  <!-- ═════════ JOURNAL FILTERS ═════════ -->
-  <div class="journal-page__filters">
+  <!-- ═════════ NEWSLETTER ═════════ -->
+  <section class="journal-newsletter" aria-label="Newsletter Subscription">
     <div class="container">
-      <div class="journal-filters-inner" id="journal-filters"></div>
-    </div>
-  </div>
-
-  <!-- ═════════ JOURNAL GRID ═════════ -->
-  <section class="journal-page__grid">
-    <div class="container">
-      <div class="journal-articles" id="journal-grid"></div>
+      <div class="journal-newsletter__inner reveal">
+        <span class="journal-newsletter__label">The Dispatch</span>
+        <h3 class="journal-newsletter__heading">Receive the next story.</h3>
+        <p class="journal-newsletter__body">
+          Join the +33 editorial mailing list. No spam. Only stories worth reading.
+        </p>
+        <form class="journal-newsletter__form" id="journal-newsletter-form" onsubmit="return false;">
+          <input type="email" class="journal-newsletter__input" placeholder="your@email.com" aria-label="Email address" required />
+          <button type="submit" class="journal-newsletter__btn">Subscribe</button>
+        </form>
+      </div>
     </div>
   </section>
+
 
   <!-- ════════ THE CRAFT ════════ -->
   <section class="home-craft" id="home-craft" aria-label="Brand Manifesto — PLUS33">
@@ -100,6 +181,122 @@
         At +33, we have never treated coffee as a commodity. Every cup that leaves our counter has been thought about — at its origin, in its preparation, in the hands that made it. This is not efficiency. This is devotion.
       </p>
 
+    </div>
+  </section>
+
+  <!-- ════════ BRAND INTRO ════════ -->
+  <section class="home-intro" id="home-intro" aria-label="Brand Philosophy — PLUS33" style="margin-top: 80px; margin-bottom: 80px;">
+
+    <!-- Section inner -->
+    <div class="container home-intro__container">
+
+      <!-- ── Column Left: Editorial Imagery ── -->
+      <div class="home-intro__visuals" aria-hidden="true">
+
+        <!-- Primary large image -->
+        <div class="home-intro__img-primary home-reveal">
+          <img src="/global/assets/img/architecture-taste.png" alt="PLUS33 Coffee Experience - Modern European Ritual"
+            loading="lazy" class="home-intro__img-el" />
+          <div class="home-intro__img-overlay"></div>
+        </div>
+
+        <!-- Floating accent image -->
+        <div class="home-intro__img-accent home-reveal" style="--reveal-delay: 0.15s;">
+          <img src="/local/assets/home/modern-coffee-ritual.png" alt="PLUS33 Hot Classics coffee cup" loading="lazy"
+            class="home-intro__img-el" />
+        </div>
+
+        <!-- Floating label card -->
+        <div class="home-intro__float-card home-reveal" style="--reveal-delay: 0.3s;">
+          <span class="home-intro__float-card-num">+33</span>
+          <span class="home-intro__float-card-text">Paris, 7ème Arrondissement</span>
+        </div>
+
+      </div>
+
+      <!-- ── Column Right: Editorial Copy ── -->
+      <div class="home-intro__copy">
+
+        <!-- Section label -->
+        <div class="home-intro__label home-reveal">
+          <span class="home-intro__label-line" aria-hidden="true"></span>
+          <span class="home-intro__label-text">The Philosophy</span>
+        </div>
+
+        <!-- Headline -->
+        <h2 class="home-intro__headline home-reveal" style="--reveal-delay: 0.1s;">
+          More Than Coffee.<br>
+          <em class="home-intro__headline-em">A Modern European Ritual.</em>
+        </h2>
+
+        <!-- Body copy -->
+        <div class="home-intro__body home-reveal" style="--reveal-delay: 0.2s;">
+          <p>
+            PLUS33 was created from the timeless rhythm of European café culture — where coffee is
+            never rushed, atmosphere matters, and every detail is intentional.
+          </p>
+          <p>
+            Inspired by the elegance of Paris, the social energy of Milan, and the calm minimalism of
+            Scandinavian coffee houses, PLUS33 transforms everyday coffee into a cinematic lifestyle experience.
+          </p>
+          <p>
+            From handcrafted espresso to slow conversations beneath ambient lighting, every space is
+            designed to feel intimate, refined, and deeply immersive.
+          </p>
+          <p class="home-intro__body-closing">
+            This is not simply a café.<br>
+            It is a destination shaped through design, craftsmanship, and culture.
+          </p>
+        </div>
+
+        <!-- CTA -->
+        <a href="/find-us" class="home-btn home-btn--copper home-reveal" style="--reveal-delay: 0.3s;" id="intro-cta">
+          <span>Discover Our Ateliers</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+
+      </div>
+    </div>
+
+  </section>
+  <!-- /home-intro -->
+
+  <!-- ════════ EXPERIENCE SPECIAL ════════ -->
+  <section class="home-experience" id="home-experience" aria-label="Special Experience — PLUS33">
+    <div class="container home-experience__container">
+      <!-- Left: Image -->
+      <div class="home-experience__visual home-reveal">
+        <img src="/local/assets/home/The-Experience.png" alt="PLUS33 The Experience" class="home-experience__img" />
+        <div class="home-experience__img-fade"></div>
+      </div>
+      <!-- Right: Copy -->
+      <div class="home-experience__copy">
+        <div class="home-experience__label home-reveal">
+          <span class="home-experience__label-line" aria-hidden="true"></span>
+          <span class="home-experience__label-text">The Experience</span>
+        </div>
+        <h2 class="home-experience__headline home-reveal" style="--reveal-delay: 0.1s;">
+          Every cup is<br>
+          <em class="home-experience__headline-em">a call to Paris.</em>
+        </h2>
+        <div class="home-experience__body home-reveal" style="--reveal-delay: 0.2s;">
+          <p>
+            From the volcanic highlands of Colombia to the heart of Downtown Dubai — each bean is selected by hand,
+            roasted in small batches, and served as an act of devotion to craft.
+          </p>
+          <p class="home-experience__body-ritual">
+            This is not fast coffee. This is a ritual.
+          </p>
+        </div>
+        <a href="/store" class="home-btn home-btn--glass home-reveal" style="--reveal-delay: 0.3s;" id="experience-cta">
+          <span>Discover the Process</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -331,120 +528,37 @@
     </div>
   </section>
 
-  <!-- ════════ BRAND INTRO ════════ -->
-  <section class="home-intro" id="home-intro" aria-label="Brand Philosophy — PLUS33" style="margin-top: 80px; margin-bottom: 80px;">
-
-    <!-- Section inner -->
-    <div class="container home-intro__container">
-
-      <!-- ── Column Left: Editorial Imagery ── -->
-      <div class="home-intro__visuals" aria-hidden="true">
-
-        <!-- Primary large image -->
-        <div class="home-intro__img-primary home-reveal">
-          <img src="/global/assets/img/architecture-taste.png" alt="PLUS33 Coffee Experience - Modern European Ritual"
-            loading="lazy" class="home-intro__img-el" />
-          <div class="home-intro__img-overlay"></div>
-        </div>
-
-        <!-- Floating accent image -->
-        <div class="home-intro__img-accent home-reveal" style="--reveal-delay: 0.15s;">
-          <img src="/local/assets/home/modern-coffee-ritual.png" alt="PLUS33 Hot Classics coffee cup" loading="lazy"
-            class="home-intro__img-el" />
-        </div>
-
-        <!-- Floating label card -->
-        <div class="home-intro__float-card home-reveal" style="--reveal-delay: 0.3s;">
-          <span class="home-intro__float-card-num">+33</span>
-          <span class="home-intro__float-card-text">Paris, 7ème Arrondissement</span>
-        </div>
-
-      </div>
-
-      <!-- ── Column Right: Editorial Copy ── -->
-      <div class="home-intro__copy">
-
-        <!-- Section label -->
-        <div class="home-intro__label home-reveal">
-          <span class="home-intro__label-line" aria-hidden="true"></span>
-          <span class="home-intro__label-text">The Philosophy</span>
-        </div>
-
-        <!-- Headline -->
-        <h2 class="home-intro__headline home-reveal" style="--reveal-delay: 0.1s;">
-          More Than Coffee.<br>
-          <em class="home-intro__headline-em">A Modern European Ritual.</em>
-        </h2>
-
-        <!-- Body copy -->
-        <div class="home-intro__body home-reveal" style="--reveal-delay: 0.2s;">
-          <p>
-            PLUS33 was created from the timeless rhythm of European café culture — where coffee is
-            never rushed, atmosphere matters, and every detail is intentional.
-          </p>
-          <p>
-            Inspired by the elegance of Paris, the social energy of Milan, and the calm minimalism of
-            Scandinavian coffee houses, PLUS33 transforms everyday coffee into a cinematic lifestyle experience.
-          </p>
-          <p>
-            From handcrafted espresso to slow conversations beneath ambient lighting, every space is
-            designed to feel intimate, refined, and deeply immersive.
-          </p>
-          <p class="home-intro__body-closing">
-            This is not simply a café.<br>
-            It is a destination shaped through design, craftsmanship, and culture.
-          </p>
-        </div>
-
-        <!-- CTA -->
-        <a href="/find-us" class="home-btn home-btn--copper home-reveal" style="--reveal-delay: 0.3s;" id="intro-cta">
-          <span>Discover Our Ateliers</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <path d="M5 12h14M12 5l7 7-7 7" />
+  <!-- ═════════ EDITORIAL READER OVERLAY ═════════ -->
+  <div class="journal-reader" id="journal-reader" aria-hidden="true" style="display: none;">
+    <div class="journal-reader__backdrop"></div>
+    <div class="journal-reader__scroll">
+      <article class="journal-reader__card">
+        <button class="journal-reader__close" id="journal-reader-close" aria-label="Close article" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M18 6L6 18M6 6l12 12"/>
           </svg>
-        </a>
-
-      </div>
-    </div>
-
-  </section>
-  <!-- /home-intro -->
-
-  <!-- ════════ EXPERIENCE SPECIAL ════════ -->
-  <section class="home-experience" id="home-experience" aria-label="Special Experience — PLUS33">
-    <div class="container home-experience__container">
-      <!-- Left: Image -->
-      <div class="home-experience__visual home-reveal">
-        <img src="/local/assets/home/The-Experience.png" alt="PLUS33 The Experience" class="home-experience__img" />
-        <div class="home-experience__img-fade"></div>
-      </div>
-      <!-- Right: Copy -->
-      <div class="home-experience__copy">
-        <div class="home-experience__label home-reveal">
-          <span class="home-experience__label-line" aria-hidden="true"></span>
-          <span class="home-experience__label-text">The Experience</span>
+        </button>
+        <div class="journal-reader__header">
+          <div class="journal-reader__meta">
+            <span class="journal-reader__category" id="reader-category">Origins</span>
+            <span class="journal-reader__dot" aria-hidden="true">·</span>
+            <span class="journal-reader__date" id="reader-date">May 12, 2024</span>
+            <span class="journal-reader__dot" aria-hidden="true">·</span>
+            <span class="journal-reader__read-time" id="reader-read-time">8 min read</span>
+          </div>
+          <h2 class="journal-reader__title" id="reader-title">The Soil of Ethiopia</h2>
+          <p class="journal-reader__subtitle" id="reader-subtitle">A dispatch from the birthplace of coffee</p>
         </div>
-        <h2 class="home-experience__headline home-reveal" style="--reveal-delay: 0.1s;">
-          Every cup is<br>
-          <em class="home-experience__headline-em">a call to Paris.</em>
-        </h2>
-        <div class="home-experience__body home-reveal" style="--reveal-delay: 0.2s;">
-          <p>
-            From the volcanic highlands of Colombia to the heart of Downtown Dubai — each bean is selected by hand,
-            roasted in small batches, and served as an act of devotion to craft.
-          </p>
-          <p class="home-experience__body-ritual">
-            This is not fast coffee. This is a ritual.
-          </p>
+        <div class="journal-reader__visual">
+          <img src="" alt="" id="reader-img" />
+          <div class="journal-reader__caption" id="reader-caption">Photo: PLUS33 Editorial Archives</div>
         </div>
-        <a href="/store" class="home-btn home-btn--glass home-reveal" style="--reveal-delay: 0.3s;" id="experience-cta">
-          <span>Discover the Process</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </a>
-      </div>
+        <div class="journal-reader__body" id="reader-body">
+          <!-- Dynamically populated by JS -->
+        </div>
+      </article>
     </div>
-  </section>
+  </div>
 
 </div>
+

@@ -1,232 +1,686 @@
-/**
- * FILE: about.css
- * ══════════════════════════════════════════════════
- * PURPOSE:
- * Premium styling for the editorial About Page.
- * Uses luxurious HSL color systems, copper accents,
- * and high-end glassmorphism variables.
- *
- * DEVELOPED BY : MIRRO
- * CODED BY     : SIVASURYA
- * ══════════════════════════════════════════════════
- */
+/*
+  FILE: about.css
+  ══════════════════════════════════════════════════
+  PURPOSE:
+  Luxury editorial publication styling for the +33 About page.
+  Recreated pixel-perfect to match reference visual hierarchy.
+  ══════════════════════════════════════════════════
+*/
 
-/* ═════════ BASE STYLING ═════════ */
 .about-page {
-  background-color: var(--color-bg, #0C0E0D);
-  color: var(--color-cream, #F5F1EA);
-  min-height: 100vh;
-  font-family: var(--font-primary, 'Manrope', sans-serif);
+  /* Editorial Palette */
+  --about-cream-bg: #FAF6F0;
+  --about-dark-coffee: #2C1D11;
+  --about-medium-coffee: #4A3525;
+  --about-gold: #C8A46B;
+  --about-sand: #EAE2D5;
+  --about-stone: #6E5D4F;
+  --about-dark-navy: #061a33;
+  --about-white: #FAF6F0;
+
+  background-color: var(--about-cream-bg);
+  color: var(--about-medium-coffee);
+  font-family: 'Manrope', sans-serif;
   overflow-x: hidden;
+  position: relative;
+  padding-top: 110px; /* Clearance for fixed navbar */
 }
 
-/* ═════════ HERO SECTION ═════════ */
+/* Eyebrow styling */
+.about-eyebrow {
+  display: block;
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--about-gold);
+  margin-bottom: 28px;
+}
+
+/* ═════════ PHASE 3 — HERO SECTION ═════════ */
 .about-hero {
   position: relative;
-  min-height: 80vh;
+  min-height: calc(100vh - 110px);
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  padding: 120px 0;
+  border-bottom: 1px solid var(--about-sand);
+}
+
+.about-hero__inner {
+  display: grid;
+  grid-template-columns: 44% 56%;
+  width: 100%;
+  min-height: calc(100vh - 110px);
+}
+
+.about-hero__left {
+  padding: 60px 60px 60px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   overflow: hidden;
 }
 
-.about-hero__bg {
-  position: absolute;
-  top: 0;
-  left: 0;
+.about-hero__heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(60px, 6.5vw, 110px);
+  line-height: 0.9;
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  color: var(--about-dark-coffee);
+  margin: 0 0 40px 0;
+  text-transform: uppercase;
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+.about-divider {
+  width: 60px;
+  height: 1px;
+  background-color: var(--about-gold);
+  margin-bottom: 40px;
+}
+
+.about-hero__body {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.9;
+  font-weight: 300;
+  color: var(--about-medium-coffee);
+  max-width: 440px;
+}
+
+.about-hero__body p {
+  margin: 0 0 16px 0;
+}
+
+.about-hero__body p.about-hero__closing {
+  margin-top: 24px;
+  font-weight: 400;
+  color: var(--about-dark-coffee);
+}
+
+.about-hero__right {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding: 32px 32px 32px 0;
+  box-sizing: border-box;
+  min-height: 500px;
+}
+
+.about-hero__img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ═════════ PHASE 4 — CHAPTER I ═════════ */
+.about-chapter-one {
+  padding: 100px 0;
+  border-bottom: 1px solid var(--about-sand);
+  overflow: hidden;
+}
+
+.about-chapter-one__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 60px;
+}
+
+.about-chapter-one__left {
+  width: 100%;
+  min-width: 0;
+}
+
+.about-chapter-one__img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  border-radius: 0;
+  display: block;
+}
+
+.about-chapter-one__right {
+  padding-left: 20px;
+  min-width: 0;
+}
+
+.about-chapter__title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: var(--about-dark-coffee);
+  margin: 0 0 32px 0;
+  text-transform: uppercase;
+}
+
+.about-chapter__body {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.95rem;
+  line-height: 2;
+  font-weight: 300;
+  color: var(--about-medium-coffee);
+  margin-bottom: 40px;
+}
+
+.about-chapter__body p {
+  margin: 0 0 16px 0;
+}
+
+.about-chapter__quote {
+  position: relative;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.85rem;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--about-dark-coffee);
+  margin: 0;
+  padding: 24px 0 0 0;
+  border-top: 1px solid var(--about-sand);
+  max-width: 440px;
+}
+
+.about-quote-mark {
+  color: var(--about-gold);
+  font-weight: 300;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* ═════════ PHASE 5 — WHY +33 ═════════ */
+.about-why {
+  padding: 120px 0;
+  background-color: #FAF6F0; /* Soft beige background */
+  border-bottom: 1px solid var(--about-sand);
+}
+
+.about-why__desc {
+  max-width: 600px;
+  margin: 0 auto 80px auto;
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.95rem;
+  line-height: 2.1;
+  font-weight: 300;
+  color: var(--about-medium-coffee);
+}
+
+.about-why__desc p {
+  margin: 0 0 10px 0;
+}
+
+.about-features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  padding: 0 40px;
+}
+
+.about-feature-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 24px;
+  border-right: 1px solid var(--about-sand);
+}
+
+.about-feature-col:last-child {
+  border-right: none;
+}
+
+.about-feature-icon {
+  width: 44px;
+  height: 44px;
+  color: var(--about-gold);
+  margin-bottom: 24px;
+  opacity: 0.85;
+}
+
+.about-feature-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.about-feature-title {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--about-dark-coffee);
+  margin: 0 0 14px 0;
+}
+
+.about-feature-text {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  font-weight: 300;
+  color: var(--about-stone);
+  margin: 0;
+}
+
+/* ═════════ PHASE 6 — BUILDING THE EMPIRE ═════════ */
+.about-empire {
+  padding: 120px 0;
+  border-bottom: 1px solid var(--about-sand);
+}
+
+.about-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  position: relative;
+  margin-top: 100px;
+  padding: 0 20px;
+}
+
+/* Connecting Line */
+.about-timeline__line {
+  display: none; /* Hide the static line HTML element */
+}
+
+/* Dynamically draw horizontal lines between timeline circles with arrowheads */
+.about-timeline-node:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  left: calc(-50% - 40px + 22px); /* W_cell_half - gap + circle_radius */
+  right: calc(50% + 22px);        /* W_cell_half + circle_radius */
+  top: 22px;                      /* Vertically center on the 44px circle */
+  height: 1px;
+  background-color: var(--about-sand);
   z-index: 1;
 }
 
-.about-hero__bg-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.28;
-  transform: scale(1.05);
-  transition: transform 10s ease-out;
-}
-
-.about-hero:hover .about-hero__bg-img {
-  transform: scale(1.0);
-}
-
-.about-hero__overlay {
+.about-timeline-node:not(:first-child)::after {
+  content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(12, 14, 13, 0.4) 0%,
-    rgba(12, 14, 13, 0.95) 100%
-  );
-}
-
-.about-hero__content {
-  position: relative;
+  right: calc(50% + 24px);
+  top: 22px;
+  transform: translateY(-50%) rotate(45deg);
+  width: 6px;
+  height: 6px;
+  border-top: 1px solid var(--about-sand);
+  border-right: 1px solid var(--about-sand);
   z-index: 2;
 }
 
-.about-hero__em {
-  font-family: var(--font-accent, 'Cormorant Garamond', serif);
-  font-style: italic;
-  font-weight: 300;
-  color: var(--color-gold, #C8A46B);
-}
-
-/* ═════════ PHILOSOPHY SECTION ═════════ */
-.about-philosophy {
-  padding: 100px 0;
-  background-color: rgba(12, 14, 13, 0.95);
+.about-timeline-node {
   position: relative;
   z-index: 2;
-}
-
-.about-section-header {
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.about-pillars {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-}
-
-.about-pillar-card {
-  border-radius: 12px;
-  padding: 40px 30px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              border-color 0.4s ease,
-              box-shadow 0.4s ease;
-  min-height: 480px;
-}
-
-.about-pillar-card.glass {
-  background: rgba(245, 241, 234, 0.03);
-  border: 1px solid rgba(245, 241, 234, 0.08);
-  backdrop-filter: blur(12px);
-}
-
-.about-pillar-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(184, 115, 51, 0.4);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
-
-.about-pillar-card__icon {
-  font-family: var(--font-accent, 'Cormorant Garamond', serif);
-  font-size: 1.8rem;
-  color: var(--color-gold, #C8A46B);
-  opacity: 0.35;
-  margin-bottom: 20px;
-}
-
-.about-pillar-card h3 {
-  margin-bottom: 15px;
-  font-weight: 300;
-}
-
-.about-pillar-card p {
-  line-height: 1.6;
-  font-size: 0.92rem;
-  margin-bottom: 30px;
-}
-
-.about-pillar-card__img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-top: auto;
-  opacity: 0.8;
-  filter: grayscale(20%);
-  transition: opacity 0.4s ease, filter 0.4s ease;
-}
-
-.about-pillar-card:hover .about-pillar-card__img {
-  opacity: 1.0;
-  filter: grayscale(0%);
-}
-
-/* ═════════ THE PARIS-SCANDI FUSION ═════════ */
-.about-fusion {
-  padding: 100px 0;
-  background-color: var(--color-bg, #0C0E0D);
-  position: relative;
-  z-index: 2;
-}
-
-.about-fusion__grid {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 80px;
   align-items: center;
 }
 
-.about-fusion__image {
-  position: relative;
-  overflow: hidden;
-  border-radius: 16px;
-  border: 1px solid rgba(245, 241, 234, 0.08);
+.about-timeline-node__num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: var(--about-gold);
+  background-color: var(--about-cream-bg);
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--about-sand);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
 }
 
-.about-fusion__img {
+.about-timeline-node__sketch {
+  width: 160px;
+  height: 110px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-timeline-node__sketch img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  opacity: 0.9;
+  filter: sepia(0.08);
+}
+
+.about-timeline-node__title {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--about-dark-coffee);
+  margin: 0 0 12px 0;
+}
+
+.about-timeline-node__desc {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  font-weight: 300;
+  color: var(--about-stone);
+  max-width: 240px;
+  margin: 0;
+}
+
+/* ═════════ PHASE 7 — WHAT WE STAND FOR ═════════ */
+.about-values {
+  padding: 120px 0;
+  background-color: var(--about-dark-navy);
+  color: var(--about-white);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.about-values__title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: #ffcc00; /* Rich gold highlight */
+  margin: 0 0 80px 0;
+}
+
+.about-values__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px 48px;
+}
+
+.about-value-col {
+  border-left: 1px solid rgba(255, 204, 0, 0.15);
+  padding-left: 28px;
+}
+
+.about-value-title {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: #ffcc00;
+  margin: 0 0 16px 0;
+}
+
+.about-value-text {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.8;
+  font-weight: 300;
+  color: rgba(250, 246, 240, 0.7);
+  margin: 0;
+}
+
+/* ═════════ PHASE 8 — FINAL MANIFESTO ═════════ */
+.about-manifesto {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.about-manifesto__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.about-manifesto__img {
   width: 100%;
-  height: 520px;
+  height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.about-fusion__image:hover .about-fusion__img {
-  transform: scale(1.04);
+.about-manifesto__overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.35);
+  z-index: 2;
 }
 
-.about-fusion__content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+.about-manifesto__content {
+  position: relative;
+  z-index: 3;
+  color: #FAF6F0;
+  padding: 40px;
 }
 
-/* ═════════ RESPONSIVE ═════════ */
-@media (max-width: 1024px) {
-  .about-pillars {
-    grid-template-columns: 1fr;
-    gap: 40px;
+.about-manifesto__logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 5rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: #ffcc00;
+  margin-bottom: 24px;
+}
+
+.about-manifesto__heading {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  margin: 0 0 32px 0;
+  color: #FAF6F0;
+}
+
+.about-manifesto__body {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: rgba(250, 246, 240, 0.9);
+}
+
+.about-manifesto__body p {
+  margin: 0 0 10px 0;
+}
+
+/* ═════════ PHASE 9 — MOBILE REBUILD (DEDICATED) ═════════ */
+@media (max-width: 768px) {
+  /* No horizontal scroll */
+  body, html {
+    overflow-x: hidden;
   }
-  
-  .about-pillar-card {
+
+  .about-page {
+    padding-top: 80px; /* Mobile navbar clearance */
+  }
+
+  /* Reorder Hero Section on Mobile */
+  .about-hero__inner {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-hero__left {
+    order: 1; /* Hero Text first */
+    padding: 40px 24px; /* Reduced vertical padding */
     min-height: auto;
   }
 
-  .about-fusion__grid {
-    grid-template-columns: 1fr;
-    gap: 50px;
+  .about-hero__heading {
+    font-size: 3.5rem;
+    line-height: 0.95;
+    margin-bottom: 28px;
   }
 
-  .about-fusion__img {
-    height: 380px;
+  .about-hero__right {
+    order: 2; /* Hero Image second */
+    height: 400px;
+    width: 100%;
+    margin: 0;
+    padding: 16px 24px; /* Minimum mobile padding for main img */
+    box-sizing: border-box;
+  }
+
+  /* Reorder Chapter One */
+  .about-chapter-one__inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-chapter-one__left {
+    order: 1; /* Dreamer Image first */
+    width: 100%;
+    padding: 16px 24px; /* Minimum mobile padding matching the main hero image */
+    box-sizing: border-box;
+  }
+
+  .about-chapter-one__img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/5;
+    margin: 0;
+    display: block;
+  }
+
+  .about-chapter-one__right {
+    order: 2; /* Dreamer Text second */
+    padding: 0 24px;
+  }
+
+  .about-chapter__title {
+    font-size: 2.2rem;
+  }
+
+  /* Why Section Feature Grid */
+  .about-why {
+    padding: 80px 24px;
+  }
+
+  .about-why__desc {
+    margin-bottom: 48px;
+  }
+
+  .about-features {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 0;
+  }
+
+  .about-feature-col {
+    border-right: none;
+    border-bottom: 1px solid var(--about-sand);
+    padding: 0 0 32px 0;
+  }
+
+  .about-feature-col:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  /* Timeline Rebuild */
+  .about-empire {
+    padding: 80px 24px;
+  }
+
+  .about-timeline {
+    grid-template-columns: 1fr;
+    gap: 56px;
+    margin-top: 60px;
+    padding: 0;
+  }
+
+  .about-timeline__line {
+    display: none; /* Hide horizontal line on mobile */
+  }
+
+  .about-timeline-node::before,
+  .about-timeline-node::after {
+    display: none !important; /* Hide responsive lines/arrowheads on mobile */
+  }
+
+  /* Values Rebuild */
+  .about-values {
+    padding: 80px 24px;
+  }
+
+  .about-values__title {
+    margin-bottom: 48px;
+  }
+
+  .about-values__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-value-col {
+    padding-left: 20px;
+  }
+
+  /* Final Manifesto */
+  .about-manifesto {
+    min-height: 80vh;
+  }
+
+  .about-manifesto__logo {
+    font-size: 3.5rem;
+  }
+
+  .about-manifesto__body {
+    font-size: 1.45rem;
   }
 }
 
-@media (max-width: 768px) {
-  .about-hero {
-    min-height: 60vh;
-    padding: 100px 0;
+/* GSAP Reveal State classes */
+.about-page .reveal {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* ═════════ MEDIUM BREAKPOINT (1024px – 1280px LAPTOP) ═════════ */
+@media (min-width: 769px) and (max-width: 1280px) {
+  .about-hero__left {
+    padding: 48px 40px 48px 48px;
   }
 
-  .about-philosophy,
-  .about-fusion {
-    padding: 60px 0;
+  .about-hero__heading {
+    font-size: clamp(52px, 5.5vw, 90px);
+  }
+
+  .about-chapter-one__inner {
+    gap: 40px;
+    padding: 0 40px;
+  }
+
+  .about-features {
+    padding: 0 20px;
+    gap: 20px;
+  }
+
+  .about-feature-col {
+    padding: 0 16px;
+  }
+
+  .about-timeline {
+    gap: 24px;
+    padding: 0 12px;
+  }
+
+  .about-timeline-node__sketch {
+    width: 130px;
+    height: 90px;
+  }
+
+  .about-timeline-node__desc {
+    max-width: 180px;
   }
 }

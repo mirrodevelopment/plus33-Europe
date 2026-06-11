@@ -186,7 +186,7 @@
   position: relative;
   z-index: 3;
   width: 100%;
-  padding-top: 80px;
+  padding-top: 30px; /* Reduced from 80px to minimize padding */
 }
 
 .hero-headers h1 {
@@ -1532,7 +1532,7 @@
   .locations-hero {
     height: auto;
     min-height: 100vh;
-    padding: 140px 0 80px;
+    padding: 90px 0 60px; /* Reduced from 140px 0 80px to minimize padding */
   }
   .hero-search-bar {
     grid-template-columns: 1fr;
@@ -1641,3 +1641,12 @@
     text-align: center;
   }
 }
+
+/* ═════════ NAVBAR MINIMUM PADDING OVERRIDES ═════════ */
+body.find-us-theme-active .plus33-nav {
+  padding: 6px 0 !important;
+}
+body.find-us-theme-active .plus33-nav--solid {
+  padding: 6px 0 !important;
+}
+
