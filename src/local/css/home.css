@@ -496,30 +496,30 @@
 }
 
 /* Transparent navbar overrides specifically for the home-hero light beige background view */
-.plus33-nav:not(.plus33-nav--solid) .plus33-nav__link {
+body:has(.home-page) .plus33-nav:not(.plus33-nav--solid) .plus33-nav__link {
   color: rgba(42, 18, 10, 0.72);
   /* Deep coffee brown text for high visibility on light cream background */
 }
 
-.plus33-nav:not(.plus33-nav--solid) .plus33-nav__link:hover,
-.plus33-nav:not(.plus33-nav--solid) .plus33-nav__link.active {
+body:has(.home-page) .plus33-nav:not(.plus33-nav--solid) .plus33-nav__link:hover,
+body:has(.home-page) .plus33-nav:not(.plus33-nav--solid) .plus33-nav__link.active {
   color: #E7B400;
   /* Muted gold */
   text-shadow: none;
   /* Remove light neon text glow on light background */
 }
 
-.plus33-nav:not(.plus33-nav--solid) .plus33-nav__location {
+body:has(.home-page) .plus33-nav:not(.plus33-nav--solid) .plus33-nav__location {
   color: rgba(42, 18, 10, 0.65);
   /* Highly legible deep brown for flag location */
 }
 
-.plus33-nav:not(.plus33-nav--solid) .plus33-nav__toggle {
+body:has(.home-page) .plus33-nav:not(.plus33-nav--solid) .plus33-nav__toggle {
   color: rgba(42, 18, 10, 0.80);
   /* Highly legible toggle hamburger icon */
 }
 
-.plus33-nav:not(.plus33-nav--solid) .plus33-nav__logo-txt {
+body:has(.home-page) .plus33-nav:not(.plus33-nav--solid) .plus33-nav__logo-txt {
   filter: brightness(0.18);
   /* Darken light/white logo typography text to deep espresso */
 }
