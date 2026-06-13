@@ -27,7 +27,7 @@ window.CHATBOT_STORES = [
       bite: "Paris Butter Croissant"
     },
     features: ["Terrace Lounge", "Evening Reserve", "Espresso Bar", "WiFi"],
-    img: "/global/assets/img/paris-cafe-interior.png",
+    img: "/global/find-us/assets/paris-cafe-interior.png",
     isFeatured: true,
     region: "Europe",
     category: "Flagship Salon"
@@ -47,7 +47,7 @@ window.CHATBOT_STORES = [
       bite: "Milano Pistachio Biscotti"
     },
     features: ["Terrace Lounge", "Evening Reserve", "Espresso Bar", "Night Lounge"],
-    img: "/global/assets/img/milan-lounge-interior.png",
+    img: "/global/find-us/assets/milan-lounge-interior.png",
     isFeatured: true,
     region: "Europe",
     category: "Espresso Bar"
@@ -67,7 +67,7 @@ window.CHATBOT_STORES = [
       bite: "Florence Almond Tart"
     },
     features: ["Quiet Workspace", "Open Courtyard", "WiFi"],
-    img: "/global/assets/img/boutique-tablescape.png",
+    img: "/global/find-us/assets/boutique-tablescape.png",
     isFeatured: true,
     region: "Europe",
     category: "Galerie & Brew"
@@ -87,7 +87,7 @@ window.CHATBOT_STORES = [
       bite: "Florence Almond Tart"
     },
     features: ["Evening Reserve", "Quiet Workspace", "Private Seating"],
-    img: "/global/assets/img/vienna-coffee-house.png",
+    img: "/global/find-us/assets/vienna-coffee-house.png",
     isFeatured: true,
     region: "Europe",
     category: "Boutique Reserve"
@@ -107,7 +107,7 @@ window.CHATBOT_STORES = [
       bite: "Paris Butter Croissant"
     },
     features: ["Quiet Workspace", "Open Courtyard", "WiFi"],
-    img: "/global/assets/img/morning-7eme.png",
+    img: "/global/journal/assets/morning-7eme.png",
     isFeatured: true,
     region: "Europe",
     category: "Scandinavian Atelier"
@@ -127,7 +127,7 @@ window.CHATBOT_STORES = [
       bite: "Milano Pistachio Biscotti"
     },
     features: ["Evening Reserve", "Quiet Workspace", "Private Seating", "WiFi"],
-    img: "/global/assets/img/boutique-tablescape.png",
+    img: "/global/find-us/assets/boutique-tablescape.png",
     isFeatured: true,
     region: "Europe",
     category: "Bespoke Pavilion"
@@ -147,7 +147,7 @@ window.CHATBOT_STORES = [
       bite: "Florence Almond Tart"
     },
     features: ["Terrace Lounge", "Open Courtyard", "Night Lounge"],
-    img: "/global/assets/img/outdoor-terrace-cafe.png",
+    img: "/global/find-us/assets/outdoor-terrace-cafe.png",
     isFeatured: true,
     region: "Europe",
     category: "Terrace Lounge"
@@ -167,7 +167,7 @@ window.CHATBOT_STORES = [
       bite: "Florence Almond Tart"
     },
     features: ["Open Courtyard", "Private Seating", "Espresso Bar"],
-    img: "/global/assets/img/architecture-taste.png",
+    img: "/global/journal/assets/architecture-taste.png",
     isFeatured: true,
     region: "Europe",
     category: "Heritage Courtyard"
@@ -187,7 +187,7 @@ window.CHATBOT_STORES = [
       bite: "Berlin Plum Crumble"
     },
     features: ["Quiet Workspace", "Espresso Bar", "WiFi"],
-    img: "/global/assets/img/boutique-tablescape.png",
+    img: "/global/find-us/assets/boutique-tablescape.png",
     isFeatured: true,
     region: "Europe",
     category: "Industrial Pavilion"
@@ -207,7 +207,7 @@ window.CHATBOT_STORES = [
       bite: "Chelsea Bun Scone"
     },
     features: ["Quiet Workspace", "Espresso Bar", "WiFi"],
-    img: "/global/assets/img/milan-lounge-interior.png",
+    img: "/global/find-us/assets/milan-lounge-interior.png",
     isFeatured: false,
     region: "Europe",
     category: "Exclusive Atelier"
@@ -227,7 +227,7 @@ window.CHATBOT_STORES = [
       bite: "Rome Pistachio Cannoli"
     },
     features: ["Terrace Lounge", "Espresso Bar", "Night Lounge"],
-    img: "/global/assets/img/milan-lounge-interior.png",
+    img: "/global/find-us/assets/milan-lounge-interior.png",
     isFeatured: false,
     region: "Europe",
     category: "Travertine Galleria"
@@ -247,7 +247,7 @@ window.CHATBOT_STORES = [
       bite: "Prague Honey Cake"
     },
     features: ["Quiet Workspace", "Private Seating", "WiFi"],
-    img: "/global/assets/img/vienna-coffee-house.png",
+    img: "/global/find-us/assets/vienna-coffee-house.png",
     isFeatured: false,
     region: "Europe",
     category: "Bibliotheque Cabinet"
@@ -267,7 +267,7 @@ window.CHATBOT_STORES = [
       bite: "Istanbul Rosewater Loukoum"
     },
     features: ["Terrace Lounge", "Open Courtyard", "Espresso Bar"],
-    img: "/global/assets/img/outdoor-terrace-cafe.png",
+    img: "/global/find-us/assets/outdoor-terrace-cafe.png",
     isFeatured: false,
     region: "Middle East",
     category: "Bosphorus Lounge"
@@ -287,7 +287,7 @@ window.CHATBOT_STORES = [
       bite: "Dubai Pistachio Baklava"
     },
     features: ["Evening Reserve", "Terrace Lounge", "Night Lounge"],
-    img: "/global/assets/img/luxury-business-space.png",
+    img: "/global/franchise/assets/luxury-business-space.png",
     isFeatured: false,
     region: "Middle East",
     category: "Skyline Reserve"
@@ -307,7 +307,7 @@ window.CHATBOT_STORES = [
       bite: "Aoyama Sweet Azuki Mochi"
     },
     features: ["Quiet Workspace", "Espresso Bar", "WiFi"],
-    img: "/global/assets/img/outdoor-terrace-cafe.png",
+    img: "/global/find-us/assets/outdoor-terrace-cafe.png",
     isFeatured: false,
     region: "Asia",
     category: "Midnight Atelier"
@@ -327,7 +327,7 @@ window.CHATBOT_STORES = [
       bite: "Pandan Coconut Crepe"
     },
     features: ["Open Courtyard", "Quiet Workspace", "WiFi"],
-    img: "/global/assets/img/outdoor-terrace-cafe.png",
+    img: "/global/find-us/assets/outdoor-terrace-cafe.png",
     isFeatured: false,
     region: "Asia",
     category: "Tropical Sanctuary"
@@ -347,7 +347,7 @@ window.CHATBOT_STORES = [
       bite: "Hong Kong Egg Custard Tart"
     },
     features: ["Quiet Workspace", "Private Seating", "WiFi"],
-    img: "/global/assets/img/boutique-tablescape.png",
+    img: "/global/find-us/assets/boutique-tablescape.png",
     isFeatured: false,
     region: "Asia",
     category: "Skyline Glasshouse"
@@ -367,7 +367,7 @@ window.CHATBOT_STORES = [
       bite: "Shanghai Sweet Red Bean Cake"
     },
     features: ["Evening Reserve", "Terrace Lounge", "Espresso Bar"],
-    img: "/global/assets/img/outdoor-terrace-cafe.png",
+    img: "/global/find-us/assets/outdoor-terrace-cafe.png",
     isFeatured: false,
     region: "Asia",
     category: "Riverfront Grandeur"
@@ -387,7 +387,7 @@ window.CHATBOT_STORES = [
       bite: "Korean Sweet Rice Cake"
     },
     features: ["Open Courtyard", "Quiet Workspace", "Private Seating"],
-    img: "/global/assets/img/outdoor-terrace-cafe.png",
+    img: "/global/find-us/assets/outdoor-terrace-cafe.png",
     isFeatured: false,
     region: "Asia",
     category: "Hanok Retreat"
@@ -407,7 +407,7 @@ window.CHATBOT_STORES = [
       bite: "Mumbai Pistachio Mawa Cake"
     },
     features: ["Terrace Lounge", "Espresso Bar", "WiFi"],
-    img: "/global/assets/img/outdoor-terrace-cafe.png",
+    img: "/global/find-us/assets/outdoor-terrace-cafe.png",
     isFeatured: false,
     region: "Asia",
     category: "Metropolitan Oasis"
@@ -427,7 +427,7 @@ window.CHATBOT_STORES = [
       bite: "Bangkok Mango Sticky Pastry"
     },
     features: ["Terrace Lounge", "Open Courtyard", "WiFi"],
-    img: "/global/assets/img/outdoor-terrace-cafe.png",
+    img: "/global/find-us/assets/outdoor-terrace-cafe.png",
     isFeatured: false,
     region: "Asia",
     category: "Riverside Sanctuary"
@@ -447,7 +447,7 @@ window.CHATBOT_STORES = [
       bite: "Coimbatore Cardamom Croissant"
     },
     features: ["Open Courtyard", "Quiet Workspace", "Private Seating"],
-    img: "/global/assets/img/outdoor-terrace-cafe.png",
+    img: "/global/find-us/assets/outdoor-terrace-cafe.png",
     isFeatured: false,
     region: "Asia",
     category: "Heritage Estate"
@@ -467,7 +467,7 @@ window.CHATBOT_STORES = [
       bite: "New York Cinnamon Crumb Cake"
     },
     features: ["Evening Reserve", "Espresso Bar", "WiFi"],
-    img: "/global/assets/img/boutique-tablescape.png",
+    img: "/global/find-us/assets/boutique-tablescape.png",
     isFeatured: false,
     region: "North America",
     category: "Downtown Lounge"
@@ -487,7 +487,7 @@ window.CHATBOT_STORES = [
       bite: "Melrose Avocado Brioche Tart"
     },
     features: ["Open Courtyard", "Terrace Lounge", "WiFi"],
-    img: "/global/assets/img/milan-lounge-interior.png",
+    img: "/global/find-us/assets/milan-lounge-interior.png",
     isFeatured: false,
     region: "North America",
     category: "Melrose Villa"
@@ -507,7 +507,7 @@ window.CHATBOT_STORES = [
       bite: "Toronto Maple Pecan Scone"
     },
     features: ["Quiet Workspace", "Private Seating", "WiFi"],
-    img: "/global/assets/img/vienna-coffee-house.png",
+    img: "/global/find-us/assets/vienna-coffee-house.png",
     isFeatured: false,
     region: "North America",
     category: "Boutique Reserve"
@@ -527,7 +527,7 @@ window.CHATBOT_STORES = [
       bite: "Paulista Warm Pão de Queijo"
     },
     features: ["Terrace Lounge", "Espresso Bar", "WiFi"],
-    img: "/global/assets/img/outdoor-terrace-cafe.png",
+    img: "/global/find-us/assets/outdoor-terrace-cafe.png",
     isFeatured: false,
     region: "South America",
     category: "Modernist Salon"
@@ -547,7 +547,7 @@ window.CHATBOT_STORES = [
       bite: "Sydney Toasted Almond Croissant"
     },
     features: ["Terrace Lounge", "Open Courtyard", "WiFi"],
-    img: "/global/assets/img/outdoor-terrace-cafe.png",
+    img: "/global/find-us/assets/outdoor-terrace-cafe.png",
     isFeatured: false,
     region: "Oceania",
     category: "Harbour Pavilion"

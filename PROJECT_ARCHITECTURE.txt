@@ -87,6 +87,9 @@ plus33-europe/
     │   │   │   │   ├── atelier-gift-pack.jpeg
     │   │   │   │   └── organic-tote.png
     │   │   │   ├── retail/             # Coffee beans and retail bags
+    │   │   │   │   ├── Kashmiri Kahwa.jpg
+    │   │   │   │   ├── Masala Chai Tea Pouch.png
+    │   │   │   │   ├── Ooty Gold.jpg
     │   │   │   │   ├── cerrado-colombia.jpg
     │   │   │   │   ├── sachet-de-cafe.png
     │   │   │   │   └── signature-dark-roast.png
@@ -417,7 +420,7 @@ C. GLOBAL SYSTEM FILES (src/global/)
   Purpose: Catch-all router helper forwarding unknown SPA client routes to index.html.
 
 * src/global/java/com/plus33/europe/global/config/DatabaseSeeder.java
-  Purpose: Feeds mock database instances (15 products and 3 seasonal stories) on startup.
+  Purpose: Feeds mock database instances (27 products and 14 journal stories) on startup.
 
 * src/global/java/com/plus33/europe/global/constants/AppConstants.java
   Purpose: Centralized container for app messages, constants, and ranges.

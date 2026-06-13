@@ -177,7 +177,7 @@ export function mountFindUsPage() {
         className: 'gold-custom-marker',
         html: `
           <div class="marker-pin-wrapper">
-            <img src="/global/assets/find-us/map-pin.png" class="marker-pin-img" alt="${store.name}" />
+            <img src="/global/find-us/assets/map-pin.png" class="marker-pin-img" alt="${store.name}" />
             <div class="marker-pulse-ring"></div>
             <span class="marker-city-label">${store.city}</span>
           </div>

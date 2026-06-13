@@ -102,6 +102,24 @@ const FALLBACK_PRODUCTS = [
     origin: "Parisian Atelier", roast: "Cotton Canvas", badge: "Ritual Object",
     notes: "Organic Cotton, French Design, Everyday Carry", imagePath: "/local/assets/products/merchant/plus33-tote.png",
     description: "Heavyweight organic cotton canvas tote featuring our hand-pressed signature wordmark. Durable, elegant, and designed to carry your daily coffee ritual essentials."
+  },
+  {
+    id: 25, name: "Masala Chai Tea Pouch", category: "retail", price: 18.00,
+    origin: "Assam & Kerala, India", roast: "Spiced Botanical", badge: "Heritage Blend",
+    notes: "Assam Black Tea, Cardamom, Ginger, Warming", imagePath: "/local/assets/products/retail/Masala Chai Tea Pouch.png",
+    description: "An authentic, aromatic heritage tea blend. Combining premium high-grown Assam black tea leaves with freshly crushed green cardamoms, cinnamon bark, cloves, and wild ginger for a comforting, warming infusion at home."
+  },
+  {
+    id: 26, name: "Kashmiri Kahwa", category: "retail", price: 26.00,
+    origin: "Kashmir Valley, India", roast: "Saffron Green Tea", badge: "Imperial Reserve",
+    notes: "Saffron Threads, Cardamom, Sweet Almonds, Fragrant", imagePath: "/local/assets/products/retail/Kashmiri Kahwa.jpg",
+    description: "An imperial saffron-infused green tea from the valleys of Kashmir. Delicate green tea leaves hand-blended with premium saffron threads, green cardamom, cinnamon, and slivered sweet almonds for a majestic, fragrant brew."
+  },
+  {
+    id: 27, name: "Ooty Gold", category: "retail", price: 25.00,
+    origin: "Nilgiri Hills, India", roast: "Medium Roast", badge: "Single Origin",
+    notes: "Whole Bean, Wild Honey, Citrus Blossom, Smooth Body", imagePath: "/local/assets/products/retail/Ooty Gold.jpg",
+    description: "A rare, high-altitude single-origin coffee harvested from the misty slopes of the Nilgiri hills. Hand-picked at 2,200 meters and medium-roasted to express a bright, golden body with complex notes of wild honey, citrus blossom, and toasted hazelnut."
   }
 ];
 

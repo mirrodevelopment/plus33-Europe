@@ -154,23 +154,13 @@
 				<targetPath>static</targetPath>
 			</resource>
 			<resource>
-				<directory>src/global/html</directory>
+				<directory>src/global</directory>
 				<excludes>
-					<exclude>index.html</exclude>
+					<exclude>application.properties</exclude>
+					<exclude>java/**</exclude>
+					<exclude>html/index.html</exclude>
 				</excludes>
-				<targetPath>static/global/html</targetPath>
-			</resource>
-			<resource>
-				<directory>src/global/css</directory>
-				<targetPath>static/global/css</targetPath>
-			</resource>
-			<resource>
-				<directory>src/global/js</directory>
-				<targetPath>static/global/js</targetPath>
-			</resource>
-			<resource>
-				<directory>src/global/assets</directory>
-				<targetPath>static/global/assets</targetPath>
+				<targetPath>static/global</targetPath>
 			</resource>
 		</resources>
 		<plugins>

@@ -32,7 +32,7 @@ public class DatabaseSeeder implements CommandLineRunner {
 
     private void seedProducts() {
         if (productRepository.count() == 0) {
-            logger.info("Product database is empty. Seeding 15 signature selections...");
+            logger.info("Product database is empty. Seeding 27 signature selections...");
 
             Product[] initialProducts = {
                 new Product(
@@ -202,6 +202,27 @@ public class DatabaseSeeder implements CommandLineRunner {
                     4.50, "desserts", "Plus33 Pastry Lab", "Light & Fruity",
                     "Apple Purée, Meringue Style, Delicate Sweet",
                     "/local/assets/products/desserts/Zefir.png", "Delicate Treat"
+                ),
+                new Product(
+                    "Masala Chai Tea Pouch",
+                    "An authentic, aromatic heritage tea blend. Combining premium high-grown Assam black tea leaves with freshly crushed green cardamoms, cinnamon bark, cloves, and wild ginger for a comforting, warming infusion at home.",
+                    18.00, "retail", "Assam & Kerala, India", "Spiced Botanical",
+                    "Assam Black Tea, Cardamom, Ginger, Warming",
+                    "/local/assets/products/retail/Masala Chai Tea Pouch.png", "Heritage Blend"
+                ),
+                new Product(
+                    "Kashmiri Kahwa",
+                    "An imperial saffron-infused green tea from the valleys of Kashmir. Delicate green tea leaves hand-blended with premium saffron threads, green cardamom, cinnamon, and slivered sweet almonds for a majestic, fragrant brew.",
+                    26.00, "retail", "Kashmir Valley, India", "Saffron Green Tea",
+                    "Saffron Threads, Cardamom, Sweet Almonds, Fragrant",
+                    "/local/assets/products/retail/Kashmiri Kahwa.jpg", "Imperial Reserve"
+                ),
+                new Product(
+                    "Ooty Gold",
+                    "A rare, high-altitude single-origin coffee harvested from the misty slopes of the Nilgiri hills. Hand-picked at 2,200 meters and medium-roasted to express a bright, golden body with complex notes of wild honey, citrus blossom, and toasted hazelnut.",
+                    25.00, "retail", "Nilgiri Hills, India", "Medium Roast",
+                    "Whole Bean, Wild Honey, Citrus Blossom, Smooth Body",
+                    "/local/assets/products/retail/Ooty Gold.jpg", "Single Origin"
                 )
             };
 
@@ -220,7 +241,7 @@ public class DatabaseSeeder implements CommandLineRunner {
                     "The Soil of Ethiopia",
                     "Origins",
                     "May 12, 2024",
-                    "/global/assets/journal/soil-ethiopia.png",
+                    "/global/journal/assets/soil-ethiopia.png",
                     "In the highlands of Sidamo, coffee grows the way it has for centuries — wild, shaded, unhurried. We traveled to the farms that supply our single-origin reserves to understand what makes Ethiopian terroir irreplaceable.",
                     "8 min read",
                     "A dispatch from the birthplace of coffee",
@@ -231,7 +252,7 @@ public class DatabaseSeeder implements CommandLineRunner {
                     "Altitude and Terroir: Colombia's Hidden Valleys",
                     "Origins",
                     "April 20, 2024",
-                    "/global/assets/journal/colombia-terroir.png",
+                    "/global/journal/assets/colombia-terroir.png",
                     "At 1,900 metres above sea level, in the shadow of the Andes, Colombian farmers cultivate beans that carry the taste of volcanic soil, mountain rain, and patience.",
                     "6 min read",
                     "High-altitude coffee and the farmers who grow it",
@@ -241,7 +262,7 @@ public class DatabaseSeeder implements CommandLineRunner {
                     "Rwanda at Dawn",
                     "Origins",
                     "March 15, 2024",
-                    "/global/assets/journal/rwanda-dawn.png",
+                    "/global/journal/assets/rwanda-dawn.png",
                     "The first light over Lake Kivu reveals terraced hillsides of coffee cherries turning from green to deep crimson. Rwanda's specialty coffee revolution is quiet, meticulous, and world-class.",
                     "5 min read",
                     "The quiet revolution of Rwandan specialty coffee",
@@ -252,7 +273,7 @@ public class DatabaseSeeder implements CommandLineRunner {
                     "Roast Profiles: A Visual Atlas",
                     "Process",
                     "May 01, 2024",
-                    "/global/assets/journal/roast-profiles.png",
+                    "/global/journal/assets/roast-profiles.png",
                     "Every roast at +33 is profiled individually. Light, medium, dark — these are not choices. They are consequences of listening to the bean. A visual guide to how we approach the irreversible moment.",
                     "7 min read",
                     "How we listen to the bean before the roast",
@@ -262,7 +283,7 @@ public class DatabaseSeeder implements CommandLineRunner {
                     "The Science of Extraction",
                     "Process",
                     "February 28, 2024",
-                    "/global/assets/journal/science-extraction.png",
+                    "/global/journal/assets/science-extraction.png",
                     "Between 18% and 22% lies the extraction sweet spot — the narrow window where flavour compounds dissolve perfectly. Too little, and the cup is sour. Too much, and bitterness takes over.",
                     "6 min read",
                     "Precision brewing and the mathematics of flavour",
@@ -273,7 +294,7 @@ public class DatabaseSeeder implements CommandLineRunner {
                     "Morning in the 7ème",
                     "Lifestyle",
                     "May 08, 2024",
-                    "/global/assets/journal/morning-7eme.png",
+                    "/global/journal/assets/morning-7eme.png",
                     "The seventh arrondissement wakes slowly. The first espresso is pulled before the Eiffel Tower catches sunlight. This is our morning ritual — and the city's.",
                     "4 min read",
                     "A Parisian morning through coffee",
@@ -283,7 +304,7 @@ public class DatabaseSeeder implements CommandLineRunner {
                     "A Table in Milan",
                     "Lifestyle",
                     "January 18, 2024",
-                    "/global/assets/journal/milan-table.png",
+                    "/global/journal/assets/milan-table.png",
                     "Milan taught us that coffee is architecture — brief, precise, and never casual. Standing at the bar of a century-old pasticceria, we understood why Italy never sits down for espresso.",
                     "5 min read",
                     "What Italian coffee culture taught us about brevity",
@@ -293,7 +314,7 @@ public class DatabaseSeeder implements CommandLineRunner {
                     "The Slow Hours",
                     "Lifestyle",
                     "December 05, 2023",
-                    "/global/assets/journal/slow-hours.png",
+                    "/global/journal/assets/slow-hours.png",
                     "Between 2pm and 4pm, the café breathes differently. The lunch rush dissolves. Conversations become quieter. This is the hour we designed +33 for.",
                     "3 min read",
                     "Why the afternoon is our favourite service",
@@ -304,7 +325,7 @@ public class DatabaseSeeder implements CommandLineRunner {
                     "The Architecture of Taste",
                     "Design",
                     "April 28, 2024",
-                    "/global/assets/journal/architecture-taste.png",
+                    "/global/journal/assets/architecture-taste.png",
                     "Every +33 atelier begins as a conversation between space and ritual. We don't decorate — we compose. How our design philosophy shapes the way coffee feels.",
                     "7 min read",
                     "Composing spaces where coffee becomes experience",
@@ -314,7 +335,7 @@ public class DatabaseSeeder implements CommandLineRunner {
                     "Designing Silence: Our Dubai Atelier",
                     "Design",
                     "March 02, 2024",
-                    "/global/assets/journal/dubai-atelier.png",
+                    "/global/journal/assets/dubai-atelier.png",
                     "In a city that never stops, we created a space that asks you to pause. Natural stone, muted light, and the sound of a single espresso machine. Our Dubai atelier is an exercise in restraint.",
                     "6 min read",
                     "Creating calm in the heart of Downtown Dubai",
@@ -324,7 +345,7 @@ public class DatabaseSeeder implements CommandLineRunner {
                     "The Object: Our Ceramic Cup",
                     "Design",
                     "November 12, 2023",
-                    "/global/assets/journal/ceramic-cup.png",
+                    "/global/journal/assets/ceramic-cup.png",
                     "Heavy. Warm. Intentional. Our signature ceramic cup was developed over 14 months with a Portuguese ceramicist. It weighs exactly 340 grams — because weight is the first thing you notice.",
                     "4 min read",
                     "14 months to create the perfect vessel",
@@ -335,7 +356,7 @@ public class DatabaseSeeder implements CommandLineRunner {
                     "The First Pour",
                     "Rituals",
                     "April 10, 2024",
-                    "/global/assets/journal/first-pour.png",
+                    "/global/journal/assets/first-pour.png",
                     "The first pour is never about extraction. It's about awakening. The bloom — that brief, volcanic rise of the grounds — tells you everything about freshness, grind, and readiness.",
                     "5 min read",
                     "Understanding the bloom and what it reveals",
@@ -345,7 +366,7 @@ public class DatabaseSeeder implements CommandLineRunner {
                     "Why We Never Rush",
                     "Rituals",
                     "February 14, 2024",
-                    "/global/assets/journal/never-rush.png",
+                    "/global/journal/assets/never-rush.png",
                     "A hand brew at +33 takes exactly the time it needs. Four minutes. Sometimes five. We will never install a timer that beeps. The barista knows. The cup knows.",
                     "3 min read",
                     "The philosophy of patience in every cup",
@@ -355,7 +376,7 @@ public class DatabaseSeeder implements CommandLineRunner {
                     "Sunday Espresso",
                     "Rituals",
                     "January 07, 2024",
-                    "/global/assets/journal/sunday-espresso.png",
+                    "/global/journal/assets/sunday-espresso.png",
                     "Sunday is different. The grinder is set slightly coarser. The milk is steamed a fraction longer. Even the music changes. Our Sunday espresso is a weekly ceremony of small adjustments.",
                     "4 min read",
                     "How Sundays change the way we brew",

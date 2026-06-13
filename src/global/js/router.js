@@ -42,11 +42,11 @@
       destroy:  () => window._homeController?.destroy?.()
     },
     '/franchise': {
-      fragment: '/global/html/franchise.html',
-      css:      '/global/css/franchise.css',
+      fragment: '/global/franchise/html/franchise.html',
+      css:      '/global/franchise/css/franchise.css',
       title:    'Franchise — +33 Paris',
       init:     async () => {
-        const mod = await import('/global/js/franchise.js');
+        const mod = await import('/global/franchise/js/franchise.js');
         window._franchiseCleanup = mod.mountFranchisePage();
       },
       destroy:  () => {
@@ -57,11 +57,11 @@
       }
     },
     '/find-us': {
-      fragment: '/global/html/find-us.html',
-      css:      '/global/css/find-us.css',
+      fragment: '/global/find-us/html/find-us.html',
+      css:      '/global/find-us/css/find-us.css',
       title:    'Find Us — +33 Paris',
       init:     async () => {
-        const mod = await import('/global/js/find-us.js');
+        const mod = await import('/global/find-us/js/find-us.js');
         window._findUsCleanup = mod.mountFindUsPage();
       },
       destroy:  () => {
@@ -72,11 +72,11 @@
       }
     },
     '/journal': {
-      fragment: '/global/html/journal.html',
-      css:      '/global/css/journal.css',
+      fragment: '/global/journal/html/journal.html',
+      css:      '/global/journal/css/journal.css',
       title:    'Journal — +33 Paris',
       init:     async () => {
-        const mod = await import('/global/js/journal.js');
+        const mod = await import('/global/journal/js/journal.js');
         window._journalCleanup = mod.mountJournalPage();
       },
       destroy:  () => {
@@ -102,11 +102,11 @@
       }
     },
     '/about': {
-      fragment: '/global/html/about.html',
-      css:      '/global/css/about.css',
+      fragment: '/global/about/html/about.html',
+      css:      '/global/about/css/about.css',
       title:    'About — +33 Paris',
       init:     async () => {
-        const mod = await import('/global/js/about.js');
+        const mod = await import('/global/about/js/about.js');
         window._aboutCleanup = mod.mountAboutPage();
       },
       destroy:  () => {
@@ -117,11 +117,11 @@
       }
     },
     '/rewards': {
-      fragment: '/global/html/rewards.html',
-      css:      '/global/css/rewards.css',
+      fragment: '/global/rewards/html/rewards.html',
+      css:      '/global/rewards/css/rewards.css',
       title:    'Rewards — +33 Paris',
       init:     async () => {
-        const mod = await import('/global/js/rewards.js');
+        const mod = await import('/global/rewards/js/rewards.js');
         window._rewardsCleanup = mod.mountRewardsPage();
       },
       destroy:  () => {
