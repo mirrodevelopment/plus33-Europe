@@ -64,7 +64,7 @@ const FALLBACK_PRODUCTS = [
   {
     id: 9, name: "Tiramisu Glacé", category: "origin", price: 8.50,
     origin: "Plus33 Pastry Lab", roast: "Rich & Decadent", badge: "Seasonal Dessert",
-    notes: "Mascarpone, Savoiardi, Cocoa Dust", imagePath: "/local/assets/products/deserts/Tiramisu-Glace.jpg",
+    notes: "Mascarpone, Savoiardi, Cocoa Dust", imagePath: "/local/assets/products/desserts/tiramisu-glace.jpg",
     description: "A dessert in a glass. Layers of chilled double espresso, sweet whipped mascarpone cream, house-baked savoiardi crumbs, and a dusting of dark French cocoa powder."
   },
   {

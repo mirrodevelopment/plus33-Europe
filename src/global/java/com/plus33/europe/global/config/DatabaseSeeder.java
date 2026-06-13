@@ -96,7 +96,7 @@ public class DatabaseSeeder implements CommandLineRunner {
                     "A dessert in a glass. Layers of chilled double espresso, sweet whipped mascarpone cream, house-baked savoiardi crumbs, and a dusting of dark French cocoa powder.",
                     8.50, "iced-coffee,desserts", "Plus33 Pastry Lab", "Rich & Decadent",
                     "Mascarpone, Savoiardi, Cocoa Dust",
-                    "/local/assets/products/drinks/iced-coffee/tiramisu-glace.jpg", "Seasonal Dessert"
+                    "/local/assets/products/desserts/tiramisu-glace.jpg", "Seasonal Dessert"
                 ),
                 new Product(
                     "Iced Punch Coco",

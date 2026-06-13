@@ -179,8 +179,8 @@ const CHATBOT_DATA = {
         answer: 'Most **+33 Paris cafés** are accessible and have nearby parking. Check individual location details on the map for specifics.\n\n[Find a Café](/find-us)'
       },
       {
-        keywords: ['delivery', 'takeaway', 'take away', 'order online', 'home delivery'],
-        answer: 'We offer takeaway at all locations. **Online delivery** availability depends on your city — check the location card for details.\n\n[Find a Café](/find-us)'
+        keywords: ['takeaway', 'take away', 'order online', 'pickup', 'pick up'],
+        answer: 'We offer quick pickup and takeaway at all locations. Simply order ahead via our app to have your beverage or pastries ready when you arrive.\n\n[Find a Café](/find-us)'
       },
       {
         keywords: ['city', 'country', 'which cities', 'locations', 'branches'],

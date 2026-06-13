@@ -13,7 +13,7 @@
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 1100;
-  padding: 14px 0; /* Tightened navbar vertical padding */
+  padding: 20px 0; /* Expanded navbar vertical padding for a spacious, premium feel */
   background: transparent;
   transition: transform 0.45s var(--ease-cinema), background 0.45s ease, padding 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease;
   border-bottom: 1px solid transparent;
@@ -158,6 +158,7 @@
   display: flex;
   align-items: center;
   gap: 20px; /* Reduced excessive spacing between links */
+  margin: 0 40px; /* Keep links separated from logo on the left and location on the right */
 }
 
 .plus33-nav__link {
@@ -197,6 +198,37 @@
 .plus33-nav__link.active::after {
   transform: scaleX(1);
   transform-origin: left;
+}
+
+/* Light-Themed Pages Navbar Overrides (Transparent State) */
+body:has(.store-page, .journal-page, .about-page, .rewards-page, .product-details-page) .plus33-nav:not(.plus33-nav--solid) .plus33-nav__link {
+  color: rgba(26, 15, 16, 0.65);
+}
+
+body:has(.store-page, .journal-page, .about-page, .rewards-page, .product-details-page) .plus33-nav:not(.plus33-nav--solid) .plus33-nav__link:hover,
+body:has(.store-page, .journal-page, .about-page, .rewards-page, .product-details-page) .plus33-nav:not(.plus33-nav--solid) .plus33-nav__link.active {
+  color: #a8835c;
+  text-shadow: none;
+}
+
+body:has(.store-page, .journal-page, .about-page, .rewards-page, .product-details-page) .plus33-nav:not(.plus33-nav--solid) .plus33-nav__link::after {
+  background: #a8835c;
+}
+
+body:has(.store-page, .journal-page, .about-page, .rewards-page, .product-details-page) .plus33-nav:not(.plus33-nav--solid) .plus33-nav__logo-txt {
+  filter: invert(1) brightness(0.1);
+}
+
+body:has(.store-page, .journal-page, .about-page, .rewards-page, .product-details-page) .plus33-nav:not(.plus33-nav--solid) .plus33-nav__location {
+  color: rgba(26, 15, 16, 0.6);
+}
+
+body:has(.store-page, .journal-page, .about-page, .rewards-page, .product-details-page) .plus33-nav:not(.plus33-nav--solid) .plus33-nav__toggle {
+  color: rgba(26, 15, 16, 0.85);
+}
+
+body:has(.store-page, .journal-page, .about-page, .rewards-page, .product-details-page) .plus33-nav:not(.plus33-nav--solid) .plus33-nav__toggle:hover {
+  color: #a8835c;
 }
 
 

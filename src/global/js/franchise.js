@@ -25,15 +25,30 @@ export function mountFranchisePage() {
     // Create GSAP context for reliable lifecycle management and cleanup
     const ctx = gsap.context(() => {
         // ═════════ ENTRANCE ANIMATIONS ═════════
-        gsap.from('.franchise-hero__content h1', {
-            y: 40,
-            opacity: 0,
-            duration: 1.5,
-            ease: 'power4.out'
-        });
+        // Immediately trigger entrance animations for the hero section to prevent conflicts with ScrollTrigger
+        const heroTl = gsap.timeline();
+        heroTl.fromTo('.franchise-hero__content h1', 
+            { y: 40, opacity: 0 },
+            { y: 0, opacity: 1, duration: 1.5, ease: 'power4.out' }
+        )
+        .fromTo('.franchise-hero__content p',
+            { y: 30, opacity: 0 },
+            { y: 0, opacity: 1, duration: 1.2, ease: 'power2.out' },
+            '-=1.2'
+        )
+        .fromTo('.franchise-hero__actions',
+            { y: 20, opacity: 0 },
+            { y: 0, opacity: 1, duration: 1.0, ease: 'power2.out' },
+            '-=1.0'
+        )
+        .fromTo('.franchise-stats',
+            { y: 30, opacity: 0 },
+            { y: 0, opacity: 1, duration: 1.2, ease: 'power2.out' },
+            '-=0.8'
+        );
 
-        // Trigger each reveal element individually as it enters the viewport
-        gsap.utils.toArray('.reveal').forEach(el => {
+        // Trigger each reveal element individually as it enters the viewport (excluding the hero elements to prevent conflicts)
+        gsap.utils.toArray('.reveal:not(.franchise-hero *)').forEach(el => {
             const targetOpacity = el.classList.contains('apply-brand-seal-signature') ? 0.45 : 1;
             gsap.fromTo(el,
                 { y: 30, opacity: 0 },
@@ -130,22 +145,19 @@ export function mountFranchisePage() {
             ease: 'back.out(1.7)'
         });
 
-        // ═════════ JOURNEY STEPS ANIMATIONS ═════════
-        gsap.from('.journey-card', {
+        // ═════════ DESKTOP JOURNEY STEPS ANIMATIONS ═════════
+        gsap.from('.journey-desktop-card', {
             scrollTrigger: {
-                trigger: '.journey-grid',
+                trigger: '.journey-desktop-grid',
                 start: 'top 85%',
                 toggleActions: 'play none none none'
             },
-            y: 30,
+            y: 40,
             opacity: 0,
             duration: 1.2,
-            stagger: 0.12,
+            stagger: 0.15,
             ease: 'power3.out',
-            clearProps: 'transform,opacity',
-            onComplete: () => {
-                document.querySelectorAll('.journey-card').forEach(el => el.classList.add('ready'));
-            }
+            clearProps: 'transform,opacity'
         });
 
         // ═════════ FAQ & QUALIFICATIONS ANIMATIONS ═════════

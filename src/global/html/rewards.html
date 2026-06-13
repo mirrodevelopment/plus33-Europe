@@ -409,11 +409,14 @@
       <!-- Section Header -->
       <div class="text-center rewards-section-header">
         <span class="rewards-section-subtitle">UNLOCKED MILESTONES</span>
-        <div class="fleur-de-lis">⚜</div>
-        <h2 class="rewards-section-title">Artisanal treats to unlock.</h2>
+        <div class="milestone-ornament">
+          <span class="ornament-line"></span>
+          <span class="ornament-fleur">⚜</span>
+          <span class="ornament-line"></span>
+        </div>
+        <h2 class="rewards-section-title">Artisanal treats<br>to unlock.</h2>
         <p class="rewards-section-description">
-          Every sip, every visit brings you closer to something special.<br>
-          Unlock exclusive treats and experiences crafted for you.
+          Every visit brings you closer to exclusive creations and members-only rewards.
         </p>
       </div>
 
@@ -421,15 +424,34 @@
       <div class="milestones-asymmetric-layout">
         
         <!-- Card 1: Large Featured Card (Café Filtre) -->
-        <div class="milestone-card-premium featured-filtre-card">
+        <div class="milestone-card-premium featured-filtre-card bg-warm-ivory">
+          <div class="paper-texture"></div>
+          <!-- Botanical Line Art Background -->
+          <svg class="botanical-sketch botanical-branch-1" viewBox="0 0 200 200" fill="none" stroke="currentColor">
+            <path d="M10,180 Q60,150 120,130 C150,120 180,90 190,50" stroke-width="0.8" stroke-linecap="round"/>
+            <path d="M120,130 C130,110 150,105 165,115 C150,130 135,130 120,130 Z" stroke-width="0.6" fill="none"/>
+            <path d="M120,130 C137,118 152,116 165,115" stroke-width="0.5"/>
+            <path d="M90,145 C80,125 60,120 45,130 C60,145 75,145 90,145 Z" stroke-width="0.6" fill="none"/>
+            <path d="M90,145 C73,133 58,131 45,130" stroke-width="0.5"/>
+          </svg>
+          <!-- Embossed PLUS33 Seal Watermark -->
+          <svg class="embossed-seal" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.8">
+            <circle cx="50" cy="50" r="44" stroke-dasharray="2 2" />
+            <circle cx="50" cy="50" r="40" />
+            <path id="sealPath1" d="M 50,50 m -32,0 a 32,32 0 1,1 64,0 a 32,32 0 1,1 -64,0" fill="none"/>
+            <text><textPath href="#sealPath1" startOffset="50%" text-anchor="middle" font-size="4.5" letter-spacing="1">PLUS33 CAFÉ FRANÇAIS • MAISON FONDÉE 2024</textPath></text>
+            <text x="50" y="55" text-anchor="middle" font-family="serif" font-size="14">⚜</text>
+          </svg>
+
           <div class="milestone-image-area">
             <img src="/local/assets/products/drinks/hot-coffee/cafe-filtre.png" alt="Café Filtre" class="milestone-photo">
           </div>
           <div class="milestone-content-area">
-            <span class="milestone-category-badge">SINGLE ORIGIN</span>
+            <span class="milestone-category-badge">SIGNATURE COFFEE</span>
             <h3 class="milestone-title">Café Filtre</h3>
-            <span class="milestone-spend-limit">Unlock at ₹2,000 spent</span>
-            <div class="milestone-divider-crest">⚜</div>
+            <span class="milestone-spend-limit">Unlock at $2,000 spent</span>
+            <p class="milestone-desc">A refined introduction to the PLUS33 ritual.</p>
+            
             <div class="milestone-status-block">
               <span class="milestone-status-label">STATUS</span>
               <div class="unlocked-luxury-badge">
@@ -447,14 +469,32 @@
         <div class="milestones-medium-row">
           
           <!-- Card 2: Donut -->
-          <div class="milestone-card-premium medium-milestone-card">
+          <div class="milestone-card-premium medium-milestone-card bg-warm-ivory">
+            <div class="paper-texture"></div>
+            <!-- Botanical Sketch Background -->
+            <svg class="botanical-sketch botanical-branch-2" viewBox="0 0 200 200" fill="none" stroke="currentColor">
+              <path d="M190,190 Q140,140 110,90 C95,60 85,30 50,10" stroke-width="0.8" stroke-linecap="round"/>
+              <path d="M110,90 C90,80 85,60 95,45 C110,60 110,75 110,90 Z" stroke-width="0.6" fill="none"/>
+              <path d="M145,110 C125,120 120,140 130,155 C145,140 145,125 145,110 Z" stroke-width="0.6" fill="none"/>
+            </svg>
+            <!-- Embossed seal -->
+            <svg class="embossed-seal" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.8">
+              <circle cx="50" cy="50" r="44" stroke-dasharray="2 2" />
+              <circle cx="50" cy="50" r="40" />
+              <path id="sealPath2" d="M 50,50 m -32,0 a 32,32 0 1,1 64,0 a 32,32 0 1,1 -64,0" fill="none"/>
+              <text><textPath href="#sealPath2" startOffset="50%" text-anchor="middle" font-size="4.5" letter-spacing="1">PLUS33 CAFÉ FRANÇAIS • MAISON FONDÉE 2024</textPath></text>
+              <text x="50" y="55" text-anchor="middle" font-family="serif" font-size="14">⚜</text>
+            </svg>
+
             <div class="milestone-image-area">
               <img src="/local/assets/products/desserts/donut.jpg" alt="Donut" class="milestone-photo">
             </div>
             <div class="milestone-content-area">
-              <span class="milestone-category-badge">PATISSERIE</span>
+              <span class="milestone-category-badge">PÂTISSERIE</span>
               <h3 class="milestone-title">Donut</h3>
-              <span class="milestone-spend-limit">Unlock at ₹5,000 spent</span>
+              <span class="milestone-spend-limit">Unlock at $5,000 spent</span>
+              <p class="milestone-desc">Artisanal glaze and delicate brioche dough.</p>
+              
               <div class="milestone-progress-block">
                 <div class="progress-labels-row">
                   <span class="progress-lbl">PROGRESS</span>
@@ -462,20 +502,41 @@
                 </div>
                 <div class="progress-luxury-track">
                   <div class="progress-luxury-fill" style="width: 80%;"></div>
+                  <!-- Milestone markers -->
+                  <div class="luxury-marker" style="left: 25%;"></div>
+                  <div class="luxury-marker" style="left: 50%;"></div>
+                  <div class="luxury-marker" style="left: 75%;"></div>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- Card 3: Iced Punch Coco -->
-          <div class="milestone-card-premium medium-milestone-card">
+          <div class="milestone-card-premium medium-milestone-card bg-warm-ivory">
+            <div class="paper-texture"></div>
+            <!-- Botanical Sketch Background -->
+            <svg class="botanical-sketch botanical-branch-3" viewBox="0 0 200 200" fill="none" stroke="currentColor">
+              <path d="M10,10 Q60,60 90,110 C105,140 115,170 150,190" stroke-width="0.8" stroke-linecap="round"/>
+              <path d="M90,110 C110,120 115,140 105,155 C90,140 90,125 90,110 Z" stroke-width="0.6" fill="none"/>
+            </svg>
+            <!-- Embossed seal -->
+            <svg class="embossed-seal" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.8">
+              <circle cx="50" cy="50" r="44" stroke-dasharray="2 2" />
+              <circle cx="50" cy="50" r="40" />
+              <path id="sealPath3" d="M 50,50 m -32,0 a 32,32 0 1,1 64,0 a 32,32 0 1,1 -64,0" fill="none"/>
+              <text><textPath href="#sealPath3" startOffset="50%" text-anchor="middle" font-size="4.5" letter-spacing="1">PLUS33 CAFÉ FRANÇAIS • MAISON FONDÉE 2024</textPath></text>
+              <text x="50" y="55" text-anchor="middle" font-family="serif" font-size="14">⚜</text>
+            </svg>
+
             <div class="milestone-image-area">
               <img src="/local/assets/products/drinks/iced-coffee/iced-punch-coco.jpg" alt="Iced Punch Coco" class="milestone-photo">
             </div>
             <div class="milestone-content-area">
               <span class="milestone-category-badge">SIGNATURE CHILLED</span>
               <h3 class="milestone-title">Iced Punch Coco</h3>
-              <span class="milestone-spend-limit">Unlock at ₹8,000 spent</span>
+              <span class="milestone-spend-limit">Unlock at $8,000 spent</span>
+              <p class="milestone-desc">Double shot espresso on coconut water and tropical citrus.</p>
+              
               <div class="milestone-progress-block">
                 <div class="progress-labels-row">
                   <span class="progress-lbl">PROGRESS</span>
@@ -483,6 +544,10 @@
                 </div>
                 <div class="progress-luxury-track">
                   <div class="progress-luxury-fill" style="width: 50%;"></div>
+                  <!-- Milestone markers -->
+                  <div class="luxury-marker" style="left: 25%;"></div>
+                  <div class="luxury-marker" style="left: 50%;"></div>
+                  <div class="luxury-marker" style="left: 75%;"></div>
                 </div>
               </div>
             </div>
@@ -491,40 +556,81 @@
         </div>
 
         <!-- Card 4: Premium Reward Card (Tiramisu Glacé) -->
-        <div class="milestone-card-premium premium-tiramisu-card">
+        <div class="milestone-card-premium premium-tiramisu-card bg-espresso-black">
+          <div class="paper-texture"></div>
+          <!-- Botanical Sketch Background -->
+          <svg class="botanical-sketch botanical-branch-4" viewBox="0 0 200 200" fill="none" stroke="currentColor">
+            <path d="M10,180 Q60,150 120,130 C150,120 180,90 190,50" stroke-width="0.8" stroke-linecap="round"/>
+            <path d="M120,130 C130,110 150,105 165,115 C150,130 135,130 120,130 Z" stroke-width="0.6" fill="none"/>
+          </svg>
+          <!-- Embossed seal -->
+          <svg class="embossed-seal" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.8">
+            <circle cx="50" cy="50" r="44" stroke-dasharray="2 2" />
+            <circle cx="50" cy="50" r="40" />
+            <path id="sealPath4" d="M 50,50 m -32,0 a 32,32 0 1,1 64,0 a 32,32 0 1,1 -64,0" fill="none"/>
+            <text><textPath href="#sealPath4" startOffset="50%" text-anchor="middle" font-size="4.5" letter-spacing="1">PLUS33 CAFÉ FRANÇAIS • MAISON FONDÉE 2024</textPath></text>
+            <text x="50" y="55" text-anchor="middle" font-family="serif" font-size="14">⚜</text>
+          </svg>
+
           <div class="milestone-image-area">
             <img src="/local/assets/products/desserts/tiramisu-glace.jpg" alt="Tiramisu Glacé" class="milestone-photo">
           </div>
           <div class="milestone-content-area">
-            <span class="milestone-category-badge">ATELIER DESSERT</span>
-            <h3 class="milestone-title">Tiramisu Glacé</h3>
-            <span class="milestone-spend-limit">Unlock at ₹12,000 spent</span>
+            <span class="milestone-category-badge text-gold">ATELIER DESSERT</span>
+            <h3 class="milestone-title text-cream">Tiramisu Glacé</h3>
+            <span class="milestone-spend-limit text-muted-ivory">Unlock at $12,000 spent</span>
+            <p class="milestone-desc text-muted-ivory">A frozen reinterpretation of the Italian classic — layers of mascarpone gelato, espresso-soaked sponge, and cocoa dust.</p>
+            
             <div class="milestone-progress-block">
               <div class="progress-labels-row">
-                <span class="progress-lbl">PROGRESS</span>
-                <span class="progress-pct">35%</span>
+                <span class="progress-lbl text-muted-ivory">PROGRESS</span>
+                <span class="progress-pct text-gold">35%</span>
               </div>
-              <div class="progress-luxury-track">
-                <div class="progress-luxury-fill" style="width: 35%;"></div>
+              <div class="progress-luxury-track bg-dark-track">
+                <div class="progress-luxury-fill fill-gold" style="width: 35%;"></div>
+                <!-- Milestone markers -->
+                <div class="luxury-marker bg-marker-dark" style="left: 25%;"></div>
+                <div class="luxury-marker bg-marker-dark" style="left: 50%;"></div>
+                <div class="luxury-marker bg-marker-dark" style="left: 75%;"></div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Card 5: Full-Width Immersive Final Reward Card (+33 Atelier Gift Pack) -->
-        <div class="milestone-card-premium final-giftpack-card">
+        <div class="milestone-card-premium final-giftpack-card bg-espresso-black">
+          <div class="paper-texture"></div>
+          <!-- Botanical Sketch Background -->
+          <svg class="botanical-sketch botanical-branch-5" viewBox="0 0 200 200" fill="none" stroke="currentColor">
+            <path d="M190,190 Q140,140 110,90 C95,60 85,30 50,10" stroke-width="0.8" stroke-linecap="round"/>
+            <path d="M110,90 C90,80 85,60 95,45 C110,60 110,75 110,90 Z" stroke-width="0.6" fill="none"/>
+          </svg>
+          <!-- Embossed seal -->
+          <svg class="embossed-seal" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.8">
+            <circle cx="50" cy="50" r="44" stroke-dasharray="2 2" />
+            <circle cx="50" cy="50" r="40" />
+            <path id="sealPath5" d="M 50,50 m -32,0 a 32,32 0 1,1 64,0 a 32,32 0 1,1 -64,0" fill="none"/>
+            <text><textPath href="#sealPath5" startOffset="50%" text-anchor="middle" font-size="4.5" letter-spacing="1">PLUS33 CAFÉ FRANÇAIS • MAISON FONDÉE 2024</textPath></text>
+            <text x="50" y="55" text-anchor="middle" font-family="serif" font-size="14">⚜</text>
+          </svg>
+
           <div class="giftpack-card-content">
-            <span class="milestone-category-badge giftpack-badge">LUXURY RETAIL</span>
-            <h3 class="milestone-title giftpack-title">+33 Atelier Gift Pack</h3>
-            <span class="milestone-spend-limit giftpack-desc">Unlock at ₹20,000 spent</span>
+            <span class="milestone-category-badge giftpack-badge text-gold">LUXURY RETAIL</span>
+            <h3 class="milestone-title giftpack-title text-cream">+33 Atelier Gift Pack</h3>
+            <span class="milestone-spend-limit giftpack-desc text-muted-ivory">Unlock at $20,000 spent</span>
+            <p class="milestone-desc giftpack-subtext text-muted-ivory">Signature artisan bean selection, handcrafted merchandise, and members-only collectibles.</p>
             
             <div class="milestone-progress-block giftpack-progress">
               <div class="progress-labels-row">
-                <span class="progress-lbl giftpack-progress-lbl">PROGRESS</span>
-                <span class="progress-pct giftpack-progress-pct">20%</span>
+                <span class="progress-lbl giftpack-progress-lbl text-muted-ivory">PROGRESS</span>
+                <span class="progress-pct giftpack-progress-pct text-gold">20%</span>
               </div>
-              <div class="progress-luxury-track giftpack-track">
-                <div class="progress-luxury-fill giftpack-fill" style="width: 20%;"></div>
+              <div class="progress-luxury-track giftpack-track bg-dark-track">
+                <div class="progress-luxury-fill giftpack-fill fill-gold" style="width: 20%;"></div>
+                <!-- Milestone markers -->
+                <div class="luxury-marker bg-marker-dark" style="left: 25%;"></div>
+                <div class="luxury-marker bg-marker-dark" style="left: 50%;"></div>
+                <div class="luxury-marker bg-marker-dark" style="left: 75%;"></div>
               </div>
             </div>
 

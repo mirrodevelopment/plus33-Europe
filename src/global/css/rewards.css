@@ -878,6 +878,30 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   margin-bottom: 12px;
 }
 
+/* Milestone Section Ornament Divider */
+.milestone-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.ornament-line {
+  display: block;
+  width: 48px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--rw-gold) 50%, transparent 100%);
+  opacity: 0.5;
+}
+
+.ornament-fleur {
+  font-size: 22px;
+  color: var(--rw-gold);
+  line-height: 1;
+  text-shadow: 0 0 12px rgba(177, 139, 86, 0.25);
+}
+
 .rewards-section-description {
   font-size: clamp(15px, 1.1vw, 17px);
   line-height: 1.6;
@@ -1169,35 +1193,176 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
 .milestones-asymmetric-layout {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 36px;
   margin-top: 48px;
 }
 
+/* Base Card Premium Styles */
 .milestone-card-premium {
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(177, 139, 86, 0.18);
-  border-radius: 32px;
+  border: 1px solid rgba(177, 139, 86, 0.22);
+  border-radius: 32px !important;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(177, 139, 86, 0.04), 0 1px 3px rgba(0, 0, 0, 0.01);
+  box-shadow: 0 10px 40px rgba(177, 139, 86, 0.03), 0 1px 3px rgba(0, 0, 0, 0.01);
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
               box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
-              border-color 0.4s ease;
+              border-color 0.5s ease;
   box-sizing: border-box;
+  position: relative;
+}
+
+.milestone-card-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, var(--rw-gold) 30%, var(--rw-gold) 70%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 4;
 }
 
 .milestone-card-premium:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 30px 60px rgba(177, 139, 86, 0.12);
-  border-color: rgba(177, 139, 86, 0.4);
+  transform: translateY(-8px);
+  box-shadow: 0 32px 64px rgba(177, 139, 86, 0.08), 0 8px 20px rgba(0, 0, 0, 0.02);
+  border-color: rgba(177, 139, 86, 0.45);
 }
 
-/* Featured & Premium Row Cards */
+.milestone-card-premium:hover::before {
+  opacity: 1;
+}
+
+/* Warm Ivory & Espresso Black Themes */
+.bg-warm-ivory {
+  background-color: #faf6f0;
+}
+
+.bg-espresso-black {
+  background: linear-gradient(145deg, #130f0e 0%, #080605 100%);
+  border-color: rgba(177, 139, 86, 0.3) !important;
+}
+
+.bg-espresso-black::before {
+  background: linear-gradient(90deg, transparent 0%, #ebd5a8 30%, #ebd5a8 70%, transparent 100%);
+}
+
+.bg-espresso-black:hover {
+  border-color: rgba(177, 139, 86, 0.55) !important;
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.35), 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Paper Texture Overlay */
+.paper-texture {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  z-index: 1;
+  border-radius: inherit;
+  opacity: 0.6;
+}
+
+.bg-espresso-black .paper-texture {
+  mix-blend-mode: screen;
+  opacity: 0.15;
+}
+
+/* Botanical Line Art Sketches */
+.botanical-sketch {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.07;
+  z-index: 0;
+  color: var(--rw-gold);
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bg-espresso-black .botanical-sketch {
+  opacity: 0.04;
+  color: #ebd5a8;
+}
+
+.milestone-card-premium:hover .botanical-sketch {
+  transform: scale(1.06) rotate(1.5deg);
+}
+
+.botanical-branch-1 {
+  bottom: -10px;
+  right: 42%;
+  width: 160px;
+  height: 160px;
+}
+
+.botanical-branch-2 {
+  top: -10px;
+  right: -10px;
+  width: 130px;
+  height: 130px;
+}
+
+.botanical-branch-3 {
+  bottom: -20px;
+  left: -20px;
+  width: 140px;
+  height: 140px;
+}
+
+.botanical-branch-4 {
+  bottom: -20px;
+  right: 42%;
+  width: 160px;
+  height: 160px;
+}
+
+.botanical-branch-5 {
+  top: -20px;
+  left: 45%;
+  width: 180px;
+  height: 180px;
+}
+
+/* Embossed PLUS33 Stamp Watermarks */
+.embossed-seal {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  pointer-events: none;
+  opacity: 0.05;
+  z-index: 1;
+  color: var(--rw-gold);
+}
+
+.bg-espresso-black .embossed-seal {
+  color: #ebd5a8;
+  opacity: 0.03;
+}
+
+.featured-filtre-card .embossed-seal {
+  bottom: 24px;
+  right: 24px;
+}
+
+.medium-milestone-card .embossed-seal {
+  bottom: 24px;
+  right: 24px;
+}
+
+.premium-tiramisu-card .embossed-seal {
+  bottom: 24px;
+  right: 24px;
+}
+
+.final-giftpack-card .embossed-seal {
+  top: 24px;
+  left: 35%;
+}
+
+/* Featured Horizontal Card (Café Filtre) */
 .featured-filtre-card {
   display: flex;
   flex-direction: row;
-  min-height: 420px;
   align-items: stretch;
 }
 
@@ -1205,8 +1370,10 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   flex: 1.25;
   position: relative;
   overflow: hidden;
-  border-right: 1px solid rgba(177, 139, 86, 0.15);
-  background: radial-gradient(circle at center, #ffffff 0%, #faf6f0 100%);
+  background: radial-gradient(circle at center, #ffffff 0%, #faf8f5 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .featured-filtre-card .milestone-content-area {
@@ -1216,24 +1383,61 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   flex-direction: column;
   justify-content: center;
   box-sizing: border-box;
+  border-left: 1px solid rgba(177, 139, 86, 0.15);
+  position: relative;
+  z-index: 2;
 }
 
+/* Medium Cards Row Grid */
+.milestones-medium-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+}
+
+.medium-milestone-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.medium-milestone-card .milestone-image-area {
+  height: 220px;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #ffffff 0%, #faf8f5 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.medium-milestone-card .milestone-content-area {
+  padding: 32px 36px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(177, 139, 86, 0.15);
+  position: relative;
+  z-index: 2;
+}
+
+/* Premium Feature Card (Tiramisu Glacé) */
 .premium-tiramisu-card {
   display: flex;
   flex-direction: row;
-  min-height: 420px;
   align-items: stretch;
-  background: linear-gradient(135deg, #1f140e 0%, #0f0a07 100%);
-  border: 1px solid rgba(177, 139, 86, 0.3);
-  color: #fff;
 }
 
 .premium-tiramisu-card .milestone-image-area {
   flex: 1.25;
   position: relative;
   overflow: hidden;
-  border-right: 1px solid rgba(177, 139, 86, 0.2);
-  background: radial-gradient(circle at center, #231610 0%, #0c0806 100%);
+  background: radial-gradient(circle at center, #221815 0%, #0b0706 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .premium-tiramisu-card .milestone-content-area {
@@ -1243,155 +1447,130 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   flex-direction: column;
   justify-content: center;
   box-sizing: border-box;
+  border-left: 1px solid rgba(177, 139, 86, 0.25);
+  position: relative;
+  z-index: 2;
 }
 
-.premium-tiramisu-card .milestone-title {
-  color: #f7f2eb;
-}
-
-.premium-tiramisu-card .milestone-spend-limit {
-  color: rgba(247, 242, 235, 0.6);
-}
-
-.premium-tiramisu-card .progress-lbl {
-  color: rgba(247, 242, 235, 0.4);
-}
-
-.premium-tiramisu-card .progress-luxury-track {
-  background: rgba(255, 255, 255, 0.08);
-}
-
-/* Medium Row (Grid) */
-.milestones-medium-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
-}
-
-.medium-milestone-card {
+/* Immersive Final Card (Gift Pack) */
+.final-giftpack-card {
   display: flex;
-  flex-direction: column;
-  min-height: 540px;
+  flex-direction: row;
   align-items: stretch;
 }
 
-.medium-milestone-card .milestone-image-area {
-  height: 290px;
-  position: relative;
-  overflow: hidden;
-  border-bottom: 1px solid rgba(177, 139, 86, 0.15);
-  background: radial-gradient(circle at center, #ffffff 0%, #faf6f0 100%);
-}
-
-.medium-milestone-card .milestone-content-area {
-  padding: 36px;
-  flex: 1;
+.final-giftpack-card .giftpack-card-content {
+  flex: 1.25;
+  padding: 48px 56px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+}
+
+.final-giftpack-card .giftpack-card-image-area {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  border-left: 1px solid rgba(177, 139, 86, 0.25);
+  background: radial-gradient(circle at center, #111a26 0%, #050910 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.giftpack-immersive-img {
+  width: auto;
+  height: 80%;
+  max-width: 85%;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 30px rgba(0,0,0,0.4));
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.final-giftpack-card:hover .giftpack-immersive-img {
+  transform: scale(1.05) translateY(-4px);
 }
 
 /* Image Areas Styling */
 .milestone-photo {
   width: auto;
-  height: 85%;
-  max-width: 90%;
+  height: 75%;
+  max-width: 80%;
   object-fit: contain;
-  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.08));
 }
 
 .milestone-card-premium:hover .milestone-photo {
-  transform: scale(1.05);
+  transform: scale(1.05) translateY(-4px);
 }
 
-/* Content Area Components */
+/* Content Typography Overrides */
 .milestone-category-badge {
   font-family: 'Manrope', sans-serif;
-  font-size: 10px;
+  font-size: 8px;
   font-weight: 700;
   letter-spacing: 0.25em;
   color: var(--rw-gold);
   text-transform: uppercase;
+  font-style: italic;
   margin-bottom: 12px;
-  display: block;
-  text-align: left;
+  display: inline-block;
 }
 
 .milestone-title {
   font-family: 'Cormorant Garamond', 'Georgia', serif;
-  font-size: clamp(28px, 2.5vw, 38px);
-  font-weight: 400;
+  font-size: clamp(24px, 2vw, 32px);
+  font-weight: 500;
   color: var(--rw-navy);
-  margin: 0 0 10px 0;
-  line-height: 1.15;
-  text-align: left;
+  margin-top: 4px;
+  margin-bottom: 8px;
 }
 
 .milestone-spend-limit {
-  font-size: 13px;
-  font-weight: 300;
-  color: var(--rw-muted);
-  margin-bottom: 24px;
-  display: block;
-  text-align: left;
-}
-
-.milestone-divider-crest {
-  font-size: 18px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
   color: var(--rw-gold);
-  margin-bottom: 24px;
-  display: inline-block;
-  text-align: left;
+  margin-bottom: 14px;
+  display: block;
 }
 
-/* Status block for unlocked */
-.milestone-status-block {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: auto;
-  align-items: flex-start;
-}
-
-.milestone-status-label {
-  font-family: 'Manrope', sans-serif;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.15em;
+.milestone-desc {
+  font-size: 13.5px;
+  line-height: 1.65;
   color: var(--rw-muted);
-  text-transform: uppercase;
-  text-align: left;
+  font-weight: 300;
+  margin-bottom: 24px;
+  max-width: 480px;
 }
 
-.unlocked-luxury-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: #0f8b4d;
-  font-family: 'Manrope', sans-serif;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  background: rgba(15, 139, 77, 0.08);
-  padding: 8px 18px;
-  border-radius: 99px;
-  border: 1px solid rgba(15, 139, 77, 0.2);
+/* Dark Theme overrides */
+.text-cream {
+  color: #faf6f0 !important;
 }
 
-.lock-icon-svg {
-  width: 13px;
-  height: 13px;
-  color: #0f8b4d;
+.text-gold {
+  color: #ebd5a8 !important;
 }
 
-/* Progress Blocks */
+.text-muted-ivory {
+  color: rgba(247, 242, 235, 0.65) !important;
+}
+
+/* Progress System Styles */
 .milestone-progress-block {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-top: auto;
   width: 100%;
+  position: relative;
+  z-index: 2;
 }
 
 .progress-labels-row {
@@ -1403,121 +1582,105 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
 .progress-lbl {
   font-family: 'Manrope', sans-serif;
   font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.15em;
+  font-weight: 600;
+  letter-spacing: 0.2em;
   color: var(--rw-muted);
-  text-transform: uppercase;
 }
 
 .progress-pct {
-  font-family: 'Manrope', sans-serif;
-  font-size: 11px;
-  font-weight: 700;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  font-weight: 600;
+  font-style: italic;
   color: var(--rw-gold);
 }
 
 .progress-luxury-track {
-  width: 100%;
-  height: 3px;
-  background: rgba(6, 26, 51, 0.06);
-  border-radius: 99px;
-  overflow: hidden;
   position: relative;
+  width: 100%;
+  height: 2px;
+  background: rgba(177, 139, 86, 0.15);
+  border-radius: 99px;
+  margin-top: 4px;
+}
+
+.bg-dark-track {
+  background: rgba(255, 255, 255, 0.08) !important;
 }
 
 .progress-luxury-fill {
   height: 100%;
+  background: linear-gradient(90deg, var(--rw-gold), #ebd5a8, var(--rw-gold));
+  box-shadow: 0 0 8px rgba(177, 139, 86, 0.5);
+  border-radius: inherit;
+  transition: width 1s ease-in-out;
+}
+
+.fill-gold {
+  background: linear-gradient(90deg, #c9a96e, #ebd5a8, #c9a96e) !important;
+  box-shadow: 0 0 10px rgba(235, 213, 168, 0.6) !important;
+}
+
+.luxury-marker {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
   background: var(--rw-gold);
-  border-radius: 99px;
-  box-shadow: 0 0 8px rgba(177, 139, 86, 0.6);
+  border: 1px solid #faf6f0;
+  opacity: 0.7;
 }
 
-/* Final Reward Card (+33 Atelier Gift Pack) */
-.final-giftpack-card {
-  display: flex;
-  flex-direction: row;
-  min-height: 480px;
-  background: linear-gradient(135deg, #070e17 0%, #03060a 100%);
-  border: 1px solid rgba(177, 139, 86, 0.35);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-  align-items: stretch;
+.bg-marker-dark {
+  background: #ebd5a8 !important;
+  border-color: #130f0e !important;
 }
 
-.final-giftpack-card:hover {
-  border-color: rgba(177, 139, 86, 0.6);
-  box-shadow: 0 30px 60px rgba(177, 139, 86, 0.15), 0 0 30px rgba(177, 139, 86, 0.1);
-}
-
-.final-giftpack-card .giftpack-card-content {
-  flex: 1.25;
-  padding: 56px;
+/* Status Block */
+.milestone-status-block {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  box-sizing: border-box;
+  gap: 8px;
 }
 
-.final-giftpack-card .giftpack-card-image-area {
-  flex: 1;
-  position: relative;
-  overflow: hidden;
-  border-left: 1px solid rgba(177, 139, 86, 0.25);
-  background: radial-gradient(circle at center, #111a24 0%, #03060a 100%);
-  display: flex;
+.milestone-status-label {
+  font-family: 'Manrope', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--rw-muted);
+}
+
+.unlocked-luxury-badge {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-}
-
-.giftpack-immersive-img {
-  height: 85%;
-  width: auto;
-  max-width: 90%;
-  object-fit: contain;
-  opacity: 0.85;
-  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
-}
-
-.final-giftpack-card:hover .giftpack-immersive-img {
-  transform: scale(1.05);
-  opacity: 1;
-}
-
-.giftpack-badge {
+  gap: 8px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
   color: var(--rw-gold);
+  background: rgba(177, 139, 86, 0.08);
+  padding: 6px 14px;
+  border-radius: 99px;
+  border: 1px solid rgba(177, 139, 86, 0.25);
+  width: fit-content;
 }
 
-.giftpack-title {
-  color: #ffffff;
+.lock-icon-svg {
+  width: 11px;
+  height: 11px;
 }
 
-.giftpack-desc {
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.giftpack-progress-lbl {
-  color: rgba(255, 255, 255, 0.4);
-}
-
-.giftpack-progress-pct {
-  color: var(--rw-gold);
-}
-
-.giftpack-track {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.giftpack-fill {
-  background: var(--rw-gold);
-  box-shadow: 0 0 12px rgba(177, 139, 86, 0.8);
-}
-
-/* Bottom Benefits Strip in Gift Pack card */
+/* Benefits Strip final card */
 .giftpack-benefits-strip {
   display: flex;
-  gap: 24px;
-  margin-top: 36px;
+  gap: 20px;
+  margin-top: 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-top: 24px;
+  padding-top: 20px;
   flex-wrap: wrap;
 }
 
@@ -1531,23 +1694,23 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(177, 139, 86, 0.1);
   border: 1px solid rgba(177, 139, 86, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--rw-gold);
+  color: #ebd5a8;
   flex-shrink: 0;
 }
 
 .giftpack-benefit-icon svg {
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
 }
 
 .giftpack-benefit-text {
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(247, 242, 235, 0.7);
   font-weight: 300;
   letter-spacing: 0.02em;
 }
@@ -1564,14 +1727,22 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   .featured-filtre-card .milestone-image-area,
   .premium-tiramisu-card .milestone-image-area,
   .final-giftpack-card .giftpack-card-image-area {
-    height: 320px;
+    height: 240px;
     border-right: none;
     border-left: none;
     border-bottom: 1px solid rgba(177, 139, 86, 0.15);
   }
   
+  .featured-filtre-card .milestone-content-area,
+  .premium-tiramisu-card .milestone-content-area,
+  .final-giftpack-card .giftpack-card-content {
+    border-left: none;
+    padding: 36px 40px;
+  }
+  
   .milestones-medium-row {
     grid-template-columns: 1fr;
+    gap: 24px;
   }
   
   .medium-milestone-card {
@@ -1579,33 +1750,56 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   }
   
   .medium-milestone-card .milestone-image-area {
-    height: 300px;
+    height: 240px;
   }
   
-  .final-giftpack-card .giftpack-card-content {
-    padding: 40px;
+  .botanical-branch-1,
+  .botanical-branch-4 {
+    right: 10px;
+    bottom: 10px;
+  }
+  
+  .botanical-branch-5 {
+    left: auto;
+    right: 10px;
+    top: 10px;
+  }
+  
+  .final-giftpack-card .embossed-seal {
+    left: auto;
+    right: 24px;
+    top: 24px;
   }
 }
 
 @media (max-width: 768px) {
+  .milestones-asymmetric-layout {
+    gap: 24px;
+    margin-top: 32px;
+  }
+
   .featured-filtre-card .milestone-content-area,
   .premium-tiramisu-card .milestone-content-area,
   .medium-milestone-card .milestone-content-area,
   .final-giftpack-card .giftpack-card-content {
-    padding: 32px 24px;
+    padding: 28px 24px;
   }
   
   .giftpack-benefits-strip {
-    gap: 16px;
-    margin-top: 24px;
-    padding-top: 20px;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 16px;
   }
   
   .giftpack-benefit-item {
     width: 100%;
   }
+  
+  .botanical-sketch,
+  .embossed-seal {
+    display: none;
+  }
 }
-
 /* ═════════ CUSTOMER BENEFITS STRIP ═════════ */
 .rewards-benefits {
   background-color: var(--rw-bg);

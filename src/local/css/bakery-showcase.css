@@ -174,9 +174,10 @@
    PRODUCTS ROW — White Card Container
 ════════════════════════════════════════ */
 .bakery-showcase-products-wrap {
+  position: relative;
   background: transparent;
   border-radius: 24px;
-  overflow: hidden;
+  overflow: visible;
   margin-bottom: 20px;
 }
 
@@ -197,8 +198,8 @@
 
 /* ── Individual Product Card ── */
 .bakery-showcase-card {
-  flex: 1 0 0;
-  min-width: 160px;
+  flex: 0 0 260px;
+  scroll-snap-align: start;
   padding: 28px 18px 22px;
   background: transparent;
   border-right: none;
@@ -386,14 +387,65 @@
   transform: none !important;
 }
 
+/* ── Carousel Arrows ── */
+.bakery-showcase-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1.5px solid #c9a96e;
+  background: #ffffff;
+  color: #b18b56;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition: all 0.28s ease;
+}
+
+.bakery-showcase-arrow:hover {
+  background: #b18b56;
+  color: #ffffff;
+  border-color: #b18b56;
+  box-shadow: 0 6px 18px rgba(177, 139, 86, 0.3);
+  transform: translateY(-50%) scale(1.06);
+}
+
+.bakery-showcase-arrow:active {
+  transform: translateY(-50%) scale(0.96);
+}
+
+.bakery-showcase-arrow.is-disabled {
+  opacity: 0.35;
+  pointer-events: none;
+  border-color: rgba(201, 169, 110, 0.4);
+}
+
+.bakery-showcase-arrow--prev {
+  left: -23px;
+}
+
+.bakery-showcase-arrow--next {
+  right: -23px;
+}
+
+.bakery-showcase-arrow svg {
+  width: 18px;
+  height: 18px;
+}
+
 /* ════════════════════════════════════════
    FEATURES STRIP
 ════════════════════════════════════════ */
 .bakery-showcase-features {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
-  margin-top: 28px;
+  gap: 24px;
+  margin-top: 48px;
 }
 
 .bakery-showcase-feature {
@@ -401,18 +453,40 @@
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
-  gap: 12px;
-  padding: 0;
+  gap: 14px;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid rgba(199, 164, 106, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.015);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bakery-showcase-feature:hover {
+  transform: translateY(-6px);
+  border-color: #c7a46a;
+  box-shadow: 0 20px 40px rgba(177, 139, 86, 0.08);
 }
 
 .bakery-showcase-feature__icon {
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(177, 139, 86, 0.08);
+  color: #b18b56;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #b18b56;
   flex-shrink: 0;
+  transition: background 0.4s ease, color 0.4s ease, transform 0.4s ease;
+}
+
+.bakery-showcase-feature:hover .bakery-showcase-feature__icon {
+  background: #b18b56;
+  color: #ffffff;
+  transform: scale(1.05);
 }
 
 .bakery-showcase-feature__title {
@@ -495,6 +569,11 @@
     transform: none;
   }
 
+  .bakery-showcase-arrow:hover {
+    transform: translateY(-50%) scale(1);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  }
+
   @keyframes bakery-skeleton-shimmer {
     0%, 100% { background-position: 200% 0; }
   }
@@ -527,6 +606,24 @@
   .bakery-showcase-features {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
+  }
+
+  .bakery-showcase-arrow {
+    width: 38px;
+    height: 38px;
+  }
+
+  .bakery-showcase-arrow svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .bakery-showcase-arrow--prev {
+    left: -16px;
+  }
+
+  .bakery-showcase-arrow--next {
+    right: -16px;
   }
 }
 
@@ -669,7 +766,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     padding: 0;
-    gap: 28px;
+    gap: 16px;
     margin-top: 32px;
     box-shadow: none;
     border-radius: 0;
@@ -677,8 +774,12 @@
   }
 
   .bakery-showcase-feature {
-    gap: 10px;
-    padding: 0;
+    gap: 12px;
+    padding: 18px;
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid rgba(199, 164, 106, 0.15);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.01);
     flex-shrink: 1;
     min-width: 0;
     scroll-snap-align: none;
@@ -687,6 +788,13 @@
   .bakery-showcase-feature__icon {
     width: 38px;
     height: 38px;
+    border-radius: 50%;
+    background: rgba(177, 139, 86, 0.08);
+    color: #b18b56;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
   }
 
   .bakery-showcase-feature__title {
@@ -696,6 +804,14 @@
   .bakery-showcase-feature__desc {
     font-size: 12.5px;
     line-height: 1.55;
+  }
+
+  .bakery-showcase-arrow--prev {
+    left: -12px;
+  }
+
+  .bakery-showcase-arrow--next {
+    right: -12px;
   }
 }
 

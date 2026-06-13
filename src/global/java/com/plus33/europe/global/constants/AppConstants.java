@@ -8,7 +8,7 @@ public final class AppConstants {
 
     public static final String CHATBOT_DEFAULT_GREETING = "Bonjour! I am your +33 Parisian assistant. How may I guide your coffee ritual today?";
     
-    public static final String CHATBOT_REPLY_FRANCHISE = "Bonjour! We are actively seeking visionary partners to expand our luxury presence in major European cultural hubs. You can submit a candidate profile directly via our <b>Franchise</b> page. Initial setups range from €250k - €450k with complete training provided in Paris. Shall I guide you to the application form?";
+    public static final String CHATBOT_REPLY_FRANCHISE = "Bonjour! We are actively seeking visionary partners to expand our luxury presence in major European cultural hubs. You can submit a candidate profile directly via our <b>Franchise</b> page. Initial setups range from $250k - $450k with complete training provided in Paris. Shall I guide you to the application form?";
     
     public static final String CHATBOT_REPLY_STORE = "Welcome to the +33 Reserve. We offer hand-selected micro-lot coffees (like our Yirgacheffe & Geisha <i>Sachet de Café</i>) and objects of everyday brewing ritual. All beans are roasted weekly in our Paris atelier. You can explore all selections under our <b>Store</b> page. Would you like to view our flagship blends?";
     

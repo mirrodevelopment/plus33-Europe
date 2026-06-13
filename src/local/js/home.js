@@ -949,6 +949,9 @@
 
           <!-- ── DESSERT PRODUCTS ROW ── -->
           <div class="bakery-showcase-products-wrap bakery-showcase-reveal" style="--bk-delay: 0.1s;">
+            <button class="bakery-showcase-arrow bakery-showcase-arrow--prev" aria-label="Previous product" id="bakery-showcase-prev" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
             <div class="bakery-showcase-products-grid" id="bakery-showcase-grid" role="list" aria-label="Fresh dessert products">
               ${desserts.map((p, i) => `
                 <div
@@ -988,6 +991,9 @@
                 </div>
               `).join('')}
             </div>
+            <button class="bakery-showcase-arrow bakery-showcase-arrow--next" aria-label="Next product" id="bakery-showcase-next" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
           </div>
           <!-- /bakery-showcase-products-wrap -->
 
@@ -1008,10 +1014,9 @@
           <div class="bakery-showcase-features bakery-showcase-reveal" style="--bk-delay: 0.2s;" aria-label="Bakery brand promises">
             <div class="bakery-showcase-feature">
               <div class="bakery-showcase-feature__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="44" height="44">
-                  <path d="M9 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M9 12h3m0 0h3m-3 0V9m0 3v3M14 3h7v7" stroke-linecap="round" stroke-linejoin="round"/>
-                  <circle cx="19" cy="7" r="1.5" fill="currentColor"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22">
+                  <path d="M6 18c-1.5 0-2.5-1-2.5-2.5 0-1.2.8-2.2 2-2.5C5 11 6.5 9 8.5 9c.5 0 1 .1 1.5.3C10.8 7.5 12.8 6 15 6c2.5 0 4.5 2 4.5 4.5 0 .2 0 .4-.1.6 1.2.3 2.1 1.4 2.1 2.7 0 1.5-1.2 2.7-2.7 2.7H6z" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M6 18v2h12v-2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
               <h4 class="bakery-showcase-feature__title">Crafted Daily</h4>
@@ -1019,9 +1024,8 @@
             </div>
             <div class="bakery-showcase-feature">
               <div class="bakery-showcase-feature__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="44" height="44">
-                  <path d="M12 2a4 4 0 0 0-4 4v2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2h-2V6a4 4 0 0 0-4-4z" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M9 14c.5 1.5 1.5 2.5 3 2.5s2.5-1 3-2.5" stroke-linecap="round"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22">
+                  <path d="M12 22V2M12 7c-1.5-1.5-3-1.5-3 .5 0 2 2.5 3.5 3 .5M12 7c1.5-1.5 3-1.5 3 .5 0 2-2.5 3.5-3 .5M12 12c-1.5-1.5-3-1.5-3 .5 0 2 2.5 3.5 3 .5M12 12c1.5-1.5 3-1.5 3 .5 0 2-2.5 3.5-3 .5M12 17c-1.5-1.5-3-1.5-3 .5 0 2 2.5 3.5 3 .5M12 17c1.5-1.5 3-1.5 3 .5 0 2-2.5 3.5-3 .5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
               <h4 class="bakery-showcase-feature__title">Quality Ingredients</h4>
@@ -1029,8 +1033,8 @@
             </div>
             <div class="bakery-showcase-feature">
               <div class="bakery-showcase-feature__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="44" height="44">
-                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke-linecap="round" stroke-linejoin="round"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22">
+                  <path d="M19.5 12.572L12 20l-7.5-7.428A5 5 0 1 1 12 6.006a5 5 0 1 1 7.5 6.566z" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
               <h4 class="bakery-showcase-feature__title">Made with Love</h4>
@@ -1038,15 +1042,15 @@
             </div>
             <div class="bakery-showcase-feature">
               <div class="bakery-showcase-feature__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="44" height="44">
-                  <circle cx="5" cy="18" r="2"/>
-                  <circle cx="19" cy="18" r="2"/>
-                  <path d="M2 18H1v-3l3-4 3 2 5-7 4 4 2-2 4 7H2z" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M5 18H19" stroke-linecap="round"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7" />
+                  <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+                  <path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4" />
+                  <path d="M2 7h20" />
                 </svg>
               </div>
-              <h4 class="bakery-showcase-feature__title">Delivered Fresh</h4>
-              <p class="bakery-showcase-feature__desc">Freshly packed and delivered to your door.</p>
+              <h4 class="bakery-showcase-feature__title">Parisian Heritage</h4>
+              <p class="bakery-showcase-feature__desc">Prepared using traditional French baking standards.</p>
             </div>
           </div>
 
@@ -1093,22 +1097,37 @@
       };
       cards.forEach(card => card.addEventListener('click', onCardClick));
 
-      // ── Mobile scroll → update dots ──
+      // ── Mobile/Desktop scroll snap & arrows navigation ──
       const grid = section.querySelector('#bakery-showcase-grid');
       const dots = section.querySelectorAll('.bakery-showcase-dot');
+      const prevBtn = section.querySelector('#bakery-showcase-prev');
+      const nextBtn = section.querySelector('#bakery-showcase-next');
+
+      const _updateArrows = () => {
+        if (!grid || !prevBtn || !nextBtn) return;
+        const scrollLeft = grid.scrollLeft;
+        const maxScroll = grid.scrollWidth - grid.clientWidth;
+        
+        prevBtn.classList.toggle('is-disabled', scrollLeft <= 5);
+        nextBtn.classList.toggle('is-disabled', scrollLeft >= maxScroll - 5);
+      };
+
       let _dotScrollRaf = null;
       const _onGridScroll = () => {
         if (_dotScrollRaf) return;
         _dotScrollRaf = requestAnimationFrame(() => {
           _dotScrollRaf = null;
-          if (!grid || !dots.length) return;
-          const cardWidth = grid.querySelector('.bakery-showcase-card')?.offsetWidth || 175;
-          const activeIdx = Math.round(grid.scrollLeft / cardWidth);
-          dots.forEach((dot, i) => {
-            const isActive = i === activeIdx;
-            dot.classList.toggle('is-active', isActive);
-            dot.setAttribute('aria-selected', String(isActive));
-          });
+          if (!grid) return;
+          if (dots.length) {
+            const cardWidth = grid.querySelector('.bakery-showcase-card')?.offsetWidth || 175;
+            const activeIdx = Math.round(grid.scrollLeft / cardWidth);
+            dots.forEach((dot, i) => {
+              const isActive = i === activeIdx;
+              dot.classList.toggle('is-active', isActive);
+              dot.setAttribute('aria-selected', String(isActive));
+            });
+          }
+          _updateArrows();
         });
       };
 
@@ -1119,21 +1138,43 @@
         grid.scrollTo({ left: idx * cardWidth, behavior: 'smooth' });
       };
 
+      const _onPrevClick = (e) => {
+        e?.preventDefault();
+        if (!grid) return;
+        const cardWidth = grid.querySelector('.bakery-showcase-card')?.offsetWidth || 175;
+        const gap = 14;
+        grid.scrollBy({ left: -(cardWidth + gap), behavior: 'smooth' });
+      };
+
+      const _onNextClick = (e) => {
+        e?.preventDefault();
+        if (!grid) return;
+        const cardWidth = grid.querySelector('.bakery-showcase-card')?.offsetWidth || 175;
+        const gap = 14;
+        grid.scrollBy({ left: cardWidth + gap, behavior: 'smooth' });
+      };
+
       if (grid) grid.addEventListener('scroll', _onGridScroll, { passive: true });
       dots.forEach(dot => dot.addEventListener('click', _onDotClick));
+      if (prevBtn) prevBtn.addEventListener('click', _onPrevClick);
+      if (nextBtn) nextBtn.addEventListener('click', _onNextClick);
+
+      // Initial arrow state setup
+      setTimeout(_updateArrows, 100);
 
       // Refresh ScrollTrigger if GSAP is available
       if (window.ScrollTrigger) window.ScrollTrigger.refresh();
 
       // Expose cleanup
       _bakeryShowcaseCleanup = () => {
-        addBtns.forEach(btn => btn.removeEventListener('click', onAddClick));
         cards.forEach(card => {
           card.removeEventListener('keydown', onCardKeyDown);
           card.removeEventListener('click', onCardClick);
         });
         if (grid) grid.removeEventListener('scroll', _onGridScroll);
         dots.forEach(dot => dot.removeEventListener('click', _onDotClick));
+        if (prevBtn) prevBtn.removeEventListener('click', _onPrevClick);
+        if (nextBtn) nextBtn.removeEventListener('click', _onNextClick);
       };
     };
 
@@ -1293,17 +1334,14 @@
             <div class="best-sellers-showcase-feature">
               <div class="best-sellers-showcase-feature__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="6" cy="18" r="2.5"></circle>
-                  <circle cx="18" cy="18" r="2.5"></circle>
-                  <path d="M6 15.5H8.5L12 9H15.5l2 3.5h1"></path>
-                  <path d="M14.5 9l-1-4h1.5"></path>
-                  <rect x="5" y="8" width="5" height="5" rx="1"></rect>
-                  <path d="M6 18h12"></path>
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="2" y1="12" x2="22" y2="12"></line>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
                 </svg>
               </div>
               <div class="best-sellers-showcase-feature__text">
-                <h4 class="best-sellers-showcase-feature__title">Fast Delivery</h4>
-                <p class="best-sellers-showcase-feature__desc">30 mins delivery</p>
+                <h4 class="best-sellers-showcase-feature__title">Direct Trade</h4>
+                <p class="best-sellers-showcase-feature__desc">Ethically sourced beans</p>
               </div>
             </div>
 
