@@ -1,0 +1,212 @@
+=========================================
+          PLUS33 PRODUCT LIST
+=========================================
+
+-----------------------------------------
+CATEGORY: HOT COFFEE
+-----------------------------------------
+
+1. Café Filtre
+   - Price: €6.00
+   - Origin: Kenya Nyeri Wash-Lot
+   - Description: A traditional hand-poured filter drip bag highlighting clean single-origin nuances. Slow-brewed for exceptional cup clarity and complex red currant acidity.
+   - Roast/Details: Light, Filter Drip, Wash-Lot, Red Currant
+   - Label: Single Origin
+
+2. Cappuccino
+   - Price: €6.50
+   - Origin: Organic Blend · In-Salon
+   - Description: Expertly steamed milk poured over a rich double espresso base, creating a thick, luxurious blanket of velvety microfoam. Perfectly finished with hand-crafted latte art.
+   - Roast/Details: Rich & Velvety, Silky Milk, Double Espresso, Latte Art
+   - Label: Best Seller
+
+3. Latte / Flat White
+   - Price: €6.80
+   - Origin: Brazilian Cerrado · In-Salon
+   - Description: Your choice between our smooth, milk-forward Caffè Latte or the bolder, velvety Flat White crafted with ristretto extraction and micro-textured steamed milk.
+   - Roast/Details: Smooth & Creamy, Steamed Milk, Ristretto, Velvety
+   - Label: Atelier Standard
+
+4. Chai Latte
+   - Price: €7.00
+   - Origin: Nilgiri Tea & Spices
+   - Description: An elegant infusion of slow-brewed black tea leaves, crushed cardamoms, cinnamon bark, and wild ginger, finished with lightly textured organic oat milk.
+   - Roast/Details: Aromatic & Spiced, Masala Spices, Oat Milk, Aromatic
+   - Label: House Specialty
+
+5. Pumpkin Latte
+   - Price: €7.50
+   - Origin: Atelier Blend · In-Salon
+   - Description: A refined autumnal luxury. Double shot of specialty espresso combined with slow-simmered pumpkin coulis, warm winter spices, and real Madagascar vanilla.
+   - Roast/Details: Warm & Comforting, Pumpkin Coulis, Nutmeg, Vanilla Bean
+   - Label: Autumn Special
+
+6. Matcha
+   - Price: €7.20
+   - Origin: Uji, Kyoto, Japan
+   - Description: Stone-ground spring tencha leaves from Uji, Kyoto. Traditional bamboo-whisked preparation delivering a vibrant emerald green color and a smooth, mellow umami profile.
+   - Roast/Details: Spring First-Harvest, Kyoto Origin, Umami, Emerald Green
+   - Label: Ceremonial Grade
+
+-----------------------------------------
+CATEGORY: ICED COFFEE & DRINKS
+-----------------------------------------
+
+1. Matcha Vanille
+   - Price: €7.50
+   - Origin: Kyoto & Madagascar
+   - Description: A luxurious layered creation pairing whisked Ceremonial Uji Matcha with organic Madagascar vanilla bean nectar and chilled velvet milk.
+   - Roast/Details: Velvet Layers, Vanilla Nectar, Ceremonial Uji, Layered
+   - Label: Pastry Lab Blend
+
+2. Thé Glacé d'Hiver
+   - Price: €7.00
+   - Origin: Provence Blend · Cold Infused
+   - Description: "Winter Iced Tea" — A delicate, 12-hour cold-steeped botanical infusion featuring wild forest berries, organic elderflower, citrus peels, and a dash of winter spice.
+   - Roast/Details: Floral & Fruity, Cold Steeped, Forest Berries, Elderflower
+   - Label: Botanical Brew
+
+3. Tiramisu Glacé (Drink Version)
+   - Price: €8.50
+   - Origin: Plus33 Pastry Lab
+   - Description: A dessert in a glass. Layers of chilled double espresso, sweet whipped mascarpone cream, house-baked savoiardi crumbs, and a dusting of dark French cocoa powder.
+   - Roast/Details: Rich & Decadent, Mascarpone, Savoiardi, Cocoa Dust
+   - Label: Seasonal Dessert
+
+4. Iced Punch Coco
+   - Price: €8.00
+   - Origin: Tropical Sourced · Iced
+   - Description: An ultra-refreshing Parisian-tropical fusion. Chilled organic coconut water, whipped sweet coconut cream, and a splash of lime juice poured over crystal ice spheres.
+   - Roast/Details: Sweet & Hydrating, Coconut Water, Sweet Cream, Lime Splash
+   - Label: Exotic Reserve
+
+-----------------------------------------
+CATEGORY: DESSERTS & BAKERY
+-----------------------------------------
+
+1. Almond Croissant
+   - Price: €5.20
+   - Origin: Plus33 Pastry Lab
+   - Description: Our classic croissant filled with rich almond frangipane cream, topped with sliced toasted almonds and a light dusting of powdered sugar.
+   - Roast/Details: Toasted & Sweet, Almond Frangipane, Toasted Almonds, Sweet
+   - Label: Fresh Daily
+
+2. Pain au Chocolat
+   - Price: €4.80
+   - Origin: Plus33 Pastry Lab
+   - Description: A traditional French chocolate pastry crafted with layered puff pastry and filled with premium dark chocolate batons from Valrhona.
+   - Roast/Details: Buttery & Chocolatey, Valrhona Chocolate, Puff Pastry, Classic French
+   - Label: Best Seller
+
+3. Croissant
+   - Price: €4.50
+   - Origin: Plus33 Pastry Lab
+   - Description: A classic, golden French pastry with a flaky, buttery texture and crisp exterior, baked to perfection.
+   - Roast/Details: Warm & Buttery, Normandy Butter, Flaky Layers, Classic French
+   - Label: Pastry Lab Selection
+
+4. Donut
+   - Price: €3.80
+   - Origin: Plus33 Pastry Lab
+   - Description: An artisanal glazed donut, soft and fluffy inside, topped with a delicate sweet glaze.
+   - Roast/Details: Sweet & Soft, Artisanal Glaze, Soft Dough, Freshly Made
+   - Label: Sweet Treat
+
+5. Pretzel
+   - Price: €4.20
+   - Origin: Plus33 Pastry Lab
+   - Description: A classic German-style soft pretzel, golden brown and sprinkled with coarse sea salt.
+   - Roast/Details: Salty & Chewy, Sea Salt, Baked Fresh, Traditional Style
+   - Label: Atelier Baked
+
+6. Éclair au Chocolat
+   - Price: €5.50
+   - Origin: Plus33 Pastry Lab
+   - Description: Classic French pastry made with light choux dough, filled with rich chocolate pastry cream, and finished with a glossy dark chocolate glaze.
+   - Roast/Details: Choux & Chocolate, Choux Pastry, Valrhona Cocoa, Parisian Classic
+   - Label: Atelier Classic
+
+7. Artisanal Gelato
+   - Price: €6.20
+   - Origin: Plus33 Pastry Lab
+   - Description: House-churned Italian-style gelato made with fresh organic milk, organic Madagascar vanilla beans, and a smooth, creamy texture.
+   - Roast/Details: Cool & Creamy, Madagascar Vanilla, Organic Milk, House Churned
+   - Label: Summer Special
+
+8. Tiramisu Glacé (Dessert Version)
+   - Price: €6.80
+   - Origin: Plus33 Pastry Lab
+   - Description: An elevated frozen expression of the classic Italian dessert, featuring espresso-soaked ladyfingers, whipped mascarpone cream, and dusted cocoa.
+   - Roast/Details: Espresso & Mascarpone, Single-Origin Espresso, Mascarpone, Cocoa
+   - Label: Chef's Choice
+
+9. Zefir
+   - Price: €4.50
+   - Origin: Plus33 Pastry Lab
+   - Description: A light, airy, and delicately sweet fruit confection made with organic apple purée, fresh egg whites, and agar-agar, dusted with powdered sugar.
+   - Roast/Details: Light & Fruity, Apple Purée, Meringue Style, Delicate Sweet
+   - Label: Delicate Treat
+
+-----------------------------------------
+CATEGORY: RETAIL (COFFEE BEANS & TEA POUCHES)
+-----------------------------------------
+
+1. Sachet de Café
+   - Price: €24.00
+   - Origin: Ethiopia Yirgacheffe & Geisha
+   - Description: Our signature luxury whole bean coffee pouch. Hand-packaged and nitrogen-flushed in Paris to guarantee peak aroma, featuring sweet notes of jasmine, bergamot, and honey. 250g.
+   - Roast/Details: Light-Medium Blend, Whole Bean, Geisha Blend, Paris Sourced
+   - Label: Micro-Lot Pouch
+
+2. Cerrado & Colombia
+   - Price: €22.00
+   - Origin: Cerrado & Huila Regions
+   - Description: A signature house blend balancing sweet Brazilian Cerrado with vibrant Colombian Huila beans. Hand-packaged to offer a rich milk chocolate body with toasted hazelnut aromas.
+   - Roast/Details: Medium Roast, Whole Bean, Smooth Body, Caramel Finish
+   - Label: House Reserve
+
+3. Signature Dark Roast
+   - Price: €21.00
+   - Origin: Central & South America
+   - Description: A bold, deep espresso blend roasted slightly longer to express rich dark cacao notes, heavy-bodied texture, and a smooth, bittersweet smoky caramel finish.
+   - Roast/Details: Dark Roast, Whole Bean, Dark Cacao, Bold Body
+   - Label: Intense Selection
+
+4. Masala Chai Tea Pouch
+   - Price: €18.00
+   - Origin: Assam & Kerala, India
+   - Description: An authentic, aromatic heritage tea blend. Combining premium high-grown Assam black tea leaves with freshly crushed green cardamoms, cinnamon bark, cloves, and wild ginger for a comforting, warming infusion at home.
+   - Roast/Details: Spiced Botanical, Assam Black Tea, Cardamom, Ginger, Warming
+   - Label: Heritage Blend
+
+5. Kashmiri Kahwa
+   - Price: €26.00
+   - Origin: Kashmir Valley, India
+   - Description: An imperial saffron-infused green tea from the valleys of Kashmir. Delicate green tea leaves hand-blended with premium saffron threads, green cardamom, cinnamon, and slivered sweet almonds for a majestic, fragrant brew.
+   - Roast/Details: Saffron Green Tea, Saffron Threads, Cardamom, Sweet Almonds, Fragrant
+   - Label: Imperial Reserve
+
+6. Ooty Gold
+   - Price: €25.00
+   - Origin: Nilgiri Hills, India
+   - Description: A rare, high-altitude single-origin coffee harvested from the misty slopes of the Nilgiri hills. Hand-picked at 2,200 meters and medium-roasted to express a bright, golden body with complex notes of wild honey, citrus blossom, and toasted hazelnut.
+   - Roast/Details: Medium Roast, Whole Bean, Wild Honey, Citrus Blossom, Smooth Body
+   - Label: Single Origin
+
+-----------------------------------------
+CATEGORY: MERCHANDISE
+-----------------------------------------
+
+1. +33 Atelier Gift Pack
+   - Price: €63.30
+   - Origin: Curated Selection
+   - Description: The ultimate sensory coffee gift. Beautifully boxed collection including two of our micro-lot single-origin filter bags, one whole bean reserve pouch, and custom brand cards.
+   - Roast/Details: Multi-Roast Edition, Gift Box, Curated Reserve, Handcrafted
+   - Label: Luxury Set
+
+2. +33 Organic Tote
+   - Price: €18.00
+   - Origin: Parisian Atelier
+   - Description: Heavyweight organic cotton canvas tote featuring our hand-pressed signature wordmark. Durable, elegant, and designed to carry your daily coffee ritual essentials.
+   - Roast/Details: Cotton Canvas, Organic Cotton, French Design, Everyday Carry
+   - Label: Ritual Object

@@ -153,47 +153,47 @@ plus33-europe/
     │   │   ├── brand/                  # Global core branding logos and typography
     │   │   │   ├── plus33-logo.png
     │   │   │   └── plus33-typography.png
-    │   │   ├── find-us/                # Geolocation and location resources
-    │   │   │   └── map-pin.png
-    │   │   ├── footer/                 # Footer illustration & accordion images
-    │   │   │   ├── about.png
-    │   │   │   ├── franchise.jpg
-    │   │   │   ├── menu-cup.jpg
-    │   │   │   ├── rewards.jpg
-    │   │   │   └── stores.jpg
-    │   │   ├── franchise/              # Franchise candidacy documents & layouts
-    │   │   │   └── global-expansion-map.png
-    │   │   ├── icons/                  # Shared system UI icons (empty / SVG-inlined)
-    │   │   ├── img/                    # Organized boutique and interior layouts
-    │   │   │   ├── architecture-taste.png
-    │   │   │   ├── boutique-tablescape.png
-    │   │   │   ├── outdoor-terrace-cafe.png
-    │   │   │   └── soil-ethiopia.png
-    │   │   ├── journal/                # Dynamic article imagery and visual narratives
-    │   │   │   ├── architecture-taste.png
-    │   │   │   └── soil-ethiopia.png
-    │   │   └── video/                  # Ambient backgrounds (empty)
-    │   ├── css/                        # Global style & utility sheets
-    │   │   ├── about.css
-    │   │   ├── chatbot.css
-    │   │   ├── find-us.css
-    │   │   ├── footer.css
-    │   │   ├── franchise.css
-    │   │   ├── global.css
-    │   │   ├── journal.css
-    │   │   ├── navbar.css
-    │   │   ├── responsive.css
-    │   │   └── rewards.css
-    │   ├── html/                       # SPA Frame shell & global views
+    │   │   └── footer/                 # Footer illustration & accordion images
+    │   │       ├── about.png
+    │   │       ├── franchise.jpg
+    │   │       ├── menu-cup.jpg
+    │   │       ├── rewards.jpg
+    │   │       └── stores.jpg
+    │   ├── about/                      # About feature assets, layout and logic
+    │   │   ├── assets/                 # About-specific image assets (hero, dreamer, timeline)
+    │   │   ├── css/about.css
+    │   │   ├── html/about.html
+    │   │   └── js/about.js
+    │   ├── find-us/                    # Find Us feature assets, layout and logic
+    │   │   ├── assets/                 # Find Us-specific map-pin & interiors
+    │   │   ├── css/find-us.css
+    │   │   ├── html/find-us.html
+    │   │   └── js/find-us.js
+    │   ├── franchise/                  # Franchise feature assets, layout and logic
+    │   │   ├── assets/                 # Franchise-specific sketches, prospectus doc
+    │   │   ├── css/franchise.css
+    │   │   ├── html/franchise.html
+    │   │   └── js/franchise.js
+    │   ├── journal/                    # Journal feature assets, layout and logic
+    │   │   ├── assets/                 # Journal-specific article photos
+    │   │   ├── css/journal.css
+    │   │   ├── html/journal.html
+    │   │   └── js/journal.js
+    │   ├── rewards/                    # Rewards feature layout and logic
+    │   │   ├── css/rewards.css
+    │   │   ├── html/rewards.html
+    │   │   └── js/rewards.js
+    │   ├── css/                        # Global shared layout style sheets
+    │   │   ├── chatbot.css             # Glassmorphic chatbot styles
+    │   │   ├── footer.css              # Footer layouts
+    │   │   ├── global.css              # Typography and system tokens
+    │   │   ├── navbar.css              # Navigation styles
+    │   │   └── responsive.css          # Mobile breakpoint variables
+    │   ├── html/                       # SPA Frame shell & global components
     │   │   ├── index.html              # Main SPA frame shell
-    │   │   ├── about.html
-    │   │   ├── chatbot.html
-    │   │   ├── find-us.html
-    │   │   ├── footer.html
-    │   │   ├── franchise.html
-    │   │   ├── journal.html
-    │   │   ├── rewards.html            # SPA Rewards program view
-    │   │   └── navbar.html
+    │   │   ├── chatbot.html            # Chatbot panel layout
+    │   │   ├── footer.html             # Footer layout module
+    │   │   └── navbar.html             # Navbar layout module
     │   ├── java/                       # Core shared backend architecture
     │   │   └── com/
     │   │       └── plus33/
@@ -235,14 +235,9 @@ plus33-europe/
     │   │                   └── util/
     │   │                       └── DtoMapper.java
     │   └── js/                         # SPA Core Router, widgets & animations
-    │       ├── about.js
     │       ├── chatbot-data.js
     │       ├── chatbot.js
-    │       ├── find-us.js
-    │       ├── franchise.js
-    │       ├── journal.js
     │       ├── layout-engine.js
-    │       ├── rewards.js
     │       └── router.js               # Client SPA dynamic core router
     │
     └── test/                           # Integration Testing Suite
@@ -364,19 +359,19 @@ C. GLOBAL SYSTEM FILES (src/global/)
 * src/global/html/chatbot.html
   Purpose: Glassmorphic panel layout for the AI messaging assistant.
 
-* src/global/html/franchise.html
-  Purpose: Multistep interactive franchise candidate submission interface.
-
-* src/global/html/journal.html
-  Purpose: Curated articles portal and design storytelling.
-
-* src/global/html/find-us.html
-  Purpose: Boutiques search panel and geolocation listings.
-
-* src/global/html/about.html
+* src/global/about/html/about.html
   Purpose: Elegant branding chronicle detailing Parisian café history.
 
-* src/global/html/rewards.html
+* src/global/find-us/html/find-us.html
+  Purpose: Boutiques search panel and geolocation listings.
+
+* src/global/franchise/html/franchise.html
+  Purpose: Multistep interactive franchise candidate submission interface.
+
+* src/global/journal/html/journal.html
+  Purpose: Curated articles portal and design storytelling.
+
+* src/global/rewards/html/rewards.html
   Purpose: Interactive rewards membership dashboard, loyalty point tier visualizer, and FAQ panel.
 
 * src/global/css/global.css
@@ -388,8 +383,11 @@ C. GLOBAL SYSTEM FILES (src/global/)
 * src/global/css/navbar.css & footer.css
   Purpose: Specific aesthetics and states for headers, footers, and drop menus.
 
-* src/global/css/chatbot.css & franchise.css & journal.css & find-us.css & about.css & rewards.css
-  Purpose: Dedicated, module-specific styles mapping the global widget and page components.
+* src/global/css/chatbot.css
+  Purpose: Dedicated, module-specific styles mapping the chatbot widget component.
+
+* src/global/about/css/about.css & src/global/find-us/css/find-us.css & src/global/franchise/css/franchise.css & src/global/journal/css/journal.css & src/global/rewards/css/rewards.css
+  Purpose: Page-specific stylesheets for the global feature pages.
 
 * src/global/js/router.js
   Purpose: SPA Dynamic Client-Side Router. Intercepts URL requests, loads matching HTML
@@ -402,7 +400,7 @@ C. GLOBAL SYSTEM FILES (src/global/)
   Purpose: Drives floating bubble states, chat bubbles animations, API fetches,
            and client offline dialog trees.
 
-* src/global/js/about.js & franchise.js & journal.js & find-us.js & rewards.js
+* src/global/about/js/about.js & src/global/find-us/js/find-us.js & src/global/franchise/js/franchise.js & src/global/journal/js/journal.js & src/global/rewards/js/rewards.js
   Purpose: Visual animations, validation, timeline reveals, dynamic cards, and actions for global views.
 
 * src/global/application.properties

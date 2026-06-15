@@ -4763,13 +4763,11 @@ body:has(#home-page) .plus33-nav--solid {
 
 /* ── 2. FEATURE ICON ROW ── */
 .hmp-metrics-bar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px 0;
   margin: 0 clamp(16px, 5vw, 32px) 24px;
-  padding: clamp(14px, 4vw, 20px) clamp(12px, 3vw, 20px);
+  padding: clamp(16px, 4vw, 24px) clamp(12px, 3vw, 20px);
   background: rgba(255, 255, 255, 0.72);
   border: 1px solid rgba(13, 27, 42, 0.09);
   border-radius: clamp(14px, 4vw, 20px);
@@ -4786,7 +4784,6 @@ body:has(#home-page) .plus33-nav--solid {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  flex: 1;
   min-width: 0;
   padding: 6px 4px;
 }
@@ -4818,11 +4815,7 @@ body:has(#home-page) .plus33-nav--solid {
 }
 
 .hmp-feature__sep {
-  width: 1px;
-  height: 44px;
-  background: rgba(13, 27, 42, 0.12);
-  flex-shrink: 0;
-  margin: 0 4px;
+  display: none !important;
 }
 
 /* ── 3. HERO PRODUCT COMPOSITION ── */
@@ -5136,11 +5129,28 @@ body:has(#home-page) .plus33-nav--solid {
 }
 
 .hmp-trust__divider {
-  width: 1px;
-  height: 44px;
-  background: rgba(13, 27, 42, 0.12);
-  flex-shrink: 0;
-  margin: 0 4px;
+  display: none !important;
+}
+
+/* Grid dividers/borders for 3x2 metrics layout */
+.hmp-metrics-bar > :nth-child(1),
+.hmp-metrics-bar > :nth-child(3),
+.hmp-metrics-bar > :nth-child(5) {
+  border-bottom: 1px solid rgba(13, 27, 42, 0.12);
+  padding-bottom: 12px;
+}
+
+.hmp-metrics-bar > :nth-child(7),
+.hmp-metrics-bar > :nth-child(9),
+.hmp-metrics-bar > :nth-child(11) {
+  padding-top: 12px;
+}
+
+.hmp-metrics-bar > :nth-child(1),
+.hmp-metrics-bar > :nth-child(3),
+.hmp-metrics-bar > :nth-child(7),
+.hmp-metrics-bar > :nth-child(9) {
+  border-right: 1px solid rgba(13, 27, 42, 0.12);
 }
 
 .hmp-trust__rating {
@@ -5374,22 +5384,18 @@ body:has(.hero-mobile-premium) .plus33-nav:not(.plus33-nav--solid) .plus33-nav__
     letter-spacing: 0.008em;
   }
 
-  /* ── LEFT COL: Feature pill card (matching trust card style) ── */
   .hmp-metrics-bar {
     grid-area: metrics;
     grid-column: 1 / 3;
     margin: 1rem auto;
-    padding: 10px 24px;
+    padding: 16px 24px;
     width: 900px;
     max-width: 95%;
     height: auto;
     min-height: 86px;
-    background: rgba(255, 255, 255, 0.60);
-    border: 1px solid rgba(13, 27, 42, 0.08);
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(13, 27, 42, 0.07);
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px 0;
     align-items: center;
     z-index: 1;
     position: relative;
@@ -5423,11 +5429,7 @@ body:has(.hero-mobile-premium) .plus33-nav:not(.plus33-nav--solid) .plus33-nav__
   }
 
   .hmp-feature__sep {
-    width: 1px;
-    height: 30px;
-    background: rgba(13, 27, 42, 0.10);
-    flex-shrink: 0;
-    margin: 0 2px;
+    display: none !important;
   }
 
   /* ── LEFT COL: CTA buttons ──────────────────────────────────── */
@@ -5516,7 +5518,7 @@ body:has(.hero-mobile-premium) .plus33-nav:not(.plus33-nav--solid) .plus33-nav__
   }
 
   .hmp-trust__divider {
-    height: 30px;
+    display: none !important;
   }
 
   .hmp-star {
