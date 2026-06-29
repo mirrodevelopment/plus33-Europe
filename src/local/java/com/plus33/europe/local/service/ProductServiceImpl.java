@@ -5,6 +5,7 @@ import com.plus33.europe.local.model.Product;
 import com.plus33.europe.local.repository.ProductRepository;
 import com.plus33.europe.global.util.DtoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,7 +36,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Optional<ProductDTO> getProductById(Long id) {
+    public Optional<ProductDTO> getProductById(@NonNull Long id) {
         return productRepository.findById(id)
                 .map(DtoMapper::toProductDto);
     }

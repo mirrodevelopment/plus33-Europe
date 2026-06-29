@@ -3,6 +3,7 @@ package com.plus33.europe.local.controller;
 import com.plus33.europe.local.dto.ProductDTO;
 import com.plus33.europe.local.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,7 +32,7 @@ public class ProductRestController {
     }
 
     @GetMapping("/products/{id}")
-    public ResponseEntity<ProductDTO> getProductById(@PathVariable("id") Long id) {
+    public ResponseEntity<ProductDTO> getProductById(@PathVariable("id") @NonNull Long id) {
         return productService.getProductById(id)
                 .map(productDto -> new ResponseEntity<>(productDto, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
