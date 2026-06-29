@@ -1,1447 +1,285 @@
 ================================================================================
-PLUS33 EUROPE — WEBSITE FUNCTIONAL AND TECHNICAL DOCUMENTATION PRESENTATION
+                      +33 PARIS — WEBSITE SPECIFICATION DETAILS
+            Comprehensive Guide to Theme, Functionality, and Properties
 ================================================================================
-This document contains the functional and technical slide deck structure for the PLUS33 Europe specialty coffee platform. It documents every page, user interaction flow, business rule, backend service layer, and global component.
 
-================================================================================
-SLIDE 1
-Title & Overview
-
-Purpose:
-Introduce the documentation presentation and define the platform's focus.
-
-Description:
-A title slide presenting the functional and technical blueprint of the PLUS33 Europe modular web application, highlighting its transition to a luxury editorial single-page-application (SPA) backed by a Spring Boot REST engine.
-
-Features:
-* Platform Identity: PLUS33 Paris
-* Target Audience: Developers, Project Managers, Stakeholders, and Clients
-* Unified Architectural Scope: Local Store vs. Global Platform Engines
-
-User Actions:
-* N/A (Title slide)
-
-System Actions:
-* N/A (Title slide)
-
-UI Components:
-* Gold Brand Logo: Inlined vector graphic
-* Editorial Title Text: Cormorant Garamond serif typography
-* Sub-title & Metadata block: Clean Manrope sans-serif typography
-
-Business Rules:
-* N/A (Title slide)
-
-Image Suggestion:
-A sleek, minimalist dark slide containing the gold-pressed "+33" wordmark centered, framed by subtle light rays or a coffee steam vignette.
-
-Speaker Notes:
-"Welcome, everyone. Today we are walking through the complete functional and technical documentation of the PLUS33 Europe platform. This presentation is designed for engineers, managers, and stakeholders to understand how the platform is built, how users interact with it, and how the frontend client couples with the Spring Boot backend."
-
-================================================================================
-SLIDE 2
-Project Overview: Subsystem Ecosystem
-
-Purpose:
-Explain the division between local and global subsystems.
-
-Description:
-A modular diagram and description showing how the platform is partitioned into the LOCAL commercial subsystem (Store) and the GLOBAL site subsystem (Brand Portal & AI tools).
-
-Features:
-* Subsystem separation: local/ represents transactional code, global/ represents site framework code
-* Local Subsystem: Product entities, REST controller, catalog views, and local JavaScript modules
-* Global Subsystem: AI chatbot engine, franchise multi-step submissions, news journal, store locator, layout modules, and security config
-
-User Actions:
-* Select global sections (About, Journal, Franchise, Locator, Rewards)
-* Access local catalog views (Store, Product Details)
-
-System Actions:
-* Client-side router dynamically matches routes and loads fragments from /local/html/ or /global/html/
-* Bootstrapping scans local packages and global configurations using custom ComponentScans in Spring Boot
-
-UI Components:
-* Subsystem Grid layout: Left column (Local Subsystem) vs Right column (Global Subsystem)
-* Navigation Hub: Dynamic navigation links mapping both zones
-
-Business Rules:
-* Separation of Concerns: Shared platform utilities (security, database seeding) reside under global configurations to serve local domains.
-
-Image Suggestion:
-A split-screen structural diagram showing the LOCAL module on the left in gold accents and the GLOBAL module on the right in bronze accents, linked by the SPA router.
-
-Speaker Notes:
-"The codebase is divided into two primary sub-modules. The 'Local' subsystem contains the store engine, and the 'Global' subsystem handles the platform shell, security, seeder, journal, rewards, and locator. This ensures that business logic remains highly modular."
-
-================================================================================
-SLIDE 3
-Technical Architecture: SPA + Spring Boot
-
-Purpose:
-Map out the architectural stack.
-
-Description:
-A comprehensive mapping of the core technologies powering the front-end SPA and the back-end Spring Boot service layers.
-
-Features:
-* Client Tier: Vanilla HTML5, CSS3, ES6 JavaScript, GSAP, and ScrollTrigger
-* Routing: Lightweight client-side browser history intercept router
-* Server Tier: Java 21, Spring Boot 3.5, Spring Security, Hibernate ORM
-* Database: H2 in-memory database with automatic DDL schemas
-
-User Actions:
-* Client interaction triggers async fetches to REST endpoints without page refresh
-
-System Actions:
-* Spring Boot boots, runs Hibernate schema updates, populates H2 using CommandLineRunner database seeder
-* JavaScript routes request JSON data from REST APIs and dynamically renders DOM templates
-
-UI Components:
-* Main Container: <main id="app"> which receives swapped fragments
-* Loader: CSS spinner (.page-transitioning) during dynamic route fetches
-
-Business Rules:
-* All non-API requests are forwarded to index.html to allow client-side deep linking.
-
-Image Suggestion:
-A technical block-diagram layout showing the relationship between Client (HTML/JS/GSAP), REST API Controllers, Spring Services, Spring Data Repositories, and the H2 Database.
-
-Speaker Notes:
-"PLUS33 runs on a modular monolith stack. We use Spring Boot to expose clean REST endpoints, and vanilla JS to swap views inside a single page container, avoiding the overhead of heavy frameworks like React."
-
-================================================================================
-SLIDE 4
-Workspace Structure: The Directory Map
-
-Purpose:
-Document the file structure of the project.
-
-Description:
-A visual reference mapping directories to system roles, highlighting where local and global assets, CSS, templates, controllers, and models reside.
-
-Features:
-* Tree Map: Root pom.xml down to package-specific classes
-* Client Assets: src/local/assets/ and src/global/assets/
-* Page Fragments: html/ folders containing markup wrappers
-* Java Layers: Separate package structures for global and local scopes
-
-User Actions:
-* N/A (Technical Reference)
-
-System Actions:
-* Build-helper-maven-plugin dynamically registers both src/local/java and src/global/java source folders during compile phase
-
-UI Components:
-* Folder tree hierarchy formatting with annotations for critical modules
-
-Business Rules:
-* Frontend files must match naming conventions of corresponding JS controllers for automatic router lifecycle invocation.
-
-Image Suggestion:
-A screenshot or clean font-based tree diagram of the project folder hierarchy (src/local and src/global) color-coded for quick comprehension.
-
-Speaker Notes:
-"The directory tree splits resources into local and global. For example, local houses the product details views, whereas global houses application config, security, and shared stylesheets. This helps multiple developers work on different platform areas."
-
-================================================================================
-SLIDE 5
-SPA Client-Side Routing System
-
-Purpose:
-Explain the SPA routing mechanics.
-
-Description:
-Technical walkthrough of the client-side router (router.js) that intercepts browser requests, matches paths, handles history state, and drives page controllers.
-
-Features:
-* Path Matching: Regex-like matching mapping paths like '/product/:id' to dynamic parameters
-* History Management: Uses HTML5 History API (pushState/popstate) to navigate without full reloads
-* Asset Isolation: Dynamically injects page-specific CSS files on demand
-* Lifecycle Hooks: Invokes init() and destroy() functions to initialize and clean up JS memory
-
-User Actions:
-* Click navigation link: Intercepted by router
-* Click browser back/forward buttons: Triggers popstate transition
-
-System Actions:
-* Fetches HTML fragment from server, swaps it into '#app', swaps page titles, updates CSS links, and executes controller callbacks
-
-UI Components:
-* Page Transition Overlay: Glassmorphic fade wrapper
-* Navigation Active Tags: CSS class `.active` dynamically mapped to links
-
-Business Rules:
-* Invalid paths fallback to a dedicated editorial 404 block with back-navigation.
-
-Image Suggestion:
-A flowchart showing: Intercept Click -> Transition Out -> Fetch HTML Fragment -> Swap DOM -> Load CSS -> Trigger Init Page Script -> Transition In.
-
-Speaker Notes:
-"The client-side router handles navigation seamlessly. It intercepts all internal clicks, fetches html segments asynchronously, swaps the page body, loads target CSS files, and calls custom init and destroy handlers to prevent memory leaks."
-
-================================================================================
-SLIDE 6
-Dynamic Master Frame: index.html & SEO
-
-Purpose:
-Document the primary frame container and SEO headers.
-
-Description:
-Functional review of index.html, which houses global styles, external libraries (GSAP, ScrollTrigger), metadata headers, and the ambient design wrappers.
-
-Features:
-* Meta tags: Responsive viewport, luxury description, brand titles
-* Library CDN: GSAP, ScrollTrigger integration
-* Ambient effects: Grain overlay and vignette classes to provide editorial atmosphere
-* SEO optimization: Title tracking dynamically managed in router map
-
-User Actions:
-* Access the URL: Instantly downloads index.html containing baked home page code
-
-System Actions:
-* Server delivers index.html, browser renders structural frame and executes main loader
-
-UI Components:
-* Ambient Vignette: CSS radial gradient overlaying page limits
-* Noise Grain: High-contrast subtle SVG background pattern
-* Root viewport wrapper: `<main id="app">`
-
-Business Rules:
-* All pages must follow heading hierarchy rules: one `<h1>` per page, semantic landmarks (`<section>`, `<article>`).
-
-Image Suggestion:
-An abstract wireframe overlay of index.html detailing the viewport structure, script linkages, and background layering.
-
-Speaker Notes:
-"Our main index.html file acts as the master SPA frame. To ensure a fast first-paint time, the home page markup is baked directly into index.html, allowing visitors to see the landing page instantly before other fragments are lazy-loaded."
-
-================================================================================
-SLIDE 7
-Global Shared Layout: Navbar & Footer
-
-Purpose:
-Document the shared navigation header and brand footer.
-
-Description:
-Analysis of navbar.html, footer.html, and layout-engine.js which load and update shared screen sections dynamically.
-
-Features:
-* Header Navigation: Custom drop menus for products and mobile hamburger menu
-* Footer Accordion: Brand directories and newsletter subscription
-* Social Integration: Vector icon grids pointing to Instagram, WhatsApp, and Spotify
-* Geolocation quick link: Pointing to store locator
-
-User Actions:
-* Click navbar categories: Swaps active SPA states
-* Submit newsletter email: Triggers success indicators
-* Click accordion headers: Toggles directory list states
-
-System Actions:
-* JavaScript fetches and parses navbar and footer segments on boot
-* Synchronizes active classes on navigation links matching current path
-
-UI Components:
-* Glassmorphic Navbar: Floating bar with blur filter
-* Footer directories: Structured links columns
-* Newsletter: Input field and gold submit button
-
-Business Rules:
-* Navigation links must sync active styles dynamically when path changes
-* Newsletter submission displays instant visual success confirmation.
-
-Image Suggestion:
-A UI wireframe highlighting the interactive zones of the Navbar and the columns of the Footer, with callout bubbles pointing to layout-engine.js.
-
-Speaker Notes:
-"The layout engine handles Navbar and Footer loading asynchronously. It binds event listeners, manages mobile nav dropdowns, handles footer email subscriptions, and highlights the active route automatically."
-
-================================================================================
-SLIDE 8
-Home Page: Brand Sanctuary
-
-Purpose:
-Explain the home page purpose and editorial structure.
-
-Description:
-The brand landing page introducing the premium design style, parallax backdrops, and signature sections of PLUS33.
-
-Features:
-* Hero section: Parallax background, luxury typography, dynamic headers
-* Curated composition: High-contrast product imagery
-* Brand statement: Bold editorial typography
-* Section transitions: Scroll-revealed grid columns
-
-User Actions:
-* Scroll page: Triggers parallax and GSAP reveals
-* Click CTA buttons: Navigates to target SPA routes
-
-System Actions:
-* GSAP listens to scroll events, shifts hero images at calibrated parallax ratios
-
-UI Components:
-* Hero Background Image: Scale-transformed container
-* Gold CTA Buttons: CSS transitions with glowing borders
-* Section headings: Cormorant Garamond serif fonts
-
-Business Rules:
-* Parallax effects are disabled on mobile devices or if user settings prefer reduced motion to preserve performance.
-
-Image Suggestion:
-A high-resolution screenshot of the Home Page, displaying the hero header, typography, and gold CTA buttons.
-
-Speaker Notes:
-"The home page is the brand sanctuary. It showcases the premium aesthetic of PLUS33 using parallax imagery and scroll-based reveal animations, immediately establishing a luxurious, editorial look and feel."
-
-================================================================================
-SLIDE 9
-Home Page: Immersive Strip Carousel
-
-Purpose:
-Document the dynamic drink strip on the home page.
-
-Description:
-A custom-built interactive slider cycling through beverage selections, automatically synchronized with central text blocks and pricing details.
-
-Features:
-* Active cycle: Automated 3-second slide transition
-* Infinite loop: Prepends/appends cloned elements to ensure seamless cycling
-* Active state sync: Centered card enlarges, gets full opacity, and maps details
-* Dynamic detail binding: Synchronizes center title, description, and price
-
-User Actions:
-* Hover/Swipe carousel: Pauses autoplay
-* Click arrows: Shifts active cards left or right
-* Click non-center card: Centers it and updates context
-* Click dynamic CTA: Navigates to `/product/:id`
-
-System Actions:
-* Fetches drink lists from `/api/store/products`, filters hot/iced-coffee categories, clones end bounds, computes dynamic widths, and translates coordinate spaces
-
-UI Components:
-* Carousel Track: Translated flex container
-* Slide Cards: Custom thumbnails with colored background blocks
-* Navigation Arrows: Inline SVGs
-* Dynamic Price tags: Text bindings updated on active indices
-
-Business Rules:
-* The carousel must render exactly 3 visible cards, centering the focal product
-* Price text is rendered in Rupees (INR) for local styling using math converters.
-
-Image Suggestion:
-A layout diagram of the carousel demonstrating the clone offsets (+5 prepend, +5 append), visible indices, and the translation offset calculations.
-
-Speaker Notes:
-"On the home page, the product strip displays premium drinks. It pulls from the API, filters out non-beverages, loops infinitely using cloned boundary elements, and synchronizes the central card with the hero detail text and price tags."
-
-================================================================================
-SLIDE 10
-Home Page: Craft Journey Scroll Stack
-
-Purpose:
-Document the GSAP-driven scroll-pinning card stack.
-
-Description:
-A high-impact interactive section that pins the viewport and scrolls through four stages of coffee preparation, cross-fading cards and description copy.
-
-Features:
-* Viewport Pinning: Locks scroll container during interaction
-* Card Cross-fade: Fades current card out while scaling and slides the next in
-* Progress Indicator: Vertical bar showing progress through the 4 steps
-* Step Navigation: Steps click-to-scroll navigation anchor mapping
-
-User Actions:
-* Scroll down/up: Steps through stages (Harvest, Roast, Blend, Brew)
-* Click progress indicators: Smoothly scrolls to calculated offsets
-
-System Actions:
-* GSAP ScrollTrigger overrides standard scrolls, calculates progress, translates transforms, scales images, and toggles active classes
-
-UI Components:
-* Left text block: Fading description copy
-* Right card stack: Absolute layered cards
-* Progress bar: Muted timeline with gold active pointers
-* Step Labels: Mobile navigation links list
-
-Business Rules:
-* Pinning and animations are disabled on mobile viewports to prevent scrolling glitches, falling back to clean vertical grids.
-
-Image Suggestion:
-A graphic showing the scroll-timeline stages, matching scroll progress values (10%, 40%, 60%, 85%) to active cards in the stack.
-
-Speaker Notes:
-"The Craft Journey is a high-impact section powered by GSAP ScrollTrigger. As the user scrolls, the page pins, and we step through the stages of coffee craft, cross-fading text cards and image layers in perfect synchronization."
-
-================================================================================
-SLIDE 11
-About Page: The Parisian Atelier Chronicle
-
-Purpose:
-Document the brand story and chronicled information page.
-
-Description:
-An editorial brand document presenting the history of PLUS33, its sourcing principles, design philosophy, and values.
-
-Features:
-* Story grid: Staggered blocks detailing the Parisian heritage
-* Design Manifesto: Typography-led section outlining materials choices
-* Visual narrative: Interspersed imagery showing interiors and landscapes
-* Call to Action: Promotes the franchise expansion map
-
-User Actions:
-* Scroll to view history: Triggers fade-up animations
-* Click franchise link: Navigates to franchise portal
-
-System Actions:
-* GSAP binds to reveal blocks, checking viewports and driving opacity updates
-
-UI Components:
-* Timeline Grid: Alternating text and image blocks
-* Quote Blocks: Stylized italicized typography with borders
-* Team profile: Clean grids showing sourcing leads
-
-Business Rules:
-* Content must maintain a single-column readable flow on mobile viewports.
-
-Image Suggestion:
-An editorial mock-up of the About page, highlighting clean typographic layouts and black-and-white photography style.
-
-Speaker Notes:
-"The About page is styled like a premium magazine article. It details the brand's Parisian heritage, sourcing ethics, and architecture, using alternating grids and parallax illustrations."
-
-================================================================================
-SLIDE 12
-Store Page: Luxury Editorial Catalog
-
-Purpose:
-Document the catalog store page (/store).
-
-Description:
-The dynamic product catalog showcasing coffee beans, signature beverages, desserts, and branded merchandise, featuring category filters and featured picks.
-
-Features:
-* Dynamic data binding: Loads catalog products from Spring Boot REST API
-* Category filtering: Smooth transition filters with visual meta cards
-* Featured picks: Curates 4 randomized products from the database on each refresh
-* Flat category sections: Grouped listings rendering automatically under 'All' filter
-
-User Actions:
-* Click category filter buttons: Loads specific category grids
-* Scroll grid: Browse product cards
-* Click product card: Navigates to dynamic details page `/product/:id`
-
-System Actions:
-* Fetches products via `/api/store/products`, groups elements, shuffles lists, generates HTML markup strings, and injects into showcase containers
-
-UI Components:
-* Store Filter Buttons: Card buttons with thumbnail images
-* Product Card: Editorial media block with category tag and price
-* Empty State: Muted cup icon with 'Coming Soon' message
-
-Business Rules:
-* If API request fails, catalog displays user-friendly recovery instructions
-* Cards show price with 2 decimal places in Euros (EUR).
-
-Image Suggestion:
-A mock of the Store Page, showing the "Beans & Retail" tab active and the grid displaying bags of coffee with details.
-
-Speaker Notes:
-"The Store page is a luxury editorial catalog. It connects to the REST API, groups products by category, and creates dynamic product card layouts. It also features a dynamic 'Featured Picks' section that changes on every visit."
-
-================================================================================
-SLIDE 13
-Product Details: Interactive Tasting Views
-
-Purpose:
-Document the dynamic product details page (/product/:id).
-
-Description:
-An immersive detail viewer containing product specifications, origins, roasting indicators, and an interactive brewing calculator for coffees.
-
-Features:
-* Dynamic Routing: Matches URL IDs to fetch specific product objects from the server
-* Offline Fallback: Synchronized local database registry (FALLBACK_PRODUCTS)
-* Specialty Specs: Origin, roast level, and flavor profile tags
-* Interactive Guide: Brewing dose calculator based on select devices and volume
-
-User Actions:
-* Click back button: Intercepts reference histories to navigate back
-* Select calculator method tabs: Switches brewing device
-* Drag cup volume slider: Computes required water and coffee weight
-
-System Actions:
-* Fetches `/api/store/products/{id}`, maps responses, computes ratios, and handles DOM updates
-
-UI Components:
-* Immersive Image panel: Full-height visual column
-* Spec Highlights: Grid of labeled parameters
-* Calculator Tabs: active states matching device choices
-* Volume Slider: Drag input range bar
-
-Business Rules:
-* Brewing guides must only display for coffee products (determined by presence of `Whole Bean` or `Filter Drip` notes).
-
-Image Suggestion:
-A screen capture showing a product details layout: left column product image, right column details, specs, and the Hario V60 calculator active.
-
-Speaker Notes:
-"The Product Details page fetches specific product data by ID. It handles fallback scenarios offline, matches routes, and features a custom interactive brewing calculator that updates coffee dose and grind suggestions on the fly."
-
-================================================================================
-SLIDE 14
-Atelier Brewing Guide Calculator
-
-Purpose:
-Detail the math and config of the brewing guide calculator.
-
-Description:
-Technical overview of the interactive brewing calculator script included in the product details page.
-
-Features:
-* Device Ratios: Hario V60 (1:16 ratio), Chemex (1:15 ratio), AeroPress (1:12 ratio)
-* Metric Mapping: 200ml of water calculated per cup selection
-* Grind Mapping: Medium-Fine (V60), Medium-Coarse (Chemex), Fine (AeroPress)
-* Temperature Mapping: 94°C (V60), 92°C (Chemex), 88°C (AeroPress)
-
-User Actions:
-* Toggle device tabs: Recalculates variables
-* Shift slider values (1 to 4 cups): Multiplies water volume and calculates dose
-
-System Actions:
-* JavaScript runs formula: `coffeeDose = waterVolume / deviceRatio`, updating results instantly
-
-UI Components:
-* Result fields: Gold value displays for dose and water
-* Spec indicators: Fine-tuned parameters lists
-
-Business Rules:
-* Dose values must be rounded to the nearest whole gram.
-* Slider ranges from 1 cup (200ml) to 4 cups (800ml).
-
-Image Suggestion:
-A mathematical flow diagram: Cups Selection -> Water Volume (Cups * 200ml) -> Device Ratio lookup -> Coffee Dose = Volume / Ratio -> UI Output.
-
-Speaker Notes:
-"The brewing guide uses strict recipes. It converts cup volumes to milliliters and calculates target coffee grams using device-specific ratios. This is a functional feature that enhances user engagement."
-
-================================================================================
-SLIDE 15
-Editorial Journal: Sourcing Stories Portal
-
-Purpose:
-Document the storytelling portal (/journal).
-
-Description:
-An online magazine layout detailing coffee sourcing, roasting profiles, and café rituals, using category filters and asymmetric grid layouts.
-
-Features:
-* Editorial Hero Card: High-impact highlighted story
-* Asymmetric Grid Rhythm: Layout layouts mapped by list index (Hero, Wide, Tall, Portrait, Square)
-* Smooth Category Filters: Dynamic category sorting of list items
-* Navigation Scroll Progress: Top progress bar indicating scroll completion
-
-User Actions:
-* Scroll portal: Updates scroll progress bar
-* Click filter pills: Sorts posts by category
-* Click card: Opens full-length reader view
-
-System Actions:
-* Fetches journal posts via `/api/journal/stories`, sets featured item, injects elements into templates, binds GSAP animations, and updates scroll triggers
-
-UI Components:
-* Progress indicator: Gold line under navbar
-* Filter pills: Rounded pill triggers
-* Asymmetric Grid: Grid container with custom sizing rules
-
-Business Rules:
-* Featured articles must be excluded from the main post list grid.
-
-Image Suggestion:
-An overview of the Journal page layout, showing the featured article hero banner and the staggered grid below it.
-
-Speaker Notes:
-"Our Journal page acts as a premium brand publication. It queries the journal API, separates the featured banner, and displays other articles in an asymmetric grid that mimics high-end print design."
-
-================================================================================
-SLIDE 16
-Magazine Reader: Immersive Overlay Portal
-
-Purpose:
-Document the inline story reader overlay.
-
-Description:
-A dynamic, distraction-free overlay screen that renders complete multi-paragraph essays and pullquotes with immersive animations.
-
-Features:
-* Editorial Layout: Centered column with large images and text
-* Dynamic essay database: Pulls complete paragraph arrays from internal JS data matching post titles
-* Pullquote injection: Automatic inline injection of quotes in essays
-* Viewport lock: Freezes main page scroll while reader is active
-
-User Actions:
-* Click article card: Opens reader overlay
-* Click close button / Click backdrop: Closes overlay
-* Scroll reader content: Reads full essay
-
-System Actions:
-* Matches title strings, loads paragraphs, updates overlay DOM, triggers GSAP staggered entry animations, and lock overflow styling
-
-UI Components:
-* Backdrop: Dark semi-transparent blur filter overlay
-* Close Button: Float vector button
-* Essay Body: Styled paragraphs and blocked quote containers
-
-Business Rules:
-* Escape key or backdrop clicks must close the reader panel.
-
-Image Suggestion:
-A wireframe of the open magazine reader, demonstrating the backdrop blur, clean typography columns, and slide-in transition animations.
-
-Speaker Notes:
-"Instead of loading a new page, the Journal uses an inline reader component. When clicked, it matches the story title, loads the full text, freezes page scrolling, and reveals the article with a staggered GSAP fade."
-
-================================================================================
-SLIDE 17
-Rewards System: Loyalty Point Visualizer
-
-Purpose:
-Document the rewards membership page (/rewards).
-
-Description:
-An interactive dashboard displaying user reward status, membership tiers, points visualizer, and loyalty benefits.
-
-Features:
-* Points Calculator: Interactive slider tool for point reward projections
-* Tier Progression Bar: Visual indicator mapping point thresholds to Bronze, Silver, Gold, and Platinum status
-* Perks Accordion: Dynamic panel listing member privileges
-* Sign-up triggers: Promotional links for membership conversion
-
-User Actions:
-* Slide spending input: Animates points growth projections
-* Toggle Perks categories: Expands detail menus
-
-System Actions:
-* Computes reward points using rule: 10 points generated per €1 spent
-* Adjusts active tier flags based on point range boundaries
-
-UI Components:
-* Progression Timeline: Linear bar with gold nodes
-* Spending Slider: Continuous value slider
-* Perks Grid: Cards listing member advantages
-
-Business Rules:
-* Tier thresholds: Bronze (0-500 pts), Silver (501-1500 pts), Gold (1501-3500 pts), Platinum (3501+ pts).
-
-Image Suggestion:
-A view of the Rewards dashboard showcasing the loyalty tier timeline and the interactive points calculator slider.
-
-Speaker Notes:
-"The Rewards page is a gamified loyalty page. It features an interactive points calculator and a progress timeline showing how spending translates into loyalty points and tier upgrades."
-
-================================================================================
-SLIDE 18
-Find Us Page: Geolocation Store Selector
-
-Purpose:
-Document the store locator page (/find-us).
-
-Description:
-An interactive store locator containing city listings, store detail cards, operational hours, maps, and direct links to directions.
-
-Features:
-* Multi-City Listings: Paris, Vienna, Dubai, Seoul, and Munich boutique databases
-* Geolocation: Filters lists based on nearest distance
-* Dynamic Map Integration: Interactive map display
-* Details Panel: Displays addresses, contact information, and WhatsApp booking links
-
-User Actions:
-* Click city filter buttons: Centers view on matching store cards
-* Click locator button: Prompts user for GPS access
-* Click directions link: Opens Google Maps redirection
-
-System Actions:
-* Reads store databases, calculates coordinate distances if GPS is active, sorts lists, and adjusts map views
-
-UI Components:
-* City Selector: Button row
-* Store Cards: Details cards with contact links
-* Map Canvas: Interactive container
-
-Business Rules:
-* Default view displays the Paris Boutique on initialization.
-
-Image Suggestion:
-A store locator screen mockup: left side city listing and address cards, right side map canvas showing location pins.
-
-Speaker Notes:
-"The Find Us page helps customers locate boutiques. It lists cities, maps locations, displays store details, and can use GPS coordinates to calculate the user's nearest boutique location."
-
-================================================================================
-SLIDE 19
-Franchise Application: Partnership Portal
-
-Purpose:
-Document the franchise page (/franchise).
-
-Description:
-An editorial page outlining franchise partnership qualifications, financial parameters, and global expansion maps, featuring a multi-step applicant wizard.
-
-Features:
-* Expansion map: Geographical highlight of open target markets
-* Financial parameters grid: Setup costs, fees, and requirements
-* Multi-step lead wizard: Structured candidate intake form
-* Lead database integration: Posts data to Spring Boot API
-
-User Actions:
-* Scroll to read terms: View financial specifications
-* Click 'Apply Now': Scrolls to application wizard
-* Fill out and submit candidate form: Steps through wizard
-
-System Actions:
-* Connects to REST endpoints, posts candidate data objects, validates inputs, and writes records to database
-
-UI Components:
-* Expansion map: High-contrast vector infographic
-* Financial Grid: Labeled cards
-* Multi-step Wizard: Form frame with step navigation
-
-Business Rules:
-* Applications must be processed via Spring Boot endpoints and logged to database tables.
-
-Image Suggestion:
-An illustration of the Franchise page, showing the financial details grid and the header of the candidate wizard.
-
-Speaker Notes:
-"The Franchise page serves as our main business development tool. It lists financial requirements and houses a multi-step wizard that captures and validates applicant details before saving them to the backend."
-
-================================================================================
-SLIDE 20
-Franchise Form: Lead Funnel & Wizard
-
-Purpose:
-Explain the multi-step form mechanics and validations.
-
-Description:
-A detailed functional analysis of the franchise candidate application wizard, its steps, field inputs, validation algorithms, and submission flow.
-
-Features:
-* Wizard Steps: Step 1 (Personal Info), Step 2 (Location), Step 3 (Experience), Step 4 (Confirm)
-* Real-time Validation: Individual field checks before allowing navigation to next steps
-* Interactive Progress Indicator: Wizard header showing active step and completion percentage
-* Submission feedback: Glassmorphic panel displaying status responses
-
-User Actions:
-* Fill out form fields: Real-time input evaluation
-* Click 'Next Step' / 'Previous Step': Wizard page transitions
-* Click 'Submit Application': Dispatches final request
-
-System Actions:
-* JavaScript gathers form inputs, checks validation rules, highlights invalid fields, posts JSON payload to `/api/franchise/apply`, and renders success panel
-
-UI Components:
-* Wizard progress bar: Gold line with numbered step indicators
-* Input fields: Gold highlighted form inputs
-* Validation error alerts: Red alert blocks below fields
-
-Business Rules:
-* Fields required: Full Name, Email, Phone, Target Country, Liquid Capital, Experience
-* Liquid Capital input must be numeric.
-
-Image Suggestion:
-A flowchart mapping the step-by-step wizard flow, indicating validation check gates and success screen routes.
-
-Speaker Notes:
-"The Franchise Application is structured as a multi-step form. JavaScript validates inputs at each step before allowing the applicant to proceed, ensuring the backend receives clean, complete data."
-
-================================================================================
-SLIDE 21
-AI Chatbot: Interactive Assistant Panel
-
-Purpose:
-Document the chatbot UI component (/chatbot or widget).
-
-Description:
-An AI messaging assistant panel styled in glassmorphic layouts, providing instant answers to customer questions.
-
-Features:
-* Glassmorphic Panel: Frosted background overlaying the page
-* Auto-scroll track: Messages scroll to bottom on entry
-* Suggestion Pills: Quick-click buttons representing popular topics
-* Status Indicator: 'Barista is typing' animation
-
-User Actions:
-* Click chat trigger bubble: Opens assistant panel
-* Type message and press Enter: Sends message
-* Click suggestion pills: Auto-sends question
-* Click close button: Hides panel
-
-System Actions:
-* Captures input, shows typing indicator, queries REST API `/api/chatbot/ask`, parses response, and appends reply bubble to track
-
-UI Components:
-* Chat Panel: Floating frosted container
-* Message Track: Vertical list of bubbles
-* Input Row: Field and send button
-* Suggestion Pills: Row of round buttons
-
-Business Rules:
-* If API is unreachable, chatbot falls back to local dialogue database rules.
-
-Image Suggestion:
-A mockup of the open chatbot panel showing user queries, the 'Barista is typing' indicator, and suggestion pills at the bottom.
-
-Speaker Notes:
-"The platform includes an AI Chatbot styled as an 'Atelier Barista'. It features frosted glass styling, typing animations, quick-click question pills, and connects to a Spring Boot REST service for intelligent replies."
-
-================================================================================
-SLIDE 22
-AI Chatbot: Business Logic & Contexts
-
-Purpose:
-Detail the chatbot logic and fallback rules.
-
-Description:
-Technical overview of `chatbot.js`, `chatbot-data.js`, and the backend `ChatbotRestController` logic.
-
-Features:
-* Semantic Keywords matching: Offline engine matches keywords to pre-defined answers
-* Dialog contexts: Sourcing, brewing advice, store locations, and franchise inquiries
-* Markdown parsing: Renders bold text and links in reply bubbles
-* Spring REST coupling: Connects to Java service layer executing responses
-
-User Actions:
-* N/A (Technical description)
-
-System Actions:
-* Sanitizes input, loops through keyword arrays, calculates match scores, selects answer, and sends to UI
-* Backend maps requests to `ChatbotService` executing response algorithms
-
-UI Components:
-* Message bubbles: Differentiated classes (User vs. System)
-* Embedded links: Styled anchors mapping to SPA routes
-
-Business Rules:
-* Fallback answer directs users to WhatsApp support or the Find Us locator.
-
-Image Suggestion:
-A block diagram showing input processing: User Input -> REST Controller -> Keyword Match -> Match found? Yes (Return answer) / No (Trigger AI / Fallback) -> Render Markdown.
-
-Speaker Notes:
-"Behind the chatbot UI is a dual-mode engine. If the network is active, it calls our REST API. If the server is offline, the client uses a local database matching keywords like 'franchise', 'hours', or 'brewing' to ensure a response is always generated."
-
-================================================================================
-SLIDE 23
-UI Component System: Tokens & HSL Colors
-
-Purpose:
-Explain the CSS design system.
-
-Description:
-Documentation of the global design tokens, CSS custom properties, and fluid typography system defined in `global.css`.
-
-Features:
-* Typography: Cormorant Garamond (editorial titles), Manrope (functional copy)
-* HSL Color Palette: Base colors using HSL values to easily create tints and gradients
-* Design Tokens: Consistent border-radii, spacing rules, and shadow classes
-* Theme variables: Cream background, gold accents, dark charcoal text, and borders
-
-User Actions:
-* N/A (Technical Reference)
-
-System Actions:
-* Browser parses variable sheet, applying design values across all page fragments
-
-UI Components:
-* Styled headings, primary/secondary buttons, inputs, and card wrappers
-
-Business Rules:
-* Colors must use variables (e.g., `var(--gold)`) instead of hardcoded hex values to support future theme adjustments.
-
-Image Suggestion:
-A color swatch palette slide showing primary HSL codes (Gold, Cream, Copper, Charcoal) and typography samples side-by-side.
-
-Speaker Notes:
-"We built our UI around a clean design system. All styling relies on CSS variables and HSL colors. This ensures visual consistency across the local store and global platform, and allows us to easily tweak the colors if needed."
-
-================================================================================
-SLIDE 24
-REST APIs: Endpoint Mapping & Serialization
-
-Purpose:
-Document the Spring Boot REST API layer.
-
-Description:
-A technical reference slide detailing all REST endpoints, request/response payloads, and HTTP methods.
-
-Features:
-* Products API: `/api/store/products` (GET, returns product list)
-* Product Details API: `/api/store/products/{id}` (GET, returns single product DTO)
-* Franchise API: `/api/franchise/apply` (POST, accepts candidate JSON, returns success DTO)
-* Chatbot API: `/api/chatbot/ask` (POST, accepts query JSON, returns response DTO)
-* Journal API: `/api/journal/stories` (GET, returns article listing)
-
-User Actions:
-* N/A (Technical Reference)
-
-System Actions:
-* RestControllers catch requests, delegate to Services, maps Entities to DTOs, and serialize outputs to JSON
-
-UI Components:
-* N/A (Backend API)
-
-Business Rules:
-* Payload inputs must map to validated DTO objects before database insertion.
-
-Image Suggestion:
-A table mapping Endpoints, HTTP Methods, Input Payloads, Output Payloads, and Service handlers.
-
-Speaker Notes:
-"Our Spring Boot backend exposes a clean REST API. We have endpoints for listing products, fetching single items, submitting franchise leads, querying the chatbot, and retrieving journal posts. All responses are serialized as clean JSON."
-
-================================================================================
-SLIDE 25
-H2 Database Model & Autoseeding Engine
-
-Purpose:
-Document the database schemas and seeder logic.
-
-Description:
-Technical mapping of database models, relations, JPA repositories, and the auto-seeding system implemented in `DatabaseSeeder.java`.
-
-Features:
-* JPA Entities: Product (store items), JournalStory (articles), FranchiseApplication (leads)
-* Repositories: ProductRepository, JournalStoryRepository, FranchiseRepository
-* Auto-Seeding: CommandLineRunner checks database counts on startup
-* In-Memory DB: H2 database configuration running in-memory
-
-User Actions:
-* N/A (Technical Reference)
-
-System Actions:
-* H2 creates tables on startup, DatabaseSeeder seeds 27 products and 14 articles if database tables are empty
-
-UI Components:
-* N/A (Database Layer)
-
-Business Rules:
-* Seeding must check repository count first to prevent duplicate record insertion on server restarts.
-
-Image Suggestion:
-An Entity-Relationship (ER) diagram representing Product, JournalStory, and FranchiseApplication database schemas.
-
-Speaker Notes:
-"For data persistence, the app uses an H2 in-memory database managed via Spring Data JPA. On startup, a seeder checks if the database is empty and automatically loads 27 products and 14 journal stories."
-
-================================================================================
-SLIDE 26
-Platform Security & Access Filters
-
-Purpose:
-Document the security configurations.
-
-Description:
-Walkthrough of the Spring Security architecture (`SecurityConfig.java`) managing request authorizations and headers.
-
-Features:
-* Access Filters: PermitAll filter paths mapping all frontend SPA URLs
-* Frame Options: Configures headers to allow same-origin frame rendering
-* CORS Configuration: Handles origins authorization
-* CSRF Handling: Configures cross-site request forgery exclusions for REST APIs
-
-User Actions:
-* Navigate site: Unrestricted access to SPA paths
-* Submit forms: Authorized POST endpoints access
-
-System Actions:
-* Spring Security intercepting filter chains, checking paths, applying headers, and authorizing requests
-
-UI Components:
-* N/A (Security Layer)
-
-Business Rules:
-* All store, franchise, locator, and journal pages are public. H2 console access is restricted or managed under local environments.
-
-Image Suggestion:
-A diagram of the Spring Security filter chain showing incoming requests passing through CORS, CSRF, and authorization filters.
-
-Speaker Notes:
-"Spring Security is configured to allow public access to all SPA page paths, while applying proper headers to protect against clickjacking and securing database operations."
-
-================================================================================
-SLIDE 27
-Form Handling: Frontend & Backend Validation
-
-Purpose:
-Explain the form handling and data validation system.
-
-Description:
-Technical review of input sanitization, frontend JavaScript validation rules, DTO mapping validations, and error responses.
-
-Features:
-* JavaScript Validation: Client-side field validations before submission
-* DTO Validations: Spring validation constraints on incoming payloads
-* Exception Handling: Global handler mapping validation errors to structured responses
-* Form UI feedback: Dynamic invalid field highlights and messages
-
-User Actions:
-* Enter invalid data: Triggers immediate inline validation messages
-* Submit valid form: Sends sanitized payload to API
-
-System Actions:
-* Client checks fields -> dispatches POST request -> backend validates payload -> writes to database or returns error payload
-
-UI Components:
-* Error Alert: Styled text box highlighting missing fields
-* Input outline: Red border highlighting invalid fields
-
-Business Rules:
-* Franchise email inputs must follow email address pattern checks.
-
-Image Suggestion:
-A sequence diagram tracking validation: User Input -> JS validation (Success) -> POST Request -> DTO validation (Success) -> DB write -> 200 OK.
-
-Speaker Notes:
-"We use two levels of validation. The frontend JavaScript checks fields immediately to give the user quick feedback. The backend then validates the DTO payload to ensure data integrity before writing to the database."
-
-================================================================================
-SLIDE 28
-SEO Implementation & Markup Hierarchy
-
-Purpose:
-Document the search engine optimization strategy.
-
-Description:
-Functional review of metadata configurations, semantic HTML usage, dynamic title management, and browser compatibility.
-
-Features:
-* Semantic Elements: Uses HTML5 tags (`<article>`, `<section>`, `<nav>`, `<header>`)
-* Dynamic Titles: Router updates document titles to match the active page
-* Accessibility: ARIA roles and landmarks defined across interactive elements
-* Heading Hierarchy: Strict heading tree formatting (single `<h1>` per view)
-
-User Actions:
-* Click navigation: Document title updates in browser tab
-
-System Actions:
-* Router reads title property in matched route definitions, setting `document.title = route.title` on page mount
-
-UI Components:
-* Navigation anchors: Configured with ARIA role tags
-* Page sections: Semantic region wrappers
-
-Business Rules:
-* Page fragments must use unique IDs for testing and validation.
-
-Image Suggestion:
-An abstract wireframe showing correct page heading layouts (H1 -> H2 -> H3) and the dynamically updating browser tab title.
-
-Speaker Notes:
-"To keep the platform search-engine friendly, we use semantic HTML5 elements and a strict heading hierarchy. The client router also updates the browser tab title dynamically whenever the page changes."
-
-================================================================================
-SLIDE 29
-Fluid Breakpoints & Layout Adapters
-
-Purpose:
-Document the mobile-responsive strategy.
-
-Description:
-Detailed breakdown of `responsive.css` showing how layouts adjust to viewport sizes.
-
-Features:
-* Breakpoints: Mobile (max-width: 768px), Tablet (max-width: 1024px), Desktop (1025px+)
-* Navigation: Desktop horizontal menu collapses to mobile sliding overlay panel
-* Grids: 4-column desktop showcase grids transition to 2-column or 1-column layouts on mobile
-* Typography: Fluid font sizing using clamp variables
-
-User Actions:
-* Resize browser window: Layout elements adjust fluidly
-* Tap mobile menu: Toggles overlay sliding panel
-
-System Actions:
-* CSS media queries recalculate positioning values, flex directions, widths, and visibility properties
-
-UI Components:
-* Hamburger Button: SVG button switching icon states
-* Mobile Navigation Drawer: Glassmorphic side panel
-* Responsive grids: Flexbox and Grid layouts
-
-Business Rules:
-* Large visual assets must scale down or hide on mobile viewports to speed up page loads.
-
-Image Suggestion:
-Side-by-side screenshots comparing the Desktop view (grid layout) with the Mobile view (stacked layout) of the Store catalog.
-
-Speaker Notes:
-"Our responsive styling uses fluid media queries. Layouts change smoothly from a desktop grid to a single-column stack on mobile, and the navbar shifts to a mobile drawer menu for easy navigation."
-
-================================================================================
-SLIDE 30
-Performance Optimization & Staggered Renders
-
-Purpose:
-Explain platform speed and animation tuning strategies.
-
-Description:
-Technical audit of page rendering, asset management, lazy loading, and animation controls.
-
-Features:
-* Baked Home view: Eliminates first fetch cycle for instant landing page paints
-* GSAP Stagger: Staggered animation triggers to prevent rendering bottlenecks
-* Image Lazy Loading: Native `loading="lazy"` tags on grid product cards
-* CSS Transitions: Hardware-accelerated transform transforms instead of margin shifts
-
-User Actions:
-* Initial visit: Instant page display without loading screen
-* Scroll down: Images load as they approach viewport bounds
-
-System Actions:
-* Browser executes hardware-accelerated animations and delays off-screen image decoding
-
-UI Components:
-* Image placeholders: Muted containers displayed while files load
-
-Business Rules:
-* Complex animations must be disabled if users have system settings indicating preferred reduced motion.
-
-Image Suggestion:
-A rendering performance graph comparing standard React page load times with the baked-HTML first-paint performance of the PLUS33 platform.
-
-Speaker Notes:
-"Performance is key to a premium user experience. We bake the homepage HTML directly into the main shell for instant loading, use native lazy-loading for images, and rely on GSAP for smooth animations."
-
-================================================================================
-SLIDE 31
-CMS & Backend Seeder Administration
-
-Purpose:
-Document backend data management.
-
-Description:
-System review of the back-office seeding and data management mechanisms that run in place of a full CMS.
-
-Features:
-* Automated Seeding: Spring boot seeder acts as database source manager
-* Programmatic data structures: Clean Java arrays and models
-* Database isolation: H2 database isolates data states
-* Local data sync: Static frontend arrays reflect seeded data schemas
-
-User Actions:
-* N/A (System Management)
-
-System Actions:
-* Server boots -> checks repositories -> runs object initializations -> registers records -> saves to database
-
-UI Components:
-* Console output logging seeder state transitions
-
-Business Rules:
-* Seeding runs on server boot, but ignores operations if database holds records.
-
-Image Suggestion:
-A structural diagram: Database seeder Java file -> writes data to H2 -> REST API Controller reads H2 -> Serves JSON -> JS reads JSON.
-
-Speaker Notes:
-"While the app doesn't have a visual admin panel, data management is handled by a programmatic seeder in Spring Boot. It populates H2 on startup, ensuring the catalog and articles are populated and ready."
-
-================================================================================
-SLIDE 32
-End-to-End Customer Journey Map
-
-Purpose:
-Walk through the user journey.
-
-Description:
-Mapping the customer experience from initial arrival to product browsing, brewing calculations, rewards checking, and franchise submissions.
-
-Features:
-* Landing Stage: First paint page arrival, brand introduction
-* Exploration Stage: Catalog browsing, category sorting, detail inspections
-* Interaction Stage: Calculator utilization, article reading
-* Conversion Stage: Franchise submission, loyalty registration
-
-User Actions:
-* Home page entry -> Store page navigation -> Detail checks -> Brew guide calculation -> Franchise apply
-
-System Actions:
-* Seamless route transitions, REST API queries, validation checks, and database saves
-
-UI Components:
-* Navigation links, call-to-actions, form wizard steps, and dynamic tables
-
-Business Rules:
-* User navigation records must register correct browser histories to allow backward navigation.
-
-Image Suggestion:
-A user journey map showing a customer moving from Home -> Store -> Product Page -> Brewing Calculator -> Franchise Form -> Success.
-
-Speaker Notes:
-"The customer journey starts on our home page. Users can explore products, read sourcing stories, use the brewing guide, check loyalty tiers, or apply for a franchise, all with smooth page transitions."
-
-================================================================================
-SLIDE 33
-Core Feature Capability Matrix
-
-Purpose:
-Summarize platform feature capabilities.
-
-Description:
-A matrix table listing all key pages, their core features, dynamic components, API connections, and offline support.
-
-Features:
-* Page lists: Home, About, Store, Product Details, Journal, Find Us, Franchise, Rewards, Chatbot
-* Dynamic components: Carousel, Card Stack, Tasting Calculator, Lead Wizard, Map Locator, Tier Progress bar
-* REST endpoints mapping
-* Offline capability check: Verifies if static fallback works for each page
-
-User Actions:
-* N/A (Summary Slide)
-
-System Actions:
-* N/A (Summary Slide)
-
-UI Components:
-* Feature matrix table
-
-Business Rules:
-* All interactive features must degrade gracefully to static structures if resources fail to load.
-
-Image Suggestion:
-A grid table comparing Page, Primary Feature, Interactive Element, API Endpoint, and Offline Support status.
-
-Speaker Notes:
-"This slide summarizes the platform's features. It lists our interactive elements, the APIs they connect to, and how they handle offline fallback scenarios gracefully."
-
-================================================================================
-SLIDE 34
-System Flow & Lifecycle Sequence
-
-Purpose:
-Chart systemic interaction lifecycles.
-
-Description:
-A technical sequence diagram tracing execution flow from page navigation request to DOM render.
-
-Features:
-* Lifecycle Steps: Intercept link -> Transition out -> Swap viewport content -> Load CSS -> Trigger module initialization -> Fetch API data -> Bind events -> Transition in
-* Asynchronous calls tracking
-* Cleanup routine execution to clear memory
-
-User Actions:
-* N/A (Technical Slide)
-
-System Actions:
-* Router matches route definitions, executes transitions, swaps HTML, loads stylesheets, runs module `init()`, and fires cleanup `destroy()` on exit
-
-UI Components:
-* Viewport Container: Swapped container markup
-
-Business Rules:
-* Cleanups must destroy GSAP scroll triggers and disconnect event listeners to prevent memory leaks.
-
-Image Suggestion:
-A sequence diagram tracking lifecycle calls between the User, Router, Viewport DOM, Page Script, and REST API.
-
-Speaker Notes:
-"Here we see the lifecycle of a page transition. The router intercepts the click, fades the page out, swaps the HTML content, loads the new CSS, runs the page's init script, fetches data from the API, and fades the new page in."
-
-================================================================================
-SLIDE 35
-Road Ahead: E-Commerce & Personalization
-
-Purpose:
-Outline future feature enhancements.
-
-Description:
-A strategic roadmap detailing upcoming features like a shopping cart, checkout integration, user authentication, and personalized recommendations.
-
-Features:
-* Cart & Checkout: Storing selections and checking out
-* User Profiles: Customer dashboard, order history, and saved brewing recipes
-* AI Personalization: Tailored coffee suggestions based on taste preference quizzes
-* Loyalty Integrations: Redeeming reward points directly for retail products
-
-User Actions:
-* Add to cart -> Checkout -> View order history -> Save recipe
-
-System Actions:
-* Backend processing of payments, inventory checks, database writes, and account management
-
-UI Components:
-* Shopping cart icon, checkout form wizard, and user dashboard layouts
-
-Business Rules:
-* Checkout transactions must use secure payment gateways (e.g., Stripe) and validate user permissions.
-
-Image Suggestion:
-A timeline roadmap showing future phases: Phase 1 (Core SPA Catalog), Phase 2 (Cart & Checkout), Phase 3 (User Accounts), Phase 4 (AI Recommendations).
-
-Speaker Notes:
-"Looking ahead, our roadmap includes adding a shopping cart and checkout, user accounts, saved brewing recipes, and a loyalty points redemption system to transform this catalog into a full e-commerce platform."
-
-================================================================================
-SLIDE 36
-Technical Stack Summary
-
-Purpose:
-Consolidate platform technical specifications.
-
-Description:
-A checklist of the programming languages, framework versions, libraries, and tools used in the project.
-
-Features:
-* Backend: Java 21, Spring Boot 3.5, Spring Security, Hibernate ORM, Maven
-* Frontend: HTML5, CSS3 (Vanilla), ES6 JavaScript, GSAP, ScrollTrigger
-* Database: H2 (In-memory)
-* Web Server: Embedded Tomcat
-* Design Assets: Google Fonts (Cormorant Garamond, Manrope)
-
-User Actions:
-* N/A (Technical Reference)
-
-System Actions:
-* N/A (Technical Reference)
-
-UI Components:
-* Tech logos and structured specification lists
-
-Business Rules:
-* System configurations must align with standards to ensure clean builds.
-
-Image Suggestion:
-A grid of tech stack icons (Java, Spring Boot, JS, CSS3, H2, HTML5) arranged neatly.
-
-Speaker Notes:
-"To recap the tech stack, we use Java 21 and Spring Boot 3.5 on the backend, with Hibernate and H2 database. On the frontend, we keep it light and fast with vanilla HTML, CSS, and JS, using GSAP for premium animations."
-
-================================================================================
-SLIDE 37
-Table of Contents & Slide Index
-
-Purpose:
-Provide a quick directory of the presentation slides.
-
-Description:
-A structured index page categorizing slides by section (Overview, Pages, Technical, Summary) for quick navigation.
-
-Features:
-* Organized Index: Divided into logical categories
-* Total Slide Count: 38 slides
-* Interactive Map: Highlights sections
-
-User Actions:
-* N/A (Index Slide)
-
-System Actions:
-* N/A (Index Slide)
-
-UI Components:
-* Index Table: Structured index layout
-
-Business Rules:
-* N/A (Index Slide)
-
-Image Suggestion:
-A clean directory layout with numbers and bullet points, highlighting the four main presentation sections.
-
-Speaker Notes:
-"This slide provides a table of contents and index for the presentation, making it easy to jump straight to page-specific details or backend configurations."
-
-================================================================================
-SLIDE 38
-Thank You & Contact Information
-
-Purpose:
-Conclude the presentation.
-
-Description:
-Closing slide thanking the audience, listing project coordinators, and providing contact details for further inquiries.
-
-Features:
-* Closing Remarks: Thank you statement
-* Sourcing lead: Sivasurya
-* Development lead: Mirro Team
-* Contact: email and phone references
-* Link: Project repository URL
-
-User Actions:
-* Click links: Navigates to contact forms / repository
-
-System Actions:
-* N/A (Closing Slide)
-
-UI Components:
-* Framed closing text: Cormorant Garamond typography
-* Brand logo: Gold-pressed variant
-
-Business Rules:
-* N/A (Closing Slide)
-
-Image Suggestion:
-A minimalist dark slide with gold text saying 'Thank You' in elegant script, with the contact details listed below it.
-
-Speaker Notes:
-"Thank you all for your time. I'd be happy to answer any questions you have about the architecture, functional details, or upcoming features on the roadmap."
-
-================================================================================
-TOTAL SLIDE COUNT: 38
-
-================================================================================
-SLIDE INDEX
-Section 1: Overview & Setup
-* Slide 1: Title & Overview
-* Slide 2: Project Overview: Subsystem Ecosystem
-* Slide 3: Technical Architecture: SPA + Spring Boot
-* Slide 4: Workspace Structure: The Directory Map
-
-Section 2: SPA Shell & Page Controllers
-* Slide 5: SPA Client-Side Routing System
-* Slide 6: Dynamic Master Frame: index.html & SEO
-* Slide 7: Global Shared Layout: Navbar & Footer
-* Slide 8: Home Page: Brand Sanctuary
-* Slide 9: Home Page: Immersive Strip Carousel
-* Slide 10: Home Page: Craft Journey Scroll Stack
-* Slide 11: About Page: The Parisian Atelier Chronicle
-* Slide 12: Store Page: Luxury Editorial Catalog
-* Slide 13: Product Details: Interactive Tasting Views
-* Slide 14: Atelier Brewing Guide Calculator
-* Slide 15: Editorial Journal: Sourcing Stories Portal
-* Slide 16: Magazine Reader: Immersive Overlay Portal
-* Slide 17: Rewards System: Loyalty Point Visualizer
-* Slide 18: Find Us Page: Geolocation Store Selector
-* Slide 19: Franchise Application: Partnership Portal
-* Slide 20: Franchise Form: Lead Funnel & Wizard
-* Slide 21: AI Chatbot: Interactive Assistant Panel
-* Slide 22: AI Chatbot: Business Logic & Contexts
-
-Section 3: Technical Architecture deep-dives
-* Slide 23: UI Component System: Tokens & HSL Colors
-* Slide 24: REST APIs: Endpoint Mapping & Serialization
-* Slide 25: H2 Database Model & Autoseeding Engine
-* Slide 26: Platform Security & Access Filters
-* Slide 27: Form Handling: Frontend & Backend Validation
-* Slide 28: SEO Implementation & Markup Hierarchy
-* Slide 29: Fluid Breakpoints & Layout Adapters
-* Slide 30: Performance Tuning & Staggers
-* Slide 31: CMS & Backend Seeder Administration
-
-Section 4: Summary & Roadmap
-* Slide 32: End-to-End Customer Journey Map
-* Slide 33: Core Feature Capability Matrix
-* Slide 34: System Flow & Lifecycle Sequence
-* Slide 35: Road Ahead: E-Commerce & Personalization
-* Slide 36: Technical Stack Summary
-* Slide 37: Table of Contents & Slide Index
-* Slide 38: Thank You & Contact Information
-
-================================================================================
-TABLE OF CONTENTS
-1. Overview & Setup (Slides 1 - 4)
-   - Scope, system partitioning (local/global), tech stack, and workspace tree layouts.
-2. Front-End SPA views & Controllers (Slides 5 - 22)
-   - Router engine, master frame shell, layout managers, home modules, store catalog, product detail tools, journal portal, rewards progression systems, locator, franchise candidate wizard, and the AI chatbot helper.
-3. System Integration Details (Slides 23 - 31)
-   - CSS variables, Spring REST controllers, H2 seeder architectures, security authorization filters, validation blocks, viewport configurations, load optimization strategies, and system admin logic.
-4. Summary & Future Scope (Slides 32 - 38)
-   - End-to-end journey maps, features checklists, sequence flows, e-commerce milestones, tech summary grids, index directories, and closing remarks.
+1. PROJECT OVERVIEW & BRAND CONCEPT
+--------------------------------------------------------------------------------
+* Brand Identity: "+33 Paris" is an ultra-premium, Paris-inspired café franchise. 
+  The digital ecosystem is styled with a "Cinematic Minimalism" theme, mimicking 
+  high-end French luxury brands (e.g., fashion houses, high jewelry).
+* Strategy: High-fidelity visual presentation powered by GSAP animations, 
+  parallax scrolling, and clean typographic grids, built on a lightweight, 
+  stateless Java Spring Boot API backend.
+* Target Environment: Java 17 LTS (Java version 17), Spring Boot 3.3.5.
+
+2. THEME & DESIGN SYSTEM (CSS VARIABLES)
+--------------------------------------------------------------------------------
+Defined globally within `global.css` and used throughout the application:
+
+A. Brand Colors (Canonical Palette)
+   * --navy:            #07142B (Primary luxury dark blue)
+   * --navy-deep:       #04101F (Deep background dark blue)
+   * --navy-mid:        #091A35 (Mid-tone dark blue)
+   * --copper:          #B87333 (Primary accent copper)
+   * --copper-light:    #C8A46B (Lighter copper/gold)
+   * --copper-pale:     rgba(184, 115, 51, 0.08)
+   * --copper-glow:     rgba(184, 115, 51, 0.18)
+   * --copper-shimmer:  rgba(200, 164, 107, 0.30)
+   * --ivory:           #F5F1EA (Luxurious off-white background)
+   * --ivory-warm:      #EDE8DF (Warm ivory background contrast)
+   * --ivory-deep:      #E8E2D9 (Deeper warm ivory)
+   * --cream:           #F3ECE3 (Warm cream tone)
+   * --marble:          #F0EBE3 (Cold marble tone)
+   * --gold:            #C8A46B (Premium brand gold)
+   * --gold-pale:       rgba(200, 164, 107, 0.10)
+   * --burgundy:        #4A0E12 (Rich accent red)
+   * --burgundy-deep:   #3A0A0D (Deep accent red background)
+   * --obsidian:        #050505 (Pure absolute dark background)
+
+B. Semantic Colors
+   * --bg-main:         #F8F6F2 (Main site background)
+   * --bg-sec:          #F3EFE8 (Secondary container background)
+   * --text-main:       #07142B (Primary text color)
+   * --text-sec:        rgba(7, 20, 43, 0.55) (Secondary/muted text)
+
+C. Glassmorphism Tokens
+   * --glass-dark:       rgba(10, 10, 10, 0.50)
+   * --glass-dark-heavy: rgba(5, 5, 5, 0.80)
+   * --glass-navy:       rgba(7, 20, 43, 0.75)
+   * --glass-ivory:      rgba(245, 241, 234, 0.82)
+   * --glass-blur:       blur(24px)
+   * --glass-blur-heavy: blur(44px)
+
+D. Typography (Editorial Font Stack)
+   * --font-display: 'Cormorant Garamond', 'Bodoni Moda', Georgia, serif; (Main Headings)
+   * --font-serif:   'Playfair Display', Georgia, serif; (Sub-headings / Editorial quotes)
+   * --font-sans:    'Inter', system-ui, sans-serif; (Body text and standard paragraphs)
+   * --font-ui:      'Manrope', 'Inter', sans-serif; (Micro-copy, buttons, metadata, labels)
+
+E. Spacing Scale (Luxury Scale)
+   * --s1: 8px, --s2: 16px, --s3: 28px, --s4: 48px, --s5: 80px, --s6: 120px, --s7: 180px, --s8: 240px
+
+F. Radii & Transitions
+   * Border Radii: --r-sm: 2px, --r-md: 6px, --r-lg: 14px, --r-xl: 24px, --r-full: 9999px
+   * Cinematic Easing: --ease-luxury: cubic-bezier(0.4, 0, 0.2, 1)
+
+3. INTERACTIVE FUNCTIONALITY & UX FEATURES
+--------------------------------------------------------------------------------
+A. SPA Routing Engine (`router.js`):
+   * Provides dynamic client-side page navigation without reloading.
+   * Intercepts `<a>` link clicks and dynamically mounts HTML fragments inside 
+     the `<div id="app"></div>` container.
+   * Handles history pushState changes and page-specific JavaScript re-initialization.
+
+B. Navigation Bar & Smart Scroll:
+   * Solid Background Transition: Transparent at viewport top, fades to a solid background 
+     (`plus33-nav--solid`) after scrolling past 80px.
+   * Hide-on-Scroll: Automatically slides up/hides on scroll down to maximize screen space 
+     (`plus33-nav--hidden`) and reveals itself when scrolling up (active past 200px).
+   * Mobile Drawer: A sliding sidebar navigation menu (`.plus33-nav__panel`) triggered by 
+     a custom hamburger button. Locks body scroll and compensates padding for scrollbars.
+
+C. Reusable Fragment Injection:
+   * To prevent layout shifts (CLS) and dynamic load delays, structural fragments like 
+     the Navbar, Sidebar Menu, and Footer are hardcoded inline inside `index.html` as well 
+     as preserved in fragment files under `/global/html/fragments/` for static copy sync.
+
+D. Legal Popups (Privacy Policy / Terms of Service):
+   * Users clicking "Privacy Policy" or "Terms of Service" in the footer will trigger 
+     a luxury popup modal overlay instead of navigating away.
+   * Accessibility/UX Highlights:
+     - Overlay utilizes `backdrop-filter: blur(8px)` with dark background.
+     - Smooth scale-up and opacity fade transitions on open.
+     - Interactive close methods: Close Button (`&times;`), click on dark overlay, 
+       or pressing the `Escape` key.
+     - Locks body scrolling during viewing and calculates local browser scrollbar width 
+       to prevent the page from shifting layout inline.
+
+4. DATABASE DESIGN & SCHEMA
+--------------------------------------------------------------------------------
+Using a normalized relational database (H2 in development, MySQL in production):
+
+A. Core Tables
+   * `categories`:
+     - Schema: `id` (BigInt PK), `name` (Varchar, Unique), `slug` (Varchar), `image_url` (Varchar), 
+       `description` (Varchar), `display_order` (Int), `is_active` (Boolean).
+   * `products`:
+     - Schema: `id` (BigInt PK), `name` (Varchar), `price` (Numeric), `compare_price` (Numeric), 
+       `sku` (Varchar), `slug` (Varchar), `stock_quantity` (Int), `is_active` (Boolean),
+       `is_bestseller` (Boolean), `is_new_arrival` (Boolean), `is_featured` (Boolean),
+       `rating_average` (Double), `rating_count` (Int), `category_id` (BigInt FK),
+       `ai_embedding_vector` (Text), `ai_tags` (Text).
+     - Relationship: Many-to-One linked to `categories`.
+   * `product_images` / `product_tags`:
+     - Relational tables mapping multi-value properties (e.g. tags, image sliders) 
+       linked via `product_id` FK.
+   * `media_uploads`:
+     - Schema: `id` (BigInt PK), `cloudinary_public_id` (Varchar), `public_url` (Varchar), 
+       `mime_type` (Varchar), `media_type` (Enum: IMAGE/VIDEO), `original_filename` (Varchar).
+     - Handles file details successfully synced to Cloudinary.
+   * `animations`:
+     - Schema: `id` (BigInt PK), `name` (Varchar, Not Null), `is_active` (Boolean),
+       `animation_type` (Enum: GLASS_TRANSITION, HOVER_ZOOM, LUXURY_LOADER, MAGNETIC_BUTTON, PAGE_REVEAL, PARALLAX, SMOOTH_SCROLL),
+       `config_json` (Text), `created_at` (Timestamp), `css_class` (Varchar), `delay_ms` (Int),
+       `description` (Varchar), `display_order` (Int), `duration_ms` (Int), `easing` (Varchar),
+       `element_selector` (Varchar), `js_trigger` (Varchar), `page_target` (Varchar), `updated_at` (Timestamp).
+   * `user_activity`:
+     - Schema: `id` (BigInt PK), `user_id` (BigInt, Not Null), 
+       `activity_type` (Enum: ADD_TO_CART, FAVORITE, PURCHASE, REVIEW, SEARCH, SHARE, VIEW),
+       `category_id` (BigInt), `product_id` (BigInt), `session_id` (Varchar), `device_type` (Varchar),
+       `duration_seconds` (Int), `time_of_day` (Varchar), `created_at` (Timestamp).
+
+5. BACKEND API ENDPOINTS
+--------------------------------------------------------------------------------
+All API payloads wrap results in a generic, standardized payload wrapper (`ApiResponse<T>`) 
+containing `success` (boolean), `message` (string), and `data` (T).
+
+A. Products API (Base: `/api/products`):
+   * `POST /api/products` (Create/Save product)
+   * `GET /api/products` (Fetches lists with support for pagination, sorting, search keyword `q`, and category filtering)
+   * `GET /api/products/{id}` (Fetches single product details)
+   * `PUT /api/products/{id}` (Update product)
+   * `DELETE /api/products/{id}` (Delete product)
+   * `GET /api/products/featured` (Fetches featured products list)
+   * `GET /api/products/new-arrivals` (Fetches new arrival products list)
+   * `GET /api/products/bestsellers` (Fetches bestseller products list)
+   * `GET /api/products/top-rated` (Fetches top rated products list)
+
+B. Categories API (Base: `/api/categories`):
+   * `POST /api/categories` (Create category)
+   * `GET /api/categories` (Fetches all categories)
+   * `GET /api/categories/{id}` (Fetches single category details)
+   * `PUT /api/categories/{id}` (Update category)
+   * `DELETE /api/categories/{id}` (Delete category)
+
+C. Media Upload API (Base: `/api/uploads`):
+   * `POST /api/uploads/image` (Accepts file upload, pushes to Cloudinary, saves DB entity)
+   * `POST /api/uploads/video` (Accepts file upload, pushes to Cloudinary, saves DB entity)
+   * `GET /api/uploads` (Fetches media list with optional `type` query parameter filter)
+   * `DELETE /api/uploads/{id}` (Deletes media from database and Cloudinary)
+
+D. AI Recommendation API (Base: `/api/ai`):
+   * `GET /api/ai/recommendations/{userId}` (Fetches list of recommended items based on user activity)
+   * `POST /api/ai/recommendation/train` (Triggers recommendation model retraining)
+   * `GET /api/ai/trending` (Fetches trending items list)
+   * `GET /api/ai/personalized` (Fetches personalized list for user with `userId` query parameter)
+   * `POST /api/ai/recent-activity` (Records user activity to target for future recommendation inputs)
+
+E. Animations API (Base: `/api/animations`):
+   * `GET /api/animations` (Fetches animation configs, optional `page` filter)
+   * `GET /api/animations/homepage` (Fetches animations active on the homepage)
+   * `POST /api/animations` (Creates an animation config)
+   * `PUT /api/animations/{id}` (Updates an animation config)
+   * `DELETE /api/animations/{id}` (Deletes an animation config)
+
+F. Frontend Nav Controller forwards all non-API paths (`/`, `/store`, `/experience`, `/journal`, `/franchise`, etc.)
+   to `forward:/index.html` to be handled locally by the client-side router.
+
+6. PROJECT FOLDER STRUCTURE
+--------------------------------------------------------------------------------
+plus33-api/
+├── .mvn/                                # Maven Wrapper binary and configuration
+├── .vscode/                             # Visual Studio Code workspace settings
+├── deployment/                          # Deployment-related scripts and configs
+├── docs/                                # Project documentation
+├── logs/                                # Application runtime logs
+├── src/                                 # Main source code directory
+│   ├── main/
+│   │   ├── java/                        # Backend Java source files
+│   │   │   └── fr/plus33/api/
+│   │   │       ├── config/              # Security and Web MVC configurations
+│   │   │       ├── controller/          # REST API endpoints (Controller layer)
+│   │   │       ├── dto/                 # Data Transfer Objects (DTO patterns)
+│   │   │       ├── model/               # Relational Database Entities (JPA models)
+│   │   │       ├── repository/          # Database queries & JPA repositories
+│   │   │       └── service/             # Service layer containing business logic
+│   │   └── resources/                   # Static assets, templates, properties
+│   │       ├── application.properties   # Application environment properties
+│   │       └── static/                  # Single Page Application (SPA) Web root
+│   │           ├── index.html           # Main SPA entry page
+│   │           ├── assets/img/          # Location images & layout graphics
+│   │           ├── css/                 # Global, home, and store stylings
+│   │           ├── global/              # Shared assets, styles, subpages, and logic
+│   │           │   ├── css/             # Responsive, chatbot, & layout styles
+│   │           │   ├── html/            # Subpage overlays & fragments
+│   │           │   └── js/              # Chatbot and layout helpers
+│   │           └── js/                  # App initialization, routing & boutique logic
+│   └── test/                            # Verification tests
+├── compose.yaml                         # Local Docker configuration
+├── Comprehensive_Documentation.md       # High-level architecture documentation
+├── Project_Details.txt                  # General project requirements
+├── Project_Structure_Map.txt            # System structure and description
+├── Website_Details_Theme_Functionality.txt # This specification details file
+└── pom.xml                              # Maven build configuration
+
+7. SYSTEM PROPERTIES & ENVIRONMENT CONFIG
+--------------------------------------------------------------------------------
+Defined inside `src/main/resources/application.properties`:
+
+* Server Port: 
+  `server.port=8083`
+* In-Memory DB (H2 Dev Mode):
+  `spring.datasource.url=jdbc:h2:mem:plus33db;DB_CLOSE_DELAY=-1`
+  `spring.datasource.driverClassName=org.h2.Driver`
+  `spring.datasource.username=sa`
+  `spring.datasource.password=`
+* Production Database (MySQL Mode):
+  Target URL: `jdbc:mysql://localhost:3306/plus33`
+* Hibernate ORM Options:
+  `spring.jpa.hibernate.ddl-auto=update`
+  `spring.jpa.show-sql=true`
+  `spring.jpa.properties.hibernate.format_sql=true`
+* H2 Console:
+  `spring.h2.console.enabled=true`
+  `spring.h2.console.path=/h2-console`
+  `spring.h2.console.settings.web-allow-others=true`
+* File Upload constraints (Multipart):
+  `spring.servlet.multipart.enabled=true`
+  `spring.servlet.multipart.max-file-size=50MB` (Max individual media file)
+  `spring.servlet.multipart.max-request-size=100MB` (Max request size limit)
+* Local fallback upload directory:
+  `plus33.upload.dir=uploads`
+* Cloudinary Cloud Integration:
+  `plus33.cloudinary.cloud-name=your_cloud_name`
+  `plus33.cloudinary.api-key=your_api_key`
+  `plus33.cloudinary.api-secret=your_api_secret`
+* Actuator Health & Info Endpoints:
+  `management.endpoints.web.exposure.include=health,info`
+  `management.endpoint.health.show-details=always`
+* CORS allowed origins:
+  `plus33.cors.allowed-origins=http://localhost:8090,http://localhost:5173,https://plus33.in`
+
+8. BACKEND LOGIC & DATA ACCESS LAYERS
+--------------------------------------------------------------------------------
+A. Service Layer (`/service`):
+   * ProductService: Manages dynamic lists (featured, bestsellers, new-arrivals, 
+     top-rated), CRUD methods, and pageable queries / keywords searches.
+   * CategoryService: Handles category CRUD and DTO mappings.
+   * MediaService: Coordinates upload/delete connections with Cloudinary SDK and database.
+   * AnimationService: Fetches active visual animation layouts and order configurations.
+   * AiRecommendationService: Tracks user activity events and maps recommended/personalized data lists.
+
+B. Repository Layer (`/repository`):
+   * ProductRepository: Extends JpaRepository. Handles filtering and searching.
+   * CategoryRepository: Extends JpaRepository.
+   * MediaUploadRepository: Extends JpaRepository.
+   * AnimationRepository: Extends JpaRepository.
+   * UserActivityRepository: Extends JpaRepository.
+
+9. SECURITY & MVC CONFIGURATIONS
+--------------------------------------------------------------------------------
+A. Security Config (`SecurityConfig.java`):
+   * Implements a Stateless Session strategy.
+   * Disables CSRF protection (since requests are API-driven and stateless).
+   * Permits all requests (public access to APIs `/api/**`, H2 console, actuator, 
+     and static folders).
+   * Configures global CORS parameters allowing credentials, cross-origin methods, 
+     and ages.
+
+B. Web MVC Config (`WebMvcConfig.java`):
+   * Registers `classpath:/static/` to serve index.html and assets dynamically.
+   * Forwards client routing segments (such as `/store`, `/experience`, `/journal`, 
+     `/franchise`, `/find-us`, and single-segment catch-all `/{path}`) to `/index.html` 
+     enabling client-side router orchestration without triggering server-side 404 errors.
 ================================================================================

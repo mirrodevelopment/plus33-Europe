@@ -1238,23 +1238,6 @@
         }
       ].filter(item => item.product != null);
 
-      // visual price mapping in rupees to match the design almost exactly
-      const rupeePriceMap = {
-        'Cappuccino': 199,
-        'Iced Punch Coco': 229,
-        'Croissant': 129,
-        'Sachet de Café': 249,
-        'Almond Croissant': 149,
-        'Pain au Chocolat': 149
-      };
-
-      const getRupeePriceText = (name, euroPrice) => {
-        if (rupeePriceMap[name]) {
-          return `₹${rupeePriceMap[name]}`;
-        }
-        return `₹${Math.round(euroPrice * 30)}`;
-      };
-
       section.innerHTML = `
         <div class="best-sellers-showcase-outer best-sellers-showcase-reveal">
           
@@ -1288,7 +1271,7 @@
                   class="best-sellers-showcase-card best-sellers-showcase-reveal"
                   role="listitem"
                   tabindex="0"
-                  aria-label="${p.name}, ${getRupeePriceText(p.name, p.price)}"
+                  aria-label="${p.name}, €${p.price.toFixed(2)}"
                   data-product-id="${p.id}"
                   style="transition-delay: ${idx * 0.1}s;"
                 >
@@ -1310,7 +1293,7 @@
                   <div class="best-sellers-showcase-card__content">
                     <div class="best-sellers-showcase-card__info">
                       <h3 class="best-sellers-showcase-card__title">${p.name}</h3>
-                      <span class="best-sellers-showcase-card__price">${getRupeePriceText(p.name, p.price)}</span>
+                      <span class="best-sellers-showcase-card__price">€${p.price.toFixed(2)}</span>
                     </div>
                     <button
                       class="best-sellers-showcase-card__add"
@@ -1498,7 +1481,7 @@
       {
         id: 3,
         title: "Paris Vanilla Latte",
-        price: "₹229",
+        price: "€6.80",
         image: "/local/assets/products/signature/paris-vanilla-latte.jpg",
         webpImage: "/local/assets/products/signature/paris-vanilla-latte.jpg",
         description: "Smooth vanilla. Bold espresso. A timeless classic.",
@@ -1507,7 +1490,7 @@
       {
         id: 2,
         title: "Louvre Mocha",
-        price: "₹249",
+        price: "€6.50",
         image: "/local/assets/products/signature/louvre-mocha.jpg",
         webpImage: "/local/assets/products/signature/louvre-mocha.jpg",
         description: "Rich chocolate. Bold espresso. Pure indulgence.",
@@ -1516,7 +1499,7 @@
       {
         id: 10,
         title: "Champs Élysées Cold Brew",
-        price: "₹229",
+        price: "€8.00",
         image: "/local/assets/products/signature/champs-elysees-cold-brew.jpg",
         webpImage: "/local/assets/products/signature/champs-elysees-cold-brew.jpg",
         description: "Smooth. Refreshing. 24-hour cold brewed perfection.",
@@ -1525,7 +1508,7 @@
       {
         id: 5,
         title: "Montmartre Caramel Latte",
-        price: "₹239",
+        price: "€7.50",
         image: "/local/assets/products/signature/montmartre-caramel-latte.png",
         webpImage: "/local/assets/products/signature/montmartre-caramel-latte.png",
         description: "Sea salt caramel. Silky smooth. Perfectly balanced.",
@@ -1534,7 +1517,7 @@
       {
         id: 7,
         title: "Rose Pistachio Latte",
-        price: "₹249",
+        price: "€7.50",
         image: "/local/assets/products/signature/rose-pistachio-latte.jpg",
         webpImage: "/local/assets/products/signature/rose-pistachio-latte.jpg",
         description: "Delicate rose. Nutty pistachio. Elegance in every sip.",
@@ -1543,7 +1526,7 @@
       {
         id: 4,
         title: "Biscoff Cream Latte",
-        price: "₹239",
+        price: "€7.00",
         image: "/local/assets/products/signature/biscoff-cream-latte.webp",
         webpImage: "/local/assets/products/signature/biscoff-cream-latte.webp",
         description: "Biscoff crunch. Creamy delight. Irresistibly good.",
@@ -1551,145 +1534,170 @@
       }
     ];
 
-    section.innerHTML = `
-      <div class="signature-collection-grain"></div>
-      <div class="signature-collection-container">
-        
-        <!-- Intro Wrapper -->
-        <div class="signature-collection-intro">
-          <div class="signature-collection-intro__left">
-            <span class="signature-collection-eyebrow">SIGNATURE COLLECTION</span>
-            <h2 class="signature-collection-headline">Uniquely ours.<br>Unforgettable for <span class="signature-collection-highlight">you.</span></h2>
-            
-            <!-- Luxury divider ornament (visible on mobile, hidden on desktop) -->
-            <div class="signature-collection-divider-ornament">
-              <div class="sig-line"></div>
-              <svg class="sig-ornament" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
-                <path d="M12 2c-.3 2.5-1.5 4.5-4.5 5.5 3 1 4.2 3 4.5 5.5.3-2.5 1.5-4.5 4.5-5.5-3-1-4.2-3-4.5-5.5z"/>
-              </svg>
-              <div class="sig-line"></div>
-            </div>
-
-            <p class="signature-collection-desc">Thoughtfully crafted signature drinks,<br>inspired by Paris and made for every moment.</p>
-          </div>
-          <div class="signature-collection-intro__right">
-            <a href="/store" class="signature-collection-cta-btn">
-              <span>View full collection</span>
-              <span class="signature-collection-cta-arrow">→</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Products Grid -->
-        <div class="signature-collection-grid">
-          ${signatureProducts.map((p, idx) => `
-            <a href="/product/${p.id}" class="signature-collection-card home-reveal" style="--reveal-delay: ${idx * 0.1}s;">
-              <div class="signature-collection-img-wrap signature-card-skeleton">
-                <picture class="signature-product-pic" style="opacity: 0; transition: opacity 0.5s ease;">
-                  ${p.webpImage && p.webpImage.endsWith('.webp') ? `<source srcset="${p.webpImage}" type="image/webp">` : ''}
-                  <img src="${p.image}" alt="${p.title}" class="signature-collection-img" loading="lazy" onload="this.closest('.signature-collection-img-wrap').classList.remove('signature-card-skeleton'); this.parentElement.style.opacity='1';">
-                </picture>
-                <div class="signature-collection-badge">
-                  ${p.badge}
-                </div>
-                <div class="signature-collection-overlay-gradient"></div>
+    const _renderSection = () => {
+      section.innerHTML = `
+        <div class="signature-collection-grain"></div>
+        <div class="signature-collection-container">
+          
+          <!-- Intro Wrapper -->
+          <div class="signature-collection-intro">
+            <div class="signature-collection-intro__left">
+              <span class="signature-collection-eyebrow">SIGNATURE COLLECTION</span>
+              <h2 class="signature-collection-headline">Uniquely ours.<br>Unforgettable for <span class="signature-collection-highlight">you.</span></h2>
+              
+              <!-- Luxury divider ornament (visible on mobile, hidden on desktop) -->
+              <div class="signature-collection-divider-ornament">
+                <div class="sig-line"></div>
+                <svg class="sig-ornament" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                  <path d="M12 2c-.3 2.5-1.5 4.5-4.5 5.5 3 1 4.2 3 4.5 5.5.3-2.5 1.5-4.5 4.5-5.5-3-1-4.2-3-4.5-5.5z"/>
+                </svg>
+                <div class="sig-line"></div>
               </div>
-              <div class="signature-collection-info">
-                <h3 class="signature-collection-title">${p.title}</h3>
-                <div class="signature-collection-title-divider"></div>
-                <p class="signature-collection-card-desc">${p.description}</p>
-                <div class="signature-collection-bottom">
-                  <span class="signature-collection-price">${p.price}</span>
-                  <button class="signature-collection-add" aria-label="Add ${p.title} to selection">+</button>
+
+              <p class="signature-collection-desc">Thoughtfully crafted signature drinks,<br>inspired by Paris and made for every moment.</p>
+            </div>
+            <div class="signature-collection-intro__right">
+              <a href="/store" class="signature-collection-cta-btn">
+                <span>View full collection</span>
+                <span class="signature-collection-cta-arrow">→</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Products Grid -->
+          <div class="signature-collection-grid">
+            ${signatureProducts.map((p, idx) => `
+              <a href="/product/${p.id}" class="signature-collection-card home-reveal" style="--reveal-delay: ${idx * 0.1}s;">
+                <div class="signature-collection-img-wrap signature-card-skeleton">
+                  <picture class="signature-product-pic" style="opacity: 0; transition: opacity 0.5s ease;">
+                    ${p.webpImage && p.webpImage.endsWith('.webp') ? `<source srcset="${p.webpImage}" type="image/webp">` : ''}
+                    <img src="${p.image}" alt="${p.title}" class="signature-collection-img" loading="lazy" onload="this.closest('.signature-collection-img-wrap').classList.remove('signature-card-skeleton'); this.parentElement.style.opacity='1';">
+                  </picture>
+                  <div class="signature-collection-badge">
+                    ${p.badge}
+                  </div>
+                  <div class="signature-collection-overlay-gradient"></div>
                 </div>
+                <div class="signature-collection-info">
+                  <h3 class="signature-collection-title">${p.title}</h3>
+                  <div class="signature-collection-title-divider"></div>
+                  <p class="signature-collection-card-desc">${p.description}</p>
+                  <div class="signature-collection-bottom">
+                    <span class="signature-collection-price">${p.price}</span>
+                    <button class="signature-collection-add" aria-label="Add ${p.title} to selection">+</button>
+                  </div>
+                </div>
+              </a>
+            `).join('')}
+          </div>
+
+          <!-- Bottom Features Strip -->
+          <div class="signature-collection-features">
+            <!-- Feature 1 -->
+            <div class="signature-collection-feature-item">
+              <div class="signature-collection-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#b18b56" stroke-width="1.5" width="24" height="24">
+                  <ellipse cx="12" cy="12" rx="5" ry="9" transform="rotate(-30, 12, 12)"/>
+                  <path d="M9.5 16.5c1-1 3-1 4.5.5"/>
+                </svg>
               </div>
-            </a>
-          `).join('')}
+              <h4 class="signature-collection-feature-title">Premium Ingredients</h4>
+              <p class="signature-collection-feature-desc">Sourced from the finest farms</p>
+            </div>
+            <!-- Feature 2 -->
+            <div class="signature-collection-feature-item">
+              <div class="signature-collection-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#b18b56" stroke-width="1.5" width="24" height="24">
+                  <path d="M6 14h11l1-7H7l-1 7zm11-4h3a2 2 0 012 2v1a2 2 0 01-2 2h-3M6 14v4a2 2 0 002 2h8a2 2 0 002-2v-4M9 3v3M12 2v4M15 3v3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h4 class="signature-collection-feature-title">Expertly Crafted</h4>
+              <p class="signature-collection-feature-desc">Every drink made with precision</p>
+            </div>
+            <!-- Feature 3 -->
+            <div class="signature-collection-feature-item">
+              <div class="signature-collection-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#b18b56" stroke-width="1.5" width="24" height="24">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h4 class="signature-collection-feature-title">Made with Passion</h4>
+              <p class="signature-collection-feature-desc">Crafted by baristas who love what they do</p>
+            </div>
+            <!-- Feature 4 -->
+            <div class="signature-collection-feature-item">
+              <div class="signature-collection-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#b18b56" stroke-width="1.5" width="24" height="24">
+                  <path d="M12 3l1.91 4.38L18.5 9.5l-4.59 2.12L12 16l-1.91-4.38L5.5 9.5l4.59-2.12L12 3zm6 13l.96 2.19L21.25 19.25l-2.29 1.06L18 22.5l-.96-2.19-2.29-1.06 2.29-1.06L18 16z" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h4 class="signature-collection-feature-title">Uniquely PLUS33</h4>
+              <p class="signature-collection-feature-desc">Signature recipes you won't find anywhere else</p>
+            </div>
+          </div>
+
         </div>
+      `;
 
-        <!-- Bottom Features Strip -->
-        <div class="signature-collection-features">
-          <!-- Feature 1 -->
-          <div class="signature-collection-feature-item">
-            <div class="signature-collection-feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#b18b56" stroke-width="1.5" width="24" height="24">
-                <ellipse cx="12" cy="12" rx="5" ry="9" transform="rotate(-30, 12, 12)"/>
-                <path d="M9.5 16.5c1-1 3-1 4.5.5"/>
-              </svg>
-            </div>
-            <h4 class="signature-collection-feature-title">Premium Ingredients</h4>
-            <p class="signature-collection-feature-desc">Sourced from the finest farms</p>
-          </div>
-          <!-- Feature 2 -->
-          <div class="signature-collection-feature-item">
-            <div class="signature-collection-feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#b18b56" stroke-width="1.5" width="24" height="24">
-                <path d="M6 14h11l1-7H7l-1 7zm11-4h3a2 2 0 012 2v1a2 2 0 01-2 2h-3M6 14v4a2 2 0 002 2h8a2 2 0 002-2v-4M9 3v3M12 2v4M15 3v3" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <h4 class="signature-collection-feature-title">Expertly Crafted</h4>
-            <p class="signature-collection-feature-desc">Every drink made with precision</p>
-          </div>
-          <!-- Feature 3 -->
-          <div class="signature-collection-feature-item">
-            <div class="signature-collection-feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#b18b56" stroke-width="1.5" width="24" height="24">
-                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <h4 class="signature-collection-feature-title">Made with Passion</h4>
-            <p class="signature-collection-feature-desc">Crafted by baristas who love what they do</p>
-          </div>
-          <!-- Feature 4 -->
-          <div class="signature-collection-feature-item">
-            <div class="signature-collection-feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#b18b56" stroke-width="1.5" width="24" height="24">
-                <path d="M12 3l1.91 4.38L18.5 9.5l-4.59 2.12L12 16l-1.91-4.38L5.5 9.5l4.59-2.12L12 3zm6 13l.96 2.19L21.25 19.25l-2.29 1.06L18 22.5l-.96-2.19-2.29-1.06 2.29-1.06L18 16z" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <h4 class="signature-collection-feature-title">Uniquely PLUS33</h4>
-            <p class="signature-collection-feature-desc">Signature recipes you won't find anywhere else</p>
-          </div>
-        </div>
-
-      </div>
-    `;
-
-    // ── Intersection Observer re-init for newly loaded items ──
-    const newReveals = section.querySelectorAll('.home-reveal');
-    if (_revealObserver) {
-      newReveals.forEach(el => _revealObserver.observe(el));
-    }
-
-    // ── Click Handlers for Add Buttons ──
-    const addButtons = section.querySelectorAll('.signature-collection-add');
-    const onAddClick = (e) => {
-      e.preventDefault();
-      e.stopPropagation(); // Prevent details page navigation
-      if (window.innerWidth <= 768) {
-        if (window.plus33Router) {
-          window.plus33Router.navigate('/store');
-        } else {
-          window.location.href = '/store';
-        }
-        return;
+      // ── Intersection Observer re-init for newly loaded items ──
+      const newReveals = section.querySelectorAll('.home-reveal');
+      if (_revealObserver) {
+        newReveals.forEach(el => _revealObserver.observe(el));
       }
-      const card = e.target.closest('.signature-collection-card');
-      const title = card ? card.querySelector('.signature-collection-title').textContent : 'Signature drink';
-      showToast(`${title} added to selection`);
+
+      // ── Click Handlers for Add Buttons ──
+      const addButtons = section.querySelectorAll('.signature-collection-add');
+      const onAddClick = (e) => {
+        e.preventDefault();
+        e.stopPropagation(); // Prevent details page navigation
+        if (window.innerWidth <= 768) {
+          if (window.plus33Router) {
+            window.plus33Router.navigate('/store');
+          } else {
+            window.location.href = '/store';
+          }
+          return;
+        }
+        const card = e.target.closest('.signature-collection-card');
+        const title = card ? card.querySelector('.signature-collection-title').textContent : 'Signature drink';
+        showToast(`${title} added to selection`);
+      };
+
+      addButtons.forEach(btn => btn.addEventListener('click', onAddClick));
+
+      // Refresh GSAP ScrollTrigger to recalculate cached offsets for the showcase card stack height
+      if (window.ScrollTrigger) {
+        window.ScrollTrigger.refresh();
+      }
+
+      // Expose cleanup
+      _signatureCollectionCleanup = () => {
+        addButtons.forEach(btn => btn.removeEventListener('click', onAddClick));
+      };
     };
 
-    addButtons.forEach(btn => btn.addEventListener('click', onAddClick));
+    // Render initially
+    _renderSection();
 
-    // Refresh GSAP ScrollTrigger to recalculate cached offsets for the showcase card stack height
-    if (window.ScrollTrigger) {
-      window.ScrollTrigger.refresh();
-    }
-
-    // Expose cleanup
-    _signatureCollectionCleanup = () => {
-      addButtons.forEach(btn => btn.removeEventListener('click', onAddClick));
-    };
+    // Dynamically retrieve exact store prices for these IDs
+    fetch('/api/store/products')
+      .then(res => res.json())
+      .then(products => {
+        if (!products || !products.length) return;
+        let updated = false;
+        signatureProducts.forEach(sigProd => {
+          const storeProduct = products.find(p => p.id === sigProd.id);
+          if (storeProduct) {
+            sigProd.price = `€${storeProduct.price.toFixed(2)}`;
+            updated = true;
+          }
+        });
+        if (updated) {
+          if (_signatureCollectionCleanup) _signatureCollectionCleanup();
+          _renderSection();
+        }
+      })
+      .catch(err => console.warn('[+33 Signature Collection] Products fetch failed:', err));
   }
 
   function showToast(message) {

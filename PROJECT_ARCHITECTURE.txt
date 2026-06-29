@@ -1,7 +1,7 @@
 ================================================================================
 PLUS33 EUROPE — ENTERPRISE ARCHITECTURE AND FILE MAP
 ================================================================================
-A premium modular monolith SPA + Spring Boot system. Decoupled into LOCAL 
+A premium modular monolith SPA + Spring Boot system. Decoupled into LOCAL
 business engines and GLOBAL website platform engines.
 
 ================================================================================
@@ -9,41 +9,50 @@ PART 1: SYSTEM FILE STRUCTURE (HIERARCHICAL TREE)
 ================================================================================
 
 plus33-europe/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml                  # GitHub Actions CI/CD pipeline (SSH deploy)
+├── .gitattributes                      # Git line-ending normalization rules
+├── .gitignore                          # Excludes target/, IDE configs, wrapper jar
 ├── .mvn/
 │   └── wrapper/
 │       ├── maven-wrapper.jar           # Maven Wrapper runtime binary
-│       └── maven-wrapper.properties    # Maven Wrapper configuration
+│       └── maven-wrapper.properties    # Maven Wrapper config (Apache Maven 3.9.15)
 ├── .vscode/
-│   ├── launch.json                     # Custom VS Code launch profiles
-│   └── settings.json                   # Custom workspace settings
-├── compose.yaml                        # Docker compose services config
-├── HELP.md                             # Project setup & resources references
+│   ├── launch.json                     # Two VS Code Java launch profiles
+│   └── settings.json                   # Automatic null analysis + build config
+├── compose.yaml                        # Docker compose stub (empty services block)
+├── HELP.md                             # Project setup & Spring resources references
 ├── mvnw                                # Unix Maven wrapper shell script
 ├── mvnw.cmd                            # Windows Maven wrapper execution script
 ├── pom.xml                             # Core Maven Build Descriptor
 ├── README.md                           # Quickstart info
 ├── PROJECT_ARCHITECTURE.txt            # [THIS FILE] Unified architecture & file guide
+├── WEBSITE_FUNCTIONAL_DOCUMENTATION_PRESENTATION.txt # Functional slide-deck documentation
+├── WEBSITE_TEST_REPORT.txt             # Manual testing report
 └── src/
     ├── local/                          # Local Subsystem (Curated Store)
     │   ├── assets/                     # Premium product & storefront media
-    │   │   ├── brand/                  # Custom local brand assets
-    │   │   │   ├── logo-gold.png       # Gold logo variant
+    │   │   ├── brand/                  # Local brand assets
+    │   │   │   ├── logo-gold.png       # Gold logo variant (used in navbar in index.html)
     │   │   │   ├── plus33-typography.png
     │   │   │   └── plus33-wordmark.png
-    │   │   ├── fonts/                  # Premium typography fonts (empty)
-    │   │   ├── footer/                 # Local footer custom assets (empty)
+    │   │   ├── fonts/                  # Premium typography fonts (reserved, empty)
+    │   │   ├── footer/                 # Local footer custom assets (reserved, empty)
     │   │   ├── hero/                   # Homepage hero illustrations and backgrounds
     │   │   │   ├── coffee-bean.png
     │   │   │   ├── coffee-been2.png
     │   │   │   ├── dessert-section.jpg
-    │   │   │   ├── hero tey 2.png
     │   │   │   ├── hero-coffee.jpg
     │   │   │   ├── hero-img2.png
     │   │   │   ├── hero-leather-bg.jpg
     │   │   │   ├── hero-product-composition.png
+    │   │   │   ├── intro.jpeg          # Splash screen desktop background
+    │   │   │   ├── intro-mobile.jpeg   # Splash screen mobile background
+    │   │   │   ├── reward.png          # Rewards promo asset
     │   │   │   └── store-hero.jpg
     │   │   ├── home/                   # Homepage banners and media assets
-    │   │   │   ├── The Coffee Ritual/  # Sub-folder for specific ritual layouts
+    │   │   │   ├── The Coffee Ritual/  # Sub-folder for coffee ritual section
     │   │   │   │   ├── coffee-experience-banner.png
     │   │   │   │   ├── coffee-roastery-banner.png
     │   │   │   │   ├── handbrew-coffee.png
@@ -62,6 +71,8 @@ plus33-europe/
     │   │   │   ├── hero_espresso_pour.png
     │   │   │   ├── modern-coffee-ritual.png
     │   │   │   └── QR-code.jpg
+    │   │   ├── img/                    # Additional local image assets
+    │   │   │   └── hero/               # Hero sub-folder (currently empty)
     │   │   ├── products/               # Dynamic catalog and category imagery
     │   │   │   ├── desserts/           # Artisan bakery and sweet selection
     │   │   │   │   ├── ALMOND CROISSANT.jpg
@@ -76,13 +87,12 @@ plus33-europe/
     │   │   │   │   │   ├── chai-latte.png
     │   │   │   │   │   ├── latte-flat-white.jpg
     │   │   │   │   │   └── pumpkin-latte.jpg
-    │   │   │   │   └── iced-coffee/    # Chilled beverages and cold brews
-    │   │   │   │       ├── iced-punch-coco.jpg
-    │   │   │   │       ├── matcha-vanille.jpg
-    │   │   │   │       ├── the-glace-dhiver.png
-    │   │   │   │       └── tiramisu-glace.jpg
-    │   │   │   ├── matcha/             # Special matcha category assets
-    │   │   │   │   └── matcha.jpeg
+    │   │   │   │   ├── iced-coffee/    # Chilled beverages and cold brews
+    │   │   │   │   │   ├── iced-punch-coco.jpg
+    │   │   │   │   │   ├── matcha-vanille.jpg
+    │   │   │   │   │   ├── the-glace-dhiver.png
+    │   │   │   │   │   └── tiramisu-glace.jpg
+    │   │   │   │   └── matcha.jpeg     # Matcha hot drink image (drinks root)
     │   │   │   ├── merchandise/        # Branded apparel and customizable goods
     │   │   │   │   ├── atelier-gift-pack.jpeg
     │   │   │   │   └── organic-tote.png
@@ -101,25 +111,20 @@ plus33-europe/
     │   │   │   │   ├── paris-vanilla-latte.jpg
     │   │   │   │   └── rose-pistachio-latte.jpg
     │   │   │   ├── bakery_category.jpg
-    │   │   │   ├── bakery_category.png
-    │   │   │   ├── beans_category.jpg
-    │   │   │   ├── beans_category.png
     │   │   │   ├── desserts_category.jpg
-    │   │   │   ├── desserts_category.png
-    │   │   │   ├── signature_category.jpg
-    │   │   │   └── signature_category.png
+    │   │   │   └── signature_category.jpg
     │   │   ├── tiers/                  # Rewards member loyalty tier emblems
     │   │   │   ├── bronze.png
     │   │   │   ├── gold.png
     │   │   │   ├── platinum.png
     │   │   │   └── silver.png
-    │   │   └── video/                  # Immersive video backgrounds (empty)
+    │   │   └── video/                  # Immersive video backgrounds (reserved, empty)
     │   ├── css/                        # Subsystem styles
     │   │   ├── bakery-showcase.css     # Luxury bakery showcase section styling
     │   │   ├── best-sellers.css        # Luxury best sellers showcase section styling
-    │   │   ├── home.css
-    │   │   ├── product-details.css
-    │   │   └── store.css
+    │   │   ├── home.css                # Homepage stylesheet (largest: 204KB)
+    │   │   ├── product-details.css     # Product detail view styling
+    │   │   └── store.css               # Storefront catalog grid styling
     │   ├── html/                       # Custom SPA page views
     │   │   ├── home.html
     │   │   ├── product-details.html
@@ -142,58 +147,121 @@ plus33-europe/
     │   │                       ├── ProductService.java
     │   │                       └── ProductServiceImpl.java
     │   └── js/                         # Subsystem controllers & loaders
-    │       ├── home.js
-    │       ├── product-details.js
-    │       ├── store-data.js
-    │       └── store.js
+    │       ├── home.js                 # Homepage controller (83KB)
+    │       ├── product-details.js      # Product detail page controller
+    │       ├── store-data.js           # Local JS fallback product array
+    │       └── store.js                # Store catalog filter and grid renderer
     │
     ├── global/                         # Shared Subsystem (Website Core Engine)
     │   ├── application.properties      # Central Spring Boot config properties
-    │   ├── assets/                     # Shared branding fonts, icons & images
+    │   ├── assets/                     # Shared branding, icons, images
     │   │   ├── brand/                  # Global core branding logos and typography
+    │   │   │   ├── logo-gold.png
+    │   │   │   ├── plus33-horse-gold.png
     │   │   │   ├── plus33-logo.png
-    │   │   │   └── plus33-typography.png
-    │   │   └── footer/                 # Footer illustration & accordion images
-    │   │       ├── about.png
-    │   │       ├── franchise.jpg
-    │   │       ├── menu-cup.jpg
-    │   │       ├── rewards.jpg
-    │   │       └── stores.jpg
+    │   │   │   ├── plus33-typography.png
+    │   │   │   ├── plus33-wordmark.png
+    │   │   │   └── water mark.png
+    │   │   ├── doc/                    # Global document assets (reserved, empty)
+    │   │   ├── find-us/                # Find Us global assets (reserved, empty)
+    │   │   ├── footer/                 # Footer illustration & accordion images
+    │   │   │   ├── about.png
+    │   │   │   ├── franchise.jpg
+    │   │   │   ├── menu-cup.jpg
+    │   │   │   ├── rewards.jpg
+    │   │   │   └── stores.jpg
+    │   │   ├── franchise/              # Global franchise promo assets
+    │   │   │   ├── BROCHURE.jpeg
+    │   │   │   └── global-expansion-map.png
+    │   │   ├── icons/                  # Global icon assets (reserved, empty)
+    │   │   ├── img/                    # Global image subdirectories
+    │   │   │   └── rewards/            # Rewards milestone images
+    │   │   │       ├── croissant_milestone.png
+    │   │   │       ├── dessert_milestone.png
+    │   │   │       ├── latte_milestone.png
+    │   │   │       ├── signature_milestone.png
+    │   │   │       └── vip_milestone.png
+    │   │   ├── journal/                # Global journal assets (reserved, empty)
+    │   │   └── video/                  # Global video assets (reserved, empty)
     │   ├── about/                      # About feature assets, layout and logic
-    │   │   ├── assets/                 # About-specific image assets (hero, dreamer, timeline)
+    │   │   ├── assets/                 # About-specific image assets
+    │   │   │   ├── about-hero-paris.jpg
+    │   │   │   ├── final-manifesto.jpg
+    │   │   │   ├── the-dreamer.jpg
+    │   │   │   ├── timeline-first-space.png
+    │   │   │   ├── timeline-notebook.png
+    │   │   │   ├── timeline-ritual.png
+    │   │   │   └── timeline-unfinished-story.png
     │   │   ├── css/about.css
     │   │   ├── html/about.html
     │   │   └── js/about.js
     │   ├── find-us/                    # Find Us feature assets, layout and logic
-    │   │   ├── assets/                 # Find Us-specific map-pin & interiors
+    │   │   ├── assets/                 # Find Us-specific map & interiors
+    │   │   │   ├── boutique-tablescape.png
+    │   │   │   ├── global-expansion-map.png
+    │   │   │   ├── map-pin.png
+    │   │   │   ├── milan-lounge-interior.png
+    │   │   │   ├── outdoor-terrace-cafe.png
+    │   │   │   ├── paris-cafe-interior.png
+    │   │   │   └── vienna-coffee-house.png
     │   │   ├── css/find-us.css
     │   │   ├── html/find-us.html
     │   │   └── js/find-us.js
     │   ├── franchise/                  # Franchise feature assets, layout and logic
-    │   │   ├── assets/                 # Franchise-specific sketches, prospectus doc
+    │   │   ├── assets/                 # Franchise-specific prospectus and photos
+    │   │   │   ├── cafe-sketch.png
+    │   │   │   ├── franchise-brochure.png
+    │   │   │   ├── franchise-owner-1.png
+    │   │   │   ├── franchise-owner-2.png
+    │   │   │   ├── luxury-business-space.png
+    │   │   │   └── plus33_franchise_prospectus_v3.pdf
     │   │   ├── css/franchise.css
     │   │   ├── html/franchise.html
     │   │   └── js/franchise.js
     │   ├── journal/                    # Journal feature assets, layout and logic
-    │   │   ├── assets/                 # Journal-specific article photos
+    │   │   ├── assets/                 # Journal article imagery (14 images)
+    │   │   │   ├── architecture-taste.png
+    │   │   │   ├── ceramic-cup.png
+    │   │   │   ├── colombia-terroir.png
+    │   │   │   ├── dubai-atelier.png
+    │   │   │   ├── first-pour.png
+    │   │   │   ├── milan-table.png
+    │   │   │   ├── morning-7eme.png
+    │   │   │   ├── never-rush.png
+    │   │   │   ├── roast-profiles.png
+    │   │   │   ├── rwanda-dawn.png
+    │   │   │   ├── science-extraction.png
+    │   │   │   ├── slow-hours.png
+    │   │   │   ├── soil-ethiopia.png
+    │   │   │   └── sunday-espresso.png
     │   │   ├── css/journal.css
     │   │   ├── html/journal.html
     │   │   └── js/journal.js
+    │   ├── product/                    # Product reference module
+    │   │   ├── PRODUCT_LIST.txt        # Complete product catalog reference document
+    │   │   ├── bakery_category.jpg
+    │   │   ├── desserts_category.jpg
+    │   │   ├── signature_category.jpg
+    │   │   ├── desserts/               # Dessert product images
+    │   │   ├── drinks/                 # Drink product images
+    │   │   ├── merchandise/            # Merchandise product images
+    │   │   ├── retail/                 # Retail product images
+    │   │   └── signature/              # Signature product images
     │   ├── rewards/                    # Rewards feature layout and logic
     │   │   ├── css/rewards.css
     │   │   ├── html/rewards.html
     │   │   └── js/rewards.js
-    │   ├── css/                        # Global shared layout style sheets
-    │   │   ├── chatbot.css             # Glassmorphic chatbot styles
-    │   │   ├── footer.css              # Footer layouts
-    │   │   ├── global.css              # Typography and system tokens
-    │   │   ├── navbar.css              # Navigation styles
-    │   │   └── responsive.css          # Mobile breakpoint variables
-    │   ├── html/                       # SPA Frame shell & global components
-    │   │   ├── index.html              # Main SPA frame shell
-    │   │   ├── chatbot.html            # Chatbot panel layout
-    │   │   ├── footer.html             # Footer layout module
-    │   │   └── navbar.html             # Navbar layout module
+    │   ├── css/                        # Global shared layout stylesheets
+    │   │   ├── chatbot.css             # Glassmorphic chatbot styles (28KB)
+    │   │   ├── footer.css              # Footer layouts (14KB)
+    │   │   ├── global.css              # Design system tokens, typography, resets (16KB)
+    │   │   ├── navbar.css              # Navigation styles (11KB)
+    │   │   └── responsive.css          # Breakpoints and mobile layout overrides
+    │   ├── html/                       # SPA shell & global component HTML
+    │   │   ├── index.html              # Main SPA shell (1705 lines, 88KB)
+    │   │   ├── chatbot.html            # Chatbot panel layout (reference copy)
+    │   │   ├── footer.html             # Footer layout module (reference copy, 227 lines)
+    │   │   └── navbar.html             # Navbar layout module (reference copy, 82 lines)
     │   ├── java/                       # Core shared backend architecture
     │   │   └── com/
     │   │       └── plus33/
@@ -202,7 +270,7 @@ plus33-europe/
     │   │                   ├── config/
     │   │                   │   ├── DatabaseSeeder.java
     │   │                   │   ├── SecurityConfig.java
-    │   │                   │   └── WebController.java (SPA Redirector)
+    │   │                   │   └── WebController.java (SPA Catch-All Redirector)
     │   │                   ├── constants/
     │   │                   │   └── AppConstants.java
     │   │                   ├── controller/
@@ -235,10 +303,10 @@ plus33-europe/
     │   │                   └── util/
     │   │                       └── DtoMapper.java
     │   └── js/                         # SPA Core Router, widgets & animations
-    │       ├── chatbot-data.js
-    │       ├── chatbot.js
-    │       ├── layout-engine.js
-    │       └── router.js               # Client SPA dynamic core router
+    │       ├── chatbot-data.js         # Chatbot predefined question/answer data (16KB)
+    │       ├── chatbot.js              # Chatbot widget state machine and API bridge (50KB)
+    │       ├── layout-engine.js        # Navbar interactions: mobile drawer, smart scroll
+    │       └── router.js               # Client SPA dynamic core router (363 lines)
     │
     └── test/                           # Integration Testing Suite
         └── java/
@@ -257,20 +325,33 @@ PART 2: SUBSYSTEM DESIGN & RESPONSIBILITIES
 The src/local/ directory holds the commercial logic and transactional features.
 It manages:
 * Product items presentation and dynamic loading.
-* Curriculum-based filters and storefront views (Catalog).
-* Specific styles and scripts for commercial grids.
-* APIs, Services, and JPA Repositories relative to transactional models.
+* Catalog filter views and storefront grid rendering (Store Page).
+* Page-specific styles and scripts for commercial views.
+* REST APIs, Service layer, and JPA Repositories for the Product entity.
+* The application main entry point (Plus33EuropeApplication.java).
 
 --------------------------------------------------------------------------------
 2. GLOBAL SYSTEM PURPOSE (Shared Website Platform Engine)
 --------------------------------------------------------------------------------
 The src/global/ directory holds the platform elements, layouts, and utilities.
 It manages:
-* Single Page Application (SPA) state, dynamic asset handling, and routing.
-* Shared layouts and responsive elements (Navbar, Footer, CSS Variables).
-* Global components (AI Chatbot, Franchise candidacy, Boutiques mapper).
-* Central application configurations, Spring Security rules, seeder processes,
-  and cross-cutting utilities (Exception handlers, custom DTO mappers).
+* Single Page Application (SPA) shell, dynamic routing, and asset handling.
+* Shared layout components hardcoded in index.html: Navbar, Footer.
+* Global features: AI Chatbot (Paris Pony), Franchise candidacy portal,
+  Journal magazine, Store Locator, Rewards dashboard, About chronicle.
+* Central application configuration (application.properties), Spring Security
+  rules, database seeding via CommandLineRunner (DatabaseSeeder.java),
+  and cross-cutting utilities: GlobalExceptionHandler, DtoMapper, AppConstants.
+* Design system tokens and global CSS shared across all pages.
+
+--------------------------------------------------------------------------------
+3. MODULAR MONOLITH PATTERN
+--------------------------------------------------------------------------------
+Both subsystems compile into a single Spring Boot application JAR. The build is
+unified by the build-helper-maven-plugin which registers both src/local/java and
+src/global/java as source roots. The pom.xml resource declarations map all HTML,
+CSS, JS, and asset folders from both subsystems into the correct
+static/* classpaths within the final target/classes/ directory.
 
 ================================================================================
 PART 3: DEEP-DIVE FILE-BY-FILE PURPOSE MAP
@@ -280,167 +361,1010 @@ PART 3: DEEP-DIVE FILE-BY-FILE PURPOSE MAP
 A. ROOT WORKSPACE CONFIGURATIONS
 --------------------------------------------------------------------------------
 * pom.xml
-  Purpose: Maven Build Descriptor. Imports Spring Boot starter models, configures
-           properties (Java 21, Spring Boot 3.5), registers src/local/java and
-           src/global/java dynamically using the build-helper-maven-plugin,
-           and defines precise packaging target paths so resources copy to target/classes/.
+  Purpose: Maven Build Descriptor.
+           - Spring Boot parent: 3.5.14
+           - Java version: 21
+           - Spring Boot Admin version: 3.5.8
+           - Dependencies: spring-boot-starter-web, spring-boot-starter-data-jpa,
+             spring-boot-starter-security, spring-boot-starter-mail,
+             spring-boot-starter-oauth2-client, spring-boot-starter-cache,
+             spring-boot-starter-thymeleaf, spring-boot-starter-validation,
+             spring-boot-admin-starter-server, thymeleaf-extras-springsecurity6,
+             h2 (runtime), lombok (optional), spring-boot-devtools (runtime),
+             spring-boot-docker-compose (runtime), spring-boot-starter-test (test),
+             spring-security-test (test)
+           - Plugins: build-helper-maven-plugin 3.5.0 (registers both java source
+             roots), spring-boot-maven-plugin (excludes lombok from fat jar),
+             maven-compiler-plugin (with Lombok annotation processor path for both
+             compile and test-compile executions)
+           - Resource declarations: maps application.properties to classpath root;
+             maps src/local/html, src/local/css, src/local/js, src/local/assets
+             to static/local/*; maps src/global/html/index.html to static/;
+             maps all other src/global content (excluding application.properties,
+             java/, and html/index.html) to static/global/*
+
+* compose.yaml
+  Purpose: Docker Compose stub file. Currently declares an empty services block
+           with no active containers defined. Spring Docker Compose integration
+           is explicitly disabled in application.properties.
 
 * .vscode/launch.json
-  Purpose: Instructs VS Code's Java extension to run com.plus33.europe.Plus33EuropeApplication
-           explicitly with correct classpaths, neutralizing launch conflicts.
+  Purpose: Defines two VS Code Java launch configurations both targeting the
+           plus33-europe project. One targets the canonical main class at
+           com.plus33.europe.local.Plus33EuropeApplication, the other targets
+           com.plus33.europe.Plus33EuropeApplication (legacy fallback entry).
 
 * .vscode/settings.json
-  Purpose: Enables automatic workspace rebuilds on pom.xml changes.
+  Purpose: Enables automatic Java null analysis and triggers workspace builds
+           automatically when pom.xml changes
+           (java.configuration.updateBuildConfiguration = automatic).
+
+* .gitignore
+  Purpose: Excludes target/, Maven wrapper jar, IDE-specific files (.idea, .iws,
+           .iml, .ipr, STS files, NetBeans files), and the .vscode/ directory.
+
+* .mvn/wrapper/maven-wrapper.properties
+  Purpose: Pins Maven Wrapper to Apache Maven 3.9.15 via distribution URL.
+           wrapperVersion is 3.3.4.
+
+* .github/workflows/deploy.yml
+  Purpose: CI/CD pipeline triggered on push to the main branch. Connects to the
+           production server via SSH using appleboy/ssh-action@v1.2.0. On the
+           remote host it: navigates to the deploy directory, runs git fetch and
+           git reset --hard origin/main, makes mvnw executable, runs
+           ./mvnw clean package -DskipTests, then restarts the plus33 systemd
+           service via sudo systemctl restart plus33.
 
 --------------------------------------------------------------------------------
 B. LOCAL SYSTEM FILES (src/local/)
 --------------------------------------------------------------------------------
 * src/local/html/home.html
-  Purpose: Curious landing page introducing the brand's aesthetic.
+  Purpose: Curated landing page fragment for the home route. NOTE: In the
+           current implementation, the home page HTML is baked directly into
+           index.html for instant first paint. This fragment file may serve as
+           a secondary reference or backup copy.
 
 * src/local/html/store.html
-  Purpose: Signature storefront view showing artisan products, accessories, and gear.
+  Purpose: Signature storefront view showing artisan products by category.
+           Loaded dynamically by the router on navigation to /store.
 
 * src/local/html/product-details.html
-  Purpose: Deep-dive view loaded dynamically when an item card is selected.
+  Purpose: Deep-dive product view, loaded dynamically when a product card is
+           selected. Mounted with the product ID passed as a route parameter.
 
 * src/local/css/bakery-showcase.css
-  Purpose: Isolated luxury bakery showcase section styles namespaced under .bakery-showcase-* to prevent conflicts.
+  Purpose: Isolated luxury bakery showcase section styles. All selectors are
+           namespaced under .bakery-showcase-* to prevent conflicts (20KB).
 
 * src/local/css/best-sellers.css
-  Purpose: Isolated luxury best sellers showcase section styles namespaced under .best-sellers-showcase-* to prevent conflicts.
+  Purpose: Isolated luxury best sellers showcase section styles. All selectors
+           are namespaced under .best-sellers-showcase-* to prevent conflicts (12KB).
 
 * src/local/css/home.css
-  Purpose: Custom styling for landing slideshows, staggers, and luxury sections.
+  Purpose: Primary home page stylesheet. The largest CSS file in the project
+           (204KB). Controls slide controllers, parallax, GSAP-driven sections,
+           hero layouts, the immersive strip carousel, the craft journey scroll
+           stack, bakery reveal sections, best seller showcases, and all
+           homepage animation keyframes.
 
 * src/local/css/store.css
-  Purpose: Curated storefront flex grids, selection cards, and interactive categories.
+  Purpose: Curated storefront flex grids, category selector cards, product
+           card layouts, and interactive filter states (23KB).
 
 * src/local/css/product-details.css
-  Purpose: Visual styles for tasting parameters, accordions, and checkout specs.
+  Purpose: Visual styles for the product detail view: tasting parameters grid,
+           accordions, brewing calculator tabs, and volume slider (17KB).
 
 * src/local/js/home.js
-  Purpose: Coordinates slide controllers and scrolling reveals on the home page.
+  Purpose: Primary homepage controller (83KB). Coordinates the Intro Splash
+           preloader entrance, immersive drink strip carousel (infinite loop
+           with cloned boundaries, 3s autoplay), GSAP ScrollTrigger pinning
+           for the Craft Journey card stack (4 stages: Harvest, Roast, Blend,
+           Brew), bakery showcase reveal animations, best sellers showcase
+           reveals, scroll-based section reveals, and parallax effects.
+           Exports initHome() function called by the router.
 
 * src/local/js/store.js
-  Purpose: Filters selections and handles store grid rendering.
+  Purpose: Store page controller. Fetches products from /api/store/products,
+           groups by category, renders product card HTML, handles category
+           filter button clicks, generates the Featured Picks section
+           (4 randomized products per visit), and provides the
+           mountStorePage() export for the router lifecycle.
 
 * src/local/js/store-data.js
-  Purpose: Local JavaScript mock backup array for catalog operations.
+  Purpose: Local JavaScript fallback product array (19KB). Loaded globally at
+           application boot as FALLBACK_PRODUCTS. Used as an offline backup
+           if the REST API is unreachable.
 
 * src/local/js/product-details.js
-  Purpose: Fetches data from /api/store/products/{id} and binds it to detail views.
+  Purpose: Product details page controller. Fetches /api/store/products/{id},
+           maps product data to the detail view DOM, handles offline fallback
+           using FALLBACK_PRODUCTS, initializes the interactive brewing
+           calculator (Hario V60 1:16, Chemex 1:15, AeroPress 1:12 device
+           ratios; 200ml/cup; dose rounded to nearest gram), handles tab
+           switching between brewing devices, and drives the cup volume slider
+           (1-4 cups). Exports mountProductDetailsPage(id).
 
 * src/local/java/com/plus33/europe/local/model/Product.java
-  Purpose: JPA Entity model representing a signature collection product item.
+  Purpose: JPA Entity mapped to the 'products' H2 table.
+           Fields: id (Long, auto-generated PK), name (String, not null),
+           description (String, length 1000), price (Double, not null),
+           category (String, not null — values: hot-coffee, iced-coffee,
+           retail, desserts, merchandise, signature; multiple categories
+           are comma-separated), origin (String), roast (String),
+           notes (String — comma-separated flavor notes), imagePath (String),
+           badge (String). Implements Serializable.
 
 * src/local/java/com/plus33/europe/local/repository/ProductRepository.java
-  Purpose: Spring Data JPA Repository interface mapping product queries.
+  Purpose: Spring Data JPA Repository extending JpaRepository<Product, Long>.
+           Defines one custom derived query: findByCategory(String category)
+           returning List<Product>.
 
 * src/local/java/com/plus33/europe/local/dto/ProductDTO.java
-  Purpose: Exposes refined data schema wrappers to frontend catalog endpoints.
+  Purpose: Serializable DTO that mirrors the Product entity field set.
+           Fields: id, name, description, price, category, origin, roast,
+           notes, imagePath, badge. Used as the API response envelope.
 
-* src/local/java/com/plus33/europe/local/service/ProductService.java & ProductServiceImpl.java
-  Purpose: Catalog service mapping and business operations implementation.
+* src/local/java/com/plus33/europe/local/service/ProductService.java
+  Purpose: Interface declaring two operations:
+           getProducts(String category) → List<ProductDTO>
+           getProductById(Long id) → Optional<ProductDTO>
+
+* src/local/java/com/plus33/europe/local/service/ProductServiceImpl.java
+  Purpose: Service implementation. getProducts() fetches all products if
+           category is null/empty/all, otherwise delegates to
+           productRepository.findByCategory(category.toLowerCase()).
+           All Product entities are mapped to ProductDTO via DtoMapper.
 
 * src/local/java/com/plus33/europe/local/controller/ProductRestController.java
-  Purpose: REST controller handling catalog product requests on /api/store/products.
+  Purpose: REST controller mapped to /api/store.
+           GET /api/store/products: accepts optional ?category= query param,
+           returns List<ProductDTO> with 200 OK.
+           GET /api/store/products/{id}: returns ProductDTO with 200 OK
+           or 404 NOT FOUND if product does not exist.
+
+* src/local/java/com/plus33/europe/local/Plus33EuropeApplication.java
+  Purpose: Spring Boot main bootstrap class. Annotated with:
+           @SpringBootApplication(scanBasePackages = "com.plus33.europe")
+           @EnableJpaRepositories(basePackages = "com.plus33.europe")
+           @EntityScan(basePackages = "com.plus33.europe")
+           This ensures both local and global packages are scanned, both
+           entity types (Product, JournalStory, FranchiseApplication) are
+           detected, and all JPA repositories are enabled across subsystems.
 
 --------------------------------------------------------------------------------
 C. GLOBAL SYSTEM FILES (src/global/)
 --------------------------------------------------------------------------------
 * src/global/html/index.html
-  Purpose: Master SPA Shell frame. Houses core stylesheet linkages and the global
-           <main id="spa-content"> viewport shell.
+  Purpose: Master SPA Shell (1705 lines, 88KB). Contains:
+           - Full SEO meta tags (description, keywords, robots, Open Graph)
+           - Google Fonts preconnect and import (Cormorant Garamond, DM Sans,
+             Montserrat, Pinyon Script, Great Vibes)
+           - Leaflet CSS CDN link for map features
+           - Global CSS link tags: global.css, navbar.css, footer.css,
+             responsive.css, home.css, bakery-showcase.css,
+             best-sellers.css, chatbot.css
+           - Luxury Intro Preloader / Splash Screen (#plus33-splash) with
+             desktop and mobile responsive background images, logo, typography,
+             "Enter the Experience" CTA button, and swipe-up/scroll-to-enter
+             gesture support
+           - Hardcoded Navbar (<nav id="plus33-nav">) including desktop logo,
+             desktop navigation links (Home, Store, Rewards, Journal,
+             Franchise, Find Us, About), mobile hamburger toggle, and mobile
+             side drawer panel (#side-menu)
+           - SPA main container: <main id="app"> which houses the baked
+             homepage content for instant first paint
+           - Hardcoded Footer with brand column (newsletter subscription),
+             accordion link columns (Menu, About, Franchise, Rewards, Find Us)
+           - Chatbot widget HTML (Paris Pony assistant panel: trigger bubble,
+             chat window, quick actions, message log, menu popup, input area)
+           - Script loading order:
+             1. GSAP Core 3.12.5 (CDN)
+             2. GSAP ScrollTrigger 3.12.5 (CDN)
+             3. Leaflet JS 1.9.4 (CDN)
+             4. /local/js/store-data.js (global fallback product array)
+             5. /global/js/chatbot-data.js (predefined chatbot Q&A)
+             6. /global/js/layout-engine.js (ES module, initNavbar())
+             7. /global/js/chatbot.js (chatbot widget controller)
+             8. /local/js/home.js (homepage section controller)
+             9. Splash Preloader inline script (GSAP transitions, body lock)
+             10. /global/js/router.js (SPA router, must load last)
 
-* src/global/html/navbar.html & footer.html
-  Purpose: Global sub-views rendered dynamically as header and footer modules.
+* src/global/html/navbar.html
+  Purpose: REFERENCE COPY of the navbar markup. The navbar is hardcoded
+           directly inside index.html to prevent layout shifts and network
+           fetch delays. This file must not be fetched at runtime. Structural
+           changes must be synchronized into index.html.
+
+* src/global/html/footer.html
+  Purpose: REFERENCE COPY of the footer markup (227 lines). The footer is
+           hardcoded directly inside index.html. Contains brand column with
+           newsletter input, Menu accordion, About accordion, Franchise
+           accordion, Rewards accordion, Find Us accordion, social media
+           links (Instagram, WhatsApp, Spotify), and legal copyright line.
 
 * src/global/html/chatbot.html
-  Purpose: Glassmorphic panel layout for the AI messaging assistant.
+  Purpose: REFERENCE COPY of the Paris Pony chatbot widget HTML.
+           Hardcoded inside index.html. Contains: floating trigger button
+           (#pp-trigger) with pulse ring animation, chat window panel
+           (#pp-window) with header (name: "Hi. Welcome to Paris Pony.",
+           sub: "Every cup is a call to Paris."), quick action buttons
+           container (#pp-quick-actions), scrollable messages area
+           (#pp-messages with aria-live="polite"), menu popup for predefined
+           questions (#pp-menu-popup), input area with menu toggle button,
+           text input (#pp-input, maxlength 200), and send button.
 
 * src/global/about/html/about.html
-  Purpose: Elegant branding chronicle detailing Parisian café history.
+  Purpose: Elegant branding chronicle detailing the Parisian café heritage
+           of PLUS33 including history, sourcing philosophy, and manifesto.
 
 * src/global/find-us/html/find-us.html
-  Purpose: Boutiques search panel and geolocation listings.
+  Purpose: Interactive store locator featuring city listings, store detail
+           cards, Leaflet.js map integration, and geolocation filtering.
 
 * src/global/franchise/html/franchise.html
-  Purpose: Multistep interactive franchise candidate submission interface.
+  Purpose: Franchise partnership page with multi-step application wizard,
+           financial parameters grid, and expansion map. Includes a PDF
+           prospectus download link (plus33_franchise_prospectus_v3.pdf).
 
 * src/global/journal/html/journal.html
-  Purpose: Curated articles portal and design storytelling.
+  Purpose: Editorial magazine portal with featured hero article, asymmetric
+           article grid, category filter pills, scroll progress bar, and
+           inline essay reader overlay.
 
 * src/global/rewards/html/rewards.html
-  Purpose: Interactive rewards membership dashboard, loyalty point tier visualizer, and FAQ panel.
+  Purpose: Interactive rewards membership dashboard with loyalty tier
+           visualization, points calculator slider, perks accordion,
+           and milestone images.
 
 * src/global/css/global.css
-  Purpose: Declares system design tokens, luxury typography, HSL palettes, and transitions.
+  Purpose: Global design system foundation (16KB, 559 lines).
+           Declares all CSS custom properties under :root, base reset,
+           layout utilities, and typography scale utilities.
+           See Part 4 (Design System) for full token documentation.
 
 * src/global/css/responsive.css
-  Purpose: Global breakpoints, fluid layout variables, and mobile layout overrides.
+  Purpose: Global breakpoints dictionary, fluid layout overrides, touch
+           target helpers, print utilities. Defined breakpoints:
+           XL Desktop ≥1440px, Desktop ≤1280px, Tablet ≤1024px,
+           Mobile L ≤768px, Mobile S ≤480px, Mobile XS ≤360px.
 
-* src/global/css/navbar.css & footer.css
-  Purpose: Specific aesthetics and states for headers, footers, and drop menus.
+* src/global/css/navbar.css
+  Purpose: Complete navbar component styles (11KB). Handles glassmorphic
+           floating bar, desktop link states (.active, hover), mobile
+           hamburger toggle animation, mobile side drawer panel
+           (.plus33-nav__panel--open state), smart scroll states
+           (.plus33-nav--solid, .plus33-nav--hidden), and logo positioning.
+
+* src/global/css/footer.css
+  Purpose: Footer layout and styles (14KB). Handles brand column,
+           accordion column headers and content reveal, newsletter input
+           and submit button, social icon grid, mobile accordion behavior,
+           and footer-reveal IntersectionObserver animation.
 
 * src/global/css/chatbot.css
-  Purpose: Dedicated, module-specific styles mapping the chatbot widget component.
+  Purpose: Dedicated chatbot widget component styles (28KB). Styles the
+           floating trigger bubble, pulse ring animation, glassmorphic
+           chat window, message bubbles, typing indicator, quick action
+           pills, menu popup, and input area.
 
-* src/global/about/css/about.css & src/global/find-us/css/find-us.css & src/global/franchise/css/franchise.css & src/global/journal/css/journal.css & src/global/rewards/css/rewards.css
-  Purpose: Page-specific stylesheets for the global feature pages.
+* src/global/about/css/about.css
+  Purpose: About page stylesheet with timeline grid, parallax image
+           sections, manifesto typography blocks, and scroll-reveal states.
+
+* src/global/find-us/css/find-us.css
+  Purpose: Find Us page stylesheet with Leaflet map container sizing,
+           city filter button styles, store detail card layouts, and
+           geolocation prompt panel.
+
+* src/global/franchise/css/franchise.css
+  Purpose: Franchise page stylesheet with financial parameters grid,
+           wizard step indicator, form input styling, validation error
+           states, and success panel animation.
+
+* src/global/journal/css/journal.css
+  Purpose: Journal page stylesheet with scroll progress bar, asymmetric
+           grid layout, editorial hero card, filter pill states, and
+           inline essay reader overlay with backdrop blur.
+
+* src/global/rewards/css/rewards.css
+  Purpose: Rewards page stylesheet with tier progression bar, spending
+           slider, perks accordion cards, milestone image layout, and
+           loyalty tier badge rendering.
 
 * src/global/js/router.js
-  Purpose: SPA Dynamic Client-Side Router. Intercepts URL requests, loads matching HTML
-           and asset layers on the fly, updates window history state, and runs views.
+  Purpose: Lightweight client-side SPA router (363 lines, 14KB).
+           Defines the ROUTES map: { '/', '/franchise', '/find-us',
+           '/journal', '/store', '/about', '/rewards', '/product/:id' }.
+           Each route entry contains: fragment (HTML path or null for home),
+           css (stylesheet path to lazy-load), title (document title string),
+           init() (async function that dynamic-imports the page module and
+           calls the mount function), destroy() (cleanup function stored
+           as window._[page]Cleanup).
+           The home route (/) uses null fragment because the home page HTML
+           is baked into index.html. A _homeSnapshot captures the baked DOM
+           on boot for back-navigation restoration.
+           Navigation lifecycle (10 steps): destroy current page →
+           transition out (page-transitioning class, 280ms) → pushState →
+           fetch/inject fragment or restore home snapshot → load CSS once →
+           update document.title → mark active nav links → scroll to top →
+           transition in (page-entering class, 500ms) → call init(params).
+           Route matching supports exact matches and dynamic segments (:id).
+           Error fallback renders an editorial 404 block with Return Home link.
+           Exposes window.plus33Router = { navigate } for external calls.
 
 * src/global/js/layout-engine.js
-  Purpose: Handles async modular loading for the shared Navbar and Footer layouts.
+  Purpose: Navbar interactive controller (122 lines). Exports initNavbar().
+           Controls: mobile side drawer open/close with body scroll lock and
+           scrollbar compensation; logo click behavior (smooth-scroll to
+           hero if on home, otherwise navigate('/') then wait for hero mount);
+           smart scroll behavior — adds .plus33-nav--solid after 80px,
+           adds .plus33-nav--hidden on scroll-down past 200px,
+           removes on scroll-up. Uses passive scroll listener.
 
-* src/global/js/chatbot.js & chatbot-data.js
-  Purpose: Drives floating bubble states, chat bubbles animations, API fetches,
-           and client offline dialog trees.
+* src/global/js/chatbot.js
+  Purpose: Paris Pony chatbot widget controller (50KB). Manages the floating
+           trigger bubble, chat window open/close, aria-expanded states,
+           message rendering (user and bot bubbles), typing indicator
+           ("Barista is typing" animation), quick action suggestion pills,
+           predefined question menu popup, and API communication via
+           POST /api/chatbot/ask. Falls back to local chatbot-data.js
+           dialogue trees if API is unreachable.
 
-* src/global/about/js/about.js & src/global/find-us/js/find-us.js & src/global/franchise/js/franchise.js & src/global/journal/js/journal.js & src/global/rewards/js/rewards.js
-  Purpose: Visual animations, validation, timeline reveals, dynamic cards, and actions for global views.
+* src/global/js/chatbot-data.js
+  Purpose: Offline chatbot data store (16KB). Contains predefined question
+           arrays and local dialogue rule trees used as fallback when the
+           backend chatbot API is unavailable.
+
+* src/global/about/js/about.js
+  Purpose: Exports mountAboutPage(). Drives GSAP ScrollTrigger scroll-reveal
+           animations for the timeline blocks, imagery parallax, and text
+           fade-up sequences on the About page.
+
+* src/global/find-us/js/find-us.js
+  Purpose: Exports mountFindUsPage(). Initializes the Leaflet.js map canvas,
+           renders city filter buttons, loads store database (Paris, Vienna,
+           Dubai, Seoul, Munich boutiques), handles geolocation API calls
+           for nearest store calculation, and updates store detail cards.
+
+* src/global/franchise/js/franchise.js
+  Purpose: Exports mountFranchisePage(). Drives the multi-step franchise
+           wizard (Step 1: Personal Info, Step 2: Location, Step 3:
+           Experience, Step 4: Confirm). Handles field-by-field real-time
+           validation, step navigation transitions, wizard progress indicator
+           updates, form serialization, and POST to /api/franchise/apply.
+           Renders success/error panels on submission response.
+
+* src/global/journal/js/journal.js
+  Purpose: Exports mountJournalPage(). Fetches GET /api/journal/stories,
+           separates the featured article (featured=true) from the grid,
+           renders the editorial hero card and asymmetric grid (Hero, Wide,
+           Tall, Portrait, Square layout pattern by list index), binds
+           category filter pills, updates the scroll progress bar, opens
+           the inline essay reader overlay when a card is clicked
+           (matches story title to internal essay paragraph database,
+           locks body scroll, triggers GSAP stagger entry animation).
+
+* src/global/rewards/js/rewards.js
+  Purpose: Exports mountRewardsPage(). Drives the loyalty tier progression
+           bar visualization, interactive spending slider (10 points/€1),
+           tier threshold logic (Bronze 0-500, Silver 501-1500, Gold
+           1501-3500, Platinum 3501+), perks accordion expand/collapse,
+           and milestone image display.
 
 * src/global/application.properties
-  Purpose: Global configuration properties (H2 db, JPA show-sql, servlet sizes, security frame options).
-
-* src/local/java/com/plus33/europe/local/Plus33EuropeApplication.java
-  Purpose: Spring Boot Main Bootstrap class. Declares scan-targets across the entire
-           parent package com.plus33.europe using custom scan annotations to bind the
-           local and global subsystems seamlessly (resolving Spring Security config scans).
+  Purpose: Central Spring Boot runtime configuration.
+           - spring.application.name = plus33-api
+           - server.port = 8080
+           - H2 in-memory datasource: jdbc:h2:mem:plus33db (DB_CLOSE_DELAY=-1)
+           - H2 console: enabled at /h2-console, web-allow-others=true
+           - JPA: ddl-auto=update, show-sql=true, format_sql=true
+           - File upload: multipart enabled, max-file-size=50MB,
+             max-request-size=100MB
+           - Upload dir (local fallback): uploads
+           - Cloudinary placeholders: plus33.cloudinary.cloud-name,
+             plus33.cloudinary.api-key, plus33.cloudinary.api-secret
+           - Actuator: exposes health and info endpoints, shows full details
+           - CORS allowed origins: http://localhost:8090,
+             http://localhost:5173, https://plus33.in
+           - Docker Compose integration: disabled
 
 * src/global/java/com/plus33/europe/global/config/SecurityConfig.java
-  Purpose: Configures Spring Security filters (permitAll, sameOrigin headers).
+  Purpose: Spring Security configuration (@Configuration, @EnableWebSecurity).
+           Disables CSRF, permits all requests (anyRequest().permitAll()),
+           and sets frame options to sameOrigin to allow the H2 Console
+           browser UI to render inside frames.
 
 * src/global/java/com/plus33/europe/global/config/WebController.java
-  Purpose: Catch-all router helper forwarding unknown SPA client routes to index.html.
+  Purpose: Catch-all Spring MVC @Controller that forwards known SPA routes
+           to index.html so the client-side router handles navigation.
+           Registered routes: /, /store, /journal, /franchise, /find-us,
+           /about, /rewards, /product/{id}. All return "forward:/index.html".
 
 * src/global/java/com/plus33/europe/global/config/DatabaseSeeder.java
-  Purpose: Feeds mock database instances (27 products and 14 journal stories) on startup.
+  Purpose: @Component implementing CommandLineRunner. Runs on application
+           startup. Seeds 27 Product records and 14 JournalStory records
+           into the H2 in-memory database if the tables are empty.
+           Uses SLF4J Logger for info-level seeding progress messages.
 
 * src/global/java/com/plus33/europe/global/constants/AppConstants.java
-  Purpose: Centralized container for app messages, constants, and ranges.
+  Purpose: Final non-instantiable class holding chatbot reply constants:
+           CHATBOT_DEFAULT_GREETING, CHATBOT_REPLY_FRANCHISE,
+           CHATBOT_REPLY_STORE, CHATBOT_REPLY_LOCATION, CHATBOT_REPLY_COFFEE,
+           CHATBOT_REPLY_HELLO, CHATBOT_REPLY_FALLBACK.
+           Replies contain embedded HTML tags (<b>, <i>) for rich formatting.
 
 * src/global/java/com/plus33/europe/global/exception/GlobalExceptionHandler.java
-  Purpose: Catches application anomalies and maps them to clean JSON responses.
+  Purpose: @RestControllerAdvice handling three exception types:
+           ResourceNotFoundException → 404 NOT FOUND JSON response
+             { timestamp, message, status: 404, error: "Not Found" }
+           IllegalArgumentException → 400 BAD REQUEST JSON response
+             { timestamp, message, status: 400, error: "Bad Request" }
+           Exception (catch-all) → 500 INTERNAL SERVER ERROR JSON response
+             { timestamp, message, status: 500, error: "Internal Server Error" }
 
 * src/global/java/com/plus33/europe/global/exception/ResourceNotFoundException.java
-  Purpose: Custom 404 HTTP Exception mapping model.
+  Purpose: Custom RuntimeException annotated @ResponseStatus(HttpStatus.NOT_FOUND).
+           Single constructor taking a String message. serialVersionUID = 1L.
 
 * src/global/java/com/plus33/europe/global/util/DtoMapper.java
-  Purpose: Maps JPA Entities safely to DTO envelopes and back.
+  Purpose: Static utility class with four conversion methods:
+           toProductDto(Product) → ProductDTO
+           toJournalStoryDto(JournalStory) → JournalStoryDTO
+           toFranchiseDto(FranchiseApplication) → FranchiseApplicationDTO
+           toFranchiseEntity(FranchiseApplicationDTO) → FranchiseApplication
+           All methods null-check the input and return null safely.
 
-* src/global/java/com/plus33/europe/global/model/ & repository/ & service/ & controller/
-  Purpose: Contains backend architectures supporting Global features:
-           - ChatRequest/ChatResponse (Chatbot API)
-           - FranchiseApplication (Franchise API)
-           - JournalStory (seasonal articles API)
+* src/global/java/com/plus33/europe/global/model/JournalStory.java
+  Purpose: JPA Entity mapped to the 'journal_stories' H2 table. serialVersionUID=2L.
+           Fields: id (Long, auto-generated PK), title (String, not null),
+           category (String, not null — values: Origins, Process, Lifestyle,
+           Design, Rituals), dateString (String, not null — human-readable date),
+           imagePath (String, not null), excerpt (String, length 500),
+           readTime (String, length 20 — e.g. "6 min read"),
+           subtitle (String, length 200), featured (boolean, default false).
+
+* src/global/java/com/plus33/europe/global/model/FranchiseApplication.java
+  Purpose: JPA Entity mapped to the 'franchise_applications' H2 table.
+           Fields: id (Long, auto-generated PK), name (String, not null),
+           email (String, not null), phone (String, not null),
+           city (String, not null), capital (String, not null),
+           background (String, length 2000). serialVersionUID=1L.
+
+* src/global/java/com/plus33/europe/global/model/ChatRequest.java
+  Purpose: Non-JPA model (Serializable). Single field: message (String).
+           Used internally as a domain object.
+
+* src/global/java/com/plus33/europe/global/model/ChatResponse.java
+  Purpose: Non-JPA model (Serializable). Single field: reply (String).
+           Used internally as a domain object.
+
+* src/global/java/com/plus33/europe/global/dto/ChatRequestDTO.java
+  Purpose: DTO with field message (String). Received from the POST
+           /api/chatbot/ask request body.
+
+* src/global/java/com/plus33/europe/global/dto/ChatResponseDTO.java
+  Purpose: DTO with field reply (String). Returned in the 200 OK response
+           body from POST /api/chatbot/ask.
+
+* src/global/java/com/plus33/europe/global/dto/JournalStoryDTO.java
+  Purpose: Serializable DTO mirroring JournalStory fields. serialVersionUID=2L.
+           Fields: id, title, category, dateString, imagePath, excerpt,
+           readTime, subtitle, featured. Two constructors provided
+           (minimal 5-field and full 9-field).
+
+* src/global/java/com/plus33/europe/global/dto/FranchiseApplicationDTO.java
+  Purpose: Serializable DTO mirroring FranchiseApplication fields.
+           Fields: id, name, email, phone, city, capital, background.
+           Used for both the incoming POST body and the saved response.
+
+* src/global/java/com/plus33/europe/global/repository/FranchiseRepository.java
+  Purpose: Spring Data JPA Repository extending JpaRepository
+           <FranchiseApplication, Long>. No custom query methods.
+
+* src/global/java/com/plus33/europe/global/repository/JournalStoryRepository.java
+  Purpose: Spring Data JPA Repository extending JpaRepository
+           <JournalStory, Long>. No custom query methods.
+
+* src/global/java/com/plus33/europe/global/service/ChatbotService.java
+  Purpose: Interface declaring: getAssistantReply(ChatRequestDTO) → ChatResponseDTO.
+
+* src/global/java/com/plus33/europe/global/service/ChatbotServiceImpl.java
+  Purpose: @Service implementation. Performs keyword matching on the incoming
+           message (lowercased). Keyword → constant mapping:
+           franchise/partner/apply → CHATBOT_REPLY_FRANCHISE
+           store/buy/price/shop → CHATBOT_REPLY_STORE
+           location/find/where/paris/map → CHATBOT_REPLY_LOCATION
+           coffee/roast/brew → CHATBOT_REPLY_COFFEE
+           hello/hi/bonjour → CHATBOT_REPLY_HELLO
+           (fallback) → CHATBOT_REPLY_FALLBACK
+           Empty/null message returns CHATBOT_DEFAULT_GREETING.
+
+* src/global/java/com/plus33/europe/global/service/FranchiseService.java
+  Purpose: Interface declaring: submitApplication(FranchiseApplicationDTO)
+           → FranchiseApplicationDTO.
+
+* src/global/java/com/plus33/europe/global/service/FranchiseServiceImpl.java
+  Purpose: @Service implementation. Converts DTO to entity via DtoMapper,
+           persists via franchiseRepository.save(), converts saved entity
+           back to DTO, and returns it.
+
+* src/global/java/com/plus33/europe/global/service/JournalStoryService.java
+  Purpose: Interface declaring: getAllStories() → List<JournalStoryDTO>.
+
+* src/global/java/com/plus33/europe/global/service/JournalStoryServiceImpl.java
+  Purpose: @Service implementation. Fetches all JournalStory entities from
+           journalStoryRepository.findAll(), streams and maps each entity to
+           JournalStoryDTO via DtoMapper, and returns the list.
+
+* src/global/java/com/plus33/europe/global/controller/ChatbotRestController.java
+  Purpose: @RestController mapped to /api/chatbot.
+           POST /api/chatbot/ask: accepts @RequestBody ChatRequestDTO,
+           delegates to chatbotService.getAssistantReply(), returns
+           ChatResponseDTO with 200 OK.
+
+* src/global/java/com/plus33/europe/global/controller/JournalRestController.java
+  Purpose: @RestController mapped to /api/journal.
+           GET /api/journal/stories: returns List<JournalStoryDTO> with 200 OK.
+
+* src/global/java/com/plus33/europe/global/controller/FranchiseRestController.java
+  Purpose: @RestController mapped to /api/franchise.
+           POST /api/franchise/apply: validates required fields (name, email,
+           phone, city) server-side, returns 400 if validation fails,
+           delegates to franchiseService.submitApplication(), returns 200 OK
+           with JSON { success, message, applicationId, candidateName }
+           or 500 INTERNAL SERVER ERROR if a database exception occurs.
+           Uses SLF4J Logger for info and error level logging.
+
+* src/global/product/PRODUCT_LIST.txt
+  Purpose: Human-readable reference document listing all 27 seeded products
+           organized by category with pricing, origin, descriptions, flavor
+           notes, and badge labels.
 
 --------------------------------------------------------------------------------
 D. TEST SUITE
 --------------------------------------------------------------------------------
 * src/test/java/com/plus33/europe/Plus33EuropeApplicationTests.java
   Purpose: Verifies Spring context load and backend component connectivity.
+
+================================================================================
+PART 4: DESIGN SYSTEM — TOKENS, TYPOGRAPHY, AND VISUAL IDENTITY
+================================================================================
+
+--------------------------------------------------------------------------------
+A. COLOR PALETTE (defined in src/global/css/global.css :root)
+--------------------------------------------------------------------------------
+--navy:           #203e5f           Medium Steel Navy (primary brand dark)
+--navy-deep:      #1a2634           Deep Dark Navy (body background, text-main)
+--navy-mid:       #203e5f           Alias for --navy
+--cream:          #fee5b1           Beige / Rich Cream (on-dark text)
+--copper:         #ffcc00           Golden Yellow / Gold (primary accent)
+--copper-light:   #ffd633           Lighter Gold variant
+--copper-pale:    rgba(255,204,0,0.08)  Translucent gold tint
+--gold:           #ffcc00           Alias for --copper
+--gold-pale:      rgba(255,204,0,0.08) Alias for --copper-pale
+--burgundy-deep:  #1a2634           Alias for --navy-deep
+--marble:         #eaeaea           Light Grey / White (surface)
+--walnut:         #4A2C1A           Deep warm brown
+--espresso:       #2C1A11           Very dark espresso brown
+
+Text tokens:
+--text-main:      #1a2634           Primary text (on light backgrounds)
+--text-on-dark:   #fee5b1           Text on dark/navy backgrounds
+--text-muted:     rgba(26,38,52,0.55)  Muted body text
+--text-copper:    var(--copper)     Accent text
+
+Border & Glass tokens:
+--border-copper:  rgba(255,204,0,0.20)
+--border-glass:   rgba(255,255,255,0.10)
+--glass-dark:     rgba(26,38,52,0.65)
+--glass-blur:     blur(24px) saturate(180%)
+
+Shadow tokens:
+--shadow-copper-sm:  0 4px 14px rgba(255,204,0,0.18)
+--shadow-copper:     0 12px 36px rgba(255,204,0,0.26)
+--shadow-card:       0 8px 32px rgba(0,0,0,0.18)
+--shadow-dark:       0 24px 60px rgba(0,0,0,0.40)
+
+--------------------------------------------------------------------------------
+B. TYPOGRAPHY
+--------------------------------------------------------------------------------
+Font families loaded via Google Fonts CDN (index.html preconnect + link):
+  Cormorant Garamond — Display/serif font for all editorial headings,
+    section titles, and luxury typographic moments.
+    Weights: 300, 400, 500, 600, 700 (regular and italic)
+  DM Sans — UI sans-serif (secondary sans)
+    Weights: 300, 400, 500, 600, 700
+  Montserrat — UI sans-serif (tertiary / labels)
+    Weights: 200, 300, 400, 500, 600, 700
+  Pinyon Script — Decorative script accent
+  Great Vibes — Decorative script accent
+
+Additional import in global.css:
+  Manrope — Primary body sans-serif
+    Weights: 200, 300, 400, 500, 600
+  Inter — Secondary body sans-serif
+    Weights: 200, 300, 400, 500
+
+CSS font-family tokens:
+--font-display: 'Cormorant Garamond', 'Georgia', serif
+--font-serif:   'Cormorant Garamond', 'Georgia', serif
+--font-sans:    'Manrope', 'Inter', sans-serif
+--font-ui:      'Manrope', sans-serif
+
+Typography scale utilities (global.css):
+  .display-lg: clamp(3.2rem, 7vw, 6.5rem), weight 300, line-height 1.06
+  .display-md: clamp(2.4rem, 5vw, 4.2rem), weight 300, line-height 1.12
+  .display-sm: clamp(1.8rem, 3.5vw, 3rem), weight 300, line-height 1.18
+  .t-h3:       clamp(1.3rem, 2.5vw, 1.85rem), weight 300, line-height 1.3
+  .t-body:     0.95rem, font-sans
+  Body default: font-sans, weight 300, line-height 1.7
+
+--------------------------------------------------------------------------------
+C. SPACING SCALE
+--------------------------------------------------------------------------------
+--s1:  8px    --s2:  16px   --s3:  24px   --s4:  32px
+--s5:  48px   --s6:  64px   --s7:  96px   --s8:  128px
+
+--------------------------------------------------------------------------------
+D. BORDER RADIUS
+--------------------------------------------------------------------------------
+--r-sm: 2px    --r-md: 6px    --r-lg: 16px
+
+--------------------------------------------------------------------------------
+E. EASING CURVES
+--------------------------------------------------------------------------------
+--ease-luxury:   cubic-bezier(0.25, 0.46, 0.45, 0.94)
+--ease-rr:       cubic-bezier(0.19, 1.00, 0.22, 1.00)
+--ease-out-expo: cubic-bezier(0.16, 1.00, 0.30, 1.00)
+--ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1.00)
+--ease-cinema:   cubic-bezier(0.19, 1.00, 0.22, 1.00)
+
+--------------------------------------------------------------------------------
+F. ANIMATION & MOTION SYSTEM
+--------------------------------------------------------------------------------
+* Splash Preloader: GSAP cinematic dolly-zoom transitions — bg image scales
+  to 1.18× in 1.75s (power3.inOut), content fades out with 0.9 scale in 1.2s
+  (power2.out), overlay fades out in 1.75s with visibility/pointer-events flip.
+  Triggered by button click, mouse wheel scroll, or touchmove swipe-up (45px
+  threshold).
+* Navbar Smart Scroll: Vanilla JS scroll listener — solid class at 80px,
+  hidden class on scroll-down past 200px, always visible near top.
+* SPA Page Transitions: CSS class-based — page-transitioning (280ms out),
+  page-entering (500ms in).
+* GSAP ScrollTrigger: Used on Home page for pinned Craft Journey card stack
+  (4 stages), bakery showcase and best sellers reveal animations, and hero
+  parallax effects.
+* IntersectionObserver: Footer reveal animation using .footer-reveal /
+  .is-visible class toggle.
+* Chatbot Pulse Ring: CSS animation on the floating trigger bubble.
+
+================================================================================
+PART 5: REST API REFERENCE
+================================================================================
+
+--------------------------------------------------------------------------------
+A. PRODUCT API (/api/store)
+--------------------------------------------------------------------------------
+GET /api/store/products
+  Description:    Returns all products or filters by category.
+  Authentication: None (permitAll)
+  Query Params:   ?category={string} — optional. Values: hot-coffee, iced-coffee,
+                  retail, desserts, merchandise, signature, all (or omit)
+  Response 200:   JSON Array of ProductDTO objects
+  ProductDTO fields: id, name, description, price, category, origin, roast,
+                     notes, imagePath, badge
+
+GET /api/store/products/{id}
+  Description:    Returns a single product by its numeric ID.
+  Authentication: None (permitAll)
+  Path Params:    {id} — Long (product primary key)
+  Response 200:   JSON ProductDTO
+  Response 404:   No body (HTTP 404 NOT FOUND)
+
+--------------------------------------------------------------------------------
+B. JOURNAL API (/api/journal)
+--------------------------------------------------------------------------------
+GET /api/journal/stories
+  Description:    Returns all 14 seeded journal stories.
+  Authentication: None (permitAll)
+  Response 200:   JSON Array of JournalStoryDTO objects
+  JournalStoryDTO fields: id, title, category, dateString, imagePath, excerpt,
+                          readTime, subtitle, featured
+
+--------------------------------------------------------------------------------
+C. FRANCHISE API (/api/franchise)
+--------------------------------------------------------------------------------
+POST /api/franchise/apply
+  Description:      Submits and persists a franchise candidate application.
+  Authentication:   None (permitAll)
+  Content-Type:     application/json
+  Request Body:     FranchiseApplicationDTO JSON
+    { name*, email*, phone*, city*, capital, background }
+    (* required fields validated server-side)
+  Response 200 OK:  { success: true, message: "...", applicationId: Long,
+                      candidateName: String }
+  Response 400:     { success: false, message: "Validation failed: ..." }
+  Response 500:     { success: false, message: "Internal database error ..." }
+
+--------------------------------------------------------------------------------
+D. CHATBOT API (/api/chatbot)
+--------------------------------------------------------------------------------
+POST /api/chatbot/ask
+  Description:    Returns a keyword-matched reply from the Atelier Barista.
+  Authentication: None (permitAll)
+  Content-Type:   application/json
+  Request Body:   { message: String }
+  Response 200:   { reply: String }
+  Logic:          Keyword → reply constant mapping (see ChatbotServiceImpl).
+                  Empty/null message returns default greeting.
+
+================================================================================
+PART 6: DATABASE SCHEMA (H2 In-Memory)
+================================================================================
+
+Database name: plus33db  (in-memory; resets on each application restart)
+DDL strategy: spring.jpa.hibernate.ddl-auto = update
+H2 Console: /h2-console (enabled, web-allow-others=true)
+
+--------------------------------------------------------------------------------
+TABLE: products
+--------------------------------------------------------------------------------
+Column      Type              Constraints
+----------  ----------------  ----------------------------------------
+id          BIGINT            PRIMARY KEY, AUTO_INCREMENT
+name        VARCHAR(255)      NOT NULL
+description VARCHAR(1000)
+price       DOUBLE PRECISION  NOT NULL
+category    VARCHAR(255)      NOT NULL (comma-separated when multi-category)
+origin      VARCHAR(255)
+roast       VARCHAR(255)
+notes       VARCHAR(255)      (comma-separated flavor notes)
+imagePath   VARCHAR(255)
+badge       VARCHAR(255)
+
+Seeded records: 27 products spanning categories:
+  hot-coffee (6), iced-coffee (4), iced-coffee+desserts (1), desserts (9),
+  retail (6), retail+signature (2), merchandise+signature (2)
+
+Full seeded catalog:
+  HOT COFFEE: Café Filtre (€6.00), Cappuccino (€6.50), Latte/Flat White (€6.80),
+              Chai Latte (€7.00), Pumpkin Latte (€7.50), Matcha (€7.20)
+  ICED COFFEE: Matcha Vanille (€7.50), Thé Glacé d'Hiver (€7.00),
+               Tiramisu Glacé drink (€8.50), Iced Punch Coco (€8.00)
+  DESSERTS: Almond Croissant (€5.20), Pain au Chocolat (€4.80), Croissant (€4.50),
+            Donut (€3.80), Pretzel (€4.20), Éclair au Chocolat (€5.50),
+            Artisanal Gelato (€6.20), Tiramisu Glacé dessert (€6.80), Zefir (€4.50)
+  RETAIL: Sachet de Café (€24.00), Cerrado & Colombia (€22.00),
+          Signature Dark Roast (€21.00), Masala Chai Tea Pouch (€18.00),
+          Kashmiri Kahwa (€26.00), Ooty Gold (€25.00)
+  MERCHANDISE: +33 Atelier Gift Pack (€63.30), +33 Organic Tote (€18.00)
+
+--------------------------------------------------------------------------------
+TABLE: journal_stories
+--------------------------------------------------------------------------------
+Column      Type              Constraints
+----------  ----------------  ----------------------------------------
+id          BIGINT            PRIMARY KEY, AUTO_INCREMENT
+title       VARCHAR(255)      NOT NULL
+category    VARCHAR(255)      NOT NULL (Origins, Process, Lifestyle, Design, Rituals)
+dateString  VARCHAR(255)      NOT NULL (e.g. "May 12, 2024")
+imagePath   VARCHAR(255)      NOT NULL
+excerpt     VARCHAR(500)
+readTime    VARCHAR(20)       (e.g. "6 min read")
+subtitle    VARCHAR(200)
+featured    BOOLEAN           NOT NULL, default false
+
+Seeded records: 14 journal stories
+  ORIGINS (3): The Soil of Ethiopia (featured), Altitude and Terroir: Colombia's
+               Hidden Valleys, Rwanda at Dawn
+  PROCESS (2): Roast Profiles: A Visual Atlas, The Science of Extraction
+  LIFESTYLE (3): Morning in the 7ème (featured), A Table in Milan, The Slow Hours
+  DESIGN (3): The Architecture of Taste, Designing Silence: Our Dubai Atelier,
+              The Object: Our Ceramic Cup
+  RITUALS (3): The First Pour (featured), Why We Never Rush, Sunday Espresso
+
+--------------------------------------------------------------------------------
+TABLE: franchise_applications
+--------------------------------------------------------------------------------
+Column      Type              Constraints
+----------  ----------------  ----------------------------------------
+id          BIGINT            PRIMARY KEY, AUTO_INCREMENT
+name        VARCHAR(255)      NOT NULL
+email       VARCHAR(255)      NOT NULL
+phone       VARCHAR(255)      NOT NULL
+city        VARCHAR(255)      NOT NULL
+capital     VARCHAR(255)
+background  VARCHAR(2000)
+
+Seeded records: 0 (populated at runtime via /api/franchise/apply submissions)
+
+================================================================================
+PART 7: SPA ROUTING MAP
+================================================================================
+
+Path              Fragment Source                           Page Controller Module
+-----------       --------------------------------------    --------------------------------
+/                 Baked in index.html (no fetch)            /local/js/home.js (initHome)
+/store            /local/html/store.html                    /local/js/store.js (mountStorePage)
+/rewards          /global/rewards/html/rewards.html         /global/rewards/js/rewards.js (mountRewardsPage)
+/journal          /global/journal/html/journal.html         /global/journal/js/journal.js (mountJournalPage)
+/franchise        /global/franchise/html/franchise.html     /global/franchise/js/franchise.js (mountFranchisePage)
+/find-us          /global/find-us/html/find-us.html         /global/find-us/js/find-us.js (mountFindUsPage)
+/about            /global/about/html/about.html             /global/about/js/about.js (mountAboutPage)
+/product/:id      /local/html/product-details.html          /local/js/product-details.js (mountProductDetailsPage)
+
+Server-side SPA redirect (WebController.java) forwards all these routes to /index.html
+so client-side deep linking works on direct URL access and browser refresh.
+
+================================================================================
+PART 8: NAVIGATION STRUCTURE
+================================================================================
+
+Primary Desktop Navigation (navbar.html inline in index.html):
+  Home (/) | Store (/store) | Rewards (/rewards) | Journal (/journal) |
+  Franchise (/franchise) | Find Us (/find-us) | About (/about)
+
+Mobile Side Drawer Navigation (same routes as desktop):
+  Home | Store | Rewards | Journal | Franchise | Find Us | About
+
+Navbar Right Element: "Paris, 7ème" static location tag
+
+Logo Behavior:
+  Desktop: logo image + typography image, left column
+  Mobile: logo image only, centered
+  Logo click: smooth-scroll to #home-hero if on home; navigate('/') otherwise
+
+Footer Navigation (accordion columns):
+  MENU: Hot Coffee, Iced Coffee, Desserts, Beans & Retail, Signature,
+        Merch & Gifts (links to /store?category=*)
+  ABOUT: Our Story (/about), The Atelier, The Journal (/journal),
+         Sustainability, Press
+  FRANCHISE: Franchise Overview (/franchise), Apply (/franchise),
+             Prospectus download
+  REWARDS: Membership (/rewards), Tiers, Points Calculator
+  FIND US: Locations (/find-us), Our Flagship, Opening Hours
+
+================================================================================
+PART 9: CONFIGURATION & DEPLOYMENT
+================================================================================
+
+--------------------------------------------------------------------------------
+A. LOCAL DEVELOPMENT
+--------------------------------------------------------------------------------
+* Run: ./mvnw spring-boot:run (Unix) or mvnw.cmd spring-boot:run (Windows)
+* Application starts on http://localhost:8080
+* H2 Console: http://localhost:8080/h2-console
+  JDBC URL: jdbc:h2:mem:plus33db, Username: sa, Password: (empty)
+* Spring Boot DevTools is in the dependency tree (runtime scope) for
+  automatic restarts during development.
+* VS Code: Use the "Plus33EuropeApplication" launch configuration pointing to
+  com.plus33.europe.local.Plus33EuropeApplication
+
+--------------------------------------------------------------------------------
+B. BUILD
+--------------------------------------------------------------------------------
+* Build JAR: ./mvnw clean package -DskipTests
+* Output: target/plus33-europe-0.0.1-SNAPSHOT.jar
+* The fat JAR includes all static resources from both src/local/ and
+  src/global/ subsystems mapped to their respective static/* classpath paths.
+
+--------------------------------------------------------------------------------
+C. CI/CD PIPELINE (.github/workflows/deploy.yml)
+--------------------------------------------------------------------------------
+* Trigger: Push to main branch
+* Runner: ubuntu-latest
+* Action: appleboy/ssh-action@v1.2.0 connects via SSH using secrets
+  (HOST, USERNAME, SSH_KEY)
+* Remote deploy steps:
+  1. cd /home/vegambymuttikulangarai/plus33-Europe
+  2. git fetch origin
+  3. git reset --hard origin/main
+  4. chmod +x mvnw
+  5. ./mvnw clean package -DskipTests
+  6. sudo systemctl restart plus33
+
+--------------------------------------------------------------------------------
+D. CONFIGURATION PROPERTIES REFERENCE
+--------------------------------------------------------------------------------
+Property                                      Value
+--------------------------------------------  --------------------------------
+spring.application.name                       plus33-api
+server.port                                   8080
+spring.datasource.url                         jdbc:h2:mem:plus33db;DB_CLOSE_DELAY=-1
+spring.datasource.driverClassName             org.h2.Driver
+spring.datasource.username                    sa
+spring.datasource.password                    (empty)
+spring.jpa.database-platform                  org.hibernate.dialect.H2Dialect
+spring.jpa.hibernate.ddl-auto                 update
+spring.jpa.show-sql                           true
+spring.jpa.properties.hibernate.format_sql    true
+spring.h2.console.enabled                     true
+spring.h2.console.path                        /h2-console
+spring.h2.console.settings.web-allow-others   true
+spring.servlet.multipart.enabled              true
+spring.servlet.multipart.max-file-size        50MB
+spring.servlet.multipart.max-request-size     100MB
+plus33.upload.dir                             uploads
+plus33.cloudinary.cloud-name                  your_cloud_name (placeholder)
+plus33.cloudinary.api-key                     your_api_key (placeholder)
+plus33.cloudinary.api-secret                  your_api_secret (placeholder)
+management.endpoints.web.exposure.include     health,info
+management.endpoint.health.show-details       always
+plus33.cors.allowed-origins                   http://localhost:8090,
+                                              http://localhost:5173,
+                                              https://plus33.in
+spring.docker.compose.enabled                 false
+
+================================================================================
+PART 10: ARCHITECTURE OVERVIEW
+================================================================================
+
+--------------------------------------------------------------------------------
+A. OVERALL ARCHITECTURE: MODULAR MONOLITH + SPA
+--------------------------------------------------------------------------------
+PLUS33 Europe is a modular monolith: a single deployable Spring Boot JAR that
+internally organizes code into two distinct subsystems (local and global) with
+clear separation of concerns. The frontend is a Single Page Application (SPA)
+built with Vanilla HTML5, CSS3, and ES6 JavaScript — no framework overhead.
+
+  Client Tier:   Vanilla HTML/CSS/JS + GSAP 3.12.5 + ScrollTrigger + Leaflet 1.9.4
+  SPA Layer:     Custom client-side router (router.js, History API)
+  Server Tier:   Java 21 + Spring Boot 3.5.14 + Spring Security + Spring Data JPA
+  ORM:           Hibernate with H2 in-memory database
+  Build:         Apache Maven 3.9.15 via Maven Wrapper
+
+--------------------------------------------------------------------------------
+B. LAYER ARCHITECTURE
+--------------------------------------------------------------------------------
+  Controller → Service Interface → Service Implementation → Repository → H2 JPA
+
+  * Controllers receive HTTP requests, validate minimally, delegate to services.
+  * Services handle business logic and delegate DB operations to repositories.
+  * Repositories are Spring Data JPA interfaces auto-implemented by Hibernate.
+  * DtoMapper converts between entity objects and DTO response envelopes.
+  * GlobalExceptionHandler intercepts exceptions and produces clean JSON errors.
+
+--------------------------------------------------------------------------------
+C. PACKAGE ORGANIZATION
+--------------------------------------------------------------------------------
+  com.plus33.europe.local.*          Local subsystem packages (Product domain)
+  com.plus33.europe.global.*         Global subsystem packages (platform domain)
+  com.plus33.europe.global.config    Security, database seeder, SPA redirector
+  com.plus33.europe.global.constants Chatbot reply string constants
+  com.plus33.europe.global.controller REST controllers (Chatbot, Journal, Franchise)
+  com.plus33.europe.global.dto       DTO envelopes for all API responses
+  com.plus33.europe.global.exception Custom exception types and global handler
+  com.plus33.europe.global.model     JPA entities and non-JPA domain objects
+  com.plus33.europe.global.repository JPA repositories
+  com.plus33.europe.global.service   Service interfaces and implementations
+  com.plus33.europe.global.util      DtoMapper static utility
+  com.plus33.europe.local.controller ProductRestController
+  com.plus33.europe.local.dto        ProductDTO
+  com.plus33.europe.local.model      Product entity
+  com.plus33.europe.local.repository ProductRepository
+  com.plus33.europe.local.service    ProductService interface + impl
+
+--------------------------------------------------------------------------------
+D. REQUEST LIFECYCLE
+--------------------------------------------------------------------------------
+Browser → URL request
+  If SPA route: Spring WebController forwards to /index.html
+  index.html renders: splash screen, navbar, baked home content, footer, chatbot
+  router.js boots, reads current path, restores home or fetches fragment
+  SPA navigation: router intercepts click → transition → fetch HTML fragment →
+    inject into #app → lazy-load page CSS → call page init() module
+  API calls: page JS fetches REST endpoint → Spring controller → service →
+    repository → H2 → response JSON → DOM update
+
+--------------------------------------------------------------------------------
+E. DATA FLOW
+--------------------------------------------------------------------------------
+  Startup: DatabaseSeeder seeds 27 products + 14 journal stories into H2
+  Store page: JS → GET /api/store/products → Spring → H2 → ProductDTO[] → JS renders grid
+  Product detail: JS → GET /api/store/products/{id} → Spring → H2 → ProductDTO → JS renders detail
+  Journal: JS → GET /api/journal/stories → Spring → H2 → JournalStoryDTO[] → JS renders magazine
+  Franchise form: JS → POST /api/franchise/apply → Spring validates → H2 save → JSON response
+  Chatbot: JS → POST /api/chatbot/ask → Spring keyword match → JSON { reply } → chat bubble
+
 ================================================================================
