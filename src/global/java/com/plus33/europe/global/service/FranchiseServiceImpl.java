@@ -18,6 +18,7 @@ public class FranchiseServiceImpl implements FranchiseService {
     }
 
     @Override
+    @SuppressWarnings("null")
     public FranchiseApplicationDTO submitApplication(FranchiseApplicationDTO dto) {
         FranchiseApplication entity = DtoMapper.toFranchiseEntity(dto);
         FranchiseApplication saved = franchiseRepository.save(entity);

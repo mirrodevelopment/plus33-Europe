@@ -35,6 +35,22 @@
             <span>HOW IT WORKS</span>
           </button>
         </div>
+
+        <!-- Hero Feature Badges Bar -->
+        <div class="rewards-hero__badges">
+          <div class="hero-badge-pill">
+            <span class="pill-sparkle">✦</span>
+            <span><strong>10,000+</strong> Reserve Members</span>
+          </div>
+          <div class="hero-badge-pill">
+            <span class="pill-sparkle">⚡</span>
+            <span><strong>10 Pts</strong> per ₹100 Spent</span>
+          </div>
+          <div class="hero-badge-pill">
+            <span class="pill-sparkle">⚜</span>
+            <span><strong>4 Luxury</strong> Tiers</span>
+          </div>
+        </div>
       </div>
       
       <!-- Right side: large layered phone mockup (58% width) -->
@@ -73,35 +89,121 @@
                 <h3 class="greeting-title">ARYA &nbsp;<span class="sparkle">✦</span></h3>
               </div>
               
-              <!-- Center Card: Navy Rewards card -->
-              <div class="rewards-app-card">
-                <div class="app-card-shine"></div>
-                <div class="app-card-header">
-                  <span class="app-card-eyebrow">REWARDS BALANCE</span>
-                  <div class="app-card-badge">
-                    <svg viewBox="0 0 24 24" fill="currentColor" class="badge-star"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                    <span>Gold Member</span>
-                  </div>
-                </div>
-                <div class="app-card-balance">
-                  <span class="balance-num">4,250</span>
-                  <span class="balance-label">Points</span>
-                </div>
-                
-                <!-- Gold Progress Ring & Bar integrated styling -->
-                <div class="app-card-progress">
-                  <div class="progress-info-row">
-                    <span class="progress-details-txt">750 points to reach Platinum</span>
-                    <div class="progress-ring-mini">
-                      <svg viewBox="0 0 36 36" class="circular-chart-gold">
-                        <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                        <path class="circle" stroke-dasharray="85, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                      </svg>
+              <!-- Center Card: Navy Rewards card with 3D Flip & QR Pass -->
+              <div class="rewards-app-card-flip-wrap" id="rewards-flip-card" role="button" tabindex="0" title="Click to flip card & view Member QR Code">
+                <div class="rewards-app-card-inner">
+                  
+                  <!-- FRONT SIDE -->
+                  <div class="rewards-app-card card-front">
+                    <div class="app-card-shine"></div>
+                    <div class="app-card-header">
+                      <div class="app-card-brand-group">
+                        <img src="/global/assets/brand/plus33-horse-gold.png" alt="+33 Gold Horse Emblem" class="mini-card-gold-horse" />
+                        <span class="app-card-eyebrow">REWARDS BALANCE</span>
+                      </div>
+                      <div class="app-card-badge">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="badge-star"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <span>Gold Member</span>
+                      </div>
+                    </div>
+                    <div class="app-card-balance">
+                      <span class="balance-num">4,250</span>
+                      <span class="balance-label">Points</span>
+                    </div>
+                    
+                    <!-- Gold Progress Ring & Bar integrated styling -->
+                    <div class="app-card-progress">
+                      <div class="progress-info-row">
+                        <span class="progress-details-txt">750 points to reach Gold Reserve</span>
+                        <div class="progress-ring-mini">
+                          <svg viewBox="0 0 36 36" class="circular-chart-gold">
+                            <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle" stroke-dasharray="85, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                          </svg>
+                        </div>
+                      </div>
+                      <div class="progress-track">
+                        <div class="progress-fill" style="width: 85%;"></div>
+                      </div>
+                    </div>
+
+                    <div class="flip-hint-pill">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"/><path d="M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+                      <span>TAP TO FLIP & SCAN QR</span>
                     </div>
                   </div>
-                  <div class="progress-track">
-                    <div class="progress-fill" style="width: 85%;"></div>
+
+                  <!-- BACK SIDE (CUSTOMER MEMBER QR CODE) -->
+                  <div class="rewards-app-card card-back">
+                    <div class="app-card-shine"></div>
+                    <div class="card-back-header">
+                      <div class="card-back-brand">
+                        <span class="card-back-eyebrow">PLUS33 CAFÉ FRANÇAIS</span>
+                        <span class="card-back-id">ID: #PLUS33-882194</span>
+                      </div>
+                      <div class="card-back-badge">
+                        <span>GOLD RESERVE</span>
+                      </div>
+                    </div>
+
+                    <!-- QR CODE DISPLAY -->
+                    <div class="card-back-qr-wrap">
+                      <div class="qr-code-box">
+                        <svg viewBox="0 0 100 100" class="qr-svg">
+                          <rect width="100" height="100" fill="#FFFFFF"/>
+                          <!-- Top Left Anchor -->
+                          <rect x="8" y="8" width="28" height="28" fill="#061A33"/>
+                          <rect x="14" y="14" width="16" height="16" fill="#FFFFFF"/>
+                          <rect x="18" y="18" width="8" height="8" fill="#B18B56"/>
+                          <!-- Top Right Anchor -->
+                          <rect x="64" y="8" width="28" height="28" fill="#061A33"/>
+                          <rect x="70" y="14" width="16" height="16" fill="#FFFFFF"/>
+                          <rect x="74" y="18" width="8" height="8" fill="#B18B56"/>
+                          <!-- Bottom Left Anchor -->
+                          <rect x="8" y="64" width="28" height="28" fill="#061A33"/>
+                          <rect x="14" y="70" width="16" height="16" fill="#FFFFFF"/>
+                          <rect x="18" y="74" width="8" height="8" fill="#B18B56"/>
+                          <!-- Data Modules -->
+                          <rect x="42" y="12" width="6" height="6" fill="#061A33"/>
+                          <rect x="52" y="12" width="6" height="6" fill="#061A33"/>
+                          <rect x="42" y="24" width="6" height="6" fill="#B18B56"/>
+                          <rect x="48" y="30" width="6" height="6" fill="#061A33"/>
+                          <rect x="12" y="42" width="6" height="6" fill="#061A33"/>
+                          <rect x="24" y="42" width="6" height="6" fill="#061A33"/>
+                          <rect x="36" y="42" width="6" height="6" fill="#B18B56"/>
+                          <rect x="48" y="42" width="6" height="6" fill="#061A33"/>
+                          <rect x="60" y="42" width="6" height="6" fill="#061A33"/>
+                          <rect x="78" y="42" width="6" height="6" fill="#061A33"/>
+                          <rect x="18" y="52" width="6" height="6" fill="#B18B56"/>
+                          <rect x="30" y="52" width="6" height="6" fill="#061A33"/>
+                          <rect x="42" y="52" width="6" height="6" fill="#061A33"/>
+                          <rect x="54" y="52" width="6" height="6" fill="#B18B56"/>
+                          <rect x="66" y="52" width="6" height="6" fill="#061A33"/>
+                          <rect x="42" y="64" width="6" height="6" fill="#061A33"/>
+                          <rect x="54" y="64" width="6" height="6" fill="#061A33"/>
+                          <rect x="66" y="64" width="6" height="6" fill="#B18B56"/>
+                          <rect x="78" y="64" width="6" height="6" fill="#061A33"/>
+                          <rect x="42" y="78" width="6" height="6" fill="#B18B56"/>
+                          <rect x="54" y="78" width="6" height="6" fill="#061A33"/>
+                          <rect x="66" y="78" width="6" height="6" fill="#061A33"/>
+                          <rect x="78" y="78" width="6" height="6" fill="#B18B56"/>
+                          <!-- Center Emblem -->
+                          <circle cx="50" cy="50" r="7" fill="#B18B56"/>
+                          <text x="50" y="52" fill="#FFFFFF" font-family="sans-serif" font-size="4.5" font-weight="900" text-anchor="middle">+33</text>
+                        </svg>
+                      </div>
+                      <div class="card-back-user-info">
+                        <span class="back-user-name">Member: <strong>Arya Sharma</strong></span>
+                        <span class="back-user-perk">Scan at boutique for instant 10% points & priority sip</span>
+                      </div>
+                    </div>
+
+                    <div class="flip-back-hint">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                      <span>TAP CARD TO FLIP BACK</span>
+                    </div>
                   </div>
+
                 </div>
               </div>
               
@@ -172,43 +274,177 @@
   
   <!-- ════════ MEMBERSHIP CARD SECTION ════════ -->
   <section class="rewards-membership" id="membership-card-section">
-    <div class="rewards-container text-center">
-      <span class="rewards-section-subtitle">THE COLLECTIBLE EXPERIENCE</span>
-      <h2 class="rewards-section-title">A prestigious status<br>crafted for you.</h2>
+    <div class="rewards-container">
+      <div class="text-center rewards-section-header">
+        <span class="rewards-section-subtitle">THE COLLECTIBLE EXPERIENCE</span>
+        <h2 class="rewards-section-title">A prestigious status crafted for you.</h2>
+      </div>
       
-      <div class="collectible-card-wrapper">
-        <div class="collectible-card">
-          <div class="collectible-card__shimmer"></div>
-          <div class="collectible-card__inner">
+      <div class="collectible-showcase-grid">
+        <!-- Left: 3D Collectible Card with QR Pass Back -->
+        <div class="collectible-card-wrapper" id="collectible-flip-card" role="button" tabindex="0" title="Click card to flip & view Member QR Code">
+          <div class="collectible-card-3d-inner">
             
-            <div class="collectible-card__header">
-              <span class="card-brand">PLUS33 RESERVE</span>
-              <!-- Pony Logo outline -->
-              <svg viewBox="0 0 100 100" class="card-horse-logo">
-                <path d="M50 15c-1.2 5.4-4 8.4-4 12a4 4 0 0 0 8 0c0-3.6-2.8-6.6-4-12z" fill="none" stroke="currentColor" stroke-width="2"/>
-                <path d="M41 40c2.5-4 5.5-6.5 11-7.5.5-2.5 1.5-4 3.5-5 .5 1.5 1.5 2.5 3 2.5s2.5-1 3-2.5c2 1.5 3.5 3 4 5 1.5.5 2.5 1.5 2.5 3.5s-1 3.5-2.5 3.5c-4.5.5-7 3.5-8.5 7.5-.5 1.5-1.5 2-3.5 2s-3.5-.5-4-2c-1.5-4.5-4-7-8-7.5z" fill="none" stroke="currentColor" stroke-width="2"/>
-              </svg>
-            </div>
-            
-            <div class="collectible-card__body">
-              <span class="card-gold-badge">GOLD RESERVE MEMBER</span>
-              <div class="card-number">•••• •••• •••• 4250</div>
-            </div>
-            
-            <div class="collectible-card__footer">
-              <div class="card-holder">
-                <span class="footer-label">MEMBER SINCE</span>
-                <span class="footer-val">2026</span>
+            <!-- FRONT SIDE OF PHYSICAL CARD -->
+            <div class="collectible-card card-front">
+              <div class="collectible-card__shimmer"></div>
+              <div class="collectible-card__inner">
+                <div class="collectible-card__header">
+                  <span class="card-brand">PLUS33 RESERVE</span>
+                  <img src="/global/assets/brand/plus33-horse-gold.png" alt="+33 Gold Horse Emblem" class="card-gold-horse-img" />
+                </div>
+                
+                <div class="collectible-card__body">
+                  <span class="card-gold-badge">GOLD RESERVE MEMBER</span>
+                  <div class="card-number">•••• •••• •••• 4250</div>
+                </div>
+                
+                <div class="collectible-card__footer">
+                  <div class="card-holder">
+                    <span class="footer-label">MEMBER SINCE</span>
+                    <span class="footer-val">2026</span>
+                  </div>
+                  <div class="card-holder align-right">
+                    <span class="footer-label">HOLDER</span>
+                    <span class="footer-val">ARYA</span>
+                  </div>
+                </div>
               </div>
-              <div class="card-holder align-right">
-                <span class="footer-label">HOLDER</span>
-                <span class="footer-val">ARYA</span>
+              <div class="collectible-card__hologram"></div>
+              
+              <div class="collectible-flip-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"/><path d="M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+                <span>CLICK CARD TO SCAN QR PASS</span>
               </div>
             </div>
-            
+
+            <!-- BACK SIDE OF PHYSICAL CARD -->
+            <div class="collectible-card card-back">
+              <div class="collectible-card__shimmer"></div>
+              <div class="collectible-card-back-content">
+                <!-- Magnetic Strip -->
+                <div class="card-mag-strip"></div>
+
+                <div class="card-back-main-row">
+                  <!-- Signature Panel & Details -->
+                  <div class="card-back-left-panel">
+                    <div class="signature-panel">
+                      <span class="signature-text">Arya Sharma</span>
+                      <span class="cvv-badge">CVV 882</span>
+                    </div>
+                    <div class="member-meta-grid">
+                      <div class="meta-item">
+                        <span class="meta-lbl">ATELIER PASS</span>
+                        <span class="meta-val">#PLUS33-882194</span>
+                      </div>
+                      <div class="meta-item">
+                        <span class="meta-lbl">STATUS</span>
+                        <span class="meta-val text-gold">GOLD MEMBER</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Large QR Code Box -->
+                  <div class="card-back-qr-container">
+                    <div class="large-qr-box">
+                      <svg viewBox="0 0 100 100" class="qr-svg-large">
+                        <rect width="100" height="100" fill="#FFFFFF"/>
+                        <!-- Corner Anchors -->
+                        <rect x="8" y="8" width="28" height="28" fill="#061A33"/>
+                        <rect x="14" y="14" width="16" height="16" fill="#FFFFFF"/>
+                        <rect x="18" y="18" width="8" height="8" fill="#B18B56"/>
+                        <rect x="64" y="8" width="28" height="28" fill="#061A33"/>
+                        <rect x="70" y="14" width="16" height="16" fill="#FFFFFF"/>
+                        <rect x="74" y="18" width="8" height="8" fill="#B18B56"/>
+                        <rect x="8" y="64" width="28" height="28" fill="#061A33"/>
+                        <rect x="14" y="70" width="16" height="16" fill="#FFFFFF"/>
+                        <rect x="18" y="74" width="8" height="8" fill="#B18B56"/>
+                        <!-- Data Modules -->
+                        <rect x="42" y="12" width="6" height="6" fill="#061A33"/>
+                        <rect x="52" y="12" width="6" height="6" fill="#061A33"/>
+                        <rect x="42" y="24" width="6" height="6" fill="#B18B56"/>
+                        <rect x="48" y="30" width="6" height="6" fill="#061A33"/>
+                        <rect x="12" y="42" width="6" height="6" fill="#061A33"/>
+                        <rect x="24" y="42" width="6" height="6" fill="#061A33"/>
+                        <rect x="36" y="42" width="6" height="6" fill="#B18B56"/>
+                        <rect x="48" y="42" width="6" height="6" fill="#061A33"/>
+                        <rect x="60" y="42" width="6" height="6" fill="#061A33"/>
+                        <rect x="78" y="42" width="6" height="6" fill="#061A33"/>
+                        <rect x="18" y="52" width="6" height="6" fill="#B18B56"/>
+                        <rect x="30" y="52" width="6" height="6" fill="#061A33"/>
+                        <rect x="42" y="52" width="6" height="6" fill="#061A33"/>
+                        <rect x="54" y="52" width="6" height="6" fill="#B18B56"/>
+                        <rect x="66" y="52" width="6" height="6" fill="#061A33"/>
+                        <rect x="42" y="64" width="6" height="6" fill="#061A33"/>
+                        <rect x="54" y="64" width="6" height="6" fill="#061A33"/>
+                        <rect x="66" y="64" width="6" height="6" fill="#B18B56"/>
+                        <rect x="78" y="64" width="6" height="6" fill="#061A33"/>
+                        <rect x="42" y="78" width="6" height="6" fill="#B18B56"/>
+                        <rect x="54" y="78" width="6" height="6" fill="#061A33"/>
+                        <rect x="66" y="78" width="6" height="6" fill="#061A33"/>
+                        <rect x="78" y="78" width="6" height="6" fill="#B18B56"/>
+                        <!-- Center Emblem -->
+                        <circle cx="50" cy="50" r="7" fill="#B18B56"/>
+                        <text x="50" y="52.5" fill="#FFFFFF" font-family="sans-serif" font-size="4.5" font-weight="900" text-anchor="middle">+33</text>
+                      </svg>
+                    </div>
+                    <span class="qr-scan-label">SCAN AT BOUTIQUE</span>
+                  </div>
+                </div>
+
+                <div class="collectible-flip-back-hint">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                  <span>CLICK CARD TO FLIP BACK</span>
+                </div>
+              </div>
+            </div>
+
           </div>
-          <div class="collectible-card__hologram"></div>
         </div>
+
+        <!-- Right: Privileges Grid -->
+        <div class="collectible-features-list">
+          <div class="feature-card-item">
+            <div class="feature-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 10 21 10"/></svg>
+            </div>
+            <div class="feature-item-text">
+              <h4>Digital Wallet Pass</h4>
+              <p>Add to Apple Wallet & Google Pay for seamless contactless scan at counter.</p>
+            </div>
+          </div>
+
+          <div class="feature-card-item">
+            <div class="feature-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+            <div class="feature-item-text">
+              <h4>Priority Mobile Order</h4>
+              <p>Skip the boutique line with order-ahead and customized roast preference.</p>
+            </div>
+          </div>
+
+          <div class="feature-card-item">
+            <div class="feature-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div class="feature-item-text">
+              <h4>Private Cupping Access</h4>
+              <p>Exclusive invitations to master roaster cupping sessions and reserve launches.</p>
+            </div>
+          </div>
+
+          <div class="feature-card-item">
+            <div class="feature-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="feature-item-text">
+              <h4>Global Salon Access</h4>
+              <p>Honored across all flagship ateliers in Paris, Milan, London, and Vienna.</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -298,19 +534,6 @@
           </div>
           <h3 class="tier-card-title">Gold</h3>
           <span class="tier-card-points">8,000+ POINTS</span>
-          <div class="tier-card-progress-bar">
-            <div class="tier-card-progress-fill" style="width: 0%;"></div>
-          </div>
-        </div>
-
-        <!-- Platinum Card -->
-        <div class="tier-card-new" data-tier="platinum">
-          <div class="tier-badge-your">YOUR TIER</div>
-          <div class="tier-card-image-wrap">
-            <img src="/local/assets/tiers/platinum.png" alt="Platinum Tier Coin" class="tier-coin-img">
-          </div>
-          <h3 class="tier-card-title">Platinum</h3>
-          <span class="tier-card-points">15,000+ POINTS</span>
           <div class="tier-card-progress-bar">
             <div class="tier-card-progress-fill" style="width: 0%;"></div>
           </div>
@@ -420,184 +643,10 @@
         </p>
       </div>
 
-      <!-- Asymmetrical Premium Cards Container -->
+      <!-- Premium Reward Container -->
       <div class="milestones-asymmetric-layout">
         
-        <!-- Card 1: Large Featured Card (Café Filtre) -->
-        <div class="milestone-card-premium featured-filtre-card bg-warm-ivory">
-          <div class="paper-texture"></div>
-          <!-- Botanical Line Art Background -->
-          <svg class="botanical-sketch botanical-branch-1" viewBox="0 0 200 200" fill="none" stroke="currentColor">
-            <path d="M10,180 Q60,150 120,130 C150,120 180,90 190,50" stroke-width="0.8" stroke-linecap="round"/>
-            <path d="M120,130 C130,110 150,105 165,115 C150,130 135,130 120,130 Z" stroke-width="0.6" fill="none"/>
-            <path d="M120,130 C137,118 152,116 165,115" stroke-width="0.5"/>
-            <path d="M90,145 C80,125 60,120 45,130 C60,145 75,145 90,145 Z" stroke-width="0.6" fill="none"/>
-            <path d="M90,145 C73,133 58,131 45,130" stroke-width="0.5"/>
-          </svg>
-          <!-- Embossed PLUS33 Seal Watermark -->
-          <svg class="embossed-seal" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.8">
-            <circle cx="50" cy="50" r="44" stroke-dasharray="2 2" />
-            <circle cx="50" cy="50" r="40" />
-            <path id="sealPath1" d="M 50,50 m -32,0 a 32,32 0 1,1 64,0 a 32,32 0 1,1 -64,0" fill="none"/>
-            <text><textPath href="#sealPath1" startOffset="50%" text-anchor="middle" font-size="4.5" letter-spacing="1">PLUS33 CAFÉ FRANÇAIS • MAISON FONDÉE 2024</textPath></text>
-            <text x="50" y="55" text-anchor="middle" font-family="serif" font-size="14">⚜</text>
-          </svg>
-
-          <div class="milestone-image-area">
-            <img src="/local/assets/products/drinks/hot-coffee/cafe-filtre.png" alt="Café Filtre" class="milestone-photo">
-          </div>
-          <div class="milestone-content-area">
-            <span class="milestone-category-badge">SIGNATURE COFFEE</span>
-            <h3 class="milestone-title">Café Filtre</h3>
-            <span class="milestone-spend-limit">Unlock at $2,000 spent</span>
-            <p class="milestone-desc">A refined introduction to the PLUS33 ritual.</p>
-            
-            <div class="milestone-status-block">
-              <span class="milestone-status-label">STATUS</span>
-              <div class="unlocked-luxury-badge">
-                <span>UNLOCKED</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="lock-icon-svg">
-                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Medium Grid Row -->
-        <div class="milestones-medium-row">
-          
-          <!-- Card 2: Donut -->
-          <div class="milestone-card-premium medium-milestone-card bg-warm-ivory">
-            <div class="paper-texture"></div>
-            <!-- Botanical Sketch Background -->
-            <svg class="botanical-sketch botanical-branch-2" viewBox="0 0 200 200" fill="none" stroke="currentColor">
-              <path d="M190,190 Q140,140 110,90 C95,60 85,30 50,10" stroke-width="0.8" stroke-linecap="round"/>
-              <path d="M110,90 C90,80 85,60 95,45 C110,60 110,75 110,90 Z" stroke-width="0.6" fill="none"/>
-              <path d="M145,110 C125,120 120,140 130,155 C145,140 145,125 145,110 Z" stroke-width="0.6" fill="none"/>
-            </svg>
-            <!-- Embossed seal -->
-            <svg class="embossed-seal" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.8">
-              <circle cx="50" cy="50" r="44" stroke-dasharray="2 2" />
-              <circle cx="50" cy="50" r="40" />
-              <path id="sealPath2" d="M 50,50 m -32,0 a 32,32 0 1,1 64,0 a 32,32 0 1,1 -64,0" fill="none"/>
-              <text><textPath href="#sealPath2" startOffset="50%" text-anchor="middle" font-size="4.5" letter-spacing="1">PLUS33 CAFÉ FRANÇAIS • MAISON FONDÉE 2024</textPath></text>
-              <text x="50" y="55" text-anchor="middle" font-family="serif" font-size="14">⚜</text>
-            </svg>
-
-            <div class="milestone-image-area">
-              <img src="/local/assets/products/desserts/donut.jpg" alt="Donut" class="milestone-photo">
-            </div>
-            <div class="milestone-content-area">
-              <span class="milestone-category-badge">PÂTISSERIE</span>
-              <h3 class="milestone-title">Donut</h3>
-              <span class="milestone-spend-limit">Unlock at $5,000 spent</span>
-              <p class="milestone-desc">Artisanal glaze and delicate brioche dough.</p>
-              
-              <div class="milestone-progress-block">
-                <div class="progress-labels-row">
-                  <span class="progress-lbl">PROGRESS</span>
-                  <span class="progress-pct">80%</span>
-                </div>
-                <div class="progress-luxury-track">
-                  <div class="progress-luxury-fill" style="width: 80%;"></div>
-                  <!-- Milestone markers -->
-                  <div class="luxury-marker" style="left: 25%;"></div>
-                  <div class="luxury-marker" style="left: 50%;"></div>
-                  <div class="luxury-marker" style="left: 75%;"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 3: Iced Punch Coco -->
-          <div class="milestone-card-premium medium-milestone-card bg-warm-ivory">
-            <div class="paper-texture"></div>
-            <!-- Botanical Sketch Background -->
-            <svg class="botanical-sketch botanical-branch-3" viewBox="0 0 200 200" fill="none" stroke="currentColor">
-              <path d="M10,10 Q60,60 90,110 C105,140 115,170 150,190" stroke-width="0.8" stroke-linecap="round"/>
-              <path d="M90,110 C110,120 115,140 105,155 C90,140 90,125 90,110 Z" stroke-width="0.6" fill="none"/>
-            </svg>
-            <!-- Embossed seal -->
-            <svg class="embossed-seal" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.8">
-              <circle cx="50" cy="50" r="44" stroke-dasharray="2 2" />
-              <circle cx="50" cy="50" r="40" />
-              <path id="sealPath3" d="M 50,50 m -32,0 a 32,32 0 1,1 64,0 a 32,32 0 1,1 -64,0" fill="none"/>
-              <text><textPath href="#sealPath3" startOffset="50%" text-anchor="middle" font-size="4.5" letter-spacing="1">PLUS33 CAFÉ FRANÇAIS • MAISON FONDÉE 2024</textPath></text>
-              <text x="50" y="55" text-anchor="middle" font-family="serif" font-size="14">⚜</text>
-            </svg>
-
-            <div class="milestone-image-area">
-              <img src="/local/assets/products/drinks/iced-coffee/iced-punch-coco.jpg" alt="Iced Punch Coco" class="milestone-photo">
-            </div>
-            <div class="milestone-content-area">
-              <span class="milestone-category-badge">SIGNATURE CHILLED</span>
-              <h3 class="milestone-title">Iced Punch Coco</h3>
-              <span class="milestone-spend-limit">Unlock at $8,000 spent</span>
-              <p class="milestone-desc">Double shot espresso on coconut water and tropical citrus.</p>
-              
-              <div class="milestone-progress-block">
-                <div class="progress-labels-row">
-                  <span class="progress-lbl">PROGRESS</span>
-                  <span class="progress-pct">50%</span>
-                </div>
-                <div class="progress-luxury-track">
-                  <div class="progress-luxury-fill" style="width: 50%;"></div>
-                  <!-- Milestone markers -->
-                  <div class="luxury-marker" style="left: 25%;"></div>
-                  <div class="luxury-marker" style="left: 50%;"></div>
-                  <div class="luxury-marker" style="left: 75%;"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Card 4: Premium Reward Card (Tiramisu Glacé) -->
-        <div class="milestone-card-premium premium-tiramisu-card bg-espresso-black">
-          <div class="paper-texture"></div>
-          <!-- Botanical Sketch Background -->
-          <svg class="botanical-sketch botanical-branch-4" viewBox="0 0 200 200" fill="none" stroke="currentColor">
-            <path d="M10,180 Q60,150 120,130 C150,120 180,90 190,50" stroke-width="0.8" stroke-linecap="round"/>
-            <path d="M120,130 C130,110 150,105 165,115 C150,130 135,130 120,130 Z" stroke-width="0.6" fill="none"/>
-          </svg>
-          <!-- Embossed seal -->
-          <svg class="embossed-seal" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.8">
-            <circle cx="50" cy="50" r="44" stroke-dasharray="2 2" />
-            <circle cx="50" cy="50" r="40" />
-            <path id="sealPath4" d="M 50,50 m -32,0 a 32,32 0 1,1 64,0 a 32,32 0 1,1 -64,0" fill="none"/>
-            <text><textPath href="#sealPath4" startOffset="50%" text-anchor="middle" font-size="4.5" letter-spacing="1">PLUS33 CAFÉ FRANÇAIS • MAISON FONDÉE 2024</textPath></text>
-            <text x="50" y="55" text-anchor="middle" font-family="serif" font-size="14">⚜</text>
-          </svg>
-
-          <div class="milestone-image-area">
-            <img src="/local/assets/products/desserts/tiramisu-glace.jpg" alt="Tiramisu Glacé" class="milestone-photo">
-          </div>
-          <div class="milestone-content-area">
-            <span class="milestone-category-badge text-gold">ATELIER DESSERT</span>
-            <h3 class="milestone-title text-cream">Tiramisu Glacé</h3>
-            <span class="milestone-spend-limit text-muted-ivory">Unlock at $12,000 spent</span>
-            <p class="milestone-desc text-muted-ivory">A frozen reinterpretation of the Italian classic — layers of mascarpone gelato, espresso-soaked sponge, and cocoa dust.</p>
-            
-            <div class="milestone-progress-block">
-              <div class="progress-labels-row">
-                <span class="progress-lbl text-muted-ivory">PROGRESS</span>
-                <span class="progress-pct text-gold">35%</span>
-              </div>
-              <div class="progress-luxury-track bg-dark-track">
-                <div class="progress-luxury-fill fill-gold" style="width: 35%;"></div>
-                <!-- Milestone markers -->
-                <div class="luxury-marker bg-marker-dark" style="left: 25%;"></div>
-                <div class="luxury-marker bg-marker-dark" style="left: 50%;"></div>
-                <div class="luxury-marker bg-marker-dark" style="left: 75%;"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 5: Full-Width Immersive Final Reward Card (+33 Atelier Gift Pack) -->
+        <!-- Full-Width Immersive Final Reward Card (+33 Atelier Gift Pack) -->
         <div class="milestone-card-premium final-giftpack-card bg-espresso-black">
           <div class="paper-texture"></div>
           <!-- Botanical Sketch Background -->

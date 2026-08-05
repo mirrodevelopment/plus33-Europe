@@ -44,15 +44,15 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
 
 /* ═════════ CONTAINER & SECTION SPACING ═════════ */
 .rewards-container {
-  max-width: 1580px;
+  max-width: 1480px;
   margin-inline: auto;
-  padding-inline: clamp(20px, 3vw, 48px);
+  padding-inline: clamp(20px, 3.5vw, 48px);
   width: 100%;
   box-sizing: border-box;
 }
 
 .rewards-page section {
-  padding-block: clamp(90px, 10vw, 160px);
+  padding-block: clamp(54px, 5vw, 84px);
   position: relative;
   box-sizing: border-box;
 }
@@ -60,23 +60,23 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
 /* ═════════ HERO TYPOGRAPHY ═════════ */
 .rewards-eyebrow {
   font-family: 'Manrope', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.3em;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.35em;
   text-transform: uppercase;
   color: var(--rw-gold);
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 
 .rewards-hero__heading {
   font-family: 'Cormorant Garamond', 'Georgia', serif;
-  font-size: clamp(64px, 8vw, 118px);
-  line-height: 0.92;
-  letter-spacing: -0.04em;
+  font-size: clamp(52px, 6.5vw, 98px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
   font-weight: 400;
   color: var(--rw-navy);
-  margin: 0 0 28px 0;
+  margin: 0 0 20px 0;
 }
 
 .rewards-gold {
@@ -86,46 +86,47 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
 }
 
 .rewards-hero__description {
-  font-size: clamp(16px, 1.2vw, 19px);
-  line-height: 1.75;
+  font-size: clamp(15px, 1.1vw, 18px);
+  line-height: 1.65;
   color: var(--rw-muted);
-  max-width: 540px;
-  margin: 0 0 40px 0;
+  max-width: 520px;
+  margin: 0 0 28px 0;
   font-weight: 300;
 }
 
 .rewards-section-subtitle {
   font-family: 'Manrope', sans-serif;
   font-size: 11px;
-  letter-spacing: 0.4em;
+  letter-spacing: 0.35em;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--rw-gold);
   display: block;
-  margin-bottom: 18px;
+  margin-bottom: 10px;
 }
 
 .rewards-section-title {
   font-family: 'Cormorant Garamond', 'Georgia', serif;
-  font-size: clamp(38px, 4.5vw, 68px);
-  line-height: 1.1;
+  font-size: clamp(34px, 3.8vw, 56px);
+  line-height: 1.12;
   font-weight: 400;
   letter-spacing: -0.02em;
   color: var(--rw-navy);
-  margin: 0 0 48px 0;
+  margin: 0 0 24px 0;
 }
 
 /* ═════════ HERO LAYOUT ═════════ */
 .rewards-hero {
-  padding-top: clamp(150px, 12vw, 210px) !important;
+  padding-top: clamp(110px, 8vw, 140px) !important;
+  padding-bottom: clamp(60px, 5vw, 90px) !important;
   background-color: var(--rw-bg);
 }
 
 .rewards-hero__grid {
   display: grid;
-  grid-template-columns: 42fr 58fr;
+  grid-template-columns: 44fr 56fr;
   align-items: center;
-  gap: clamp(40px, 5vw, 120px);
+  gap: clamp(32px, 4vw, 72px);
 }
 
 .rewards-hero__content {
@@ -189,6 +190,39 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   background: rgba(6, 26, 51, 0.03);
 }
 
+/* Hero Badges Pill Bar */
+.rewards-hero__badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(6, 26, 51, 0.08);
+}
+
+.hero-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 99px;
+  background: rgba(177, 139, 86, 0.08);
+  border: 1px solid rgba(177, 139, 86, 0.2);
+  font-size: 12px;
+  color: var(--rw-navy);
+}
+
+.pill-sparkle {
+  color: var(--rw-gold);
+  font-size: 11px;
+}
+
+.hero-badge-pill strong {
+  font-weight: 700;
+  color: var(--rw-navy);
+}
+
 /* ═════════ CINEMATIC PHONE MOCKUP ═════════ */
 .rewards-hero__mockup-wrapper {
   display: flex;
@@ -199,13 +233,13 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
 
 .rewards-phone-mockup {
   width: 100%;
-  max-width: 440px;
+  max-width: 410px;
   background: #111;
-  border-radius: 54px;
-  padding: 12px;
+  border-radius: 50px;
+  padding: 10px;
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 40px 100px rgba(0,0,0,0.3), 0 10px 30px rgba(0,0,0,0.15);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.25), 0 10px 25px rgba(0,0,0,0.12);
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   transform-style: preserve-3d;
 }
@@ -215,16 +249,16 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: 54px;
+  border-radius: 50px;
   box-shadow: inset 0 0 2px 2px rgba(255, 255, 255, 0.08), inset 0 0 0 3px rgba(0, 0, 0, 0.9);
   pointer-events: none;
 }
 
 .rewards-phone-inner {
   background: var(--rw-bg);
-  border-radius: 44px;
+  border-radius: 40px;
   overflow: hidden;
-  height: 840px;
+  height: 680px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -368,16 +402,186 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   color: var(--rw-gold);
 }
 
-/* Center Navy Rewards Card */
-.rewards-app-card {
-  background: linear-gradient(135deg, #061a33 0%, #0b2447 55%, #102d58 100%);
-  border-radius: 24px;
-  padding: 24px;
-  color: #fff;
+/* ═════════ 3D FLIP MEMBERSHIP CARD ═════════ */
+.rewards-app-card-flip-wrap {
+  perspective: 1000px;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 24px;
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.rewards-app-card-inner {
   position: relative;
+  width: 100%;
+  transition: transform 0.75s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-style: preserve-3d;
+}
+
+.rewards-app-card-flip-wrap.is-flipped .rewards-app-card-inner {
+  transform: rotateY(180deg);
+}
+
+.rewards-app-card {
+  position: relative;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #061a33 0%, #0b2447 55%, #102d58 100%);
+  padding: 22px 24px;
+  color: #fff;
   overflow: hidden;
   box-shadow: 0 15px 35px rgba(6, 26, 51, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(177, 139, 86, 0.2);
+  border: 1px solid rgba(177, 139, 86, 0.3);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rewards-app-card.card-front {
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+.rewards-app-card.card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #091a2d 0%, #051221 100%);
+  border-color: rgba(177, 139, 86, 0.5);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(177, 139, 86, 0.1);
+}
+
+/* Card Front Flip Hint Pill */
+.flip-hint-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 14px;
+  padding: 5px 12px;
+  background: rgba(177, 139, 86, 0.12);
+  border: 1px solid rgba(177, 139, 86, 0.28);
+  border-radius: 20px;
+  color: var(--rw-gold);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.rewards-app-card-flip-wrap:hover .flip-hint-pill {
+  background: rgba(177, 139, 86, 0.24);
+  border-color: var(--rw-gold);
+  transform: translateY(-1px);
+}
+
+.flip-hint-pill svg,
+.flip-back-hint svg {
+  width: 12px;
+  height: 12px;
+  stroke: var(--rw-gold);
+}
+
+/* Card Back Content Styles */
+.card-back-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-back-eyebrow {
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: var(--rw-gold);
+  font-weight: 700;
+  display: block;
+}
+
+.card-back-id {
+  font-size: 11px;
+  color: rgba(245, 240, 232, 0.75);
+  font-family: monospace;
+}
+
+.card-back-badge {
+  background: rgba(177, 139, 86, 0.2);
+  border: 1px solid var(--rw-gold);
+  border-radius: 12px;
+  padding: 3px 10px;
+  color: var(--rw-gold);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.card-back-qr-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-block: 6px;
+}
+
+.qr-code-box {
+  width: 82px;
+  height: 82px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 6px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
+}
+
+.qr-svg {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+}
+
+.card-back-user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.back-user-name {
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  font-size: 15px;
+  color: rgba(245, 240, 232, 0.9);
+  letter-spacing: 0.5px;
+}
+
+.back-user-name strong {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  color: var(--rw-gold);
+  letter-spacing: 1px;
+}
+
+.back-user-perk {
+  font-size: 11px;
+  line-height: 1.35;
+  color: rgba(245, 240, 232, 0.75);
+  font-weight: 300;
+}
+
+.flip-back-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 9.5px;
+  letter-spacing: 1px;
+  color: var(--rw-gold);
+  font-weight: 700;
+  text-transform: uppercase;
+  padding-top: 4px;
 }
 
 .rewards-app-card::after {
@@ -418,6 +622,19 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 24px;
+}
+
+.app-card-brand-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mini-card-gold-horse {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(177, 139, 86, 0.55));
 }
 
 .app-card-eyebrow {
@@ -635,30 +852,289 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
 
 /* ═════════ STANDALONE MEMBERSHIP CARD ═════════ */
 .rewards-membership {
-  background-color: var(--rw-bg);
+  background: linear-gradient(180deg, #f7f2eb 0%, #f1ebdf 100%);
   position: relative;
+  border-block: 1px solid rgba(177, 139, 86, 0.12);
+}
+
+.collectible-showcase-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+  margin-top: 36px;
 }
 
 .collectible-card-wrapper {
-  margin-top: 60px;
   display: flex;
   justify-content: center;
   perspective: 1200px;
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.collectible-card-3d-inner {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-style: preserve-3d;
+}
+
+.collectible-card-wrapper.is-flipped .collectible-card-3d-inner {
+  transform: rotateY(180deg);
+}
+
+.collectible-features-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.feature-card-item {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid rgba(6, 26, 51, 0.05);
+  box-shadow: 0 8px 24px rgba(6, 26, 51, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.feature-card-item:hover {
+  transform: translateY(-3px);
+  border-color: rgba(177, 139, 86, 0.3);
+}
+
+.feature-item-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(177, 139, 86, 0.1);
+  color: var(--rw-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-item-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.feature-item-text h4 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--rw-navy);
+  margin: 0 0 4px 0;
+}
+
+.feature-item-text p {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--rw-muted);
+  margin: 0;
 }
 
 .collectible-card {
   width: 100%;
-  max-width: 580px;
   aspect-ratio: 1.6/1;
   background: linear-gradient(135deg, #020914 0%, #061a33 50%, #0d2d56 100%);
   border-radius: 28px;
   position: relative;
   overflow: hidden;
   box-shadow: 0 35px 80px rgba(6, 26, 51, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(177, 139, 86, 0.25);
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.8s ease;
-  transform-style: preserve-3d;
-  cursor: pointer;
+  border: 1px solid rgba(177, 139, 86, 0.3);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.collectible-card.card-front {
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+.collectible-card.card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: rotateY(180deg);
+  background: linear-gradient(135deg, #06162a 0%, #020b18 100%);
+  border-color: rgba(177, 139, 86, 0.5);
+  padding: 0;
+}
+
+.collectible-card-back-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 0 18px 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* Card Back Magnetic Strip */
+.card-mag-strip {
+  width: 100%;
+  height: 48px;
+  background: linear-gradient(180deg, #111111 0%, #000000 100%);
+  margin-top: 24px;
+  border-block: 1px solid rgba(177, 139, 86, 0.2);
+}
+
+.card-back-main-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 28px;
+  margin-top: 8px;
+  flex: 1;
+}
+
+.card-back-left-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+
+.signature-panel {
+  background: rgba(255, 255, 255, 0.88);
+  height: 38px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 14px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.signature-text {
+  font-family: "Great Vibes", "Pinyon Script", "Brush Script MT", cursive;
+  font-size: 22px;
+  color: #071729;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.cvv-badge {
+  font-family: monospace;
+  font-size: 11px;
+  color: #444;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.member-meta-grid {
+  display: flex;
+  gap: 24px;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.meta-lbl {
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: rgba(245, 240, 232, 0.55);
+  font-weight: 700;
+}
+
+.meta-val {
+  font-size: 12.5px;
+  color: #ffffff;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+}
+
+.card-back-qr-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.large-qr-box {
+  width: 96px;
+  height: 96px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 7px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.qr-svg-large {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+}
+
+.qr-scan-label {
+  font-size: 9px;
+  letter-spacing: 1.2px;
+  color: var(--rw-gold);
+  font-weight: 800;
+}
+
+/* Collectible Flip Hints */
+.collectible-flip-pill {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  background: rgba(177, 139, 86, 0.15);
+  border: 1px solid rgba(177, 139, 86, 0.35);
+  border-radius: 20px;
+  color: var(--rw-gold);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.collectible-card-wrapper:hover .collectible-flip-pill {
+  background: rgba(177, 139, 86, 0.28);
+  border-color: var(--rw-gold);
+  box-shadow: 0 0 16px rgba(177, 139, 86, 0.3);
+}
+
+.collectible-flip-pill svg,
+.collectible-flip-back-hint svg {
+  width: 13px;
+  height: 13px;
+  stroke: var(--rw-gold);
+}
+
+.collectible-flip-back-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  color: var(--rw-gold);
+  font-weight: 700;
+  text-transform: uppercase;
+  padding-top: 4px;
 }
 
 .collectible-card::after {
@@ -670,10 +1146,17 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   pointer-events: none;
 }
 
-.collectible-card:hover {
-  transform: translateY(-8px) rotateX(4deg) rotateY(-4deg);
+.collectible-card-wrapper:hover .collectible-card-3d-inner {
+  transform: translateY(-6px);
+}
+
+.collectible-card-wrapper.is-flipped:hover .collectible-card-3d-inner {
+  transform: rotateY(180deg) translateY(-6px);
+}
+
+.collectible-card-wrapper:hover .collectible-card {
   box-shadow: 0 45px 100px rgba(6, 26, 51, 0.35);
-  border-color: rgba(177, 139, 86, 0.45);
+  border-color: rgba(177, 139, 86, 0.5);
 }
 
 .collectible-card__shimmer {
@@ -695,7 +1178,7 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.collectible-card:hover .collectible-card__shimmer {
+.collectible-card-wrapper:hover .collectible-card__shimmer {
   transform: translate(50%, 50%) rotate(30deg);
 }
 
@@ -725,11 +1208,11 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   color: var(--rw-gold);
 }
 
-.card-horse-logo {
-  width: 38px;
-  height: 38px;
-  color: var(--rw-gold);
-  opacity: 0.8;
+.card-gold-horse-img {
+  height: 58px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(177, 139, 86, 0.55));
 }
 
 .collectible-card__body {
@@ -809,13 +1292,14 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
 
 /* ═════════ HOW REWARDS WORK ═════════ */
 .rewards-how {
-  background-color: var(--rw-bg);
+  background: #ffffff;
+  border-block: 1px solid rgba(6, 26, 51, 0.05);
 }
 
 .rewards-grid-three {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(32px, 4vw, 80px);
+  gap: clamp(20px, 3vw, 36px);
 }
 
 .how-step {
@@ -823,48 +1307,56 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  background: #fcfbf9;
+  border: 1px solid rgba(177, 139, 86, 0.15);
+  border-radius: 24px;
+  padding: 36px 28px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
 .how-step:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(6, 26, 51, 0.06);
+  border-color: var(--rw-gold);
 }
 
 .how-step__icon-wrap {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: rgba(177, 139, 86, 0.06);
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  background: rgba(177, 139, 86, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   color: var(--rw-gold);
-  border: 1px solid rgba(177, 139, 86, 0.12);
+  border: 1px solid rgba(177, 139, 86, 0.2);
 }
 
 .how-step__icon-wrap svg {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
 }
 
 .how-step__title {
   font-family: 'Manrope', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
   color: var(--rw-navy);
-  margin: 0 0 12px 0;
+  margin: 0 0 10px 0;
   text-transform: uppercase;
 }
 
 .how-step__desc {
-  font-size: 14px;
+  font-size: 13.5px;
   line-height: 1.6;
   color: var(--rw-muted);
   font-weight: 300;
   margin: 0;
-  max-width: 280px;
+  max-width: 320px;
 }
 
 /* ═════════ MEMBERSHIP TIERS SECTION ═════════ */
@@ -913,7 +1405,7 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
 /* Horizontal Tiers Grid Row */
 .tiers-grid-row {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   margin-bottom: 48px;
   width: 100%;
@@ -1187,7 +1679,17 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
 
 /* ═════════ UNLOCKABLE REWARDS SECTION ═════════ */
 .rewards-unlockable {
-  background-color: var(--rw-bg);
+  background: linear-gradient(180deg, #091322 0%, #061a33 100%);
+  color: #ffffff;
+  border-block: 1px solid rgba(177, 139, 86, 0.2);
+}
+
+.rewards-unlockable .rewards-section-title {
+  color: #ffffff;
+}
+
+.rewards-unlockable .rewards-section-description {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .milestones-asymmetric-layout {
@@ -1803,6 +2305,7 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
 /* ═════════ CUSTOMER BENEFITS STRIP ═════════ */
 .rewards-benefits {
   background-color: var(--rw-bg);
+  padding-block: 28px 32px !important;
 }
 
 .benefits-strip {
@@ -2449,7 +2952,7 @@ body.rewards-theme-active .plus33-nav:not(.plus33-nav--solid) {
   background: linear-gradient(135deg, #061a33, #081f3d, #0d2d56);
   color: #fff;
   overflow: hidden;
-  padding-block: clamp(100px, 12vw, 180px) !important;
+  padding-block: clamp(54px, 6vw, 84px) !important;
 }
 
 .rewards-cta-glow {

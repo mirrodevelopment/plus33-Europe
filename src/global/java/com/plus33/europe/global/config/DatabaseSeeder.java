@@ -10,6 +10,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 @Component
 public class DatabaseSeeder implements CommandLineRunner {
@@ -226,7 +227,7 @@ public class DatabaseSeeder implements CommandLineRunner {
                 )
             };
 
-            productRepository.saveAll(Arrays.asList(initialProducts));
+            productRepository.saveAll(Objects.requireNonNull(Arrays.asList(initialProducts)));
             logger.info("Products seeded successfully!");
         }
     }
@@ -384,7 +385,7 @@ public class DatabaseSeeder implements CommandLineRunner {
                 )
             };
 
-            journalStoryRepository.saveAll(Arrays.asList(initialStories));
+            journalStoryRepository.saveAll(Objects.requireNonNull(Arrays.asList(initialStories)));
             logger.info("Journal stories seeded successfully! Total stories count: {}", journalStoryRepository.count());
         } else {
             logger.info("Journal stories database already seeded. Current stories count: {}", journalStoryRepository.count());

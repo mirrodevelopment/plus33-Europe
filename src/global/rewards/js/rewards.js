@@ -76,16 +76,25 @@ export function mountRewardsPage() {
     cleanups.push(() => trigger.removeEventListener('click', onTriggerClick));
   });
 
-  // ── 3. Toast Trigger System ──
-  const toastTriggers = pageRoot.querySelectorAll('.rewards-toast-trigger');
-  toastTriggers.forEach((trigger) => {
-    const onTriggerClick = (e) => {
-      e.preventDefault();
-      showPremiumToast('Rewards system coming soon');
+  // ── 3. 3D Card Flip Handlers (Phone Card & Physical Collectible Card) ──
+  const flipCards = pageRoot.querySelectorAll('#rewards-flip-card, #collectible-flip-card');
+  flipCards.forEach((card) => {
+    const onFlipClick = (e) => {
+      e.stopPropagation();
+      card.classList.toggle('is-flipped');
     };
-
-    trigger.addEventListener('click', onTriggerClick);
-    cleanups.push(() => trigger.removeEventListener('click', onTriggerClick));
+    const onFlipKey = (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.classList.toggle('is-flipped');
+      }
+    };
+    card.addEventListener('click', onFlipClick);
+    card.addEventListener('keydown', onFlipKey);
+    cleanups.push(() => {
+      card.removeEventListener('click', onFlipClick);
+      card.removeEventListener('keydown', onFlipKey);
+    });
   });
 
   // ── 4. Clickable Horizontal Status Tiers Grid ──
@@ -93,8 +102,7 @@ export function mountRewardsPage() {
   const TIER_THRESHOLDS = {
     bronze: 0,
     silver: 3000,
-    gold: 8000,
-    platinum: 15000
+    gold: 8000
   };
 
   const TIER_DETAILS = {
@@ -223,53 +231,12 @@ export function mountRewardsPage() {
           </svg>`
         }
       ]
-    },
-    platinum: {
-      title: "Platinum",
-      desc: "Ultimate Private Reserve circle and rare micro-lots.",
-      benefits: [
-        {
-          title: "Reserve multiplier",
-          desc: "Earn 2.0x points on all purchases.",
-          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7z"></path>
-            <path d="M3 20h18"></path>
-          </svg>`
-        },
-        {
-          title: "Private concierge",
-          desc: "24/7 dedicated boutique reservation concierge.",
-          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3m-3-3l2.5-2.5"></path>
-          </svg>`
-        },
-        {
-          title: "Master tastings",
-          desc: "Complimentary salon tastings with master roasters.",
-          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <ellipse cx="12" cy="12" rx="5" ry="9" transform="rotate(-45 12 12)"></ellipse>
-            <path d="M8.5 15.5c2-1 3.5-3.5 5-7"></path>
-          </svg>`
-        },
-        {
-          title: "Rare reserves",
-          desc: "Priority access to ultra-rare micro-lot coffees.",
-          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6 3h12l4 6-10 12L2 9z"></path>
-            <path d="M11 3l-4 6 5 12"></path>
-            <path d="M13 3l4 6-5 12"></path>
-            <path d="M2 9h20"></path>
-          </svg>`
-        }
-      ]
     }
   };
 
   // 1. Calculate active user tier
   let activeTier = 'bronze';
-  if (USER_POINTS >= TIER_THRESHOLDS.platinum) {
-    activeTier = 'platinum';
-  } else if (USER_POINTS >= TIER_THRESHOLDS.gold) {
+  if (USER_POINTS >= TIER_THRESHOLDS.gold) {
     activeTier = 'gold';
   } else if (USER_POINTS >= TIER_THRESHOLDS.silver) {
     activeTier = 'silver';
@@ -287,12 +254,10 @@ export function mountRewardsPage() {
   const bronzeFill = pageRoot.querySelector('.tier-card-new[data-tier="bronze"] .tier-card-progress-fill');
   const silverFill = pageRoot.querySelector('.tier-card-new[data-tier="silver"] .tier-card-progress-fill');
   const goldFill = pageRoot.querySelector('.tier-card-new[data-tier="gold"] .tier-card-progress-fill');
-  const platinumFill = pageRoot.querySelector('.tier-card-new[data-tier="platinum"] .tier-card-progress-fill');
 
   if (bronzeFill) bronzeFill.style.width = '100%';
   if (silverFill) silverFill.style.width = `${Math.min(100, Math.max(0, (USER_POINTS / 3000) * 100))}%`;
   if (goldFill) goldFill.style.width = `${Math.min(100, Math.max(0, ((USER_POINTS - 3000) / 5000) * 100))}%`;
-  if (platinumFill) platinumFill.style.width = `${Math.min(100, Math.max(0, ((USER_POINTS - 8000) / 7000) * 100))}%`;
 
   // Dynamic details panel update function
   const updateDetailsPanel = (tierKey) => {

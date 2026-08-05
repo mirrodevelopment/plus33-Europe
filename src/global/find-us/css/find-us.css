@@ -1650,3 +1650,26 @@ body.find-us-theme-active .plus33-nav--solid {
   padding: 10px 0 !important;
 }
 
+/* ═════════ LUXURY COPPER GOLD BUTTON STYLING ═════════ */
+.locations-cta-banner .btn-copper,
+.find-us-page .btn-copper {
+  background: linear-gradient(135deg, #b18b56 0%, #d4af37 50%, #9b763e 100%) !important;
+  color: #ffffff !important;
+  font-family: var(--font-sans), 'Manrope', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  border: 1px solid rgba(255, 220, 160, 0.35) !important;
+  box-shadow: 0 8px 25px rgba(177, 139, 86, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+  border-radius: 4px !important;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.locations-cta-banner .btn-copper:hover,
+.find-us-page .btn-copper:hover {
+  background: linear-gradient(135deg, #c59b4e 0%, #e5c158 50%, #b18b56 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 14px 35px rgba(177, 139, 86, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+  transform: translateY(-3px) !important;
+}
+
